@@ -3,7 +3,9 @@ import gsap from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/navigation";
-import API_URL from "../../../data/config";
+import API_URL from "@/data/config";
+
+
 
 export default function HeroFour() {
   const router = useRouter();

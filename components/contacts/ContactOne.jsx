@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { contactData } from "@/data/contactLinks";
 import dynamic from "next/dynamic";
-import API_URL from "../../../data/config";
+import API_URL from "@/data/config";
 
 const MapComponent = dynamic(() => import("./Map"), {
   ssr: false,
