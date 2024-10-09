@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { contactData } from "@/data/contactLinks";
 import dynamic from "next/dynamic";
+import API_URL from "../../../data/config";
 
 const MapComponent = dynamic(() => import("./Map"), {
   ssr: false,
@@ -27,7 +28,7 @@ export default function ContactOne() {
     // Perform validation if needed
 
     // Send data to the backend
-    const response = await fetch('http://13.233.33.247/api/contact/', {
+    const response = await fetch(`${API_URL}/contact/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

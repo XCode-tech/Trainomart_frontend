@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useContextElement } from "@/context/Context";
 import ModalVideoComponent from "../common/ModalVideo";
 import Image from "next/image";
+import API_URL from "@/data/config";
 
 export default function PinContent({ pageItem }) {
   const { isAddedToCartCourses, addCourseToCart } = useContextElement();
@@ -52,7 +53,7 @@ export default function PinContent({ pageItem }) {
     setIsLoading(true); // Set loading to true when the form is submitted
 
     try {
-      const response = await fetch('http://13.233.33.247/api/leads/', {  // Adjust the URL as needed
+      const response = await fetch(`${API_URL}/leads/`, {  // Adjust the URL as needed
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

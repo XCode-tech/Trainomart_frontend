@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import CourceCard from "../courseCards/CourseCard";
+import API_URL from "@/data/config";
 
 export default function Courses() {
   const [coursesData, setCoursesData] = useState([]); // For storing the API data
@@ -17,7 +18,7 @@ export default function Courses() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch("http://13.233.33.247/api/courses"); // Replace with your API URL
+        const response = await fetch(`${API_URL}/courses`); // Replace with your API URL
         if (!response.ok) {
           throw new Error("Failed to fetch courses data");
         }

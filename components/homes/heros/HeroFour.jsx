@@ -3,6 +3,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/navigation";
+import API_URL from "../../../data/config";
 
 export default function HeroFour() {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function HeroFour() {
   const fetchCourseIdByName = async (courseName) => {
     setLoading(true); // Set loading state to true
     try {
-      const response = await fetch(`http://13.233.33.247/api/courses/by-name/?name=${courseName}`);
+      const response = await fetch(`${API_URL}/courses/by-name/?name=${courseName}`);
       
       if (!response.ok) {
         throw new Error("Failed to fetch course ID");

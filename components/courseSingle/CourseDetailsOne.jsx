@@ -10,6 +10,7 @@ import CourseContent from "./CourseContent";
 // import Reviews from "./Reviews";
 import Head from "next/head";
 import Image from "next/image";
+import API_URL from "@/data/config";
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
@@ -28,7 +29,7 @@ export default function CourseDetailsOne({ id }) {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`http://13.233.33.247/api/courses/${id}`);
+        const response = await fetch(`${API_URL}/courses/${id}`);
 
         if (!response.ok) {
           throw new Error(`Error fetching course data: ${response.statusText}`);
