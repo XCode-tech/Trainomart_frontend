@@ -59,7 +59,7 @@ export default function CourseCard({ data, index, ...props }) {
               height={500}
               className="w-full"
               src={data.course_image || "/default-course.jpg"}
-              alt={data.course_name || "Course Image"}
+              alt={data.course_image || "Course Image"}
               objectFit="cover"
               priority={index < 4} // Prioritize images for the first few courses
             />
