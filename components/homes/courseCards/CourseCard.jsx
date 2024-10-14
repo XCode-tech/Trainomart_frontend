@@ -59,8 +59,8 @@ export default function CourseCard({ data, index, ...props }) {
               height={500}
               className="w-full"
 //              src={data.course_image || "/default-course.jpg"}
-              src="https://test.trainomart.com{{ course.course_image.url }}"
-              alt="https://test.trainomart.com{{ course.course_image.url }}"
+              src="https://test.trainomart.com{{ data.course_image.url }}"
+              alt="https://test.trainomart.com{{ data.course_image.url }}"
               //{data.course_image || "Course Image"}
               objectFit="cover"
               priority={index < 4} // Prioritize images for the first few courses
