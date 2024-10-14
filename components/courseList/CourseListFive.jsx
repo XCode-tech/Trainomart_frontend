@@ -785,7 +785,7 @@ useEffect(() => {
                     </div>
 
                     <div className="h-100 pt-20 pb-15 px-30">
-                      <div className="d-flex items-center">
+{/*                       <div className="d-flex items-center">
                         <div className="text-14 lh-1 text-yellow-1 mr-10">
                           {elm.rating}
                         </div>
@@ -795,7 +795,7 @@ useEffect(() => {
                         <div className="text-13 lh-1 ml-10">
                           ({elm.ratingCount})
                         </div>
-                      </div>
+                      </div> */}
 
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
                         <Link className="linkCustom" href={`/courses/${elm.id}`}>
