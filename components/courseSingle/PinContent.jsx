@@ -213,6 +213,7 @@ export default function PinContent({ pageItem }) {
               <a
                 href="https://www.facebook.com/profile.php?id=61566279315276"
                 className="d-flex justify-center items-center size-40 rounded-full"
+                target="_blank"
               >
                 <i className="fa fa-facebook"></i>
               </a>
@@ -220,6 +221,7 @@ export default function PinContent({ pageItem }) {
               <a
                 href="https://www.instagram.com/trainomart?utm_source=qr"
                 className="d-flex justify-center items-center size-40 rounded-full"
+                target="_blank"
               >
                 <i className="fa fa-instagram"></i>
               </a>
@@ -227,6 +229,7 @@ export default function PinContent({ pageItem }) {
               <a
                 href="https://www.linkedin.com/company/104781952/admin/dashboard/"
                 className="d-flex justify-center items-center size-40 rounded-full"
+                target="_blank"
               >
                 <i className="fa fa-linkedin"></i>
               </a>
