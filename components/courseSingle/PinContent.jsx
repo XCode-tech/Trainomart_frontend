@@ -211,28 +211,21 @@ export default function PinContent({ pageItem }) {
 
             <div className="d-flex justify-center pt-15">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61566279315276"
                 className="d-flex justify-center items-center size-40 rounded-full"
               >
                 <i className="fa fa-facebook"></i>
               </a>
 
               <a
-                href="#"
-                className="d-flex justify-center items-center size-40 rounded-full"
-              >
-                <i className="fa fa-twitter"></i>
-              </a>
-
-              <a
-                href="#"
+                href="https://www.instagram.com/trainomart?utm_source=qr"
                 className="d-flex justify-center items-center size-40 rounded-full"
               >
                 <i className="fa fa-instagram"></i>
               </a>
 
               <a
-                href="#"
+                href="https://www.linkedin.com/company/104781952/admin/dashboard/"
                 className="d-flex justify-center items-center size-40 rounded-full"
               >
                 <i className="fa fa-linkedin"></i>
