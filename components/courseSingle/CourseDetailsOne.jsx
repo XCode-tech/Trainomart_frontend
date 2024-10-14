@@ -154,9 +154,9 @@ export default function CourseDetailsOne({ id }) {
                       </div>
                     </div>
 
-{/*                     <div className="d-flex items-center text-light-1">
+                    <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
-                      <div className="text-14 ml-8">
+{/*                       <div className="text-14 ml-8">
                         Last updated{" "}
                         {new Date(pageItem.last_updated).toLocaleDateString(
                           undefined,
@@ -165,9 +165,9 @@ export default function CourseDetailsOne({ id }) {
                             month: "long",
                           }
                         )}
-                      </div>
+                      </div> */}
                     </div>
-                  </div> */}
+                  </div>
 
                   {/* <div className="d-flex items-center pt-20">
                     <div className="relative w-30 h-30 rounded-full overflow-hidden">
