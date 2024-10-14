@@ -155,7 +155,7 @@ export default function CourseDetailsOne({ id }) {
                     </div>
 
                     <div className="d-flex items-center text-light-1">
-                      <div className="icon icon-wall-clock text-13"></div>
+{/*                       <div className="icon icon-wall-clock text-13"></div> */}
 {/*                       <div className="text-14 ml-8">
                         Last updated{" "}
                         {new Date(pageItem.last_updated).toLocaleDateString(
