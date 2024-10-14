@@ -148,13 +148,13 @@ export default function CourseDetailsOne({ id }) {
                     </div> */}
 
                     <div className="d-flex items-center text-light-1">
-                      <div className="icon icon-person-3 text-13"></div>
+                      <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
-                        {pageItem.duration || 0} Duration of this course
+                        Duration..{pageItem.duration || 0} 
                       </div>
                     </div>
 
-                    <div className="d-flex items-center text-light-1">
+{/*                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
                         Last updated{" "}
@@ -167,7 +167,7 @@ export default function CourseDetailsOne({ id }) {
                         )}
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* <div className="d-flex items-center pt-20">
                     <div className="relative w-30 h-30 rounded-full overflow-hidden">
