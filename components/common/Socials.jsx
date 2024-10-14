@@ -11,6 +11,7 @@ export default function Socials({ componentsClass, textSize }) {
           key={index}
           className={componentsClass ? componentsClass : ""}
           href={link.href}
+          target="_blank"
         >
           <i className={`${link.iconClassName} ${textSize}`}></i>
         </a>
