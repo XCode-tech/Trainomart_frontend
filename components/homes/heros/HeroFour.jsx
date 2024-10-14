@@ -194,9 +194,9 @@ export default function HeroFour() {
                   </div>
                   <div className="ml-20">
                     <div className="text-orange-1 text-16 fw-500 lh-1">
-                      550 +
+                      Expert
                     </div>
-                    <div className="mt-3">Technical Courses</div>
+                    <div className="mt-3">Technical Trainer's</div>
                   </div>
                 </div>
               </div>
