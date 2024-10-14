@@ -15,6 +15,8 @@ import Star from "../common/Star";
 import PaginationTwo from "../common/PaginationTwo";
 import Image from "next/image";
 import Link from "next/link";
+import API_URL from "@/data/config";
+
 
 export default function CourseListFive() {
   const [courses, setCourses] = useState([]); // State to store fetched courses
@@ -35,7 +37,7 @@ export default function CourseListFive() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/courses/");
+        const response = await fetch(`${API_URL}courses/`);
         const data = await response.json();
         setCourses(data); // Store fetched courses in state
       } catch (error) {
