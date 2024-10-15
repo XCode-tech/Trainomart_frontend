@@ -50,7 +50,7 @@ export const testimonials2 = [
   },
   {
     id: 1,
-    imageSrc: "/assets/img/testimonials/cisco.png",
+    imageSrc: "/assets/img/clients/cisco.png",
     name: "",
     position: "",
     comment: "80+ Instructors",
@@ -58,7 +58,7 @@ export const testimonials2 = [
   },
   {
     id: 2,
-    imageSrc: "/assets/img/testimonials/vmware.png",
+    imageSrc: "/assets/img/clients/vmware.png",
     name: "",
     position: "",
     comment: "20+ Instructors",
@@ -66,7 +66,7 @@ export const testimonials2 = [
   },
   {
     id: 3,
-    imageSrc: "/assets/img/testimonials/comptia.png",
+    imageSrc: "/assets/img/clients/comptia.png",
     name: "",
     position: "",
     comment: "15+ Instructors",
@@ -74,7 +74,7 @@ export const testimonials2 = [
   },
   {
     id: 4,
-    imageSrc: "/assets/img/testimonials/citrix.png",
+    imageSrc: "/assets/img/clients/citrix.png",
     name: "",
     position: "",
     comment: "15+ Instructors",
@@ -82,7 +82,7 @@ export const testimonials2 = [
   },
   {
     id: 5,
-    imageSrc: "/assets/img/testimonials/ec-council.png",
+    imageSrc: "/assets/img/clients/ec-council.png",
     name: "",
     position: "",
     comment: "15+ Instructors",
@@ -90,7 +90,7 @@ export const testimonials2 = [
   },
   {
     id: 6,
-    imageSrc: "/assets/img/testimonials/aws.png",
+    imageSrc: "/assets/img/clients/aws.png",
     name: "",
     position: "",
     comment: "25+ Instructors",
