@@ -15,7 +15,7 @@ export default function Business() {
 
                 <div>
                   <p className="page-header__text">
-                    We're on a mission to transform the way people learn, grow, and succeed in the digital world.
+                    Sub Title for business Page
                   </p>
                 </div>
               </div>
