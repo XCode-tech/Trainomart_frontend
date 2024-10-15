@@ -13,8 +13,8 @@ import Faq from '@/components/common/Faq'
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 
-import FooterOne from '@/components/layout/footers/FooterOne'
-import Header from '@/components/layout/headers/Header'
+import FooterFour from '@/components/layout/footers/FooterFour'
+import HeaderFour from '@/components/layout/headers/HeaderFour'
 import HelpCenter from '@/components/others/HelpCenter'
 import Terms from '@/components/terms/Terms'
 import React from 'react'
@@ -30,12 +30,12 @@ export default function page() {
     <div className="main-content  ">
       <Preloader/>
 
-        <Header/>
+        <HeaderFour/>
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <HelpCenter/>
             <Faq/>
-            <FooterOne/>
+            <FooterFour/>
         </div>
 
     </div>
