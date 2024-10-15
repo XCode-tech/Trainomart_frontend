@@ -12,7 +12,8 @@ import Instructors from '@/components/common/Instructors'
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import TestimonialsOne from '@/components/common/TestimonialsOne'
-import WhyCourse from '@/components/homes/WhyCourse'
+import TestimonialsTwo from '@/components/common/TestimonialsTwo'
+import WhyCourse2 from '@/components/homes/WhyCourse2'
 import FooterFour from '@/components/layout/footers/FooterFour'
 
 
@@ -37,10 +38,10 @@ export default function page() {
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <Business/>
-            <WhyCourse/>
+            <WhyCourse2/>
             
 
-            <TestimonialsOne/>
+            <TestimonialsTwo/>
             {/* <Instructors/> */}
             <Brands/>
            
