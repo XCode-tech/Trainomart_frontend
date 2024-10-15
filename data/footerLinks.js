@@ -39,7 +39,7 @@ export const footerLinks = [
       // { href: "/terms", label: "Documentation" },
       { href: "/help-center", label: "FAQs" },
       // { href: "/dashboard", label: "Dashboard" },
-      { href: "/contact", label: "Contact" },
+      // { href: "/contact", label: "Contact" },
     ],
   },
 ];
