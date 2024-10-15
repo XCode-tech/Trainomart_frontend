@@ -29,11 +29,11 @@ export default function HelpCenter() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       <section className="layout-pb-lg">
         <div className="container">
-{/*           <div className="row justify-center text-center">
+          <div className="row justify-center text-center">
             <div className="col-xl-6 col-lg-8">
               <form className="form-single-field -help" onSubmit={handleSubmit}>
                 <input
@@ -47,7 +47,7 @@ export default function HelpCenter() {
                 </button>
               </form>
             </div>
-          </div> */}
+          </div>
 
           <div className="row y-gap-30 justify-between pt-90 lg:pt-50">
             {helpItems.map((elm, i) => (
@@ -63,7 +63,7 @@ export default function HelpCenter() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 }
