@@ -21,9 +21,9 @@ import FooterFour from "@/components/layout/footers/FooterFour";
 import CategoriesFour from "@/components/homes/categories/CategoriesFour";
 
 export const metadata = {
-  title: 'Home-1',
+  title: 'Home',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    '',
   
 }
 
