@@ -146,19 +146,6 @@ export default function Menu({ allClasses, headerPosition }) {
                 About Us
               </Link>
             </li>
-
-            {/* Business Menu Item */}
-            <li className="menu-item-has-children">
-              <Link
-                href="/business"
-                className={
-                  submenu === "Business" ? "activeMenu" : "inActiveMenu"
-                }
-              >
-                Business
-              </Link>
-            </li>
-
             
             {/* Contact Menu Item */}
             <li>
