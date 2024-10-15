@@ -10,7 +10,7 @@ export default function Business() {
             <div className="row justify-center text-center">
               <div className="col-auto">
                 <div>
-                  <h1 className="page-header__title">Business Page</h1>
+                  <h1 className="page-header__title">Our Business Services</h1>
                 </div>
 
                 <div>
