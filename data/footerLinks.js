@@ -9,7 +9,7 @@ export const footerLinks = [
       // { href: "#", label: "Leadership" },
       { href: "/contact", label: "Contact Us" },
     ],
-  // },
+  },
   // {
   //   title: "CATEGORIES",
   //   links: [
