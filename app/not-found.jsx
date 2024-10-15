@@ -1,20 +1,11 @@
 
 
-
-
-
-
-
-
-
-
-
 import NotFound from '@/components/not-found/NotFound'
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 
-import FooterOne from '@/components/layout/footers/FooterOne'
-import Header from '@/components/layout/headers/Header'
+import FooterFour from '@/components/layout/footers/FooterFour'
+import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 export const metadata = {
   title: 'Page not found',
@@ -28,11 +19,11 @@ export default function page() {
 
       <Preloader/>
 
-        <Header/>
+        <HeaderFour/>
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <NotFound/>
-            <FooterOne/>
+            <FooterFour/>
         </div>
 
     </div>
