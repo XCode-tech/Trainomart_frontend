@@ -50,33 +50,52 @@ export const testimonials2 = [
   },
   {
     id: 1,
-    imageSrc: "/assets/img/testimonials/2.png",
-    name: "John Mark",
+    imageSrc: "/assets/img/testimonials/cisco.png",
+    name: "",
     position: "",
-    comment: "Supportive Team",
-    description: `I can't express how grateful I am to Trainomart for their exceptional courses. The comprehensive training materials, expert instructors, and flexible learning options made it easy for me to pursue certifications in Microsoft, AWS, CompTIA. The real-world scenarios and practical exercises were incredibly helpful. I am now a certified professional in multiple domains, and it wouldn't have been possible without this fantastic training provider!`,
+    comment: "80+ Instructors",
+    description: ``,
   },
   {
     id: 2,
-    imageSrc: "/assets/img/testimonials/3.png",
-    name: "Lisa Kiane",
+    imageSrc: "/assets/img/testimonials/vmware.png",
+    name: "",
     position: "",
-    comment: "Best in Class Pedagogy",
-    description: `As an IT professional looking to upskill, I couldn't have chosen a better place than Trainomart. 
-                  Their technical courses are well-structured, up-to-date, and delivered by industry experts. I appreciate the attention to detail and the hands-on experience I gained. Thanks to this training, 
-                  I successfully transitioned to a new role with a significant salary increase. Highly recommend their programs as it was very intriguing`,
+    comment: "20+ Instructors",
+    description: ``,
   },
-  // {
-  //   id: 3,
-  //   imageSrc: "/assets/img/testimonials/4.png",
-  //   name: "Courtney Henry",
-  //   position: "Web Designer",
-  //   comment: "Great Work",
-  //   description: `I think Educrat is the best theme I ever seen this year.
-  //       Amazing design, easy to customize and a design quality
-  //       superlative account on its cloud platform for the
-  //       optimized performance`,
-  // },
+  {
+    id: 3,
+    imageSrc: "/assets/img/testimonials/comptia.png",
+    name: "",
+    position: "",
+    comment: "15+ Instructors",
+    description: ``,
+  },
+  {
+    id: 4,
+    imageSrc: "/assets/img/testimonials/citrix.png",
+    name: "",
+    position: "",
+    comment: "15+ Instructors",
+    description: ``,
+  },
+  {
+    id: 5,
+    imageSrc: "/assets/img/testimonials/ec-council.png",
+    name: "",
+    position: "",
+    comment: "15+ Instructors",
+    description: ``,
+  },
+  {
+    id: 6,
+    imageSrc: "/assets/img/testimonials/aws.png",
+    name: "",
+    position: "",
+    comment: "25+ Instructors",
+    description: ``,
+  },
 ];
 
 export const testimonialsTwo = [
