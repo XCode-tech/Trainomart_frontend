@@ -187,7 +187,23 @@ export default function TestimonialsTwo() {
 
                 <div className="text-center">
                     <a onClick={toggleModal}>
-                        <h1 className="text-center text-green-1 cursor-pointer">Get Quote Today!</h1>
+                        <h1>
+                        <Image
+                            src="/assets/img/gif/fast-forward.gif"
+                            alt="GIF before text"
+                            width={48}
+                            height={24}
+                            className="mr-2"
+                        />
+                        <span className="text-center text-green-1 cursor-pointer">Get Quote Today!</span>
+                        <Image
+                            src="/assets/img/gif/fast-backward.gif"
+                            alt="GIF before text"
+                            width={48}
+                            height={24}
+                            className="mr-2"
+                        />
+                        </h1>
                     </a>
 
                     {isOpen && (
