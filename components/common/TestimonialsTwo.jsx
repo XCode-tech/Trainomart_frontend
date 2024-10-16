@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
+import API_URL from "@/data/config";
 // import 'swiper/swiper.min.css';
 import { testimonials2 } from "../../data/tesimonials";
 import { counters } from "../../data/count";
@@ -48,7 +49,7 @@ export default function TestimonialsTwo() {
         setErrors(null);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/quote/', formData, {
+            const response = await axios.post(`${API_URL}/quote/`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
