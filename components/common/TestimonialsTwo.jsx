@@ -62,26 +62,28 @@ export default function TestimonialsTwo() {
                             {testimonials2.map((elm, i) => (
                                 <SwiperSlide key={i} className="swiper-slide">
                                     <div
-                                        className="testimonials -type-1"
+                                        className="testimonials -type-1 text-center"
                                         data-aos="fade-left"
                                         data-aos-duration={(i + 1) * 550}
                                     >
                                         <div className="testimonials__content">
-                                            <h4 className="testimonials__title">{elm.comment}</h4>
+
+                                            <div className="">
+                                                <Image
+                                                    width={180}
+                                                    height={120}
+                                                    src={elm.imageSrc}
+                                                    alt="image"
+                                                />
+                                            </div>
                                             <p className="testimonials__text">
                                                 {`${elm.description}`}
                                             </p>
 
                                             <div className="">
-                                                <div className="">
-                                                    <Image
-                                                        width={120}
-                                                        height={120}
-                                                        src={elm.imageSrc}
-                                                        alt="image"
-                                                    />
-                                                </div>
-
+                                                <h4 className="testimonials__title">
+                                                    <b>
+                                                        {elm.comment}</b></h4>
                                                 <div className="testimonials-footer__content">
                                                     <div className="testimonials-footer__title">
                                                         {elm.name}
