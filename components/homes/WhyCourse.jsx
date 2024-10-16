@@ -47,6 +47,15 @@ export default function WhyCourse() {
           ))}
         </div>
       </div>
+      <br /><br />
+      <div className="text-center">
+        <a href="/business">
+          <button>
+            <h4 className="text-white">Know more</h4>
+          </button>
+        </a>
+      </div>
+
     </section>
   );
 }
