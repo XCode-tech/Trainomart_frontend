@@ -7,13 +7,82 @@ import SwiperCore from "swiper";
 // import 'swiper/swiper.min.css';
 import { testimonials2 } from "../../data/tesimonials";
 import { counters } from "../../data/count";
+import axios from 'axios';
 // SwiperCore.use([Pagination]);
 
 export default function TestimonialsTwo() {
     const [showSlider, setShowSlider] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        organization: '',
+        designation: '',
+        email: '',
+        phone_number: ''
+    });
+
     useEffect(() => {
         setShowSlider(true);
     }, []);
+
+
+    const toggleModal = () => {
+        setIsOpen(!isOpen);
+    };
+
+
+    const [errors, setErrors] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setErrors(null);
+
+        try {
+            const response = await axios.post('http://localhost:8000/api/quote/', formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.status === 201) {
+                alert('Form submitted successfully');
+                setFormData({
+                    name: '',
+                    organization: '',
+                    designation: '',
+                    email: '',
+                    phone_number: ''
+                });
+            }
+        } catch (error) {
+            if (error.response) {
+                // Server responded with a status other than 2xx
+                console.error('Error data:', error.response.data);
+                setErrors(error.response.data);
+                alert(`Error: ${JSON.stringify(error.response.data)}`);
+            } else if (error.request) {
+                // Request was made but no response received
+                console.error('Error request:', error.request);
+                alert('No response received from the server.');
+            } else {
+                // Something else caused the error
+                console.error('Error message:', error.message);
+                alert(`Error: ${error.message}`);
+            }
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section className="layout-pt-lg mt-80 layout-pb-lg bg-purple-1">
             <div className="container ">
@@ -21,7 +90,7 @@ export default function TestimonialsTwo() {
                     <div className="col-auto">
                         <div className="sectionTitle ">
                             <h2 className="sectionTitle__title text-green-1">
-                            Instructors by Technology
+                                Instructors by Technology
                             </h2>
 
                             <p className="sectionTitle__text text-white">
@@ -114,20 +183,89 @@ export default function TestimonialsTwo() {
                     </div>
                 </div>
 
-                <div className="row y-gap-30  counter__row">
-                    {counters.map((elm, i) => (
-                        <div
-                            key={i}
-                            className="col-lg-3 col-sm-6"
-                            data-aos="fade-left"
-                            data-aos-duration={(i + 1) * 350}
-                        >
-                            <div className="counter -type-1">
-                                <div className="counter__number">{elm.number}</div>
-                                <div className="counter__title">{elm.title}</div>
-                            </div>
+
+                <div className="text-center">
+                    <a onClick={toggleModal}>
+                        <h1 className="text-center text-green-1 cursor-pointer">Get Quote Today!</h1>
+                    </a>
+
+                    {isOpen && (
+                        // <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+                        <div className="bg-white p-6 rounded-lg shadow-lg">
+                            <h2 className="text-2xl font-bold mb-4">Get Your Quote</h2>
+
+                            <form onSubmit={handleSubmit} className="text-center">
+                                <div className="mb-4">
+                                    <label className="block text-gray-700"><b>Name :</b></label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-gray-700"><b>Organization :</b></label>
+                                    <input
+                                        type="text"
+                                        name="organization"
+                                        value={formData.organization}
+                                        onChange={handleChange}
+                                        className="w-full p-2 border border-gray-300 rounded"
+
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-gray-700"><b>Designation :</b></label>
+                                    <input
+                                        type="text"
+                                        name="designation"
+                                        value={formData.designation}
+                                        onChange={handleChange}
+                                        className="w-full p-2 border border-gray-300 rounded"
+
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-gray-700"><b>Email ID :</b></label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-gray-700"><b>Phone Number :</b></label>
+                                    <input
+                                        type="text"
+                                        name="phone_number"
+                                        value={formData.phone_number}
+                                        onChange={handleChange}
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        required
+                                    />
+                                </div>
+
+                                <div className="flex justify-center space-x-4">
+
+                                    <button className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">
+                                        <b>Submit</b>
+                                    </button>
+                                </div>
+
+                            </form>
                         </div>
-                    ))}
+                        // </div>
+                    )}
                 </div>
             </div>
         </section>
