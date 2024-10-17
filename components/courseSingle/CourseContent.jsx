@@ -26,9 +26,9 @@ export default function CourseContent({ data }) {
             {modules.length} sections •{" "}
             {modules.reduce((total, module) => total + module.lessons.length, 0)} lectures
           </div>
-          <a href="#" className="underline text-purple-1">
+{/*           <a href="#" className="underline text-purple-1">
             Expand All Sections
-          </a>
+          </a> */}
         </div>
 
         <div className="mt-10">
