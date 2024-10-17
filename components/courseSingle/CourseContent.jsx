@@ -56,7 +56,7 @@ export default function CourseContent({ data }) {
                   </div>
 
                   <div>
-                    {module.lessons.length} Duration
+                    {module.lessons.length} Hours Duration
                   </div>
                 </div>
 
