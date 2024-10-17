@@ -13,6 +13,7 @@ import Preloader from '@/components/common/Preloader'
 import TestimonialsOne from '@/components/common/TestimonialsOne'
 import WhyCourse from '@/components/homes/WhyCourse'
 import FooterFour from '@/components/layout/footers/FooterFour'
+import WeOffer from '@/components/homes/WeOffer'
 
 
 import FooterOne from '@/components/layout/footers/FooterOne'
@@ -36,8 +37,9 @@ export default function page() {
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <About/>
-            <WhyCourse/>
-            
+{/*             <WhyCourse/> */}
+            <WeOffer />
+
 
             <TestimonialsOne/>
             <Instructors/>
