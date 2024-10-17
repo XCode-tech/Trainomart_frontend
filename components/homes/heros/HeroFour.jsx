@@ -122,7 +122,7 @@ export default function HeroFour() {
                     <input
                       required
                       type="text"
-                      placeholder="What do you want to learn today?"
+                      placeholder="Find your courses by name"
                       value={courseName} // Bind the input value to state
                       onChange={(e) => setCourseName(e.target.value)} // Update state on input change
                       className="input-field"
