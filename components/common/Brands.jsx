@@ -17,6 +17,8 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
           <div className="col text-center">
             <p className="text-lg text-dark-1">Trusted by the world’s best</p>
           </div>
+          <br />
+          <br />
         </div>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
