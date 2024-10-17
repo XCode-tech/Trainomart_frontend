@@ -1,23 +1,23 @@
 export const counters = [
   {
     id: 1,
-    number: "600+",
-    title: "Instructors available",
+    number: "10+",
+    title: "Companies served",
   },
   {
     id: 2,
-    number: "39170+",
-    title: "Individuals trained",
+    number: "600+",
+    title: "Certified Trainers",
   },
   {
     id: 3,
-    number: "48360",
-    title: "Learning days delivered",
+    number: "35K+",
+    title: "Learners trained",
   },
   {
     id: 4,
-    number: "550+",
-    title: "Learning curriculums",
+    number: "95+",
+    title: "of Learners recommend us",
   },
 ];
 
