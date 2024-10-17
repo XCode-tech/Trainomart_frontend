@@ -5,8 +5,12 @@ export const brands = [
   // "/assets/img/clients/4.svg",
   // "/assets/img/clients/5.svg",
   // "/assets/img/clients/6.svg",
-  "/assets/img/clients/american-express.png",
+  // "/assets/img/clients/american-express.png",
   "/assets/img/clients/Tg-logo.png",
   "/assets/img/clients/atos.png",
   "/assets/img/clients/AT.png",
+  "/assets/img/clients/NO.png",
+  "/assets/img/clients/LQ.png",
+  "/assets/img/clients/LW.png",
+
 ];
