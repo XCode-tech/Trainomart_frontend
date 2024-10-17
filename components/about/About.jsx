@@ -15,7 +15,7 @@ export default function About() {
 
                 <div>
                   <p className="page-header__text">
-                    We're on a mission to transform the way people learn, grow, and succeed in the digital world.
+                     Our mission is simple: To establish a global brand renowned for delivering cutting-edge courses that help our clients stay ahead in today’s fast-paced technical landscape.
                   </p>
                 </div>
               </div>
@@ -56,24 +56,17 @@ export default function About() {
             </div>
 
             <div className="col-lg-5">
-              <h2 className="text-30 lh-16">
+{/*               <h2 className="text-30 lh-16">
                 Areas of Expertise
-              </h2>
-              <p className="text-dark-1 mt-30">
-                Whether you're an IT Professional
-                seeking Advanced Skill Development or
-                An Executive in need of Experienced Trainers,
-                Our Expertise is tailored to meet your needs with
-                Hands-On Practical Solutions.
+              </h2> */}
+              <p className="text-dark-1 mt-15">
+              At Trainomart, we believe in empowering learners and businesses through innovative, affordable, and customizable technical training solutions. As a subsidiary of Xcode Tech LLC, we specialize in delivering a wide range of courses designed to meet the evolving needs of both individuals and organizations.
               </p>
-              <br />
-              <p>Services we provide to the industry are:</p>
-              <ul className="list-disc list-inside pl-4"> {/* Tailwind CSS classes for styling the list */}
-                <li> - Contract Trainers</li>
-                <li> - Consulting IT Projects</li>
-                <li> - Instructor-led Courses</li>
-                <li> - Learning at Scale</li>
-              </ul>
+              <p className="text-dark-1 mt-15">We are committed to providing exceptional training solutions, ensuring excellence for both B2B and B2C clients worldwide. 
+              </p>
+              <p className="text-dark-1 mt-15">
+              From small and medium-sized enterprises to large corporations, from students to career changers, Trainomart offers tailored training that bridges skill gaps and enhances professional capabilities.
+              </p>
               <div className="d-inline-block">
                 <Link
                   href="/signup"
