@@ -28,7 +28,7 @@ export const steps = [
     id: 5,
     icon: "icon-graduation-1 text-64 text-green-1",
     title: "What our facilitators do",
-    text: "Whether delivering cutting-edge courses on AI technology or foundational lessons in Data Science, our facilitators empower delegates with self-awareness, fostering personal growth and enabling them to positively influence the performance of their peers.",
+    text: "Our facilitators deliver cutting-edge AI and Data Science courses, empowering delegates with self-awareness, fostering personal growth, and enhancing peer performance.",
   },
   {
     id: 6,
