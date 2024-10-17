@@ -37,12 +37,13 @@ export default function HomePage() {
     <div className="content-wrapper  js-content-wrapper overflow-hidden">
     
       <HeroFour />
-      <Brands/>
-      <CategoriesFour />
       <Courses/>
+      {/* <CategoriesFour /> */}
       <TestimonialsOne/>
       <FeaturesOne/>
       <WhyCourse/>
+      <Brands/>
+
       {/* <Instructors/> */}
       <GetApp/>
       {/* <Blog/> */}
