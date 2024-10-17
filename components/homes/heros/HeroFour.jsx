@@ -144,9 +144,9 @@ export default function HeroFour() {
                   </form>
                 </div>
 
-                <div className="masthead-search__searches mt-40">
+{/*                 <div className="masthead-search__searches mt-40">
                   <p>Trending Search: az900, azure devops certification, ethical hacking course, </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
