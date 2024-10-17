@@ -155,6 +155,13 @@ export default function CourseDetailsOne({ id }) {
                     </div>
 
                     <div className="d-flex items-center text-light-1">
+                      <div className="icon icon-person-3 text-13"></div>
+                      <div className="text-14 ml-8">
+                        <b>New Batch Starts From 5th Nov 2024</b> 
+                      </div>
+                    </div>
+
+                    <div className="d-flex items-center text-light-1">
 {/*                       <div className="icon icon-wall-clock text-13"></div> */}
 {/*                       <div className="text-14 ml-8">
                         Last updated{" "}
