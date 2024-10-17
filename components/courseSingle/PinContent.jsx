@@ -16,6 +16,7 @@ export default function PinContent({ pageItem }) {
     name: "",
     email: "",
     phone: "",
+    time_for_call: "",
   });
 
   const [isLoading, setIsLoading] = useState(false); // Define isLoading state
@@ -105,7 +106,7 @@ export default function PinContent({ pageItem }) {
           <div className="courses-single-info__content scroll-bar-1 pt-30 pb-20 px-20">
             {/* Form Section */}
 
-            <h2 className="text-center">Register Now</h2>
+            <h2 className="text-center">Enroll Now</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col md:flex-row md:space-x-4"> {/* Flex container for responsive alignment */}
                 <div className="flex-1"> {/* Flex item for Name */}
@@ -132,7 +133,6 @@ export default function PinContent({ pageItem }) {
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
-              </div>
 
 
               <div className="flex-1"> {/* Email input below Name and Phone Number */}
@@ -147,6 +147,21 @@ export default function PinContent({ pageItem }) {
                   placeholder="Your Email Address"
                   className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                 />
+              </div>
+
+              <div className="flex-1"> {/* Time input */}
+                <h5>Good time to call you</h5>
+                <input
+                  id="time_for_call"
+                  name="time_for_call"
+                  type="datetime-local"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="Good time to call you"
+                  className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
+                />
+              </div>
               </div>
 
               <div className="text-24 leading-none text-right text-dark-1 font-bold">
