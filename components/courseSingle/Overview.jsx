@@ -69,7 +69,7 @@ export default function Overview({ data }) {
       </div>
 
       <div className="mt-60">
-        <h4 className="text-20">Requirements</h4>
+        <h4 className="text-20">Prerequisites</h4>
         <ul className="list-disc list-inside mt-5 space-y-3">
           {requirementsArray.length > 0 ? (
             requirementsArray.map((elm, i) => (
