@@ -3,39 +3,42 @@ export const testimonials = [
     id: 0,
     imageSrc: "/assets/img/testimonials/1.png",
     name: "Sarah Len",
-    position: "",
-    comment: "Industry Standard Courses",
-    description: `Enrolling in courses at Trainomart was the best decision I ever made for my career. The Microsoft, AWS, CompTIA, and Google Cloud certified courses provided me with the knowledge and skills I needed to excel in the IT industry. The instructors were top-notch, and the hands-on labs were invaluable. I passed my certifications with flying colors and landed a fantastic job shortly after. Thank you, Trainomart, for changing my life!`,
+    position: "Data Analyst",
+    comment: "",
+    description: `Trainomart's Machine Learning with Python course was a game-changer for me. The hands-on projects helped solidify the concepts, and the instructor's guidance made complex algorithms easy to grasp. I now feel confident in building my own ML models!`,
   },
   {
     id: 1,
     imageSrc: "/assets/img/testimonials/2.png",
-    name: "John Mark",
-    position: "",
-    comment: "Supportive Team",
-    description: `I can't express how grateful I am to Trainomart for their exceptional courses. The comprehensive training materials, expert instructors, and flexible learning options made it easy for me to pursue certifications in Microsoft, AWS, CompTIA. The real-world scenarios and practical exercises were incredibly helpful. I am now a certified professional in multiple domains, and it wouldn't have been possible without this fantastic training provider!`,
+    name: "Kevin M.",
+    position: "AI Engineer",
+    comment: "",
+    description: `I took the Deep Learning Architectures course from trainomart. This course took my understanding of deep learning to the next level. From basic neural networks to transformers, the content was comprehensive and up-to-date. The practical approach, especially around transformers, gave me skills I can apply immediately in my job!`,
   },
   {
     id: 2,
     imageSrc: "/assets/img/testimonials/3.png",
-    name: "Lisa Kiane",
-    position: "",
-    comment: "Best in Class Pedagogy",
-    description: `As an IT professional looking to upskill, I couldn't have chosen a better place than Trainomart. 
-                  Their technical courses are well-structured, up-to-date, and delivered by industry experts. I appreciate the attention to detail and the hands-on experience I gained. Thanks to this training, 
-                  I successfully transitioned to a new role with a significant salary increase. Highly recommend their programs as it was very intriguing`,
+    name: "Maria G.",
+    position: "Creative Technologist",
+    comment: "",
+    description: `The Generative AI with Google Gemini course was incredible! It offered a deep dive into cutting-edge AI technologies with real-world applications. Thanks to Trainomart, I’m now creating AI-powered content that’s transforming how our team works!`,
   },
-  // {
-  //   id: 3,
-  //   imageSrc: "/assets/img/testimonials/4.png",
-  //   name: "Courtney Henry",
-  //   position: "Web Designer",
-  //   comment: "Great Work",
-  //   description: `I think Educrat is the best theme I ever seen this year.
-  //       Amazing design, easy to customize and a design quality
-  //       superlative account on its cloud platform for the
-  //       optimized performance`,
-  // },
+  {
+    id: 3,
+    imageSrc: "/assets/img/testimonials/4.png",
+    name: " Daniel K.",
+    position: "Software Developer",
+    comment: "",
+    description: `I loved the practical focus of the course, 'AI in Action: Practical Applications of Generative Models & Implementation in Langchain'. The real-world examples and hands-on exercises gave me a clear understanding of how to implement generative models using Langchain. I can now automate processes at work, saving tons of time!`,
+  },
+  {
+    id: 4,
+    imageSrc: "/assets/img/testimonials/4.png",
+    name: "Priya S.",
+    position: "Cloud Solutions Architect",
+    comment: "",
+    description: `I was blown away by how accessible and insightful the Azure OpenAI course was. The instructor broke down complex concepts, and the projects allowed me to experiment with Azure’s powerful tools. I’ve already started applying what I’ve learned at work!`,
+  },
 ];
 
 
