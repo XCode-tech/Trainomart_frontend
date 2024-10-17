@@ -14,6 +14,7 @@ import TestimonialsOne from '@/components/common/TestimonialsOne'
 import WhyCourse from '@/components/homes/WhyCourse'
 import FooterFour from '@/components/layout/footers/FooterFour'
 import WeOffer from '@/components/homes/WeOffer'
+import TestimonialsThree from '@/components/common/TestimonialsThree'
 
 
 import FooterOne from '@/components/layout/footers/FooterOne'
@@ -41,7 +42,7 @@ export default function page() {
             <WeOffer />
 
 
-            <TestimonialsOne/>
+            <TestimonialsThree/>
             <Instructors/>
             <Brands/>
            
