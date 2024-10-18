@@ -127,7 +127,7 @@ const onSubmit = async (e) => {
                       required
                       type="text"
                       placeholder="Find your courses by tags"
-                      value={} // Bind the input value to state
+                      value={courseName} // Bind the input value to state
                       onChange={(e) => setCourseName(e.target.value)} // Update state on input change
                       className="input-field"
                       aria-label="Course search input"
