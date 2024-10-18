@@ -8,6 +8,7 @@ import API_URL from "@/data/config";
 export default function HeroFour() {
   const router = useRouter();
   const [tags, setTags] = useState(""); // State to store the tags input
+  const [courseName, setCourseName] = useState(""); 
   const [loading, setLoading] = useState(false); // State to handle loading state
 
   // Handle form submission
