@@ -21,7 +21,7 @@ export const steps = [
     id: 4,
     icon: "icon-working-at-home-2 text-64 text-green-1",
     title: "International Exposure and Market Research",
-    text: "Our extensive market research and exposure to multiple international delegates helps learners to learn varied new technologies in multiple languages.",
+    text: "Our extensive market research and exposure to international delegates helps learners to learn varied new technologies in multiple languages.",
   },
 
   {
