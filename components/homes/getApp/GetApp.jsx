@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Socials from "@/components/common/Socials";
 import Link from "next/link";
 export default function GetApp() {
   return (
@@ -39,6 +40,16 @@ export default function GetApp() {
               >
                 Become a member of a community of like-minded individuals, passionate about IT. Share experiences, collaborate on projects, and build a network that lasts a lifetime.
               </p>
+              <div className="col-auto">
+                <div className="footer-header-socials">
+                  <div className="footer-header-socials__title text-dark-1">
+                    Follow us on social media
+                  </div>
+                  <div className="footer-header-socials__list">
+                    <Socials />
+                  </div>
+                </div>
+              </div>
               {/* <div className="app-content__buttons">
                 <Link href="#">
                   <Image
