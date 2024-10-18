@@ -270,12 +270,9 @@ export default function TestimonialsTwo() {
                                     </div>
 
                                     <div className="flex justify-center mt-6">
-                                        <button
-                                            type="submit"
-                                            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        >
-                                            <b>Submit</b>
-                                        </button>
+                                    <button className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">
+                                        <b>Submit</b>
+                                    </button>
                                     </div>
                                 </form>
                             </div>
