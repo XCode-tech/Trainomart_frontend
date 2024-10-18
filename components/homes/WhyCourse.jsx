@@ -51,8 +51,8 @@ export default function WhyCourse() {
       <br /><br />
       <div className="text-center">
         <a href="/business">
-          <button>
-            <h4 className="text-white">Know more</h4>
+          <button className="button -md -purple-1 ml-90 text-white">
+            Know more
           </button>
         </a>
       </div>
