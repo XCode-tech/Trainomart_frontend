@@ -175,7 +175,7 @@ export default function PinContent({ pageItem }) {
                 className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10"
                 disabled={isLoading} // Disable button when loading
               >
-                {isLoading ? "Submitting..." : "Enroll Now"}
+                <b>{isLoading ? "Submitting..." : "Enroll Now"}</b>
               </button>
             </form>
 
