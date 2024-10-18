@@ -8,7 +8,7 @@ export default function Overview({ data }) {
   const [showMore, setShowMore] = useState(false);
 
   // Destructure necessary fields from data with alias for prerequisites
-  const { description, targetAudience, you_will_learn_list, Prerequisites: prerequisites } = data;
+  const { description, targetAudience, you_will_learn_list, prerequisites: prerequisites } = data;
 
   // Convert prerequisites string to an array
   const prerequisitesArray = prerequisites
