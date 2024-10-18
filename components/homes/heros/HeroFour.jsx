@@ -25,7 +25,7 @@ export default function HeroFour() {
   const fetchCourseIdByName = async (name) => {
     setLoading(true); // Set loading state to true
     try {
-      const response = await fetch(`${API_URL}/courses/by-name/?name=${encodeURIComponent(name)}`);
+      const response = await fetch(`${API_URL}/courses/by-tags/?tags=${encodeURIComponent(tags)}`);
       
       if (!response.ok) {
         throw new Error("Failed to fetch course ID");
@@ -122,7 +122,7 @@ export default function HeroFour() {
                     <input
                       required
                       type="text"
-                      placeholder="Find your courses by name"
+                      placeholder="Find your courses by tags"
                       value={courseName} // Bind the input value to state
                       onChange={(e) => setCourseName(e.target.value)} // Update state on input change
                       className="input-field"
