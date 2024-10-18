@@ -13,7 +13,7 @@ export const testimonials = [
     name: "Kevin M.",
     position: "AI Engineer",
     comment: "",
-    description: `I took the Deep Learning Architectures course from Trainomart. This course enhanced my understanding of deep learning. From basic neural networks to transformers, the content was practical, giving me skills I can apply!`,
+    description: `I took the Deep Learning Architectures course from Trainomart. This course enhanced my understanding of deep learning. From basic neural networks to transformers, the content was comprehensive and practical, giving me skills I can apply in my job!`,
   },
   {
     id: 2,
