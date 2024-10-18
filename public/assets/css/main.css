@@ -11177,6 +11177,11 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 80px !important;
 }
 
+.ml-82 {
+  margin-left: 34% !important;
+  border-radius: 20px !important;
+}
+
 .mr-80 {
   margin-right: 80px !important;
 }
