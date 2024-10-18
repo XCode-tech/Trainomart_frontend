@@ -21,9 +21,7 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
           <br />
         </div>
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation
-          pagination={{ clickable: true }}
+          modules={[Autoplay]}
           spaceBetween={30}
           slidesPerView={1} // Adjust as needed
           breakpoints={{
