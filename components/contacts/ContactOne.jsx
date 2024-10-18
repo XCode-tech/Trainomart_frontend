@@ -91,7 +91,7 @@ export default function ContactOne() {
               <p className="mt-25">
                 Whether you're a business looking for expert technical trainers or an individual seeking top-notch technical courses to advance your career, we’re excited to connect with you.
                 Reach out to us through any of the methods below, and our team will assist you promptly.
-                Please provide the following details in your inquiry form:
+                Please provide the following details in the below inquiry form:
               </p>
 
               <form
