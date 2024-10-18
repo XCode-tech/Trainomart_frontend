@@ -38,10 +38,9 @@ export default function page() {
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <Business/>
-            <WhyCourse2/>
-            
-
             <TestimonialsTwo/>
+            <WhyCourse2/>
+
             {/* <Instructors/> */}
             <Brands/>
            
