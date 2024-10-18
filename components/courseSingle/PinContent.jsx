@@ -202,7 +202,7 @@ export default function PinContent({ pageItem }) {
                   <div className="icon-video-file"></div>
                   <div className="ml-8">Lessons</div>
                 </div>
-                <div>{pageItem.Lessons || 20}</div>
+                <div>{pageItem.lessons || 20}</div>
               </div>
 
               {/* <div className="d-flex justify-between py-8 border-top-light">
