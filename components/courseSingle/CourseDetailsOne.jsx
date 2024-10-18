@@ -106,7 +106,7 @@ export default function CourseDetailsOne({ id }) {
             <div className="page-header__content pt-90 pb-90">
               <div className="row y-gap-30">
                 <div className="col-xl-7 col-lg-8">
-                  <div className="d-flex x-gap-15 y-gap-10 pb-20">
+{/*                   <div className="d-flex x-gap-15 y-gap-10 pb-20">
                     <div>
                       <div className="badge px-15 py-8 text-11 bg-green-1 text-dark-1 fw-400">
                         BEST SELLER
@@ -122,7 +122,7 @@ export default function CourseDetailsOne({ id }) {
                         POPULAR
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div>
                     <h1 className="text-30 lh-14 pr-60 lg:pr-0">
@@ -157,7 +157,13 @@ export default function CourseDetailsOne({ id }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-person-3 text-13"></div>
                       <div className="text-14 ml-8">
-                        <b>New Batch Starts From 5th Nov 2024</b> 
+                        <b>New Batch : Starts From 5th Nov to 6th Nov 2024 (EST)</b> 
+                      </div>
+                    </div>
+                    <div className="d-flex items-center text-light-1">
+                      <div className="icon icon-person-3 text-13"></div>
+                      <div className="text-14 ml-8">
+                        <b>Mode Of Training : Virtual</b> 
                       </div>
                     </div>
 
