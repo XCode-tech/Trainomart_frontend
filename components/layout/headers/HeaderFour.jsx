@@ -67,7 +67,7 @@ export default function HeaderFour() {
                   href="/business"
                   
                 >
-                  <b>For Businesses</b>
+                  <b>Instructor Augmentation Services</b>
                 </Link>
               </div>
             </div>
