@@ -105,8 +105,9 @@ export default function PinContent({ pageItem }) {
 
           <div className="courses-single-info__content scroll-bar-1 pt-30 pb-20 px-20">
             {/* Form Section */}
-
-            <h2 className="text-center">Enroll Now</h2>
+              <div className="text-20 leading-none text-right text-dark-1 font-bold">
+              <span className="line-through text-left inline-block">${pageItem.orignal_price}</span> ${pageItem.price}
+              </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col md:flex-row md:space-x-4"> {/* Flex container for responsive alignment */}
                 <div className="flex-1"> {/* Flex item for Name */}
@@ -164,9 +165,9 @@ export default function PinContent({ pageItem }) {
               </div>
               </div>
 
-              <div className="text-24 leading-none text-right text-dark-1 font-bold">
+{/*               <div className="text-24 leading-none text-right text-dark-1 font-bold">
               <span className="line-through text-left inline-block">${pageItem.orignal_price}</span> ${pageItem.price}
-              </div>
+              </div> */}
               
 
               <button
