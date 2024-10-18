@@ -21,7 +21,7 @@ export default function TestimonialsThree() {
                     <div className="col-auto">
                         <div className="sectionTitle ">
                             <h2 className="sectionTitle__title text-green-1">
-                                What People Say
+                                Our Vision
                             </h2>
 
                             <p className="sectionTitle__text text-white">
