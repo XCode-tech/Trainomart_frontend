@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import API_URL from "@/data/config";
 // import 'swiper/swiper.min.css';
 import { testimonials2 } from "../../data/tesimonials";
 import { counters } from "../../data/count";
@@ -49,7 +48,7 @@ export default function TestimonialsTwo() {
         setErrors(null);
 
         try {
-            const response = await axios.post(`${API_URL}/quote/`, formData, {
+            const response = await axios.post('http://localhost:8000/api/quote/', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -188,101 +187,101 @@ export default function TestimonialsTwo() {
                 <div className="text-center">
                     <a onClick={toggleModal}>
                         <h1>
-                        <Image
-                            src="/assets/img/gif/fast-forward.gif"
-                            alt="GIF before text"
-                            width={48}
-                            height={24}
-                            className="mr-2"
-                        />
-                        <span className="text-center text-green-1 cursor-pointer">Get Quote Today!</span>
-                        <Image
-                            src="/assets/img/gif/fast-backward.gif"
-                            alt="GIF before text"
-                            width={48}
-                            height={24}
-                            className="mr-2"
-                        />
+                            <Image
+                                src="/assets/img/gif/fast-forward.gif"
+                                alt="GIF before text"
+                                width={48}
+                                height={24}
+                                className="mr-2"
+                            />
+                            <span className="text-center text-green-1 cursor-pointer">Get Quote Today!</span>
+                            <Image
+                                src="/assets/img/gif/fast-backward.gif"
+                                alt="GIF before text"
+                                width={48}
+                                height={24}
+                                className="mr-2"
+                            />
                         </h1>
                     </a>
 
                     {isOpen && (
-                        // <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                        <div className="bg-white p-6 rounded-lg shadow-lg">
-                            <h2 className="text-2xl font-bold mb-4"></h2>
+                        // <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50">
+                            <div className="bg-white p-6 rounded-lg shadow-lg w-1/3 ml-82">
+                                <h2 className="text-2xl font-bold mb-4 text-center">Get Your Quote</h2>
 
-                            <form onSubmit={handleSubmit} className="text-center">
-                                <div className="mb-4">
-                                    <label className="block text-gray-700"><b>Name :</b></label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        className="w-full p-2 border border-gray-300 rounded"
-                                        required
-                                    />
-                                </div>
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700"><b>Name:</b></label>
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required
+                                        />
+                                    </div>
 
-                                <div className="mb-4">
-                                    <label className="block text-gray-700"><b>Organization :</b></label>
-                                    <input
-                                        type="text"
-                                        name="organization"
-                                        value={formData.organization}
-                                        onChange={handleChange}
-                                        className="w-full p-2 border border-gray-300 rounded"
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700"><b>Organization:</b></label>
+                                        <input
+                                            type="text"
+                                            name="organization"
+                                            value={formData.organization}
+                                            onChange={handleChange}
+                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
 
-                                    />
-                                </div>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700"><b>Designation:</b></label>
+                                        <input
+                                            type="text"
+                                            name="designation"
+                                            value={formData.designation}
+                                            onChange={handleChange}
+                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
 
-                                <div className="mb-4">
-                                    <label className="block text-gray-700"><b>Designation :</b></label>
-                                    <input
-                                        type="text"
-                                        name="designation"
-                                        value={formData.designation}
-                                        onChange={handleChange}
-                                        className="w-full p-2 border border-gray-300 rounded"
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700"><b>Email ID:</b></label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required
+                                        />
+                                    </div>
 
-                                    />
-                                </div>
+                                    <div className="mb-4">
+                                        <label className="block text-gray-700"><b>Phone Number:</b></label>
+                                        <input
+                                            type="text"
+                                            name="phone_number"
+                                            value={formData.phone_number}
+                                            onChange={handleChange}
+                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            required
+                                        />
+                                    </div>
 
-                                <div className="mb-4">
-                                    <label className="block text-gray-700"><b>Email ID :</b></label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className="w-full p-2 border border-gray-300 rounded"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="mb-4">
-                                    <label className="block text-gray-700"><b>Phone Number :</b></label>
-                                    <input
-                                        type="text"
-                                        name="phone_number"
-                                        value={formData.phone_number}
-                                        onChange={handleChange}
-                                        className="w-full p-2 border border-gray-300 rounded"
-                                        required
-                                    />
-                                </div>
-
-                                <div className="flex justify-center space-x-4">
-
-                                    <button className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10">
-                                        <b>Submit</b>
-                                    </button>
-                                </div>
-
-                            </form>
-                        </div>
+                                    <div className="flex justify-center mt-6">
+                                        <button
+                                            type="submit"
+                                            className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <b>Submit</b>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         // </div>
                     )}
+
                 </div>
             </div>
         </section>
