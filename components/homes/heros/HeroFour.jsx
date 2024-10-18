@@ -22,28 +22,32 @@ export default function HeroFour() {
   };
 
   // Function to fetch course ID based on course name
-  const fetchCourseIdByName = async (name) => {
-    setLoading(true); // Set loading state to true
-    try {
-      const response = await fetch(`${API_URL}/courses/by-tag/?tag=${encodeURIComponent(tags)}`);
-      
-      if (!response.ok) {
-        throw new Error("Failed to fetch course ID");
-      }
+const [tags, setTags] = useState('');  // State to hold the value of tags
 
-      const data = await response.json();
-      if (Array.isArray(data) && data.length > 0 && data[0].id) { // Check if data is an array and has an ID
-        router.push(`/courses/${data[0].id}`); // Redirect to the course detail page
-      } else {
-        alert("Course not found");
-      }
-    } catch (error) {
-      console.error("Error fetching course:", error);
-      alert("An error occurred while searching for the course");
-    } finally {
-      setLoading(false); // Reset loading state
+const handleChange = (e) => {
+    setTags(e.target.value);  // Update the tags when the input changes
+};
+
+const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!tags) {
+        console.error('Tags are not defined');
+        return;
     }
-  };
+
+    try {
+        const response = await fetch(`${API_URL}/courses/by-tag/?tag=${encodeURIComponent(tags)}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log('Courses fetched:', data);
+    } catch (error) {
+        console.error('Error fetching course:', error);
+    }
+};
+
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -123,7 +127,7 @@ export default function HeroFour() {
                       required
                       type="text"
                       placeholder="Find your courses by tags"
-                      value={courseName} // Bind the input value to state
+                      value={tags} // Bind the input value to state
                       onChange={(e) => setCourseName(e.target.value)} // Update state on input change
                       className="input-field"
                       aria-label="Course search input"
