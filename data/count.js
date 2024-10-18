@@ -16,7 +16,7 @@ export const counters = [
   },
   {
     id: 4,
-    number: "95+",
+    number: "95%",
     title: "of Learners recommend us",
   },
 ];
