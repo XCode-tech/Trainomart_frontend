@@ -109,8 +109,13 @@ export default function PinContent({ pageItem }) {
               <span className="line-through text-left inline-block">${pageItem.orignal_price}</span> ${pageItem.price}
               </div>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex flex-col md:flex-row md:space-x-4"> {/* Flex container for responsive alignment */}
-                <div className="flex-1"> {/* Flex item for Name */}
+              <div className="flex flex-col md:flex-row md:space-x-4">
+                {/* Flex item for Name */}
+                <div className="flex-1">
+
+                <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Name
+                  </label>
                   <input
                     id="name"
                     name="name"
@@ -118,10 +123,15 @@ export default function PinContent({ pageItem }) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300 border-b-2"
+
+                    className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
-                <div className="flex-1"> {/* Flex item for Phone Number */}
+                {/* Flex item for Phone Number */}
+                <div className="flex-1">
+                <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Phone Number
+                  </label>
                   <input
                     id="phone_number"
                     name="phone_number"
@@ -129,41 +139,48 @@ export default function PinContent({ pageItem }) {
                     value={formData.phone_number}
                     onChange={handleChange}
                     required
+
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
-
-
-              <div className="flex-1"> {/* Email input below Name and Phone Number */}
-                
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
-                />
               </div>
 
-              <div className="flex-1"> {/* Time input */}
-                <h5>Good time to call you</h5>
-                <input
-                  id="time_for_call"
-                  name="time_for_call"
-                  type="datetime-local"
-                  value={formData.email}
-                  onChange={handleChange}
+              {/* Flex container for Email and Call Time */}
+              <div className="flex flex-col md:flex-row md:space-x-4">
+                {/* Flex item for Email */}
+                <div className="flex-1">
+                  
+                <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Email Address
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
 
-                  className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
-                />
-              </div>
+                    className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
+                  />
+                </div>
+                {/* Flex item for Call Time */}
+                <div className="flex-1">
+                  <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                    Good time to call you
+                  </label>
+                  <input
+                    id="time_for_call"
+                    name="time_for_call"
+                    type="datetime-local"
+                    value={formData.time_for_call}
+                    onChange={handleChange}
+                    // required
+                    className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
+                  />
+                </div>
               </div>
 
-{/*               <div className="text-24 leading-none text-right text-dark-1 font-bold">
-              <span className="line-through text-left inline-block">${pageItem.orignal_price}</span> ${pageItem.price}
-              </div> */}
               
 
               <button
