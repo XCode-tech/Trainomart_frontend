@@ -50,7 +50,7 @@ export default function TestimonialsThree() {
                     <a href="/contact">              
                     <button className="button -md -green-1 ml-90 text-white ">
 
-                        Know more
+                        Get in Touch
                     </button>
                     </a>
                 </div>
