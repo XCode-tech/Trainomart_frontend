@@ -7,47 +7,43 @@ import API_URL from "@/data/config";
 
 export default function HeroFour() {
   const router = useRouter();
-  const [courseName, setCourseName] = useState(""); // State to store the course name input
+  const [tags, setTags] = useState(""); // State to store the tags input
   const [loading, setLoading] = useState(false); // State to handle loading state
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    const trimmedName = courseName.trim();
-    if (!trimmedName) {
-      alert("Please enter a valid course name");
+    const trimmedTags = tags.trim();
+    if (!trimmedTags) {
+      alert("Please enter valid tags");
       return;
     }
-    fetchCourseIdByName(trimmedName);
+    fetchCoursesByTags(trimmedTags); // Fetch courses based on tags
   };
 
-  // Function to fetch course ID based on course name
-const [tags, setTags] = useState('');  // State to hold the value of tags
-
-const handleChange = (e) => {
-    setTags(e.target.value);  // Update the tags when the input changes
-};
-
-const onSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!tags) {
-        console.error('Tags are not defined');
-        return;
-    }
-
+  // Function to fetch courses based on tags
+  const fetchCoursesByTags = async (tags) => {
+    setLoading(true); // Set loading state to true
     try {
-        const response = await fetch(`${API_URL}/courses/by-tag/?tag=${encodeURIComponent(tags)}`);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log('Courses fetched:', data);
-    } catch (error) {
-        console.error('Error fetching course:', error);
-    }
-};
+      const response = await fetch(`${API_URL}/courses/by-tags/?tags=${encodeURIComponent(tags)}`);
+      
+      if (!response.ok) {
+        throw new Error("Failed to fetch courses");
+      }
 
+      const data = await response.json();
+      if (Array.isArray(data) && data.length > 0 && data[0].id) { // Check if data is an array and has an ID
+        router.push(`/courses/${data[0].id}`); // Redirect to the course detail page
+      } else {
+        alert("No courses found for the given tags");
+      }
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+      alert("An error occurred while searching for courses");
+    } finally {
+      setLoading(false); // Reset loading state
+    }
+  };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -127,8 +123,8 @@ const onSubmit = async (e) => {
                       required
                       type="text"
                       placeholder="Find your courses by tags"
-                      value={courseName} // Bind the input value to state
-                      onChange={(e) => setCourseName(e.target.value)} // Update state on input change
+                      value={tags} // Bind the input value to the tags state
+                      onChange={(e) => setTags(e.target.value)} // Update state on input change
                       className="input-field"
                       aria-label="Course search input"
                     />
@@ -147,10 +143,6 @@ const onSubmit = async (e) => {
                     </button>
                   </form>
                 </div>
-
-{/*                 <div className="masthead-search__searches mt-40">
-                  <p>Trending Search: az900, azure devops certification, ethical hacking course, </p>
-                </div> */}
               </div>
             </div>
           </div>
@@ -181,7 +173,6 @@ const onSubmit = async (e) => {
                   alt="Hero Image"
                 />
               </div>
-
             </div>
           </div>
         </div>
