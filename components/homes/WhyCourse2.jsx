@@ -27,25 +27,26 @@ export default function WhyCourse2() {
                 </div>
 
                 <div className="row y-gap-30 pt-50">
-                    {steps.map((elm, i) => (
-                        <div
-                            key={i}
-                            className="col-lg-4 col-md-6"
-                            data-aos="fade-up"
-                            data-aos-duration={(i + 1) * 400}
-                        >
-                            <div className="stepCard -type-1 -stepCard-hover">
-                                <div className="stepCard__content">
-                                    <div className="stepCard__icon">
-                                        <i className={elm.icon}></i>
-                                    </div>
-                                    <h4 className="stepCard__title">{elm.title}</h4>
-                                    <p className="stepCard__text"> {elm.text}</p>
-                                </div>
-                            </div>
+                  {steps.map((elm, i) => (
+                    <div
+                      key={i}
+                      className="col-lg-6 col-md-6"
+                      data-aos="fade-up"
+                      data-aos-duration={(i + 1) * 400}
+                    >
+                      <div className="stepCard -type-1 -stepCard-hover">
+                        <div className="stepCard__content">
+                          <div className="stepCard__icon">
+                            <i className={elm.icon}></i>
+                          </div>
+                          <h4 className="stepCard__title">{elm.title}</h4>
+                          <p className="stepCard__text">{elm.text}</p>
                         </div>
-                    ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
+
             </div>
         </section>
     );
