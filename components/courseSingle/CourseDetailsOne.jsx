@@ -150,7 +150,7 @@ export default function CourseDetailsOne({ id }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
-                        Duration : {pageItem.duration || 0} 
+                        <b>Duration : {pageItem.duration || 0} </b>
                       </div>
                     </div>
 
