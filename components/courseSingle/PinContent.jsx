@@ -16,7 +16,7 @@ export default function PinContent({ pageItem }) {
     name: "",
     email: "",
     phone: "",
-    time_for_call: "",
+    time_to_call: "",
   });
 
   const [isLoading, setIsLoading] = useState(false); // Define isLoading state
@@ -113,7 +113,7 @@ export default function PinContent({ pageItem }) {
                 {/* Flex item for Name */}
                 <div className="flex-1">
 
-                <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Full Name
                   </label>
                   <input
@@ -129,7 +129,7 @@ export default function PinContent({ pageItem }) {
                 </div>
                 {/* Flex item for Phone Number */}
                 <div className="flex-1">
-                <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Phone Number
                   </label>
                   <input
@@ -150,7 +150,7 @@ export default function PinContent({ pageItem }) {
                 {/* Flex item for Email */}
                 <div className="flex-1">
                   
-                <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Email Address
                   </label>
                   <input
@@ -166,14 +166,14 @@ export default function PinContent({ pageItem }) {
                 </div>
                 {/* Flex item for Call Time */}
                 <div className="flex-1">
-                  <label htmlFor="time_for_call" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
                     Good time to call you
                   </label>
                   <input
-                    id="time_for_call"
-                    name="time_for_call"
+                    id="time_to_call"
+                    name="time_to_call"
                     type="datetime-local"
-                    value={formData.time_for_call}
+                    value={formData.time_to_call}
                     onChange={handleChange}
                     // required
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
