@@ -182,53 +182,6 @@ const onSubmit = async (e) => {
                 />
               </div>
 
-              {/* Decorative Element 1 */}
-              <div className="masthead-image__el1">
-                <div
-                  data-move="40"
-                  className="lg:d-none img-el -w-250 px-20 py-20 d-flex items-center bg-white rounded-8 js-mouse-move"
-                >
-                  <div className="size-50 d-flex justify-center items-center bg-red-2 rounded-full">
-                    <Image
-                      width={24}
-                      height={23}
-                      src="/assets/img/masthead/1.svg"
-                      alt="Technical Courses Icon"
-                    />
-                  </div>
-                  <div className="ml-20">
-                    <div className="text-orange-1 text-16 fw-500 lh-1">
-                      Expert
-                    </div>
-                    <div className="mt-3">Technical Trainer's</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Element 2 */}
-              <div className="masthead-image__el2">
-                <div
-                  data-move="40"
-                  className="shadow-4 img-el -w-260 px-40 py-20 d-flex items-center bg-white rounded-8 js-mouse-move"
-                >
-                  <div className="img-el__side">
-                    <div className="size-50 d-flex justify-center items-center bg-dark-1 rounded-full">
-                      <Image
-                        width={20}
-                        height={27}
-                        src="/assets/img/masthead/2.svg"
-                        alt="Admission Completed Icon"
-                      />
-                    </div>
-                  </div>
-                  <div className="">
-                    <div className="text-purple-1 text-16 fw-500 lh-1">
-                      Congrats!
-                    </div>
-                    <div className="mt-3">Your Admission is Completed</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
