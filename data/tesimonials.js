@@ -13,7 +13,7 @@ export const testimonials = [
     name: "Kevin M.",
     position: "AI Engineer",
     comment: "",
-    description: `I took the Deep Learning Architectures course from trainomart. This course took my understanding of deep learning to the next level. From basic neural networks to transformers, the content was comprehensive and up-to-date. The practical approach, especially around transformers, gave me skills I can apply immediately in my job!`,
+    description: `I took the Deep Learning Architectures course from Trainomart. This course enhanced my understanding of deep learning. From basic neural networks to transformers, the content was practical, giving me skills I can apply!`,
   },
   {
     id: 2,
@@ -29,7 +29,7 @@ export const testimonials = [
     name: " Daniel K.",
     position: "Software Developer",
     comment: "",
-    description: `I loved the practical focus of the course, 'AI in Action: Practical Applications of Generative Models & Implementation in Langchain'. The real-world examples and hands-on exercises gave me a clear understanding of how to implement generative models using Langchain. I can now automate processes at work, saving tons of time!`,
+    description: `I loved the practical focus of the course, 'AI in Action: Practical Applications of Generative Models & Implementation in Langchain.' The examples gave me a clear understanding of implementing models using Langchain. I can now automate processes!`,
   },
   {
     id: 4,
@@ -40,7 +40,6 @@ export const testimonials = [
     description: `I was blown away by how accessible and insightful the Azure OpenAI course was. The instructor broke down complex concepts, and the projects allowed me to experiment with Azure’s powerful tools. I’ve already started applying what I’ve learned at work!`,
   },
 ];
-
 
 export const testimonials2 = [
   {
@@ -100,6 +99,8 @@ export const testimonials2 = [
     description: ``,
   },
 ];
+
+
 
 export const testimonialsTwo = [
   {
