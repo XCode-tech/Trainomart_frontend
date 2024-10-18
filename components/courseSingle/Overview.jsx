@@ -7,12 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Overview({ data }) {
   const [showMore, setShowMore] = useState(false);
 
-  // Destructure necessary fields from data with alias for Requirements
-  const { description, targetAudience, you_will_learn_list, Requirements: requirements } = data;
+  // Destructure necessary fields from data with alias for prerequisites
+  const { description, targetAudience, you_will_learn_list, Prerequisites: prerequisites } = data;
 
-  // Convert requirements string to an array
-  const requirementsArray = requirements
-    ? requirements.split("\r\n").map(item => item.trim()).filter(item => item)
+  // Convert prerequisites string to an array
+  const prerequisitesArray = prerequisites
+    ? prerequisites.split("\r\n").map(item => item.trim()).filter(item => item)
     : [];
 
   return (
@@ -71,12 +71,12 @@ export default function Overview({ data }) {
       <div className="mt-60">
         <h4 className="text-20">Prerequisites</h4>
         <ul className="list-disc list-inside mt-5 space-y-3">
-          {requirementsArray.length > 0 ? (
-            requirementsArray.map((elm, i) => (
+          {prerequisitesArray.length > 0 ? (
+            prerequisitesArray.map((elm, i) => (
               <li key={i}>{elm}</li>
             ))
           ) : (
-            <li>No requirements listed.</li>
+            <li>No prerequisites listed.</li>
           )}
         </ul>
       </div>
