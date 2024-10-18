@@ -1,10 +1,10 @@
 export const steps = [
-  {
-    id: 1,
-    icon: "",
-    title: "",
-    text: "",
-  },
+  // {
+  //   id: 1,
+  //   icon: "",
+  //   title: "",
+  //   text: "",
+  // },
   {
     id: 2,
     icon: "icon-working-at-home-2 text-64 text-green-1",
@@ -30,21 +30,21 @@ export const steps = [
     title: "What our facilitators do",
     text: "Our facilitators deliver cutting-edge AI and Data Science courses, empowering delegates with self-awareness, fostering personal growth, and enhancing peer performance.",
   },
-  {
-    id: 6,
-    icon: "",
-    title: "",
-    text: "",
-  },
+  // {
+  //   id: 6,
+  //   icon: "",
+  //   title: "",
+  //   text: "",
+  // },
 ];
 
 export const steps2 = [
-  {
-    id: 1,
-    icon: "",
-    title: "",
-    text: "",
-  },
+  // {
+  //   id: 1,
+  //   icon: "",
+  //   title: "",
+  //   text: "",
+  // },
   {
     id: 2,
     icon: "icon-working-at-home-2 text-64 text-green-1",
@@ -69,12 +69,12 @@ export const steps2 = [
     title: "Customized Courses Development",
     text: "Expand your course portfolio with Trainomart’s white-label and co-branded solutions. Educational institutions and training providers can integrate our high-quality technical content into their platforms, customized to meet the needs of their learners.",
   },
-  {
-    id: 6,
-    icon: "",
-    title: "",
-    text: "",
-  },
+  // {
+  //   id: 6,
+  //   icon: "",
+  //   title: "",
+  //   text: "",
+  // },
 ];
 
 export const stepsTwo = [
