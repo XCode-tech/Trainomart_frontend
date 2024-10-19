@@ -8,7 +8,6 @@ import API_URL from "@/data/config";
 export default function HeroFour() {
   const router = useRouter();
   const [tags, setTags] = useState(""); // State to store the tags input
-  const [courseName, setCourseName] = useState(""); 
   const [loading, setLoading] = useState(false); // State to handle loading state
 
   // Handle form submission
@@ -22,33 +21,32 @@ export default function HeroFour() {
     fetchCoursesByTags(trimmedTags); // Fetch courses based on tags
   };
 
-// Function to fetch courses based on tags
-const fetchCoursesByTags = async (tags) => {
-  setLoading(true); // Set loading state to true
-  try {
-    const response = await fetch(`${API_URL}/courses/by-tags/?tags=${encodeURIComponent(tags)}`);
+  // Function to fetch courses based on tags
+  const fetchCoursesByTags = async (tags) => {
+    setLoading(true); // Set loading state to true
+    try {
+      const response = await fetch(`${API_URL}/courses/?tags=${encodeURIComponent(tags)}`);
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch courses by tags");
+      if (!response.ok) {
+        throw new Error("Failed to fetch courses by tags");
+      }
+
+      const data = await response.json();
+      if (Array.isArray(data) && data.length > 0) {
+        // Process or display the courses based on tags here
+        console.log("Courses found:", data);
+        // Redirect to the first course detail page
+        router.push(`/courses/${data[0].id}`);
+      } else {
+        alert("No courses found for the given tags");
+      }
+    } catch (error) {
+      console.error("Error fetching courses by tags:", error);
+      alert("An error occurred while searching for courses");
+    } finally {
+      setLoading(false); // Reset loading state
     }
-
-    const data = await response.json();
-    if (Array.isArray(data) && data.length > 0) {
-      // Process or display the courses based on tags here
-      console.log("Courses found:", data);
-      // Example: Redirect to the first course detail page
-      router.push(`/courses/${data[0].id}`);
-    } else {
-      alert("No courses found for the given tags");
-    }
-  } catch (error) {
-    console.error("Error fetching courses by tags:", error);
-    alert("An error occurred while searching for courses");
-  } finally {
-    setLoading(false); // Reset loading state
-  }
-};
-
+  };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -123,17 +121,16 @@ const fetchCoursesByTags = async (tags) => {
 
               <div className="masthead-search mt-30">
                 <div className="masthead-search__form">
-                    <form onSubmit={(e) => { e.preventDefault(); fetchCoursesByTags(courseName); }} className="flex items-center">
-                      <input
-                        required
-                        type="text"
-                        placeholder="Search courses by tags"
-                        value={courseName} // Bind the input value to state
-                        onChange={(e) => setCourseName(e.target.value)} // Update state on input change
-                        className="input-field"
-                        aria-label="Tags search input"
-                      />
-
+                  <form onSubmit={handleSubmit} className="flex items-center">
+                    <input
+                      required
+                      type="text"
+                      placeholder="Search courses by tags"
+                      value={tags} // Bind the input value to state
+                      onChange={(e) => setTags(e.target.value)} // Update state on input change
+                      className="input-field"
+                      aria-label="Tags search input"
+                    />
                     <button
                       className="button -purple-1 text-white ml-4"
                       type="submit" // Change button type to submit
