@@ -68,10 +68,7 @@ export default function About() {
               From small and medium-sized enterprises to large corporations, from students to career changers, Trainomart offers tailored training that bridges skill gaps and enhances professional capabilities.
               </p>
               <div className="d-inline-block">
-                <Link
-                  href="/#"
-                  className="button -md -purple-1 text-white mt-30"
-                >
+                <Link href="#we-offer-section" className="button -md -purple-1 text-white mt-30">
                   Explore our services
                 </Link>
               </div>
