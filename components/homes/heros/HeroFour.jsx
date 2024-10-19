@@ -36,7 +36,7 @@ export default function HeroFour() {
         // Process or display the courses based on tags here
         console.log("Courses found:", data);
         // Redirect to the course list page and pass the courses as query params or use state
-        router.push(`/courses?tags=${encodeURIComponent(tags)}`);
+        router.push(`/courses/?search=${encodeURIComponent(tags)}`);
       } else {
         alert("No courses found for the given tags");
       }
