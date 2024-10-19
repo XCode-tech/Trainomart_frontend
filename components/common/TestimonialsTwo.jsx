@@ -211,7 +211,7 @@ export default function TestimonialsTwo() {
                     {isOpen && (
                         // <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50">
                             <div className="bg-white p-6 rounded-lg shadow-lg w-1/3 ml-82">
-                                <h2 className="text-2xl font-bold mb-4 text-center">Get Your Quote</h2>
+{/*                                 <h2 className="text-2xl font-bold mb-4 text-center">Get Your Quote</h2> */}
 
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="mb-4">
