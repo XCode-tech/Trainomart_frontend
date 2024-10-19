@@ -40,7 +40,9 @@ export default function page() {
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <About/>
-            <WeOffer />
+            <div id="we-offer-section">
+              <WeOffer />
+            </div>
 
             <TestimonialsThree/>
             <ManagingDirector />
