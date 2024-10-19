@@ -175,6 +175,7 @@ export default function HeroFour() {
                   src="/assets/img/home-4/masthead/1.png"
                   alt="Hero Image"
                 />
+                
               </div>
             </div>
           </div>
