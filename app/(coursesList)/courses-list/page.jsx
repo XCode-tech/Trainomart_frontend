@@ -2,7 +2,7 @@
 
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
-import CourseListFive from '@/components/courseList/CourseListFive'
+import CourseList from '@/components/courseList/CourseList'
 import FooterFour from '@/components/layout/footers/FooterFour'
 
 import FooterOne from '@/components/layout/footers/FooterOne'
