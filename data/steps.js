@@ -12,16 +12,16 @@ export const steps = [
     text: "We grasp the intricacies within the technology landscape, and adeptly address the resulting trends in training resources.",
   },
   {
-    id: 2,
-    icon: "icon-working-at-home-2 text-64 text-green-1",
-    title: "International Exposure and Market Research",
-    text: "Our extensive market research and exposure to international delegates helps learners to learn varied new technologies in multiple languages.",
-  },
-  {
     id: 3,
     icon: "icon-working-at-home-2 text-64 text-green-1",
     title: "Smooth Project Delivery",
     text: "Where precision meets efficiency - Our backend team ensures successful outcomes with a streamlined and flawless execution.",
+  },
+  {
+    id: 2,
+    icon: "icon-working-at-home-2 text-64 text-green-1",
+    title: "International Exposure and Market Research",
+    text: "Our extensive market research and exposure to international delegates helps learners to learn varied new technologies in multiple languages.",
   },
   {
     id: 4,
