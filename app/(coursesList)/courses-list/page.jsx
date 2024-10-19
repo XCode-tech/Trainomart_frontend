@@ -2,7 +2,7 @@
 
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
-import CourseListFive from '@/components/courseList/CourseListFive'
+import CourseListFour from '@/components/courseList/CourseListFour'
 import FooterFour from '@/components/layout/footers/FooterFour'
 
 import FooterOne from '@/components/layout/footers/FooterOne'
@@ -24,7 +24,7 @@ export default function page() {
         <HeaderFour/>
         <div className="content-wrapper  js-content-wrapper overflow-hidden">
             <PageLinks/>
-            <CourseListFive/>
+            <CourseListFour/>
             <FooterFour/>
         </div>
     </div>
