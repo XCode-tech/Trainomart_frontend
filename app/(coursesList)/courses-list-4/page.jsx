@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import API_URL from "@/data/config";
-import Star from "../common/Star"; // Adjust based on your actual file structure
-import PaginationTwo from "../common/PaginationTwo"; // Adjust based on your actual file structure
 
 export default function CourseListFive() {
   const router = useRouter();
