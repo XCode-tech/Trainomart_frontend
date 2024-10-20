@@ -19,6 +19,8 @@ import API_URL from "@/data/config";
 
 
 export default function CourseListFour() {
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search");
   const [courses, setCourses] = useState([]); // State to store fetched courses
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterCategories, setFilterCategories] = useState([]);
@@ -33,19 +35,28 @@ export default function CourseListFour() {
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
 
-  // Fetch courses from the API when the component mounts
+
   useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch(`${API_URL}/courses/`);
-        const data = await response.json();
-        setCourses(data); // Store fetched courses in state
-      } catch (error) {
-        console.error("Error fetching courses:", error);
+  if (searchQuery) {
+    fetchCoursesByTags(searchQuery); // Fetch courses when the page loads with the search query
+  }
+  }, [searchQuery]);
+
+  const fetchCoursesByTags = async (tags) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+      if (!response.ok) {
+        throw new Error("Failed to fetch courses by tags");
       }
-    };
-    fetchCourses();
-  }, []);
+      const data = await response.json();
+      setCourses(data);
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Filtering logic
   useEffect(() => {
