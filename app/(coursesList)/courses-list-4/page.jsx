@@ -17,6 +17,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 
+
 export default function CourseListFour() {
   const [filterCategories, setFilterCategories] = useState([]);
   const [filterRatingRange, setFilterRatingRange] = useState([]);
