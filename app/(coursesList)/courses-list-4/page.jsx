@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import API_URL from "@/data/config";
 
-export default function CourseListFive() {
+export default function CourseListFour() {
   const router = useRouter();
   const { tags } = router.query; // Get the tags from the URL query parameter
   const [courses, setCourses] = useState([]); // State to store fetched courses
@@ -89,15 +89,15 @@ export default function CourseListFive() {
     } else if (currentSortingOption === "Rating (asc)") {
       setSortedFilteredData([...filteredData].sort((a, b) => (a.rating || 0) - (b.rating || 0)));
     } else if (currentSortingOption === "Rating (dsc)") {
-      setSortedFilteredData([...filteredData].sort((a, b) => (b.rating || 0) - (a.rating || 0)));
+      setSortedFilteredData([...filteredData].sort((b, a) => (a.rating || 0) - (b.rating || 0)));
     } else if (currentSortingOption === "Price (asc)") {
       setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(a.discountedPrice || 0) - parseFloat(b.discountedPrice || 0)));
     } else if (currentSortingOption === "Price (dsc)") {
-      setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(b.discountedPrice || 0) - parseFloat(a.discountedPrice || 0)));
+      setSortedFilteredData([...filteredData].sort((b, a) => parseFloat(a.discountedPrice || 0) - parseFloat(b.discountedPrice || 0)));
     } else if (currentSortingOption === "Duration (asc)") {
       setSortedFilteredData([...filteredData].sort((a, b) => (a.duration || 0) - (b.duration || 0)));
     } else if (currentSortingOption === "Duration (dsc)") {
-      setSortedFilteredData([...filteredData].sort((a, b) => (b.duration || 0) - (a.duration || 0)));
+      setSortedFilteredData([...filteredData].sort((b, a) => (a.duration || 0) - (b.duration || 0)));
     }
   }, [currentSortingOption, filteredData]);
 
@@ -151,22 +151,21 @@ export default function CourseListFive() {
   };
 
   return (
-  <div>
-    {/* Render filtered courses here */}
-    {sortedFilteredData.length > 0 ? (
-      sortedFilteredData.map((course, index) => (
-        <div key={index}>
-          {/* Render course details */}
-          <h2>{course.courseName}</h2>
-          <p>{course.description}</p>
-          <p>Price: {course.price}</p>
-          {/* Add more course details as needed */}
-        </div>
-      ))
-    ) : (
-      <p>No courses found matching your criteria.</p>
-    )}
-  </div>
-
+    <div>
+      {/* Render filtered courses here */}
+      {sortedFilteredData.length > 0 ? (
+        sortedFilteredData.map((course, index) => (
+          <div key={index}>
+            {/* Render course details */}
+            <h2>{course.courseName}</h2>
+            <p>{course.description}</p>
+            <p>Price: {course.price}</p>
+            {/* Add more course details as needed */}
+          </div>
+        ))
+      ) : (
+        <p>No courses found matching your criteria.</p>
+      )}
+    </div>
   );
 }
