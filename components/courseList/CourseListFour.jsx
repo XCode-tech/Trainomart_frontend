@@ -10,14 +10,20 @@ import API_URL from "@/data/config"; // Adjust this to your actual API URL
 
 export default function CourseListFour() {
   const router = useRouter();
-  const { tags } = router.query; // Extract tags from the URL query
   const [courses, setCourses] = useState([]); // State to store fetched courses
   const [pageNumber, setPageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false); // Check if component is mounted on client
 
-  // Fetch courses from API based on tags
+  // Wait until component is mounted on client
   useEffect(() => {
-    if (tags) {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient && router.isReady && router.query.tags) {
+      const { tags } = router.query; // Extract tags from the URL query
+
       const fetchCourses = async () => {
         try {
           setLoading(true);
@@ -30,9 +36,10 @@ export default function CourseListFour() {
           setLoading(false);
         }
       };
+
       fetchCourses();
     }
-  }, [tags]); // Fetch courses whenever the tags in the URL change
+  }, [isClient, router.isReady, router.query]); // Fetch courses when client-side is mounted and router is ready
 
   // Pagination handling
   const pageCapacity = 12; // Number of courses to display per page
@@ -40,6 +47,10 @@ export default function CourseListFour() {
     (pageNumber - 1) * pageCapacity,
     pageNumber * pageCapacity
   );
+
+  if (!isClient) {
+    return null; // Prevents server-side render from trying to access the router
+  }
 
   return (
     <>
