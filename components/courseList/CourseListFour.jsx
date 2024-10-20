@@ -11,6 +11,7 @@ import {
   sortingOptions,
 } from "@/data/courses";
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Star from "../common/Star";
 import PaginationTwo from "../common/PaginationTwo";
 import Image from "next/image";
