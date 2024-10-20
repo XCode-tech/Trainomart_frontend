@@ -772,7 +772,7 @@ export default function CourseListFour() {
                             />
                           </div>
                           <div className="text-14 lh-1">
-                            {elm.lessonCount} lesson
+                            {elm.lessonCount} lessonsssssssssssssssssssssssssssssssssssssssssssssss
                           </div>
                         </div>
 
