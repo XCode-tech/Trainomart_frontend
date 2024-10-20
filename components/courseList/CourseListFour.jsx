@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import API_URL from "@/data/config";
 
-export default function CoursesListFour() {
+export default function CoursesList() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search"); // Get the search query from the URL
   const [courses, setCourses] = useState([]);
