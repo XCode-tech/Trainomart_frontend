@@ -4,6 +4,8 @@
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import CourseListFive from '@/components/courseList/CourseListFive'
+import CourseListFour from '@/components/courseList/CourseListFour'
+
 import FooterFour from '@/components/layout/footers/FooterFour'
 
 import FooterOne from '@/components/layout/footers/FooterOne'
