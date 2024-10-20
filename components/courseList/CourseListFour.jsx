@@ -18,7 +18,7 @@ import Link from "next/link";
 import API_URL from "@/data/config";
 
 
-export default function CourseListFive() {
+export default function CourseListFour() {
   const [courses, setCourses] = useState([]); // State to store fetched courses
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterCategories, setFilterCategories] = useState([]);
