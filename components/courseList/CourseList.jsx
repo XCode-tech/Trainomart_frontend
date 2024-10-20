@@ -195,7 +195,7 @@ export default function CourseList() {
                     <div className="col-auto">
                       <div className="d-flex items-center">
                         <div className="text-14 lh-12 fw-500 text-dark-1 mr-20">
-                          Sort by:sssssssssssssssssssssss
+                          Sort by:
                         </div>
 
                         <div
