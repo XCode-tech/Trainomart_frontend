@@ -221,7 +221,7 @@ export default function TestimonialsTwo() {
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
-                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             placeholder="Enter your name"
                                             required
                                         />
@@ -235,7 +235,7 @@ export default function TestimonialsTwo() {
                                             value={formData.organization}
                                             onChange={handleChange}
                                             placeholder="Enter your Organization"
-                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
 
@@ -247,7 +247,7 @@ export default function TestimonialsTwo() {
                                             value={formData.designation}
                                             onChange={handleChange}
                                             placeholder="Enter Your Designation"
-                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
 
@@ -259,7 +259,7 @@ export default function TestimonialsTwo() {
                                             value={formData.email}
                                             onChange={handleChange}
                                             placeholder="Enter Your Email ID"
-                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
@@ -272,7 +272,7 @@ export default function TestimonialsTwo() {
                                             value={formData.phone_number}
                                             onChange={handleChange}
                                             placeholder="Enter Your Phone Number"
-                                            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
