@@ -184,7 +184,7 @@ useEffect(() => {
             <div className="row">
               <div className="col-auto">
                 <div>
-                  <h1 className="page-header__title">Our Courses Portfolio</h1>
+                  <h1 className="page-header__title">Our Course Portfolio</h1>
                 </div>
 
                 <div>
@@ -476,17 +476,7 @@ useEffect(() => {
                     </div>
 
                     <div className="h-100 pt-20 pb-15 px-30">
-{/*                       <div className="d-flex items-center">
-                        <div className="text-14 lh-1 text-yellow-1 mr-10">
-                          {elm.rating}
-                        </div>
-                        <div className="d-flex x-gap-5 items-center">
-                          <Star star={elm.rating} />
-                        </div>
-                        <div className="text-13 lh-1 ml-10">
-                          ({elm.ratingCount})
-                        </div>
-                      </div> */}
+
 
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
                         <Link className="linkCustom" href={`/courses/${elm.id}`}>
@@ -519,9 +509,7 @@ useEffect(() => {
                             />
                           </div>
                           <div className="text-14 lh-1">
-                            {/* {`${Math.floor(
-                            elm.duration / 60
-                          )}h ${Math.floor(elm.duration % 60)}m`} */}
+
                           {elm.duration}
                           </div>
                         </div>
@@ -541,27 +529,11 @@ useEffect(() => {
 
                       <div className="coursesCard-footer">
                         <div className="coursesCard-footer__author">
-                          {/* <Image
-                            width={30}
-                            height={30}
-                            src={elm.authorImageSrc}
-                            alt={elm.authorName}
-                          /> */}
-                          {/* <div className="">{elm.price}</div> */}
+
                         </div>
 
                         <div className="coursesCard-footer__price">
-                          {/* {elm.paid ? (
-                            <>
-                              <div>${elm.price}</div>
-                              <div>${elm.price}</div>
-                            </>
-                          ) : (
-                            <>
-                              <div></div>
-                              <div>Free</div>
-                            </>
-                          )} */}
+
                           <div className="">{elm.orignal_price}</div>
                           <div className="">{elm.price}</div>
 
