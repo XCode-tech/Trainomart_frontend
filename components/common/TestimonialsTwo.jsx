@@ -207,7 +207,7 @@ export default function TestimonialsTwo() {
                             />
                         </h1>
                     </a>
-
+<br />
                     {isOpen && (
                         // <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50">
                             <div className="bg-white p-6 rounded-lg shadow-lg w-1/3 ml-82">
@@ -222,7 +222,7 @@ export default function TestimonialsTwo() {
                                             value={formData.name}
                                             onChange={handleChange}
                                             className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            placeholder="Enter your name"
+                                            placeholder="Enter Your Name"
                                             required
                                         />
                                     </div>
@@ -234,7 +234,7 @@ export default function TestimonialsTwo() {
                                             name="organization"
                                             value={formData.organization}
                                             onChange={handleChange}
-                                            placeholder="Enter your Organization"
+                                            placeholder="Enter Your Organization"
                                             className="w-1/1 text-center p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
