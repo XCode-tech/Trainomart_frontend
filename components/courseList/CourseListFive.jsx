@@ -13,9 +13,11 @@ import {
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Pagination from "./Pagination"; // Adjust the path as necessary
+import PaginationTwo from "../common/PaginationTwo";
+import Star from "../common/Star";
 
-const CoursesPage = ({ courses }) => {
+
+const CourseListFive = ({ courses }) => {
   const [currentSortingOption, setCurrentSortingOption] = useState("Default");
   const [filterCategories, setFilterCategories] = useState([]);
   const [filterDuration, setFilterDuration] = useState([]);
@@ -166,4 +168,4 @@ const CoursesPage = ({ courses }) => {
   );
 };
 
-export default CoursesPage;
+export default CourseListFive;
