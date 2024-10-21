@@ -110,7 +110,7 @@ export default function CourseCard({ data, index, ...props }) {
                 src="/assets/img/coursesCards/icons/1.svg" // Ensure this path is correct
                 alt=""
               />
-              <span className="ml-5">{data.Lessons} Lessons</span>
+              <span className="ml-5">{data.lessons} Lessons</span>
             </div>
 
             {/* Duration */}
