@@ -172,7 +172,7 @@ export default function HeroFour() {
                   height={656}
                   data-move="20"
                   className="js-mouse-move"
-                  src="/assets/img/home-4/masthead/1.png"
+                  src="/assets/img/home-4/masthead/G-1.png"
                   alt="Hero Image"
                 />
                 
