@@ -1059,8 +1059,6 @@ export const duration = [
 
 export const sortingOptions = [
     'Default',
-    'Rating (asc)',
-    'Rating (dsc)',
     'Price (asc)',
     'Price (dsc)',
     'Duration (asc)',
