@@ -96,8 +96,9 @@ export default function CourseDetailsOne({ id }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
-                        <b>Duration: {pageItem.duration || "N/A"}</b>
-                        <b>New Batch : Starts From 5th Nov to 6th Nov 2024 (9AM-5PM EST)</b>
+                        <b>Duration: {pageItem.duration || "N/A"}</b> <br />
+                        <b>New Batch : Starts From 5th Nov to 6th Nov 2024 (9AM-5PM EST)</b> <br />
+                        <b>Mode Of Training: Virtual</b> <br />
                       </div>
                     </div>
 
@@ -105,7 +106,7 @@ export default function CourseDetailsOne({ id }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-person-3 text-13"></div>
                       <div className="text-14 ml-8">
-                        <b>Mode Of Training: Virtual</b>
+                        
                       </div>
                     </div>
                   </div>
