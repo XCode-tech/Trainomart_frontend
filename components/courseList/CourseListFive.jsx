@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import PaginationTwo from "./PaginationTwo"; // Assuming PaginationTwo is your pagination component
-
-const API_URL = "http://localhost:8080"; // Change to your actual API URL
+import PaginationTwo from "../common/PaginationTwo";
+import API_URL from "@/data/config";
 
 export default function CoursesPage({ coursesData }) {
   const [sortedFilteredData, setSortedFilteredData] = useState([]); // Initialize to empty array
