@@ -101,7 +101,6 @@ export default function Menu({ allClasses, headerPosition }) {
               <div className="subnav">
                 <div className="row x-gap-40">
                   <div className="">
-                    <h4 className="text-17 fw-500 mb-20">Popular Courses</h4>
 
                     {/* Handle Loading State */}
                     {isLoading && <p>Loading courses...</p>}
