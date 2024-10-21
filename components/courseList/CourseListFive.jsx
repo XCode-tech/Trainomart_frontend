@@ -435,67 +435,6 @@ useEffect(() => {
                       </div>
                     </div>
 
-                    {/* Duration Filter */}
-                    <div className="col-xl-3 col-lg-4 col-sm-6">
-                      <div className="sidebar__item">
-                        <h5 className="sidebar__title">Duration</h5>
-                        <div className="sidebar-checkbox">
-                          <div
-                            className="sidebar-checkbox__item cursor"
-                            onClick={() => setFilterDuration([])}
-                          >
-                            <div className="form-checkbox">
-                              <input
-                                type="checkbox"
-                                checked={filterDuration.length === 0}
-                                readOnly
-                              />
-                              <div className="form-checkbox__mark">
-                                <div className="form-checkbox__icon icon-check"></div>
-                              </div>
-                            </div>
-                            <div className="sidebar-checkbox__title">All</div>
-                            <div className="sidebar-checkbox__count"></div>
-                          </div>
-                          {duration.map((item, index) => (
-                            <div
-                              className="sidebar-checkbox__item cursor"
-                              key={index}
-                              onClick={() => handleFilterDuration(item.range)}
-                            >
-                              <div className="form-checkbox">
-                                <input
-                                  type="checkbox"
-                                  checked={
-                                    filterDuration.toString() ===
-                                    item.range.toString()
-                                  }
-                                  readOnly
-                                />
-                                <div className="form-checkbox__mark">
-                                  <div className="form-checkbox__icon icon-check"></div>
-                                </div>
-                              </div>
-                              <div className="sidebar-checkbox__title">
-                                {item.title}
-                              </div>
-                              <div className="sidebar-checkbox__count">
-                                (
-                                {
-                                  courses.filter(
-                                    (itm) =>
-                                      itm.duration >= item.range[0] &&
-                                      itm.duration <= item.range[1]
-                                  ).length
-                                }
-                                )
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
