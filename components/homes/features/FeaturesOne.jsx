@@ -44,8 +44,8 @@ export default function LearnNewSkill() {
               </div>
 
               <div className="d-inline-block mt-30">
-                <Link href="/signup" className="button -md -dark-1 text-white">
-                  Register Now
+                <Link href="/courses" className="button -md -dark-1 text-white">
+                  Explore Now
                 </Link>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function LearnNewSkill() {
                 width={750}
                 height={850}
                 style={{ height: "100%", width: "100%" }}
-                src="/assets/img/about/1.png"
+                src="/assets/img/about/2.png"
                 alt="image"
               />
             </div>
