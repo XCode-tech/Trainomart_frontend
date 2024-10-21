@@ -37,7 +37,7 @@ export default function CourseListFive() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch(${API_URL}/courses/);
+        const response = await fetch(`${API_URL}/courses/`);
         const data = await response.json();
         setCourses(data); // Store fetched courses in state
       } catch (error) {
