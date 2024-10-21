@@ -60,7 +60,7 @@ export default function LearnNewSkill() {
                 width={750}
                 height={850}
                 style={{ height: "100%", width: "100%" }}
-                src="/assets/img/about/2.jpg"
+                src="/assets/img/about/G-1.jpg"
                 alt="image"
               />
             </div>
