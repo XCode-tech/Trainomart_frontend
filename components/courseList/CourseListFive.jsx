@@ -4,7 +4,7 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CoursesPage({ coursesData }) {
+export default function CourseListFive({ coursesData }) {
   const [sortedFilteredData, setSortedFilteredData] = useState([]); // Initialize to empty array
   const [currentSortingOption, setCurrentSortingOption] = useState("Best match");
   const [filterOpen, setFilterOpen] = useState(false);
