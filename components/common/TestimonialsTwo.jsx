@@ -215,58 +215,63 @@ export default function TestimonialsTwo() {
 
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="mb-4">
-                                        <label className="block text-gray-700"><b>Name:</b></label>
+{/*                                         <label className="block text-gray-700"><b>Name:</b></label> */}
                                         <input
                                             type="text"
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
                                             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            placeholder="Enter your name"
                                             required
                                         />
                                     </div>
 
                                     <div className="mb-4">
-                                        <label className="block text-gray-700"><b>Organization:</b></label>
+{/*                                         <label className="block text-gray-700"><b>Organization:</b></label> */}
                                         <input
                                             type="text"
                                             name="organization"
                                             value={formData.organization}
                                             onChange={handleChange}
+                                            placeholder="Enter your Organization"
                                             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
 
                                     <div className="mb-4">
-                                        <label className="block text-gray-700"><b>Designation:</b></label>
+{/*                                         <label className="block text-gray-700"><b>Designation:</b></label> */}
                                         <input
                                             type="text"
                                             name="designation"
                                             value={formData.designation}
                                             onChange={handleChange}
+                                            placeholder="Enter Your Designation"
                                             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         />
                                     </div>
 
                                     <div className="mb-4">
-                                        <label className="block text-gray-700"><b>Email ID:</b></label>
+{/*                                         <label className="block text-gray-700"><b>Email ID:</b></label> */}
                                         <input
                                             type="email"
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
+                                            placeholder="Enter Your Email ID"
                                             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
                                     </div>
 
                                     <div className="mb-4">
-                                        <label className="block text-gray-700"><b>Phone Number:</b></label>
+{/*                                         <label className="block text-gray-700"><b>Phone Number:</b></label> */}
                                         <input
                                             type="text"
                                             name="phone_number"
                                             value={formData.phone_number}
                                             onChange={handleChange}
+                                            placeholder="Enter Your Phone Number"
                                             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             required
                                         />
