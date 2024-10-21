@@ -40,6 +40,7 @@ export default function GetApp() {
               >
                 Become a member of a community of like-minded individuals, passionate about IT. Share experiences, collaborate on projects, and build a network that lasts a lifetime.
               </p>
+              <br />
               <div className="col-auto">
                 <div className="footer-header-socials">
                   <div className="footer-header-socials__title text-dark-1">
