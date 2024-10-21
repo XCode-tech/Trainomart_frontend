@@ -1,4 +1,16 @@
-import { useState } from "react";
+"use client";
+import {
+  categories,
+  coursesData,
+  duration,
+  instractorNames,
+  languages,
+  levels,
+  prices,
+  rating,
+  sortingOptions,
+} from "@/data/courses";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Pagination from "./Pagination"; // Adjust the path as necessary
