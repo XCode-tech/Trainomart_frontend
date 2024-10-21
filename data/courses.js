@@ -1016,16 +1016,16 @@ export const instractorNames = [
 
 export const languages = [
   { id: 1, title: "English",  },
-  { id: 2, title: "French",  },
-  { id: 3, title: "German", },
-  { id: 4, title: "Italian", },
+  // { id: 2, title: "French",  },
+  // { id: 3, title: "German", },
+  // { id: 4, title: "Italian", },
 ];
 
 export const levels = [
  
   { id: 2, title: "Beginner", },
   { id: 3, title: "Intermediate", },
-  { id: 4, title: "Expert",  },
+  { id: 4, title: "Advanced",  },
 ];
 export const prices = [
   { id: 1, title: "All", },
