@@ -9,46 +9,14 @@ import CourseSlider from '@/components/courseSingle/CourseSlider';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
-// Custom Metadata component to handle the <Head>
-const Metadata = ({ title, description }) => (
-  <Head>
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" />
-  </Head>
-);
+const DynamicPage = ({ params }) => {
+  const [metadata, setMetadata] = useState({ title: '', description: '' });
 
-export default function Page({ params }) {
-  // Metadata state
-  const [metadata, setMetadata] = useState({
-    title: 'Loading...',
-    description: 'Loading course description...',
-  });
-
-  // Fetch metadata from backend
   useEffect(() => {
     const fetchMetadata = async () => {
-      try {
-        const res = await fetch(`https://test.trainomart.com/api/courses/${params.id}/`);
-
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-
-        const data = await res.json();
-
-        // Set the fetched metadata
-        const newMetadata = {
-          title: data.meta_title || 'Default Course Title',
-          description: data.meta_description || 'Default Course Description',
-        };
-
-        console.log('Setting Metadata:', newMetadata);
-        setMetadata(newMetadata);
-      } catch (error) {
-        console.error('Error fetching metadata:', error);
-      }
+      const res = await fetch(`https://test.trainomart.com/api/courses/${params.id}`);
+      const data = await res.json();
+      setMetadata({ title: data.meta_title , description: data.meta_description  });
     };
 
     fetchMetadata();
@@ -56,8 +24,10 @@ export default function Page({ params }) {
 
   return (
     <>
-      <Metadata title={metadata.title} description={metadata.description} />
-
+      <Head>
+        <title>{metadata.title || 'Loading...'}</title>
+        <meta name="description" content={metadata.description || 'Loading description...'} />
+      </Head>
       <Preloader />
       <div className="main-content">
         <HeaderFour />
