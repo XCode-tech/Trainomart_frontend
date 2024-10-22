@@ -5,41 +5,42 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
-
+import { useRouter } from "next/router"; // Import useRouter
 
 export default function CourseListFour() {
   const [coursesData, setCoursesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const [tags, setTags] = useState(""); 
-  
-  // Fetching courses from API on component mount
-  useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        // const response = await fetch(`${API_URL}/courses/`);
-        const response = await fetch(`${API_URL}/courses/?search=Bedrock`); 
-        const data = await response.json();
-        setCoursesData(data);
-      } catch (error) {
-        console.error("Error fetching course data:", error);
-      }
-    };
 
-    fetchCourses();
-  }, [tags]);
+  const router = useRouter();
+  const { search } = router.query; // Destructure the search query from the URL
+  
+  useEffect(() => {
+    if (search) { // Only fetch when the search query exists
+      const fetchCourses = async () => {
+        try {
+          const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(search)}`);
+          const data = await response.json();
+          setCoursesData(data);
+        } catch (error) {
+          console.error("Error fetching course data:", error);
+        }
+      };
+
+      fetchCourses();
+    }
+  }, [search]); // Trigger fetching when the search query changes
 
   // Filtering logic
   useEffect(() => {
-    // You can add filtering logic here if needed, but currently, we're just using all data
     setFilteredData(coursesData);
     setPageNumber(1);
   }, [coursesData]);
 
   // Sorting logic
   useEffect(() => {
-    setSortedFilteredData(filteredData); // No sorting applied for now, but you can add it based on the sorting option
+    setSortedFilteredData(filteredData);
   }, [filteredData]);
 
   return (
