@@ -16,7 +16,8 @@ export default function CourseListFour() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${API_URL}/courses/`); // Replace with your API URL
+        // const response = await fetch(`${API_URL}/courses/`);
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`); 
         const data = await response.json();
         setCoursesData(data);
       } catch (error) {
