@@ -4,21 +4,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
-import Star from "../common/Star";
 import API_URL from "@/data/config";
 
 export default function CourseListFour() {
   const [coursesData, setCoursesData] = useState([]);
-  const [filterCategories, setFilterCategories] = useState([]);
-  const [filterRatingRange, setFilterRatingRange] = useState([]);
-  const [filterInstructors, setFilterInstructors] = useState([]);
-  const [filterPrice, setFilterPrice] = useState("All");
-  const [filterLevels, setFilterLevels] = useState([]);
-  const [filterLanguage, setFilterLanguage] = useState([]);
-  const [filterDuration, setFilterDuration] = useState([]);
-
-  const [currentSortingOption, setCurrentSortingOption] = useState("Default");
-
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -27,7 +16,7 @@ export default function CourseListFour() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`); // Replace with your API URL
+        const response = await fetch(`${API_URL}/courses/`); // Replace with your API URL
         const data = await response.json();
         setCoursesData(data);
       } catch (error) {
@@ -40,114 +29,24 @@ export default function CourseListFour() {
 
   // Filtering logic
   useEffect(() => {
-    const refItems = coursesData.filter((elm) => {
-      if (filterPrice === "All") {
-        return true;
-      } else if (filterPrice === "Free") {
-        return !elm.paid;
-      } else if (filterPrice === "Paid") {
-        return elm.paid;
-      }
-    });
-
-    let filteredArrays = [];
-
-    if (filterInstructors.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterInstructors.includes(elm.authorName),
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (filterCategories.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterCategories.includes(elm.category),
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (filterLevels.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterLevels.includes(elm.level),
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (filterLanguage.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterLanguage.includes(elm.language),
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (filterRatingRange.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          elm.rating >= filterRatingRange[0] &&
-          elm.rating <= filterRatingRange[1],
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-    if (filterDuration.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          elm.duration >= filterDuration[0] &&
-          elm.duration <= filterDuration[1],
-      );
-      filteredArrays = [...filteredArrays, filtered];
-    }
-
-    const commonItems = refItems.filter((item) =>
-      filteredArrays.every((array) => array.includes(item)),
-    );
-    setFilteredData(commonItems);
+    // You can add filtering logic here if needed, but currently, we're just using all data
+    setFilteredData(coursesData);
     setPageNumber(1);
-  }, [
-    coursesData,
-    filterCategories,
-    filterRatingRange,
-    filterInstructors,
-    filterPrice,
-    filterLevels,
-    filterLanguage,
-    filterDuration,
-  ]);
+  }, [coursesData]);
 
   // Sorting logic
   useEffect(() => {
-    if (currentSortingOption === "Default") {
-      setSortedFilteredData(filteredData);
-    } else if (currentSortingOption === "Rating (asc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => a.rating - b.rating),
-      );
-    } else if (currentSortingOption === "Rating (dsc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => b.rating - a.rating),
-      );
-    } else if (currentSortingOption === "Price (asc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => a.discountedPrice - b.discountedPrice),
-      );
-    } else if (currentSortingOption === "Price (dsc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => b.discountedPrice - a.discountedPrice),
-      );
-    } else if (currentSortingOption === "Duration (asc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => a.duration - b.duration),
-      );
-    } else if (currentSortingOption === "Duration (dsc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => b.duration - a.duration),
-      );
-    }
-  }, [currentSortingOption, filteredData]);
+    setSortedFilteredData(filteredData); // No sorting applied for now, but you can add it based on the sorting option
+  }, [filteredData]);
 
   return (
     <>
       <section className="page-header -type-1">
         <div className="container">
           <div className="page-header__content">
-            <h1 className="page-header__title">User Interface Courses</h1>
+            <h1 className="page-header__title">Courses</h1>
             <p className="page-header__text">
-              Write an introductory description of the category.
+              Browse through our latest offerings.
             </p>
           </div>
         </div>
@@ -170,7 +69,7 @@ export default function CourseListFour() {
           <div className="row y-gap-30">
             {sortedFilteredData
               .slice((pageNumber - 1) * 12, pageNumber * 12)
-              .map((elm, i) => (
+              .map((course, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="coursesCard -type-1 ">
                     <div className="relative">
@@ -179,34 +78,33 @@ export default function CourseListFour() {
                           width={510}
                           height={360}
                           className="w-1/1"
-                          src={elm.course_image}
-                          alt="course image"
+                          src={course.course_image}
+                          alt={course.course_name}
                         />
                       </div>
                     </div>
 
                     <div className="h-100 pt-15">
-                      
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link href={`/courses/${elm.id}`}>
-                          {elm.title}{" "}
+                        <Link href={`/courses/${course.id}`}>
+                          {course.course_name}
                         </Link>
                       </div>
 
                       <div className="d-flex x-gap-10 items-center pt-10">
-                        <div className="text-14 lh-1">{elm.lesson} lessons</div>
-                        <div className="text-14 lh-1">{elm.duration}</div>
-                        <div className="text-14 lh-1">{elm.skill_level}</div>
+                        <div className="text-14 lh-1">
+                          {course.lessons} lessons
+                        </div>
+                        <div className="text-14 lh-1">{course.duration}</div>
+                        <div className="text-14 lh-1">{course.skill_level}</div>
                       </div>
 
                       <div className="coursesCard-footer">
-                        
-
                         <div className="coursesCard-footer__price">
-                          {elm.paid ? (
+                          {course.price ? (
                             <>
-                              <div>${elm.orignal_price}</div>
-                              <div>${elm.price}</div>
+                              <div>${course.orignal_price}</div>
+                              <div>${course.price}</div>
                             </>
                           ) : (
                             <div>Free</div>
