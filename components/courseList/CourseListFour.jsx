@@ -6,7 +6,7 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour({ tags }) {
+export default function CourseListFour({ tags = "" }) { // Default to an empty string
   const [coursesData, setCoursesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
