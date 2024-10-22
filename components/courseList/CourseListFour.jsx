@@ -19,7 +19,7 @@ export default function CourseListFour() {
     const fetchCourses = async () => {
       try {
         // const response = await fetch(`${API_URL}/courses/`);
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`); 
+        const response = await fetch(`${API_URL}/courses/?search=Bedrock`); 
         const data = await response.json();
         setCoursesData(data);
       } catch (error) {
