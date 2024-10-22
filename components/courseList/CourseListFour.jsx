@@ -6,12 +6,14 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
+
 export default function CourseListFour() {
   const [coursesData, setCoursesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-
+  const [tags, setTags] = useState(""); 
+  
   // Fetching courses from API on component mount
   useEffect(() => {
     const fetchCourses = async () => {
@@ -26,7 +28,7 @@ export default function CourseListFour() {
     };
 
     fetchCourses();
-  }, []);
+  }, [tags]);
 
   // Filtering logic
   useEffect(() => {
