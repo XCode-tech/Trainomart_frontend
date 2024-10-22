@@ -1,55 +1,60 @@
 "use client";
 
-import {
-  categories,
-  coursesData,
-  duration,
-  instractorNames,
-  languages,
-  levels,
-  prices,
-  rating,
-  sortingOptions,
-} from "@/data/courses";
 import React, { useState, useEffect } from "react";
-import Star from "../common/Star";
 import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
+import Star from "../common/Star";
+import API_URL from "@/data/config";
 
 export default function CourseListFour() {
+  const [coursesData, setCoursesData] = useState([]);
   const [filterCategories, setFilterCategories] = useState([]);
   const [filterRatingRange, setFilterRatingRange] = useState([]);
-  const [filterInstractors, setFilterInstractors] = useState([]);
+  const [filterInstructors, setFilterInstructors] = useState([]);
   const [filterPrice, setFilterPrice] = useState("All");
   const [filterLevels, setFilterLevels] = useState([]);
-  const [filterlanguange, setFilterlanguange] = useState([]);
+  const [filterLanguage, setFilterLanguage] = useState([]);
   const [filterDuration, setFilterDuration] = useState([]);
 
   const [currentSortingOption, setCurrentSortingOption] = useState("Default");
 
   const [filteredData, setFilteredData] = useState([]);
-
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
-
   const [pageNumber, setPageNumber] = useState(1);
 
+  // Fetching courses from API on component mount
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`); // Replace with your API URL
+        const data = await response.json();
+        setCoursesData(data);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  // Filtering logic
   useEffect(() => {
     const refItems = coursesData.filter((elm) => {
-      if (filterPrice == "All") {
+      if (filterPrice === "All") {
         return true;
-      } else if (filterPrice == "Free") {
+      } else if (filterPrice === "Free") {
         return !elm.paid;
-      } else if (filterPrice == "Paid") {
+      } else if (filterPrice === "Paid") {
         return elm.paid;
       }
     });
 
     let filteredArrays = [];
 
-    if (filterInstractors.length > 0) {
+    if (filterInstructors.length > 0) {
       const filtered = refItems.filter((elm) =>
-        filterInstractors.includes(elm.authorName),
+        filterInstructors.includes(elm.authorName),
       );
       filteredArrays = [...filteredArrays, filtered];
     }
@@ -65,9 +70,9 @@ export default function CourseListFour() {
       );
       filteredArrays = [...filteredArrays, filtered];
     }
-    if (filterlanguange.length > 0) {
+    if (filterLanguage.length > 0) {
       const filtered = refItems.filter((elm) =>
-        filterlanguange.includes(elm.languange),
+        filterLanguage.includes(elm.language),
       );
       filteredArrays = [...filteredArrays, filtered];
     }
@@ -94,115 +99,56 @@ export default function CourseListFour() {
     setFilteredData(commonItems);
     setPageNumber(1);
   }, [
+    coursesData,
     filterCategories,
     filterRatingRange,
-    filterInstractors,
+    filterInstructors,
     filterPrice,
     filterLevels,
-    filterlanguange,
+    filterLanguage,
     filterDuration,
   ]);
 
+  // Sorting logic
   useEffect(() => {
-    if (currentSortingOption == "Default") {
+    if (currentSortingOption === "Default") {
       setSortedFilteredData(filteredData);
-    } else if (currentSortingOption == "Rating (asc)") {
+    } else if (currentSortingOption === "Rating (asc)") {
       setSortedFilteredData(
         [...filteredData].sort((a, b) => a.rating - b.rating),
       );
-    } else if (currentSortingOption == "Rating (dsc)") {
+    } else if (currentSortingOption === "Rating (dsc)") {
       setSortedFilteredData(
         [...filteredData].sort((a, b) => b.rating - a.rating),
       );
-    } else if (currentSortingOption == "Price (asc)") {
+    } else if (currentSortingOption === "Price (asc)") {
       setSortedFilteredData(
         [...filteredData].sort((a, b) => a.discountedPrice - b.discountedPrice),
       );
-    } else if (currentSortingOption == "Price (dsc)") {
+    } else if (currentSortingOption === "Price (dsc)") {
       setSortedFilteredData(
         [...filteredData].sort((a, b) => b.discountedPrice - a.discountedPrice),
       );
-    } else if (currentSortingOption == "Duration (asc)") {
+    } else if (currentSortingOption === "Duration (asc)") {
       setSortedFilteredData(
         [...filteredData].sort((a, b) => a.duration - b.duration),
       );
-    } else if (currentSortingOption == "Duration (dsc)") {
+    } else if (currentSortingOption === "Duration (dsc)") {
       setSortedFilteredData(
         [...filteredData].sort((a, b) => b.duration - a.duration),
       );
     }
   }, [currentSortingOption, filteredData]);
 
-  const handleFilterCategories = (item) => {
-    if (filterCategories.includes(item)) {
-      setFilterCategories([]);
-    } else {
-      setFilterCategories([item]);
-    }
-    document.getElementById("dd52button").classList.toggle("-is-dd-active");
-    document.getElementById("dd52content").classList.toggle("-is-el-visible");
-  };
-  const handleFilterRatingRange = (item) => {
-    setFilterRatingRange(item);
-    document.getElementById("dd53button").classList.toggle("-is-dd-active");
-    document.getElementById("dd53content").classList.toggle("-is-el-visible");
-  };
-  const handleFilterInstractors = (item) => {
-    if (filterInstractors.includes(item)) {
-      setFilterInstractors([]);
-    } else {
-      setFilterInstractors([item]);
-    }
-    document.getElementById("dd54button").classList.toggle("-is-dd-active");
-    document.getElementById("dd54content").classList.toggle("-is-el-visible");
-  };
-  const handleFilterPrice = (item) => {
-    setFilterPrice(item);
-    document.getElementById("dd55button").classList.toggle("-is-dd-active");
-    document.getElementById("dd55content").classList.toggle("-is-el-visible");
-  };
-  const handleFilterLevels = (item) => {
-    if (filterLevels.includes(item)) {
-      const filtered = filterLevels.filter((elm) => elm != item);
-      setFilterLevels([]);
-    } else {
-      setFilterLevels([item]);
-    }
-    document.getElementById("dd56button").classList.toggle("-is-dd-active");
-    document.getElementById("dd56content").classList.toggle("-is-el-visible");
-  };
-  const handleFilterlanguange = (item) => {
-    if (filterlanguange.includes(item)) {
-      setFilterlanguange([]);
-    } else {
-      setFilterlanguange([item]);
-    }
-    document.getElementById("dd57button").classList.toggle("-is-dd-active");
-    document.getElementById("dd57content").classList.toggle("-is-el-visible");
-  };
-  const handleFilterDuration = (item) => {
-    setFilterDuration(item);
-    document.getElementById("dd58button").classList.toggle("-is-dd-active");
-    document.getElementById("dd58content").classList.toggle("-is-el-visible");
-  };
   return (
     <>
       <section className="page-header -type-1">
         <div className="container">
           <div className="page-header__content">
-            <div className="row">
-              <div className="col-auto">
-                <div>
-                  <h1 className="page-header__title">User Interface Courses</h1>
-                </div>
-
-                <div>
-                  <p className="page-header__text">
-                    Write an introductory description of the category.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h1 className="page-header__title">User Interface Courses</h1>
+            <p className="page-header__text">
+              Write an introductory description of the category.
+            </p>
           </div>
         </div>
       </section>
@@ -219,8 +165,6 @@ export default function CourseListFour() {
                 total results
               </div>
             </div>
-
-          
           </div>
 
           <div className="row y-gap-30">
@@ -236,30 +180,8 @@ export default function CourseListFour() {
                           height={360}
                           className="w-1/1"
                           src={elm.imageSrc}
-                          alt="image"
+                          alt="course image"
                         />
-                        <div className="coursesCard__image_overlay rounded-8"></div>
-                      </div>
-                      <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
-                        {elm.popular && (
-                          <>
-                            <div>
-                              <div className="px-15 rounded-200 bg-purple-1">
-                                <span className="text-11 lh-1 uppercase fw-500 text-white">
-                                  Popular
-                                </span>
-                              </div>
-                            </div>
-
-                            <div>
-                              <div className="px-15 rounded-200 bg-green-1">
-                                <span className="text-11 lh-1 uppercase fw-500 text-dark-1">
-                                  Best sellers
-                                </span>
-                              </div>
-                            </div>
-                          </>
-                        )}
                       </div>
                     </div>
 
@@ -277,54 +199,15 @@ export default function CourseListFour() {
                       </div>
 
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link
-                          className="linkCustom"
-                          href={`/courses/${elm.id}`}
-                        >
+                        <Link href={`/courses/${elm.id}`}>
                           {elm.title}{" "}
                         </Link>
                       </div>
 
                       <div className="d-flex x-gap-10 items-center pt-10">
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/1.svg"
-                              alt="icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">
-                            {elm.lesson} lesson
-                          </div>
-                        </div>
-
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/2.svg"
-                              alt="icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">{`${Math.floor(
-                            elm.duration / 60,
-                          )}h ${Math.floor(elm.duration % 60)}m`}</div>
-                        </div>
-
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/3.svg"
-                              alt="icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">{elm.level}</div>
-                        </div>
+                        <div className="text-14 lh-1">{elm.lesson} lessons</div>
+                        <div className="text-14 lh-1">{`${Math.floor(elm.duration / 60)}h ${elm.duration % 60}m`}</div>
+                        <div className="text-14 lh-1">{elm.level}</div>
                       </div>
 
                       <div className="coursesCard-footer">
@@ -333,7 +216,7 @@ export default function CourseListFour() {
                             width={30}
                             height={30}
                             src={elm.authorImageSrc}
-                            alt="image"
+                            alt="author image"
                           />
                           <div>{elm.authorName}</div>
                         </div>
@@ -345,10 +228,7 @@ export default function CourseListFour() {
                               <div>${elm.discountedPrice}</div>
                             </>
                           ) : (
-                            <>
-                              <div></div>
-                              <div>Free</div>
-                            </>
+                            <div>Free</div>
                           )}
                         </div>
                       </div>
@@ -364,7 +244,6 @@ export default function CourseListFour() {
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}
                 data={sortedFilteredData}
-                pageCapacity={12}
               />
             </div>
           </div>
