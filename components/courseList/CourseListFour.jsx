@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
-import { useRouter } from "next/router"; // Import useRouter
+import { useRouter } from "next/navigation"; // Import useRouter
 
 export default function CourseListFour() {
   const [coursesData, setCoursesData] = useState([]);
