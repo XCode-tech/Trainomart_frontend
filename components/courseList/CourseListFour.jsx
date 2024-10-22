@@ -221,7 +221,7 @@ export default function CourseListFour() {
             </div>
 
           
-
+          </div>
 
           <div className="row y-gap-30">
             {sortedFilteredData
