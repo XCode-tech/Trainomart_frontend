@@ -5,43 +5,40 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
-import { useRouter } from "next/navigation"; // Import useRouter
-
 
 export default function CourseListFour() {
   const [coursesData, setCoursesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [tags, setTags] = useState(""); 
 
-  const router = useRouter();
-  const { query, isReady } = router; // Destructure query and isReady from router
-  
+  // Fetching courses from API on component mount
   useEffect(() => {
-    if (isReady && query.search) { // Only fetch when the router is ready and the search query exists
-      const fetchCourses = async () => {
-        try {
-          const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(query.search)}`);
-          const data = await response.json();
-          setCoursesData(data);
-        } catch (error) {
-          console.error("Error fetching course data:", error);
-        }
-      };
+    const fetchCourses = async () => {
+      try {
+        // const response = await fetch(${API_URL}/courses/);
+        const response = await fetch(${API_URL}/courses/?search=${encodeURIComponent(tags)}); 
+        const data = await response.json();
+        setCoursesData(data);
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+      }
+    };
 
-      fetchCourses();
-    }
-  }, [isReady, query.search]); // Trigger fetching when the search query or isReady status changes
+    fetchCourses();
+  }, [tags]);
 
   // Filtering logic
   useEffect(() => {
+    // You can add filtering logic here if needed, but currently, we're just using all data
     setFilteredData(coursesData);
     setPageNumber(1);
   }, [coursesData]);
 
   // Sorting logic
   useEffect(() => {
-    setSortedFilteredData(filteredData);
+    setSortedFilteredData(filteredData); // No sorting applied for now, but you can add it based on the sorting option
   }, [filteredData]);
 
   return (
@@ -91,7 +88,7 @@ export default function CourseListFour() {
 
                     <div className="h-100 pt-15">
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link href={`/courses/${course.id}`}>
+                        <Link href={/courses/${course.id}}>
                           {course.course_name}
                         </Link>
                       </div>
@@ -136,4 +133,3 @@ export default function CourseListFour() {
     </>
   );
 }
-
