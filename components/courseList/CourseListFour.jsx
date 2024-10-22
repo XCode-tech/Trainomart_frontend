@@ -7,6 +7,7 @@ import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 import { useRouter } from "next/navigation"; // Import useRouter
 
+
 export default function CourseListFour() {
   const [coursesData, setCoursesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -14,13 +15,13 @@ export default function CourseListFour() {
   const [pageNumber, setPageNumber] = useState(1);
 
   const router = useRouter();
-  const { search } = router.query; // Destructure the search query from the URL
+  const { query, isReady } = router; // Destructure query and isReady from router
   
   useEffect(() => {
-    if (search) { // Only fetch when the search query exists
+    if (isReady && query.search) { // Only fetch when the router is ready and the search query exists
       const fetchCourses = async () => {
         try {
-          const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(search)}`);
+          const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(query.search)}`);
           const data = await response.json();
           setCoursesData(data);
         } catch (error) {
@@ -30,7 +31,7 @@ export default function CourseListFour() {
 
       fetchCourses();
     }
-  }, [search]); // Trigger fetching when the search query changes
+  }, [isReady, query.search]); // Trigger fetching when the search query or isReady status changes
 
   // Filtering logic
   useEffect(() => {
@@ -135,3 +136,4 @@ export default function CourseListFour() {
     </>
   );
 }
+
