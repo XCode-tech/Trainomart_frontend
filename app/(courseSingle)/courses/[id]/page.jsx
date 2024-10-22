@@ -9,6 +9,16 @@ import CourseSlider from '@/components/courseSingle/CourseSlider';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
+// Custom Metadata component to handle the <Head>
+const Metadata = ({ title, description }) => (
+  <Head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.ico" />
+  </Head>
+);
+
 export default function Page({ params }) {
   // Metadata state
   const [metadata, setMetadata] = useState({
@@ -46,12 +56,7 @@ export default function Page({ params }) {
 
   return (
     <>
-      <Head>
-        <title>{metadata.title}</title> {/* Use dynamic title */}
-        <meta name="description" content={metadata.description} /> {/* Use dynamic description */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Metadata title={metadata.title} description={metadata.description} />
 
       <Preloader />
       <div className="main-content">
