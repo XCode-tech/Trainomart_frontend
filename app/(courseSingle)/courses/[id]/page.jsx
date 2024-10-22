@@ -1,3 +1,5 @@
+"use client";
+
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import CourseDetailsOne from '@/components/courseSingle/CourseDetailsOne'
