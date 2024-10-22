@@ -184,7 +184,7 @@ useEffect(() => {
             <div className="row">
               <div className="col-auto">
                 <div>
-                  <h1 className="page-header__title">Our Courses Portfolio</h1>
+                  <h1 className="page-header__title">Our Course Portfolio</h1>
                 </div>
 
                 <div>
