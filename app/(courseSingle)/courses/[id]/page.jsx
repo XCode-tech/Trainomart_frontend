@@ -27,22 +27,14 @@ export default function Page({ params }) {
         }
 
         const data = await res.json();
-        
-        // Debugging log
-        console.log('Fetched Data:', data);
-        
+
         // Set the fetched metadata
         const newMetadata = {
           title: data.meta_title || 'Default Course Title',
           description: data.meta_description || 'Default Course Description',
         };
 
-        // Log the title and description
-        console.log("title : ", newMetadata.title);
-        console.log("description : ", newMetadata.description);
-        
         console.log('Setting Metadata:', newMetadata);
-        
         setMetadata(newMetadata);
       } catch (error) {
         console.error('Error fetching metadata:', error);
