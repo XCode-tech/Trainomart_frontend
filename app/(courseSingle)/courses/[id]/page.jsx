@@ -21,7 +21,7 @@ export default function Page({ params }) {
     const fetchMetadata = async () => {
       try {
         const res = await fetch(`https://test.trainomart.com/api/courses/${params.id}/`);
-        
+
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
@@ -37,9 +37,9 @@ export default function Page({ params }) {
           description: data.meta_description || 'Default Course Description',
         };
 
-        console.log("title : ", title);
-        console.log("description : ", description);
-
+        // Log the title and description
+        console.log("title : ", newMetadata.title);
+        console.log("description : ", newMetadata.description);
         
         console.log('Setting Metadata:', newMetadata);
         
