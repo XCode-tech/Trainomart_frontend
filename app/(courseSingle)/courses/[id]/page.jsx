@@ -4,10 +4,34 @@ import CourseDetailsOne from '@/components/courseSingle/CourseDetailsOne'
 import CourseSlider from '@/components/courseSingle/CourseSlider'
 import FooterFour from '@/components/layout/footers/FooterFour'
 import HeaderFour from '@/components/layout/headers/HeaderFour'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 
-export default function Page({ metadata, params }) {
+export default function Page({ params }) {
+  const [metadata, setMetadata] = useState({
+    title: 'Loading...',
+    description: 'Loading course description...',
+  })
+
+  // Fetch metadata from the backend when the component mounts
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const res = await fetch(`https://test.trainomart.com/api/courses/${params.id}/`)
+        const data = await res.json()
+
+        setMetadata({
+          title: data.meta_title || 'Default Course Title',
+          description: data.meta_description || 'Default Course Description',
+        })
+      } catch (error) {
+        console.error('Error fetching metadata:', error)
+      }
+    }
+
+    fetchMetadata()
+  }, [params.id])
+
   return (
     <>
       <Head>
@@ -31,24 +55,4 @@ export default function Page({ metadata, params }) {
       </div>
     </>
   )
-}
-
-// Fetch metadata from your backend based on the course ID
-export async function getServerSideProps(context) {
-  const { id } = context.params
-  const res = await fetch(`https://test.trainomart.com/api/courses/${id}/`)
-  const data = await res.json()
-
-  // Assuming the response contains a title and description for SEO
-  const metadata = {
-    title: data.meta_title || 'Default Course Title',
-    description: data.meta_description || 'Default description for the course',
-  }
-
-  return {
-    props: {
-      metadata,
-      params: context.params,
-    },
-  }
 }
