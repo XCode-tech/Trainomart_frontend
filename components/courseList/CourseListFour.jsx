@@ -179,25 +179,14 @@ export default function CourseListFour() {
                           width={510}
                           height={360}
                           className="w-1/1"
-                          src={elm.imageSrc}
+                          src={elm.course_image}
                           alt="course image"
                         />
                       </div>
                     </div>
 
                     <div className="h-100 pt-15">
-                      <div className="d-flex items-center">
-                        <div className="text-14 lh-1 text-yellow-1 mr-10">
-                          {elm.rating}
-                        </div>
-                        <div className="d-flex x-gap-5 items-center">
-                          <Star star={elm.rating} />
-                        </div>
-                        <div className="text-13 lh-1 ml-10">
-                          ({elm.ratingCount})
-                        </div>
-                      </div>
-
+                      
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
                         <Link href={`/courses/${elm.id}`}>
                           {elm.title}{" "}
@@ -206,26 +195,18 @@ export default function CourseListFour() {
 
                       <div className="d-flex x-gap-10 items-center pt-10">
                         <div className="text-14 lh-1">{elm.lesson} lessons</div>
-                        <div className="text-14 lh-1">{`${Math.floor(elm.duration / 60)}h ${elm.duration % 60}m`}</div>
-                        <div className="text-14 lh-1">{elm.level}</div>
+                        <div className="text-14 lh-1">{elm.duration}</div>
+                        <div className="text-14 lh-1">{elm.skill_level}</div>
                       </div>
 
                       <div className="coursesCard-footer">
-                        <div className="coursesCard-footer__author">
-                          <Image
-                            width={30}
-                            height={30}
-                            src={elm.authorImageSrc}
-                            alt="author image"
-                          />
-                          <div>{elm.authorName}</div>
-                        </div>
+                        
 
                         <div className="coursesCard-footer__price">
                           {elm.paid ? (
                             <>
-                              <div>${elm.originalPrice}</div>
-                              <div>${elm.discountedPrice}</div>
+                              <div>${elm.orignal_price}</div>
+                              <div>${elm.price}</div>
                             </>
                           ) : (
                             <div>Free</div>
