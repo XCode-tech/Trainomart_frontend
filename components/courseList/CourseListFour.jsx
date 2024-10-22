@@ -6,18 +6,17 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour() {
+export default function CourseListFour({ tags }) {
   const [coursesData, setCoursesData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const [tags, setTags] = useState(""); 
 
   // Fetching courses from API on component mount
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`); 
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         const data = await response.json();
         setCoursesData(data);
       } catch (error) {
@@ -39,11 +38,6 @@ export default function CourseListFour() {
     setSortedFilteredData(filteredData);
   }, [filteredData]);
 
-  // Handle input change for tags
-  const handleTagChange = (event) => {
-    setTags(event.target.value);
-  };
-
   return (
     <>
       <section className="page-header -type-1">
@@ -61,20 +55,13 @@ export default function CourseListFour() {
         <div className="container">
           <div className="row y-gap-20 items-center justify-between pb-30">
             <div className="col-12">
-              <input
-                type="text"
-                value={tags}
-                onChange={handleTagChange}
-                placeholder="Enter tag (e.g., AI)"
-                className="border rounded-md p-2"
-              />
-            </div>
-            <div className="text-14 lh-12">
-              Showing{" "}
-              <span className="text-dark-1 fw-500">
-                {filteredData.length}
-              </span>{" "}
-              total results
+              <div className="text-14 lh-12">
+                Showing{" "}
+                <span className="text-dark-1 fw-500">
+                  {filteredData.length}
+                </span>{" "}
+                total results
+              </div>
             </div>
           </div>
 
