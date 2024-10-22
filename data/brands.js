@@ -9,8 +9,9 @@ export const brands = [
   "/assets/img/clients/TG.png",
   "/assets/img/clients/atos.png",
   "/assets/img/clients/AT&T.png",
-  "/assets/img/clients/Netone.png",
-  "/assets/img/clients/LQ.png",
-  "/assets/img/clients/LW.png",
+  "/assets/img/clients/NterOne.png",
+  "/assets/img/clients/LearnQuest.png",
+  "/assets/img/clients/lumify.png",
+  
 
 ];
