@@ -17,7 +17,6 @@ export default function CourseListFour() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        // const response = await fetch(${API_URL}/courses/);
         const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`); 
         const data = await response.json();
         setCoursesData(data);
@@ -31,15 +30,19 @@ export default function CourseListFour() {
 
   // Filtering logic
   useEffect(() => {
-    // You can add filtering logic here if needed, but currently, we're just using all data
     setFilteredData(coursesData);
     setPageNumber(1);
   }, [coursesData]);
 
   // Sorting logic
   useEffect(() => {
-    setSortedFilteredData(filteredData); // No sorting applied for now, but you can add it based on the sorting option
+    setSortedFilteredData(filteredData);
   }, [filteredData]);
+
+  // Handle input change for tags
+  const handleTagChange = (event) => {
+    setTags(event.target.value);
+  };
 
   return (
     <>
@@ -58,13 +61,20 @@ export default function CourseListFour() {
         <div className="container">
           <div className="row y-gap-20 items-center justify-between pb-30">
             <div className="col-12">
-              <div className="text-14 lh-12">
-                Showing{" "}
-                <span className="text-dark-1 fw-500">
-                  {filteredData.length}
-                </span>{" "}
-                total results
-              </div>
+              <input
+                type="text"
+                value={tags}
+                onChange={handleTagChange}
+                placeholder="Enter tag (e.g., AI)"
+                className="border rounded-md p-2"
+              />
+            </div>
+            <div className="text-14 lh-12">
+              Showing{" "}
+              <span className="text-dark-1 fw-500">
+                {filteredData.length}
+              </span>{" "}
+              total results
             </div>
           </div>
 
@@ -73,7 +83,7 @@ export default function CourseListFour() {
               .slice((pageNumber - 1) * 12, pageNumber * 12)
               .map((course, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
-                  <div className="coursesCard -type-1 ">
+                  <div className="coursesCard -type-1">
                     <div className="relative">
                       <div className="coursesCard__image overflow-hidden rounded-8">
                         <Image
