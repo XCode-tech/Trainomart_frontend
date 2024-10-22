@@ -49,10 +49,10 @@ export default function Page({ params }) {
     <>
       {/* Head section for setting dynamic metadata */}
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
+        <title>{metadata.meta_title}</title>
+        <meta name="description" content={metadata.meta_description} />
+        <meta property="og:title" content={metadata.meta_title} />
+        <meta property="og:description" content={metadata.meta_description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://test.trainomart.com/api/courses/${params.id}/`} />
         {/* Additional meta tags as needed */}
