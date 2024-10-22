@@ -47,12 +47,10 @@ export default function Page({ params }) {
   return (
     <>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://test.trainomart.com/api/courses/${params.id}/`} />
+        <title>LangChain Development Course | ML Certification | TrainoMart</title>
+        <meta name="description" content="Enroll in TrainoMart’s LangChain application development course. Learn machine learning integration and earn your LangChain certification. Join now!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Preloader />
