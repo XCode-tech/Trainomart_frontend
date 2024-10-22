@@ -15,15 +15,22 @@ export default function Page({ params }) {
     title: 'Loading...',
     description: 'Loading course description...',
   });
-  console.log(metadata);
-  
 
   // Fetch metadata from backend
   useEffect(() => {
     const fetchMetadata = async () => {
       try {
         const res = await fetch(`https://test.trainomart.com/api/courses/${params.id}/`);
+        
+        // Check if the response is okay (status in the range 200-299)
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
         const data = await res.json();
+        
+        // Log the fetched data to see its structure
+        console.log('Fetched Data:', data);
         
         // Set the fetched metadata
         setMetadata({
@@ -42,10 +49,10 @@ export default function Page({ params }) {
     <>
       {/* Head section for setting dynamic metadata */}
       <Head>
-        <title>{metadata.meta_title}</title>
-        <meta name="description" content={metadata.meta_description} />
-        <meta property="og:title" content={metadata.meta_title} />
-        <meta property="og:description" content={metadata.meta_description} />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://test.trainomart.com/api/courses/${params.id}/`} />
         {/* Additional meta tags as needed */}
