@@ -47,8 +47,8 @@ export default function Page({ params }) {
   return (
     <>
       <Head>
-        <title>LangChain Development Course | ML Certification | TrainoMart</title>
-        <meta name="description" content="Enroll in TrainoMart’s LangChain application development course. Learn machine learning integration and earn your LangChain certification. Join now!" />
+        <title>{metadata.title}</title> {/* Use dynamic title */}
+        <meta name="description" content={metadata.description} /> {/* Use dynamic description */}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
