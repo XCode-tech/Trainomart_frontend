@@ -114,7 +114,7 @@ export default function PinContent({ pageItem }) {
                 <div className="flex-1">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Full Name
-                  </label>
+                  </label><br />
                   <input
                     id="name"
                     name="name"
