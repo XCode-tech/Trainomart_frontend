@@ -6,43 +6,26 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour({ tags = "" }) { // Default to an empty string
+export default function CourseListFour({ tags = "" }) { // Receiving tags as a prop
   const [coursesData, setCoursesData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
 
-  // Fetching courses from API on component mount
+  // Fetch courses when the `tags` prop changes
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const searchQuery = tags ? encodeURIComponent(tags) : '';  // Default to empty string if no tags
-        console.log('tags:', searchQuery);  // Check the value
-        const response = await fetch(`${API_URL}/courses/?search=${searchQuery}`);
-       
-        // const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+        console.log('Search tags:', tags);
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         const data = await response.json();
-        setCoursesData(data);
+        setCoursesData(data);  // Save the fetched course data
       } catch (error) {
         console.error("Error fetching course data:", error);
       }
     };
 
     fetchCourses();
-  }, [tags]);
+  }, [tags]);  // Dependency on `tags` prop, so it fetches again when `tags` changes
 
-  console.log("CoursesData : ", coursesData)
-
-  // Filtering logic
-  useEffect(() => {
-    setFilteredData(coursesData);
-    setPageNumber(1);
-  }, [coursesData]);
-  
-  // Sorting logic
-  useEffect(() => {
-    setSortedFilteredData(filteredData);
-  }, [filteredData]);
   return (
     <>
       <section className="page-header -type-1">
@@ -63,7 +46,7 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
               <div className="text-14 lh-12">
                 Showing{" "}
                 <span className="text-dark-1 fw-500">
-                  {filteredData.length}
+                  {coursesData.length}
                 </span>{" "}
                 total results
               </div>
@@ -71,9 +54,9 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
           </div>
 
           <div className="row y-gap-30">
-            {sortedFilteredData
-              .slice((pageNumber - 1) * 12, pageNumber * 12)
-              .map((coursesData, i) => (
+            {coursesData
+              .slice((pageNumber - 1) * 12, pageNumber * 12) // Paginate the data (12 items per page)
+              .map((course, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="coursesCard -type-1">
                     <div className="relative">
@@ -82,33 +65,33 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
                           width={510}
                           height={360}
                           className="w-1/1"
-                          src={coursesData.course_image}
-                          alt={coursesData.course_name}
+                          src={course.course_image}
+                          alt={course.course_name}
                         />
                       </div>
                     </div>
 
                     <div className="h-100 pt-15">
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link href={`/courses/${coursesData.id}`}>
-                          {coursesData.course_name}
+                        <Link href={`/courses/${course.id}`}>
+                          {course.course_name}
                         </Link>
                       </div>
 
                       <div className="d-flex x-gap-10 items-center pt-10">
                         <div className="text-14 lh-1">
-                          {coursesData.lessons} lessons
+                          {course.lessons} lessons
                         </div>
-                        <div className="text-14 lh-1">{coursesData.duration}</div>
-                        <div className="text-14 lh-1">{coursesData.skill_level}</div>
+                        <div className="text-14 lh-1">{course.duration}</div>
+                        <div className="text-14 lh-1">{course.skill_level}</div>
                       </div>
 
                       <div className="coursesCard-footer">
                         <div className="coursesCard-footer__price">
-                          {coursesData.price ? (
+                          {course.price ? (
                             <>
-                              <div>${coursesData.orignal_price}</div>
-                              <div>${coursesData.price}</div>
+                              <div>${course.original_price}</div>
+                              <div>${course.price}</div>
                             </>
                           ) : (
                             <div>Free</div>
@@ -126,7 +109,7 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
               <PaginationTwo
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}
-                data={sortedFilteredData}
+                data={coursesData}
               />
             </div>
           </div>
