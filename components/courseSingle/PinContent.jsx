@@ -132,8 +132,8 @@ export default function PinContent({ pageItem }) {
                     Your Phone Number
                   </label>
                   <input
-                    id="phone"
-                    name="phone"
+                    id="phone_number"
+                    name="phone_number"
                     type="text"
                     value={formData.phone_number}
                     onChange={handleChange}
