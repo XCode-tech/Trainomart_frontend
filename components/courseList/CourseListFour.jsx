@@ -69,7 +69,7 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
           <div className="row y-gap-30">
             {sortedFilteredData
               .slice((pageNumber - 1) * 12, pageNumber * 12)
-              .map((course, i) => (
+              .map((coursesData, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="coursesCard -type-1">
                     <div className="relative">
@@ -78,8 +78,8 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
                           width={510}
                           height={360}
                           className="w-1/1"
-                          src={course.course_image}
-                          alt={course.course_name}
+                          src={coursesData.course_image}
+                          alt={coursesData.course_name}
                         />
                       </div>
                     </div>
@@ -87,24 +87,24 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
                     <div className="h-100 pt-15">
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
                         <Link href={`/courses/${course.id}`}>
-                          {course.course_name}
+                          {coursesData.course_name}
                         </Link>
                       </div>
 
                       <div className="d-flex x-gap-10 items-center pt-10">
                         <div className="text-14 lh-1">
-                          {course.lessons} lessons
+                          {coursesData.lessons} lessons
                         </div>
-                        <div className="text-14 lh-1">{course.duration}</div>
-                        <div className="text-14 lh-1">{course.skill_level}</div>
+                        <div className="text-14 lh-1">{coursesData.duration}</div>
+                        <div className="text-14 lh-1">{coursesData.skill_level}</div>
                       </div>
 
                       <div className="coursesCard-footer">
                         <div className="coursesCard-footer__price">
-                          {course.price ? (
+                          {coursesData.price ? (
                             <>
-                              <div>${course.orignal_price}</div>
-                              <div>${course.price}</div>
+                              <div>${coursesData.orignal_price}</div>
+                              <div>${coursesData.price}</div>
                             </>
                           ) : (
                             <div>Free</div>
