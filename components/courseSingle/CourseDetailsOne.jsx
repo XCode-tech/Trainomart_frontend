@@ -9,7 +9,8 @@ import CourseContent from "./CourseContent";
 import Head from "next/head";
 import Image from "next/image";
 import API_URL from "@/data/config";
-import { format, addDays } from "date-fns"; // Importing date functions for date manipulation
+import { format } from "date-fns"; // Importing date functions for date manipulation
+import { addDays } from 'date-fns';
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
