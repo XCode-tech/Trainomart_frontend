@@ -16,8 +16,11 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        console.log('tags:', tags);  
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+        const searchQuery = tags ? encodeURIComponent(tags) : '';  // Default to empty string if no tags
+        console.log('tags:', searchQuery);  // Check the value
+        const response = await fetch(`${API_URL}/courses/?search=${searchQuery}`);
+       
+        // const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         const data = await response.json();
         setCoursesData(data);
       } catch (error) {
