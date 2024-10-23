@@ -256,7 +256,7 @@ export default function PinContent({ pageItem }) {
               </a>
 
               <a
-                href="https://www.linkedin.com/company/104781952/admin/dashboard/"
+                href="https://www.linkedin.com/company/trainomart-com/"
                 className="d-flex justify-center items-center size-40 rounded-full"
                 target="_blank"
               >
