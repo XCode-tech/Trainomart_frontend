@@ -32,12 +32,13 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
     setFilteredData(coursesData);
     setPageNumber(1);
   }, [coursesData]);
-
+  
+  console.log("filteredData :", filteredData)
   // Sorting logic
   useEffect(() => {
     setSortedFilteredData(filteredData);
   }, [filteredData]);
-
+  console.log("sortedFilteredData :", sortedFilteredData)
   return (
     <>
       <section className="page-header -type-1">
