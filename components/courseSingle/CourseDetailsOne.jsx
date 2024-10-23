@@ -9,8 +9,7 @@ import CourseContent from "./CourseContent";
 import Head from "next/head";
 import Image from "next/image";
 import API_URL from "@/data/config";
-import { format } from "date-fns"; // Importing date functions for date manipulation
-import { addDays } from 'date-fns';
+import { format, addDays } from "date-fns"; // Import date-fns for date manipulation
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
@@ -21,17 +20,17 @@ export default function CourseDetailsOne({ id }) {
   const [pageItem, setPageItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   // Function to calculate the end date based on the duration
   const calculateEndDate = (startDate, duration) => {
-    if (!duration) return startDate; // If no duration, return the start date
-    
+    if (!duration || !startDate) return null; // Handle missing values
+
     const durationDays = parseInt(duration, 10); // Parse duration into an integer (assuming it's in days)
-    
+
     if (isNaN(durationDays)) {
-      return startDate; // If duration is invalid, return the start date
+      return null; // If duration is invalid, return null
     }
-    
+
     const endDate = addDays(new Date(startDate), durationDays); // Add duration to start date
     return format(endDate, "do MMM yyyy"); // Format the end date
   };
@@ -85,8 +84,8 @@ export default function CourseDetailsOne({ id }) {
     );
   }
 
-  // Calculate start and end dates
-  const courseStartDate = "5th Nov 2024"; // Static start date (5th of the month)
+  // Corrected start date format (use YYYY-MM-DD)
+  const courseStartDate = "2024-11-05"; // Static start date (November 5th, 2024)
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration); // Calculate dynamic end date
 
   return (
@@ -123,7 +122,10 @@ export default function CourseDetailsOne({ id }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
-                        <b>New Batch: Starts From 5th Nov to {courseEndDate} (9AM-5PM EST)</b> <br />
+                        <b>
+                          New Batch: Starts From 5th Nov to {courseEndDate || "N/A"} (9AM-5PM EST)
+                        </b>{" "}
+                        <br />
                       </div>
                     </div>
 
