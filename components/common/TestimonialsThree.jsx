@@ -21,7 +21,7 @@ export default function TestimonialsThree() {
                     <div className="col-auto">
                         <div className="sectionTitle ">
                             <h2 className="sectionTitle__title text-green-1">
-                                Our Vision
+                                Our Mission
                             </h2>
 
                             <p className="sectionTitle__text text-white">
@@ -32,14 +32,15 @@ export default function TestimonialsThree() {
                 </div>
 
                 <div className=" pt-20">
-                    <div style={{ borderRadius: '25px' }} className="bg-white p-8 pb-40 pt-40 pl-50 pr-50 rounded-[25px] shadow-md">
-                        <p className="sectionTitle__text text-20 text-black text-center">
+                    <div style={{ borderRadius: '25px', outlineStyle:"solid" }} className="p-8 pb-40 pt-40 pl-50 pr-50 rounded-[25px] shadow-md text-white">
+                        {/* <p className="sectionTitle__text text-20 text-white text-center">
                             As we continue to grow, we are excited to expand our offerings, that will allow our learners to earn industry-recognized certifications.
+                        </p> */}
+                        <p className="sectionTitle__text text-20 text-white text-center">
+                        Our Mission is to establish a global brand renowned for delivering cutting-edge courses that empower individuals and businesses to thrive in the ever-evolving technical landscape. We are committed to providing exceptional training solutions to both B2B and B2C clients, fostering growth, innovation, and excellence across international markets. Through our diverse, affordable, and customizable offerings, we aim to bridge skill gaps, enhance professional capabilities, and contribute to the success of our clients worldwide.
                         </p>
-                        <p className="sectionTitle__text text-20 text-black text-center">
-                            Trainomart is dedicated to becoming a global leader in technical education, helping individuals and businesses thrive in the ever-evolving world of technology.
-                        </p>
-                        <p className="sectionTitle__text text-20 text-black text-center">
+                        <br />
+                        <p className="sectionTitle__text text-20 text-white text-center">
                             Explore the possibilities with Trainomart—where your learning potential is unlocked, and your future is empowered.
                         </p>
                     </div>
