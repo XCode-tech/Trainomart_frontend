@@ -7,11 +7,7 @@ import CourseListFour from '@/components/courseList/CourseListFour';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
-export const metadata = {
-  title: 'All Courses',
-  description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
-};
+
 
 export default function Page() {
   // State for the search term
