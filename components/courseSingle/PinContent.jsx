@@ -105,8 +105,8 @@ export default function PinContent({ pageItem }) {
 
           <div className="courses-single-info__content scroll-bar-1 pt-30 pb-20 px-20">
             {/* Form Section */}
-              <div className="text-20 leading-none text-right text-dark-1 font-bold">
-              <span className="line-through text-left inline-block">${pageItem.orignal_price}</span> ${pageItem.price}
+              <div className="text-20 leading-none text-center text-dark-1 font-bold">
+              <span className="line-through inline-block">${pageItem.orignal_price}</span> ${pageItem.price}
               </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col md:flex-row md:space-x-4">
