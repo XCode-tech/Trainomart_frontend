@@ -27,6 +27,8 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
     fetchCourses();
   }, [tags]);
 
+  console.log("Tags : ", tags)
+
   // Filtering logic
   useEffect(() => {
     setFilteredData(coursesData);
