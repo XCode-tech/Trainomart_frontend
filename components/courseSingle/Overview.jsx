@@ -59,7 +59,7 @@ export default function Overview({ data }) {
                   <li key={index} className="ml-5 flex items-center">
                     <FontAwesomeIcon
                       icon={faCheck}
-                      className="text-purple-1 mr-2 flex-shrink-0"
+                      className="text-purple-1 mr-2 flex-shrink-0 mr-10"
                     />
                     {item.trim()}
                   </li>
