@@ -1,7 +1,7 @@
 export const testimonials = [
   {
     id: 0,
-    imageSrc: "/assets/img/testimonials/1.png",
+    imageSrc: "/assets/img/testimonials/2.png",
     name: "Sarah Len",
     position: "Data Analyst",
     comment: "",
@@ -17,7 +17,7 @@ export const testimonials = [
   },
   {
     id: 2,
-    imageSrc: "/assets/img/testimonials/3.png",
+    imageSrc: "/assets/img/testimonials/2.png",
     name: "Maria G.",
     position: "Creative Technologist",
     comment: "",
@@ -25,7 +25,7 @@ export const testimonials = [
   },
   {
     id: 3,
-    imageSrc: "/assets/img/testimonials/4.png",
+    imageSrc: "/assets/img/testimonials/2.png",
     name: " Daniel K.",
     position: "Software Developer",
     comment: "",
@@ -33,7 +33,7 @@ export const testimonials = [
   },
   {
     id: 4,
-    imageSrc: "/assets/img/testimonials/4.png",
+    imageSrc: "/assets/img/testimonials/2.png",
     name: "Priya S.",
     position: "Cloud Solutions Architect",
     comment: "",
