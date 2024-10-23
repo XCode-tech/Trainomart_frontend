@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
