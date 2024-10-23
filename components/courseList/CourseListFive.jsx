@@ -135,8 +135,7 @@ const CourseListFive = () => {
 
         <select name="duration" value={filters.duration} onChange={handleFilterChange} className="p-2 border rounded">
           <option value="All">All Durations</option>
-          <option value="Short">Short (<= 10 hours)</option>
-          <option value="Long">Long (> 10 hours)</option>
+          
         </select>
 
         {/* Sort */}
