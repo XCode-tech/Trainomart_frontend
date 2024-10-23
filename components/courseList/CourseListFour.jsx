@@ -27,7 +27,7 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
     fetchCourses();
   }, [tags]);
 
-  console.log("Tags : ", tags)
+  console.log("CoursesData : ", coursesData)
 
   // Filtering logic
   useEffect(() => {
@@ -35,12 +35,10 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
     setPageNumber(1);
   }, [coursesData]);
   
-  console.log("filteredData :aaaaaaaaaaaaaaaaaaaaa", filteredData)
   // Sorting logic
   useEffect(() => {
     setSortedFilteredData(filteredData);
   }, [filteredData]);
-  console.log("sortedFilteredData :", sortedFilteredData)
   return (
     <>
       <section className="page-header -type-1">
