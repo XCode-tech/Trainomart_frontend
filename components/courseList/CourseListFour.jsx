@@ -16,6 +16,7 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
   useEffect(() => {
     const fetchCourses = async () => {
       try {
+        console.log('tags:', tags);  
         const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         const data = await response.json();
         setCoursesData(data);
