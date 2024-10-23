@@ -33,7 +33,7 @@ export default function CourseListFour({ tags = "" }) { // Default to an empty s
     setPageNumber(1);
   }, [coursesData]);
   
-  console.log("filteredData :", filteredData)
+  console.log("filteredData :aaaaaaaaaaaaaaaaaaaaa", filteredData)
   // Sorting logic
   useEffect(() => {
     setSortedFilteredData(filteredData);
