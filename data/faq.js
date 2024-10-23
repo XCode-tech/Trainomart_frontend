@@ -1,26 +1,32 @@
 export const faq = [
   {
     id: 1,
-    question: "What is Trainomart and what services do you offer?",
+    question: "What types of courses does Trainomart offer?",
     answer:
-      "Trainomart is an online learning platform that offers a wide range of courses to enhance your skills. We provide interactive and engaging content to help you acquire practical knowledge in various domains and help you practice for various technical certifications.",
+      "Trainomart offers a wide range of specialized courses in AI, machine learning, and generative models. Some popular courses include Machine Learning with Python, Deep Reinforcement Learning, Generative AI with Google Gemini, and Customizing Generative AI using AWS Bedrock.",
+  },
+  {
+    id: 2,
+    question: "Who are the trainers at Trainomart?",
+    answer:
+      "Our trainers are certified language and AI experts from across the globe. We guarantee low-cost certified instructors with specialized skills in various technologies and languages to meet your training needs.",
   },
   {
     id: 3,
-    question: "What makes Trainomart different from other online learning platforms?",
+    question: "Can Trainomart provide trainers for our organization’s corporate training programs?",
     answer:
-      "Trainomart stands out for its pocket friendly and dynamic variety of courses. Our courses are designed to provide real-world skills, and our platform offers a user-friendly experience for seamless navigation.",
+      "Yes! We offer trainer augmentation services specifically designed for corporate training providers. We connect you with certified trainers who can deliver high-quality training tailored to your organization’s needs.",
   },
   {
     id: 4,
-    question: "Is there a cost associated with using Trainomart?",
+    question: "Are the courses suitable for beginners?",
     answer:
-      "Signing up on Trainomart is free. You just need to pay in case of purchasing a course.",
+      "Yes, we offer courses for all skill levels, from beginner to advanced. Whether you're just starting or looking to dive deeper into topics like deep learning architectures or generative AI, we have the right course for you.",
   },
   {
     id: 5,
-    question: "What types of skills and courses are available on Trainomart?",
+    question: "What makes Trainomart unique?",
     answer:
-      "Trainomart offers a diverse range of technical courses from different technologies including Google Cloud, Microsoft, AWS, CompTIA, etc. Explore our catalog to discover the full spectrum of available courses.",
+      "Trainomart stands out with its global network of language trainers, low-cost certified instructors, and cutting-edge AI courses. Our courses are designed to be practical and industry-relevant, covering both foundational topics and advanced applications in AI and machine learning.",
   },
 ];
