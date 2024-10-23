@@ -49,7 +49,7 @@ export default function TestimonialsThree() {
                 
                 <div>      
                     <a href="/contact">              
-                    <button className="button -md -green-1 ml-90 text-white ">
+                    <button className="button -md -green-1 ml-90 text-navy-blue ">
 
                         Get in Touch
                     </button>
