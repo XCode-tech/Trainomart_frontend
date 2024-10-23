@@ -135,7 +135,7 @@ export default function PinContent({ pageItem }) {
                     id="phone"
                     name="phone"
                     type="text"
-                    value={formData.phone}
+                    value={formData.phone_number}
                     onChange={handleChange}
                     required
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
@@ -186,7 +186,7 @@ export default function PinContent({ pageItem }) {
 
               <button
                 type="submit"
-                className="button -md -outline-dark-1 text-dark-1 w-full mt-10"
+                className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10"
                 disabled={isLoading} // Disable button when loading
               >
                 <b>{isLoading ? "Submitting..." : "Show Interest"}</b>
