@@ -1,6 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import PaginationTwo from "../common/PaginationTwo";
+import Image from "next/image";
+import Link from "next/link";
+import API_URL from "@/data/config";
 
 const CourseListFive = () => {
   const [courses, setCourses] = useState([]);
@@ -17,7 +21,7 @@ const CourseListFive = () => {
   useEffect(() => {
     // Fetch courses from API
     const fetchCourses = async () => {
-      const res = await fetch('http://localhost:8080/courses');
+      const res = await fetch(`${API_URL}/courses/`);
       const data = await res.json();
       setCourses(data);
       setFilteredCourses(data);
