@@ -17,6 +17,7 @@ export default function PinContent({ pageItem }) {
     email: "",
     phone: "",
     time_to_call: "",
+    course_name: pageItem.course_name, // Include course name in the form data
   });
 
   const [isLoading, setIsLoading] = useState(false); // Define isLoading state
@@ -76,7 +77,6 @@ export default function PinContent({ pageItem }) {
     }
   };
 
-
   return (
     <>
       <div
@@ -105,15 +105,14 @@ export default function PinContent({ pageItem }) {
 
           <div className="courses-single-info__content scroll-bar-1 pt-30 pb-20 px-20">
             {/* Form Section */}
-              <div className="text-20 leading-none text-center text-dark-1 font-bold">
+            <div className="text-20 leading-none text-center text-dark-1 font-bold">
               <span className="line-through inline-block">${pageItem.orignal_price}</span> <b> ${pageItem.price} </b>
-              </div>
+            </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col md:flex-row md:space-x-4">
                 {/* Flex item for Name */}
                 <div className="flex-1">
-
-                <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Full Name
                   </label>
                   <input
@@ -123,23 +122,22 @@ export default function PinContent({ pageItem }) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
+
                 {/* Flex item for Phone Number */}
                 <div className="flex-1">
-                <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Phone Number
                   </label>
                   <input
-                    id="phone_number"
-                    name="phone_number"
+                    id="phone"
+                    name="phone"
                     type="text"
-                    value={formData.phone_number}
+                    value={formData.phone}
                     onChange={handleChange}
                     required
-
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
@@ -149,8 +147,7 @@ export default function PinContent({ pageItem }) {
               <div className="flex flex-col md:flex-row md:space-x-4">
                 {/* Flex item for Email */}
                 <div className="flex-1">
-                  
-                <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Email Address
                   </label>
                   <input
@@ -160,10 +157,10 @@ export default function PinContent({ pageItem }) {
                     value={formData.email}
                     onChange={handleChange}
                     required
-
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
+
                 {/* Flex item for Call Time */}
                 <div className="flex-1">
                   <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
@@ -175,43 +172,35 @@ export default function PinContent({ pageItem }) {
                     type="datetime-local"
                     value={formData.time_to_call}
                     onChange={handleChange}
-                    // required
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
               </div>
 
-              
+              {/* Hidden field for Course Name */}
+              <input
+                type="hidden"
+                name="course_name"
+                value={formData.course_name} // Hidden field for course name
+              />
 
               <button
                 type="submit"
-                className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10"
+                className="button -md -outline-dark-1 text-dark-1 w-full mt-10"
                 disabled={isLoading} // Disable button when loading
               >
                 <b>{isLoading ? "Submitting..." : "Show Interest"}</b>
               </button>
             </form>
 
-
-
-
-
             <div className="mt-25">
-              <div className="d-flex justify-between py-8 ">
+              <div className="d-flex justify-between py-8">
                 <div className="d-flex items-center text-dark-1">
                   <div className="icon-video-file"></div>
                   <div className="ml-8">Lessons</div>
                 </div>
                 <div>{pageItem.lessons || 20}</div>
               </div>
-
-              {/* <div className="d-flex justify-between py-8 border-top-light">
-                <div className="d-flex items-center text-dark-1">
-                  <div className="icon-puzzle"></div>
-                  <div className="ml-10">Quizzes</div>
-                </div>
-                <div>{pageItem.quizzes || 3}</div>
-              </div> */}
 
               <div className="d-flex justify-between py-8 border-top-light">
                 <div className="d-flex items-center text-dark-1">
@@ -254,22 +243,16 @@ export default function PinContent({ pageItem }) {
               >
                 <i className="fa fa-instagram"></i>
               </a>
-
-              <a
-                href="https://www.linkedin.com/company/trainomart-com/"
-                className="d-flex justify-center items-center size-40 rounded-full"
-                target="_blank"
-              >
-                <i className="fa fa-linkedin"></i>
-              </a>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modal for video */}
       <ModalVideoComponent
-        videoId={"LlCwHnp3kL4"}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        videoUrl={pageItem.course_promo_video || "/default-video.mp4"}
       />
     </>
   );
