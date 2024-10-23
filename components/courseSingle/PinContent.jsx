@@ -123,6 +123,7 @@ export default function PinContent({ pageItem }) {
                     onChange={handleChange}
                     required
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
+                    style={{ outline:"groove 2px"}} 
                   />
                 </div>
 
@@ -138,6 +139,7 @@ export default function PinContent({ pageItem }) {
                     value={formData.phone_number}
                     onChange={handleChange}
                     required
+                    style={{ outline:"groove 2px"}} 
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
@@ -157,6 +159,7 @@ export default function PinContent({ pageItem }) {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    style={{ outline:"groove 2px"}} 
                     className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
