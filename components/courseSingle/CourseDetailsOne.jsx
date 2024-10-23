@@ -7,9 +7,8 @@ import PinContent from "./PinContent";
 import Overview from "./Overview";
 import CourseContent from "./CourseContent";
 import Head from "next/head";
-import Image from "next/image";
 import API_URL from "@/data/config";
-import { format, addDays } from "date-fns"; // Import date-fns for date manipulation
+import { format, addDays, startOfMonth } from "date-fns"; // Import date-fns for date manipulation
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
@@ -21,6 +20,14 @@ export default function CourseDetailsOne({ id }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Function to calculate the start date as the 5th of the next month
+  const calculateStartDate = () => {
+    const now = new Date();
+    const nextMonth = now.getMonth() + 1 === 12 ? 0 : now.getMonth() + 1; // Get next month
+    const year = now.getMonth() + 1 === 12 ? now.getFullYear() + 1 : now.getFullYear();
+    return new Date(year, nextMonth, 5); // 5th of the next month
+  };
+
   // Function to calculate the end date based on the duration
   const calculateEndDate = (startDate, duration) => {
     if (!duration || !startDate) return null; // Handle missing values
@@ -31,7 +38,7 @@ export default function CourseDetailsOne({ id }) {
       return null; // If duration is invalid, return null
     }
 
-    const endDate = addDays(new Date(startDate), durationDays); // Add duration to start date
+    const endDate = addDays(startDate, durationDays - 1); // Subtract 1 to get the correct end date
     return format(endDate, "do MMM yyyy"); // Format the end date
   };
 
@@ -84,8 +91,8 @@ export default function CourseDetailsOne({ id }) {
     );
   }
 
-  // Corrected start date format (use YYYY-MM-DD)
-  const courseStartDate = "2024-11-05"; // Static start date (November 5th, 2024)
+  // Get the dynamically calculated start date
+  const courseStartDate = calculateStartDate(); // Start date is 5th of next month
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration); // Calculate dynamic end date
 
   return (
@@ -123,7 +130,7 @@ export default function CourseDetailsOne({ id }) {
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
                         <b>
-                          New Batch: Starts From 5th Nov to {courseEndDate || "N/A"} (9AM-5PM EST)
+                          New Batch: Starts From {format(courseStartDate, "do MMM")} to {courseEndDate || "N/A"} (9AM-5PM EST)
                         </b>{" "}
                         <br />
                       </div>
