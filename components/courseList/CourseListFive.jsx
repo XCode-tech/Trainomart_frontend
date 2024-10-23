@@ -152,7 +152,7 @@ useEffect(() => {
         <div className="container">
           <div className="accordion js-accordion">
             <div
-              className={accordion__item ${filterOpen ? "is-active" : ""} }
+              className={`accordion__item ${filterOpen ? "is-active" : ""} `}
             >
               <div className="row y-gap-20 items-center justify-between pb-30">
                 <div className="col-auto">
@@ -215,11 +215,11 @@ useEffect(() => {
                                   }}
                                 >
                                   <span
-                                    className={d-block js-dropdown-link cursor ${
+                                    className={`d-block js-dropdown-link cursor ${
                                       currentSortingOption === elm
                                         ? "activeMenu"
                                         : ""
-                                    } }
+                                    } `}
                                   >
                                     {elm}
                                   </span>
@@ -429,7 +429,7 @@ useEffect(() => {
 
 
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link className="linkCustom" href={/courses/${elm.id}}>
+                        <Link className="linkCustom" href={`/courses/${elm.id}`}>
                           {elm.course_name}
                         </Link>
                       </div>
