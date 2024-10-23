@@ -6,12 +6,6 @@ export const faq = [
       "Trainomart is an online learning platform that offers a wide range of courses to enhance your skills. We provide interactive and engaging content to help you acquire practical knowledge in various domains and help you practice for various technical certifications.",
   },
   {
-    id: 2,
-    question: "How can I sign up for Trainomart?",
-    answer:
-      "Signing up is easy! Just visit our website and click on the 'Sign Up' button. Follow the prompts to create your account, and you'll be ready to explore our courses.",
-  },
-  {
     id: 3,
     question: "What makes Trainomart different from other online learning platforms?",
     answer:
