@@ -115,7 +115,9 @@ export default function HeroFour() {
 
               <p className="masthead__text text-17 text-dark-1 mt-25">
                 A Technical Training Solutions Company providing Instructors and 
-                <br className="lg:d-none" />
+                 </p>
+{/*                 <br className="lg:d-none" /> */}
+              <p className="masthead__text text-17 text-dark-1 mt-25">
                 delivering Tech Courses at affordable prices.
               </p>
 
