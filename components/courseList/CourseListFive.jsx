@@ -1,33 +1,20 @@
 "use client";
+
 import {
   categories,
-  coursesData,
-  duration,
-  instractorNames,
   languages,
-  levels,
-  prices,
-  rating,
   sortingOptions,
-} from "@/data/courses";
+} from "@/data/courses"; // Assuming this imports the categories and languages data
 import React, { useState, useEffect } from "react";
-import Star from "../common/Star";
-import PaginationTwo from "../common/PaginationTwo";
-import Image from "next/image";
-import Link from "next/link";
-import API_URL from "@/data/config";
-
+import PaginationTwo from "../common/PaginationTwo"; // Assuming this imports the pagination component
+import API_URL from "@/data/config"; // Assuming this is your API URL
 
 export default function CourseListFive() {
   const [courses, setCourses] = useState([]); // State to store fetched courses
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterCategories, setFilterCategories] = useState([]);
-  const [filterRatingRange, setFilterRatingRange] = useState([]);
-  const [filterInstructors, setFilterInstructors] = useState([]);
   const [filterPrice, setFilterPrice] = useState("All");
-  const [filterLevels, setFilterLevels] = useState([]);
   const [filterLanguage, setFilterLanguage] = useState([]);
-  const [filterDuration, setFilterDuration] = useState([]);
   const [currentSortingOption, setCurrentSortingOption] = useState("Default");
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
@@ -51,88 +38,52 @@ export default function CourseListFive() {
   useEffect(() => {
     const filteredCourses = courses.filter((elm) => {
       const price = parseFloat(elm.price) || 0;
-  
+
       // Price Filter
       if (filterPrice === "Free" && price !== 0) return false;
       if (filterPrice === "Paid" && price === 0) return false;
-  
-      // Instructors Filter
-      if (
-        filterInstructors.length > 0 &&
-        !filterInstructors.includes(elm.authorName)
-      )
-        return false;
-  
+
       // Categories Filter
       if (
         filterCategories.length > 0 &&
         !filterCategories.includes(elm.category)
       )
         return false;
-  
-      // Levels Filter
-      if (filterLevels.length > 0 && !filterLevels.includes(elm.level))
-        return false;
-  
+
       // Language Filter
       if (
         filterLanguage.length > 0 &&
         !filterLanguage.includes(elm.language)
       )
         return false;
-  
-      // Rating Range Filter
-      if (
-        filterRatingRange.length > 0 &&
-        (elm.rating < filterRatingRange[0] ||
-          elm.rating > filterRatingRange[1])
-      )
-        return false;
-  
-      // Duration Filter
-      if (
-        filterDuration.length > 0 &&
-        (elm.duration < filterDuration[0] || elm.duration > filterDuration[1])
-      )
-        return false;
-  
+
       return true;
     });
-  
+
     setFilteredData(filteredCourses);
     setPageNumber(1);
-  }, [
-    courses,
-    filterCategories,
-    filterRatingRange,
-    filterInstructors,
-    filterPrice,
-    filterLevels,
-    filterLanguage,
-    filterDuration,
-  ]);
-  
+  }, [courses, filterCategories, filterPrice, filterLanguage]);
 
   // Sorting logic
-useEffect(() => {
-  if (!filteredData || filteredData.length === 0) return;
+  useEffect(() => {
+    if (!filteredData || filteredData.length === 0) return;
 
-  if (currentSortingOption === "Default") {
-    setSortedFilteredData(filteredData);
-  } else if (currentSortingOption === "Rating (asc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (a.rating || 0) - (b.rating || 0)));
-  } else if (currentSortingOption === "Rating (dsc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (b.rating || 0) - (a.rating || 0)));
-  } else if (currentSortingOption === "Price (asc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(a.discountedPrice || 0) - parseFloat(b.discountedPrice || 0)));
-  } else if (currentSortingOption === "Price (dsc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(b.discountedPrice || 0) - parseFloat(a.discountedPrice || 0)));
-  } else if (currentSortingOption === "Duration (asc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (a.duration || 0) - (b.duration || 0)));
-  } else if (currentSortingOption === "Duration (dsc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (b.duration || 0) - (a.duration || 0)));
-  }
-}, [currentSortingOption, filteredData]);
+    if (currentSortingOption === "Default") {
+      setSortedFilteredData(filteredData);
+    } else if (currentSortingOption === "Rating (asc)") {
+      setSortedFilteredData([...filteredData].sort((a, b) => (a.rating || 0) - (b.rating || 0)));
+    } else if (currentSortingOption === "Rating (dsc)") {
+      setSortedFilteredData([...filteredData].sort((a, b) => (b.rating || 0) - (a.rating || 0)));
+    } else if (currentSortingOption === "Price (asc)") {
+      setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(a.discountedPrice || 0) - parseFloat(b.discountedPrice || 0)));
+    } else if (currentSortingOption === "Price (dsc)") {
+      setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(b.discountedPrice || 0) - parseFloat(a.discountedPrice || 0)));
+    } else if (currentSortingOption === "Duration (asc)") {
+      setSortedFilteredData([...filteredData].sort((a, b) => (a.duration || 0) - (b.duration || 0)));
+    } else if (currentSortingOption === "Duration (dsc)") {
+      setSortedFilteredData([...filteredData].sort((a, b) => (b.duration || 0) - (a.duration || 0)));
+    }
+  }, [currentSortingOption, filteredData]);
 
   const handleFilterCategories = (item) => {
     if (filterCategories.includes(item)) {
@@ -142,28 +93,11 @@ useEffect(() => {
       setFilterCategories((pre) => [...pre, item]);
     }
   };
-  const handleFilterRatingRange = (item) => {
-    setFilterRatingRange(item);
-  };
-  const handleFilterInstructors = (item) => {
-    if (filterInstructors.includes(item)) {
-      const filtered = filterInstructors.filter((elm) => elm !== item);
-      setFilterInstructors([...filtered]);
-    } else {
-      setFilterInstructors((pre) => [...pre, item]);
-    }
-  };
+
   const handleFilterPrice = (item) => {
     setFilterPrice(item);
   };
-  const handleFilterLevels = (item) => {
-    if (filterLevels.includes(item)) {
-      const filtered = filterLevels.filter((elm) => elm !== item);
-      setFilterLevels([...filtered]);
-    } else {
-      setFilterLevels((pre) => [...pre, item]);
-    }
-  };
+
   const handleFilterLanguage = (item) => {
     if (filterLanguage.includes(item)) {
       const filtered = filterLanguage.filter((elm) => elm !== item);
@@ -171,9 +105,6 @@ useEffect(() => {
     } else {
       setFilterLanguage((pre) => [...pre, item]);
     }
-  };
-  const handleFilterDuration = (item) => {
-    setFilterDuration(item);
   };
 
   return (
@@ -188,9 +119,7 @@ useEffect(() => {
                 </div>
 
                 <div>
-                  <p className="page-header__text">
-                    
-                  </p>
+                  <p className="page-header__text"></p>
                 </div>
               </div>
             </div>
@@ -321,241 +250,169 @@ useEffect(() => {
                                 <div className="form-checkbox__icon icon-check"></div>
                               </div>
                             </div>
-
-                            <div className="sidebar-checkbox__title">All</div>
-                            <div className="sidebar-checkbox__count"></div>
+                            <div className="text-15 lh-12">All</div>
                           </div>
-                          {categories.map((item, index) => (
+
+                          {categories.map((elm, i) => (
                             <div
                               className="sidebar-checkbox__item cursor"
-                              key={index}
-                              onClick={() => handleFilterCategories(item.title)}
+                              key={i}
+                              onClick={() => handleFilterCategories(elm)}
                             >
                               <div className="form-checkbox">
                                 <input
                                   type="checkbox"
-                                  checked={filterCategories.includes(item.title)}
+                                  checked={filterCategories.includes(elm)}
                                   readOnly
                                 />
                                 <div className="form-checkbox__mark">
                                   <div className="form-checkbox__icon icon-check"></div>
                                 </div>
                               </div>
-
-                              <div className="sidebar-checkbox__title">
-                                {item.title}
-                              </div>
-                              <div className="sidebar-checkbox__count">
-                                (
-                                {
-                                  courses.filter(
-                                    (itm) => itm.category === item.title
-                                  ).length
-                                }
-                                )
-                              </div>
+                              <div className="text-15 lh-12">{elm}</div>
                             </div>
                           ))}
-                        </div>
-                        <div className="sidebar__more mt-15">
-                          <a
-                            href="#"
-                            className="text-14 fw-500 underline text-purple-1"
-                          >
-                            Show more
-                          </a>
                         </div>
                       </div>
                     </div>
 
-                   
+                    {/* Price Filter */}
+                    <div className="col-xl-3 col-lg-4 col-sm-6">
+                      <div className="sidebar__item">
+                        <h5 className="sidebar__title">Price</h5>
+                        <div className="sidebar-checkbox">
+                          {["All", "Free", "Paid"].map((elm, i) => (
+                            <div
+                              key={i}
+                              className="sidebar-checkbox__item cursor"
+                              onClick={() => handleFilterPrice(elm)}
+                            >
+                              <div className="form-checkbox">
+                                <input
+                                  type="checkbox"
+                                  checked={filterPrice === elm}
+                                  readOnly
+                                />
+                                <div className="form-checkbox__mark">
+                                  <div className="form-checkbox__icon icon-check"></div>
+                                </div>
+                              </div>
+                              <div className="text-15 lh-12">{elm}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Language Filter */}
                     <div className="col-xl-3 col-lg-4 col-sm-6">
                       <div className="sidebar__item">
                         <h5 className="sidebar__title">Language</h5>
                         <div className="sidebar-checkbox">
-                          <div
-                            className="sidebar-checkbox__item cursor"
-                            onClick={() => setFilterLanguage([])}
-                          >
-                            <div className="form-checkbox">
-                              <input
-                                type="checkbox"
-                                checked={filterLanguage.length === 0}
-                                readOnly
-                              />
-                              <div className="form-checkbox__mark">
-                                <div className="form-checkbox__icon icon-check"></div>
-                              </div>
-                            </div>
-
-                            <div className="sidebar-checkbox__title">All</div>
-                            <div className="sidebar-checkbox__count"></div>
-                          </div>
-                          {languages.map((item, index) => (
+                          {languages.map((elm, i) => (
                             <div
+                              key={i}
                               className="sidebar-checkbox__item cursor"
-                              key={index}
-                              onClick={() => handleFilterLanguage(item.title)}
+                              onClick={() => handleFilterLanguage(elm)}
                             >
                               <div className="form-checkbox">
                                 <input
                                   type="checkbox"
-                                  checked={filterLanguage.includes(item.title)}
+                                  checked={filterLanguage.includes(elm)}
                                   readOnly
                                 />
                                 <div className="form-checkbox__mark">
                                   <div className="form-checkbox__icon icon-check"></div>
                                 </div>
                               </div>
-
-                              <div className="sidebar-checkbox__title">
-                                {item.title}
-                              </div>
-                              <div className="sidebar-checkbox__count">
-                                (
-                                {
-                                  courses.filter(
-                                    (itm) => itm.language === item.title
-                                  ).length
-                                }
-                                )
-                              </div>
+                              <div className="text-15 lh-12">{elm}</div>
                             </div>
                           ))}
                         </div>
-                        </div>
-                      
                       </div>
                     </div>
 
+                    {/* Clear Filters Button */}
+                    <div className="col-12">
+                      <button
+                        className="button -simple h-60 px-30 text-purple-1 bg-purple-1-05"
+                        onClick={() => {
+                          setFilterCategories([]);
+                          setFilterPrice("All");
+                          setFilterLanguage([]);
+                        }}
+                      >
+                        Clear Filters
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Courses Listing */}
+          {/* Course List */}
           <div className="row y-gap-30">
-            {sortedFilteredData
-              .slice((pageNumber - 1) * 12, pageNumber * 12)
-              .map((elm, i) => (
-                <div key={i} className="col-lg-4 col-md-6">
-                  <div className="coursesCard -type-1 rounded-8 bg-white shadow-3">
-                    <div className="relative">
-                      <div className="coursesCard__image overflow-hidden rounded-top-8">
-                        <Image
-                          width={510}
-                          height={360}
-                          className="w-1/1"
-                          src={elm.course_image}
-                          alt={elm.course_name}
+            {sortedFilteredData.length === 0 ? (
+              <div className="col-12">
+                <p>No courses found.</p>
+              </div>
+            ) : (
+              sortedFilteredData
+                .slice((pageNumber - 1) * 12, pageNumber * 12)
+                .map((elm, i) => (
+                  <div key={i} className="col-lg-4 col-md-6">
+                    <div className="course-card">
+                      {/* Course Image */}
+                      <div className="course-card__image">
+                        <img
+                          src={elm.image || "/placeholder.png"} // Default placeholder if no image is available
+                          alt={elm.coursename}
+                          width={300}
+                          height={200}
                         />
-                        <div className="coursesCard__image_overlay rounded-top-8"></div>
                       </div>
-                      <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
-                        {elm.popular && (
-                          <>
-                            <div>
-                              <div className="px-15 rounded-200 bg-purple-1">
-                                <span className="text-11 lh-1 uppercase fw-500 text-white">
-                                  Popular
-                                </span>
-                              </div>
-                            </div>
 
-                            <div>
-                              <div className="px-15 rounded-200 bg-green-1">
-                                <span className="text-11 lh-1 uppercase fw-500 text-dark-1">
-                                  Best sellers
-                                </span>
-                              </div>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </div>
+                      {/* Course Information */}
+                      <div className="course-card__info">
+                        <h3 className="course-card__title">{elm.coursename}</h3>
+                        <p className="course-card__category">{elm.category}</p>
+                        <p className="course-card__language">{elm.language}</p>
 
-                    <div className="h-100 pt-20 pb-15 px-30">
+                        {/* Display Price */}
+                        <div className="course-card__price">
+                          {elm.discountedPrice > 0 ? (
+                            <span>
+                              <s className="text-muted">{elm.price} USD</s>{" "}
+                              <strong>{elm.discountedPrice} USD</strong>
+                            </span>
+                          ) : (
+                            <strong>Free</strong>
+                          )}
+                        </div>
 
+                        {/* Display Rating */}
+                        <div className="course-card__rating">
+                          <Star rating={elm.rating || 0} />
+                        </div>
 
-                      <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link className="linkCustom" href={`/courses/${elm.id}`}>
-                          {elm.course_name}
+                        {/* Link to Course Details */}
+                        <Link href={`/course/${elm.course_id}`}>
+                          <a className="btn btn-primary">View Details</a>
                         </Link>
-                      </div>
-
-                      <div className="d-flex x-gap-10 items-center pt-10">
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/1.svg"
-                              alt="Lessons Icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">
-                            {elm.lessons} lesson
-                          </div>
-                        </div>
-
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/2.svg"
-                              alt="Duration Icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">
-
-                          {elm.duration}
-                          </div>
-                        </div>
-
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/3.svg"
-                              alt="Level Icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">{elm.skill_level}</div>
-                        </div>
-                      </div>
-
-                      <div className="coursesCard-footer">
-                        <div className="coursesCard-footer__author">
-
-                        </div>
-
-                        <div className="coursesCard-footer__price">
-
-                          <div className="">{elm.orignal_price}</div>
-                          <div className="">{elm.price}</div>
-
-                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+            )}
           </div>
 
           {/* Pagination */}
-          <div className="row justify-center pt-90 lg:pt-50">
-            <div className="col-auto">
-              <PaginationTwo
-                pageNumber={pageNumber}
-                setPageNumber={setPageNumber}
-                data={sortedFilteredData}
-                pageCapacity={12}
-              />
-            </div>
-          </div>
+          <PaginationTwo
+            currentPage={pageNumber}
+            totalPages={Math.ceil(filteredData.length / 12)}
+            onPageChange={setPageNumber}
+          />
         </div>
       </section>
     </>
