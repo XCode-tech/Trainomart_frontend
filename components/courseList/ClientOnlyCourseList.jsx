@@ -1,23 +1,24 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'; // Correctly use next/navigation hook for client-side usage
 import CourseListFour from '@/components/courseList/CourseListFour';
 
 export default function ClientOnlyCourseList() {
   const [searchTerm, setSearchTerm] = useState('');
-  const searchParams = useSearchParams(); // Use searchParams only on the client
+  const searchParams = useSearchParams(); // This should only be used client-side
 
   useEffect(() => {
     if (searchParams) {
-      const query = searchParams.get('search') || ''; // Get search term from query params
-      setSearchTerm(query); // Set the search term
+      // Safely extract search term from URL query parameters
+      const query = searchParams.get('search') || '';
+      setSearchTerm(query); // Set search term from query params
     }
   }, [searchParams]);
 
   return (
     <div>
-      {/* Pass searchTerm as a prop to CourseListFour */}
+      {/* Pass the search term to the CourseListFour component */}
       <CourseListFour tags={searchTerm} />
     </div>
   );
