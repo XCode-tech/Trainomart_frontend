@@ -1,7 +1,7 @@
 "use client";
 import gsap from "gsap";
 import Image from "next/image";
-import React, { useEffect, useState } from "react"; 
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import API_URL from "@/data/config";
 
@@ -9,44 +9,53 @@ export default function HeroFour() {
   const router = useRouter();
   const [tags, setTags] = useState(""); // State to store the tags input
   const [loading, setLoading] = useState(false); // State to handle loading state
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Handle form submission
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const trimmedTags = tags.trim();
+  //   if (!trimmedTags) {
+  //     alert("Please enter valid tags");
+  //     return;
+  //   }
+  //   fetchCoursesByTags(trimmedTags); // Fetch courses based on tags
+  // };
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    const trimmedTags = tags.trim();
-    if (!trimmedTags) {
-      alert("Please enter valid tags");
-      return;
-    }
-    fetchCoursesByTags(trimmedTags); // Fetch courses based on tags
-  };
-
-  // Function to fetch courses based on tags
-  const fetchCoursesByTags = async (tags) => {
-    setLoading(true); // Set loading state to true
-    try {
-      const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch courses by tags");
-      }
-
-      const data = await response.json();
-      if (Array.isArray(data) && data.length > 0) {
-        // Process or display the courses based on tags here
-        console.log("Courses found:", data);
-        // Redirect to the course list page and pass the courses as query params or use state
-        router.push(`/courses-list/?search=${encodeURIComponent(tags)}`);
-      } else {
-        alert("No courses found for the given tags");
-      }
-    } catch (error) {
-      console.error("Error fetching courses by tags:", error);
-      alert("An error occurred while searching for courses");
-    } finally {
-      setLoading(false); // Reset loading state
+    if (searchTerm.trim()) {
+      // Redirect to search results page with the search query
+      router.push(`/courses/?search=${searchTerm}`);
     }
   };
+
+  // const fetchCoursesByTags = async (tags) => {
+  //   setLoading(true); // Set loading state to true
+  //   try {
+  //     const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fetch courses by tags");
+  //     }
+
+  //     const data = await response.json();
+  //     if (Array.isArray(data) && data.length > 0) {
+  //       // Process or display the courses based on tags here
+  //       console.log("Courses found:", data);
+  //       // Redirect to the course list page and pass the courses as query params or use state
+  //       router.push(`/courses-list/?search=${encodeURIComponent(tags)}`);
+  //     } else {
+  //       alert("No courses found for the given tags");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching courses by tags:", error);
+  //     alert("An error occurred while searching for courses");
+  //   } finally {
+  //     setLoading(false); // Reset loading state
+  //   }
+  // };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -114,16 +123,16 @@ export default function HeroFour() {
               </h1>
 
               <p className="masthead__text text-17 text-dark-1 mt-25">
-                A Technical Training Solutions Company providing Instructors and 
-              
+                A Technical Training Solutions Company providing Instructors and
+
                 <br className="lg:d-none" />
-              
+
                 delivering Tech Courses at affordable prices.
               </p>
 
               <div className="masthead-search mt-30">
                 <div className="masthead-search__form">
-                  <form onSubmit={handleSubmit} className="flex items-center">
+                  {/* <form onSubmit={handleSubmit} className="flex items-center">
                     <input
                       required
                       type="text"
@@ -132,6 +141,29 @@ export default function HeroFour() {
                       onChange={(e) => setTags(e.target.value)} // Update state on input change
                       className="input-field"
                       aria-label="Tags search input"
+                    />
+
+                    <button
+                      className="button -purple-1 text-white ml-4"
+                      type="submit" // Submit the form
+                      disabled={loading} // Disable the button if loading
+                      aria-label="Search for course"
+                    >
+                      {loading ? (
+                        <i className="icon icon-loading"></i> // Loading icon
+                      ) : (
+                        <i className="icon icon-search"></i>
+                      )}
+                    </button>
+                  </form> */}
+
+                  <form onSubmit={handleSubmit} className="flex items-center">
+                    <input
+                      type="text"
+                      placeholder="Search courses by tags"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="border p-2 rounded"
                     />
 
                     <button
@@ -177,7 +209,7 @@ export default function HeroFour() {
                   src="/assets/img/home-4/masthead/G-1.png"
                   alt="Hero Image"
                 />
-                
+
               </div>
             </div>
           </div>
