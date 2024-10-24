@@ -6,45 +6,30 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour({ tags = "" }) { 
+export default function CourseListFour({ tags = "" }) {  // Default to an empty string if tags are not provided
   const [coursesData, setCoursesData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
-  // Fetch courses when the `tags` prop changes
   useEffect(() => {
-    const fetchCourses = async () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        console.log('Search tags:', tags);
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch courses');
+    // Fetch courses only if tags are not empty
+    if (tags) {
+      const fetchCourses = async () => {
+        try {
+          console.log('Search tags:', tags);
+          const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+          const data = await response.json();
+          setCoursesData(data);  // Save fetched course data
+        } catch (error) {
+          console.error("Error fetching course data:", error);
         }
-        const data = await response.json();
-        setCoursesData(data);  // Save the fetched course data
-      } catch (error) {
-        console.error("Error fetching course data:", error);
-        setError("Error fetching course data");
-      } finally {
-        setLoading(false);
-      }
-    };
+      };
 
-    if (tags) {  // Only fetch courses if there is a search term
       fetchCourses();
     }
-  }, [tags]);  // Dependency on `tags` prop, so it fetches again when `tags` changes
+  }, [tags]);  // Fetch only when tags changes
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
+  if (!tags) {
+    return <p>Please enter a search term to find courses.</p>;  // Handle case when no search term is provided
   }
 
   return (
@@ -75,75 +60,65 @@ export default function CourseListFour({ tags = "" }) {
           </div>
 
           <div className="row y-gap-30">
-            {coursesData.length === 0 ? (
-              <div>No courses found for your search term.</div>
-            ) : (
-              coursesData
-                .slice((pageNumber - 1) * 12, pageNumber * 12) // Paginate the data (12 items per page)
-                .map((course, i) => (
-                  <div key={i} className="col-xl-3 col-lg-4 col-md-6">
-                    <div className="coursesCard -type-1">
-                      <div className="relative">
-                        <div className="coursesCard__image overflow-hidden rounded-8">
-                          <Image
-                            width={510}
-                            height={360}
-                            className="w-1/1"
-                            src={course.course_image || '/default_image.jpg'} // Handle missing image case
-                            alt={course.course_name}
-                          />
-                        </div>
+            {coursesData
+              .slice((pageNumber - 1) * 12, pageNumber * 12)  // Paginate the data (12 items per page)
+              .map((course, i) => (
+                <div key={i} className="col-xl-3 col-lg-4 col-md-6">
+                  <div className="coursesCard -type-1">
+                    <div className="relative">
+                      <div className="coursesCard__image overflow-hidden rounded-8">
+                        <Image
+                          width={510}
+                          height={360}
+                          className="w-1/1"
+                          src={course.course_image}
+                          alt={course.course_name}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="h-100 pt-15">
+                      <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
+                        <Link href={`/courses/${course.id}`}>
+                          {course.course_name}
+                        </Link>
                       </div>
 
-                      <div className="h-100 pt-15">
-                        <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                          <Link href={`/courses/${course.id}`}>
-                            {course.course_name}
-                          </Link>
+                      <div className="d-flex x-gap-10 items-center pt-10">
+                        <div className="text-14 lh-1">
+                          {course.lessons} lessons
                         </div>
+                        <div className="text-14 lh-1">{course.duration}</div>
+                        <div className="text-14 lh-1">{course.skill_level}</div>
+                      </div>
 
-                        <div className="d-flex x-gap-10 items-center pt-10">
-                          <div className="text-14 lh-1">
-                            {course.lessons || 'N/A'} lessons
-                          </div>
-                          <div className="text-14 lh-1">
-                            {course.duration || 'N/A'}
-                          </div>
-                          <div className="text-14 lh-1">
-                            {course.skill_level || 'N/A'}
-                          </div>
-                        </div>
-
-                        <div className="coursesCard-footer">
-                          <div className="coursesCard-footer__price">
-                            {course.price ? (
-                              <>
-                                <div className="line-through">${course.original_price}</div>
-                                <div>${course.price}</div>
-                              </>
-                            ) : (
-                              <div>Free</div>
-                            )}
-                          </div>
+                      <div className="coursesCard-footer">
+                        <div className="coursesCard-footer__price">
+                          {course.price ? (
+                            <>
+                              <div>${course.original_price}</div>
+                              <div>${course.price}</div>
+                            </>
+                          ) : (
+                            <div>Free</div>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
-                ))
-            )}
+                </div>
+              ))}
           </div>
 
-          {coursesData.length > 12 && (
-            <div className="row justify-center pt-90 lg:pt-50">
-              <div className="col-auto">
-                <PaginationTwo
-                  pageNumber={pageNumber}
-                  setPageNumber={setPageNumber}
-                  data={coursesData}
-                />
-              </div>
+          <div className="row justify-center pt-90 lg:pt-50">
+            <div className="col-auto">
+              <PaginationTwo
+                pageNumber={pageNumber}
+                setPageNumber={setPageNumber}
+                data={coursesData}
+              />
             </div>
-          )}
+          </div>
         </div>
       </section>
     </>
