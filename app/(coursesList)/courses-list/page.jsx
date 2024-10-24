@@ -1,28 +1,27 @@
 "use client";
 
-import React, { useEffect, useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';  // Correct hook for extracting search params
+import React, { Suspense, useState } from 'react';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
-export default function Page() {
+// Define a client-side only component for search params
+function ClientSideSearch() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Wrap in Suspense
-  function SearchComponent() {
-    const searchParams = useSearchParams();  // Use searchParams inside this component
-    useEffect(() => {
-      const searchQuery = searchParams.get('search') || '';  // Get 'search' query parameter from URL
-      setSearchTerm(searchQuery);  // Update the state with the search query
-    }, [searchParams]);
+  const SearchComponent = React.lazy(() => import('@/components/SearchComponent')); // Lazy load the component
 
-    console.log("searchTerm :", searchTerm)
-    return null;  // No need to return anything, just set the searchTerm state
-  }
+  return (
+    <Suspense fallback={<div>Loading search...</div>}>
+      <SearchComponent setSearchTerm={setSearchTerm} /> {/* Pass the setter */}
+      <CourseListFour tags={searchTerm} /> {/* Pass searchTerm */}
+    </Suspense>
+  );
+}
 
+export default function Page() {
   return (
     <div className="main-content">
       <Preloader />
@@ -30,14 +29,8 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Ensure searchTerm is passed to CourseListFour */}
-        <Suspense fallback={<div>Loading search...</div>}>
-          <SearchComponent />  {/* Suspense wrapping the search logic */}
-        </Suspense>
-
-        <Suspense fallback={<div>Loading courses...</div>}>
-          <CourseListFour tags={searchTerm} />  {/* Pass searchTerm to CourseListFour */}
-        </Suspense>
+        {/* Render client-side search logic and course list in a Suspense boundary */}
+        <ClientSideSearch />
 
         <FooterFour />
       </div>
