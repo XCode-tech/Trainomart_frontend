@@ -1041,13 +1041,7 @@ export const rating = [
 ];
 
 export const categories = [
-  { id: 1, title: "Art",  },
-  { id: 2, title: "Animation",  },
-  { id: 3, title: "Design",  },
-  { id: 4, title: "Photography",  },
-  { id: 5, title: "Programming",  },
 
-  { id: 6, title: "Writing", },
 ];
 
 export const duration = [
@@ -1061,6 +1055,5 @@ export const sortingOptions = [
     'Default',
     'Price (asc)',
     'Price (dsc)',
-    'Duration (asc)',
-    'Duration (dsc)',
+
 ]
