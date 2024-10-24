@@ -6,30 +6,57 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour({ tags = "" }) {  // Default to an empty string if tags are not provided
+export default function CourseListFour({ tags = "" }) {
   const [coursesData, setCoursesData] = useState([]);
+  const [loading, setLoading] = useState(false); // Loading state
+  const [error, setError] = useState(''); // Error handling
   const [pageNumber, setPageNumber] = useState(1);
 
+  // Fetch courses when the `tags` prop changes
   useEffect(() => {
-    // Fetch courses only if tags are not empty
-    if (tags) {
-      const fetchCourses = async () => {
-        try {
-          console.log('Search tags:', tags);
-          const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
-          const data = await response.json();
-          setCoursesData(data);  // Save fetched course data
-        } catch (error) {
-          console.error("Error fetching course data:", error);
+    const fetchCourses = async () => {
+      if (!tags) {
+        setCoursesData([]);  // Clear data when no tags are provided
+        return;
+      }
+
+      setLoading(true);
+      setError('');
+
+      try {
+        console.log("Searching for courses with tags:", tags);
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+        
+        if (!response.ok) {
+          throw new Error(`Error: ${response.status}`);
         }
-      };
 
-      fetchCourses();
-    }
-  }, [tags]);  // Fetch only when tags changes
+        const data = await response.json();
+        setCoursesData(data);  // Save the fetched course data
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+        setError("Error fetching courses. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchCourses();
+  }, [tags]);
+
+  // If no search term is provided
   if (!tags) {
-    return <p>Please enter a search term to find courses.</p>;  // Handle case when no search term is provided
+    return <div className="container pt-4">Please enter a search term to find courses.</div>;
+  }
+
+  // If loading courses
+  if (loading) {
+    return <div className="container pt-4">Loading courses...</div>;
+  }
+
+  // If an error occurs
+  if (error) {
+    return <div className="container pt-4 text-red-500">{error}</div>;
   }
 
   return (
@@ -61,7 +88,7 @@ export default function CourseListFour({ tags = "" }) {  // Default to an empty 
 
           <div className="row y-gap-30">
             {coursesData
-              .slice((pageNumber - 1) * 12, pageNumber * 12)  // Paginate the data (12 items per page)
+              .slice((pageNumber - 1) * 12, pageNumber * 12) // Paginate the data (12 items per page)
               .map((course, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="coursesCard -type-1">
