@@ -1,25 +1,13 @@
 "use client";
 
-import React, { Suspense, useState } from 'react';
+import React, { Suspense } from 'react';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
-import CourseListFour from '@/components/courseList/CourseListFour';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
-// Define a client-side only component for search params
-function ClientSideSearch() {
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const SearchComponent = React.lazy(() => import('@/components/courseList/SearchComponent')); // Lazy load the component
-
-  return (
-    <Suspense fallback={<div>Loading search...</div>}>
-      <SearchComponent setSearchTerm={setSearchTerm} /> {/* Pass the setter */}
-      <CourseListFour tags={searchTerm} /> {/* Pass searchTerm */}
-    </Suspense>
-  );
-}
+// Dynamically load CourseListFour with Suspense to avoid static pre-rendering issues
+const ClientCourseList = React.lazy(() => import('@/components/courseList/ClientCourseList'));
 
 export default function Page() {
   return (
@@ -29,8 +17,10 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Render client-side search logic and course list in a Suspense boundary */}
-        <ClientSideSearch />
+        {/* Wrap the client-only component inside a Suspense boundary */}
+        <Suspense fallback={<div>Loading courses...</div>}>
+          <ClientCourseList />
+        </Suspense>
 
         <FooterFour />
       </div>
