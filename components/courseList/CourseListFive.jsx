@@ -6,6 +6,7 @@ import {
   languages,
   prices,
   rating,
+  sortingOptions,
 } from "@/data/courses";
 import React, { useState, useEffect } from "react";
 import Star from "../common/Star";
@@ -14,12 +15,10 @@ import Image from "next/image";
 import Link from "next/link";
 import API_URL from "@/data/config";
 
-
 export default function CourseListFive() {
   const [courses, setCourses] = useState([]); // State to store fetched courses
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterCategories, setFilterCategories] = useState([]);
-
   const [filterPrice, setFilterPrice] = useState("All");
   const [filterLevels, setFilterLevels] = useState([]);
   const [filterLanguage, setFilterLanguage] = useState([]);
@@ -46,56 +45,77 @@ export default function CourseListFive() {
   useEffect(() => {
     const filteredCourses = courses.filter((elm) => {
       const price = parseFloat(elm.price) || 0;
-  
+
       // Price Filter
       if (filterPrice === "Free" && price !== 0) return false;
       if (filterPrice === "Paid" && price === 0) return false;
-  
 
-  
       // Categories Filter
       if (
         filterCategories.length > 0 &&
         !filterCategories.includes(elm.category)
       )
         return false;
-  
 
       // Language Filter
-      if (
-        filterLanguage.length > 0 &&
-        !filterLanguage.includes(elm.language)
-      )
+      if (filterLanguage.length > 0 && !filterLanguage.includes(elm.language))
         return false;
+
       return true;
     });
-  
+
     setFilteredData(filteredCourses);
     setPageNumber(1);
-  }, [
-    courses,
-    filterCategories,
-    filterPrice,
-    filterLanguage,
-  ]);
-  
+  }, [courses, filterCategories, filterPrice, filterLanguage]);
 
   // Sorting logic
-useEffect(() => {
-  if (!filteredData || filteredData.length === 0) return;
+  useEffect(() => {
+    if (!filteredData || filteredData.length === 0) return;
 
-  if (currentSortingOption === "Default") {
-    setSortedFilteredData(filteredData);
-  } else if (currentSortingOption === "Rating (asc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (a.rating || 0) - (b.rating || 0)));
-  } else if (currentSortingOption === "Rating (dsc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (b.rating || 0) - (a.rating || 0)));
-  } else if (currentSortingOption === "Price (asc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(a.discountedPrice || 0) - parseFloat(b.discountedPrice || 0)));
-  } else if (currentSortingOption === "Price (dsc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(b.discountedPrice || 0) - parseFloat(a.discountedPrice || 0)));
-  }
-}, [currentSortingOption, filteredData]);
+    if (currentSortingOption === "Default") {
+      setSortedFilteredData(filteredData);
+    } else if (currentSortingOption === "Rating (asc)") {
+      setSortedFilteredData(
+        [...filteredData].sort(
+          (a, b) => (a.rating || 0) - (b.rating || 0)
+        )
+      );
+    } else if (currentSortingOption === "Rating (dsc)") {
+      setSortedFilteredData(
+        [...filteredData].sort(
+          (a, b) => (b.rating || 0) - (a.rating || 0)
+        )
+      );
+    } else if (currentSortingOption === "Price (asc)") {
+      setSortedFilteredData(
+        [...filteredData].sort(
+          (a, b) =>
+            parseFloat(a.discountedPrice || 0) -
+            parseFloat(b.discountedPrice || 0)
+        )
+      );
+    } else if (currentSortingOption === "Price (dsc)") {
+      setSortedFilteredData(
+        [...filteredData].sort(
+          (a, b) =>
+            parseFloat(b.discountedPrice || 0) -
+            parseFloat(a.discountedPrice || 0)
+        )
+      );
+    } else if (currentSortingOption === "Duration (asc)") {
+      setSortedFilteredData(
+        [...filteredData].sort(
+          (a, b) => (a.duration || 0) - (b.duration || 0)
+        )
+      );
+    } else if (currentSortingOption === "Duration (dsc)") {
+      setSortedFilteredData(
+        [...filteredData].sort(
+          (a, b) => (b.duration || 0) - (a.duration || 0)
+        )
+      );
+    }
+  }, [currentSortingOption, filteredData]);
 
   const handleFilterCategories = (item) => {
     if (filterCategories.includes(item)) {
@@ -119,8 +139,6 @@ useEffect(() => {
     }
   };
 
-  
-
   return (
     <>
       <section className="page-header -type-1">
@@ -131,12 +149,6 @@ useEffect(() => {
                 <div>
                   <h1 className="page-header__title">Our Course Portfolio</h1>
                 </div>
-
-                <div>
-                  <p className="page-header__text">
-                    
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -146,9 +158,7 @@ useEffect(() => {
       <section className="layout-pt-md layout-pb-lg">
         <div className="container">
           <div className="accordion js-accordion">
-            <div
-              className={`accordion__item ${filterOpen ? "is-active" : ""} `}
-            >
+            <div className={`accordion__item ${filterOpen ? "is-active" : ""} `}>
               <div className="row y-gap-20 items-center justify-between pb-30">
                 <div className="col-auto">
                   <div className="text-14 lh-12">
@@ -167,7 +177,6 @@ useEffect(() => {
                         <div className="text-14 lh-12 fw-500 text-dark-1 mr-20">
                           Sort by:
                         </div>
-
                         <div
                           id="dd51button"
                           className="dropdown js-dropdown js-category-active"
@@ -182,8 +191,6 @@ useEffect(() => {
                                 .getElementById("dd51content")
                                 .classList.toggle("-is-el-visible");
                             }}
-                            data-el-toggle=".js-category-toggle"
-                            data-el-toggle-active=".js-category-active"
                           >
                             <span className="js-dropdown-title">
                               {currentSortingOption}
@@ -260,247 +267,183 @@ useEffect(() => {
                               <input
                                 type="checkbox"
                                 checked={filterCategories.length === 0}
-                                readOnly
                               />
                               <div className="form-checkbox__mark">
                                 <div className="form-checkbox__icon icon-check"></div>
                               </div>
                             </div>
-
-                            <div className="sidebar-checkbox__title">All</div>
-                            <div className="sidebar-checkbox__count"></div>
+                            <div className="text-15 lh-11 ml-10">All</div>
                           </div>
-                          {categories.map((item, index) => (
+                          {categories.map((item, i) => (
                             <div
+                              key={i}
                               className="sidebar-checkbox__item cursor"
-                              key={index}
-                              onClick={() => handleFilterCategories(item.title)}
+                              onClick={() => handleFilterCategories(item.label)}
                             >
                               <div className="form-checkbox">
                                 <input
                                   type="checkbox"
-                                  checked={filterCategories.includes(item.title)}
-                                  readOnly
+                                  checked={filterCategories.includes(
+                                    item.label
+                                  )}
                                 />
                                 <div className="form-checkbox__mark">
                                   <div className="form-checkbox__icon icon-check"></div>
                                 </div>
                               </div>
-
-                              <div className="sidebar-checkbox__title">
-                                {item.title}
+                              <div className="text-15 lh-11 ml-10">
+                                {item.label}
                               </div>
-                              <div className="sidebar-checkbox__count">
-                                (
-                                {
-                                  courses.filter(
-                                    (itm) => itm.category === item.title
-                                  ).length
-                                }
-                                )
+                              <div className="text-15 lh-11 ml-10 text-light-1">
+                                ({item.count})
                               </div>
                             </div>
                           ))}
                         </div>
-                        <div className="sidebar__more mt-15">
-                          <a
-                            href="#"
-                            className="text-14 fw-500 underline text-purple-1"
-                          >
-                            Show more
-                          </a>
+                      </div>
+                    </div>
+
+                    {/* Price Filter */}
+                    <div className="col-xl-3 col-lg-4 col-sm-6">
+                      <div className="sidebar__item">
+                        <h5 className="sidebar__title">Price</h5>
+                        <div className="sidebar-checkbox">
+                          {prices.map((item, i) => (
+                            <div
+                              key={i}
+                              className="sidebar-checkbox__item cursor"
+                              onClick={() => handleFilterPrice(item.label)}
+                            >
+                              <div className="form-checkbox">
+                                <input
+                                  type="checkbox"
+                                  checked={filterPrice === item.label}
+                                />
+                                <div className="form-checkbox__mark">
+                                  <div className="form-checkbox__icon icon-check"></div>
+                                </div>
+                              </div>
+                              <div className="text-15 lh-11 ml-10">
+                                {item.label}
+                              </div>
+                              <div className="text-15 lh-11 ml-10 text-light-1">
+                                ({item.count})
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
 
-                   
                     {/* Language Filter */}
                     <div className="col-xl-3 col-lg-4 col-sm-6">
                       <div className="sidebar__item">
                         <h5 className="sidebar__title">Language</h5>
                         <div className="sidebar-checkbox">
-                          <div
-                            className="sidebar-checkbox__item cursor"
-                            onClick={() => setFilterLanguage([])}
-                          >
-                            <div className="form-checkbox">
-                              <input
-                                type="checkbox"
-                                checked={filterLanguage.length === 0}
-                                readOnly
-                              />
-                              <div className="form-checkbox__mark">
-                                <div className="form-checkbox__icon icon-check"></div>
-                              </div>
-                            </div>
-
-                            <div className="sidebar-checkbox__title">All</div>
-                            <div className="sidebar-checkbox__count"></div>
-                          </div>
-                          {languages.map((item, index) => (
+                          {languages.map((item, i) => (
                             <div
+                              key={i}
                               className="sidebar-checkbox__item cursor"
-                              key={index}
-                              onClick={() => handleFilterLanguage(item.title)}
+                              onClick={() => handleFilterLanguage(item.label)}
                             >
                               <div className="form-checkbox">
                                 <input
                                   type="checkbox"
-                                  checked={filterLanguage.includes(item.title)}
-                                  readOnly
+                                  checked={filterLanguage.includes(item.label)}
                                 />
                                 <div className="form-checkbox__mark">
                                   <div className="form-checkbox__icon icon-check"></div>
                                 </div>
                               </div>
-
-                              <div className="sidebar-checkbox__title">
-                                {item.title}
+                              <div className="text-15 lh-11 ml-10">
+                                {item.label}
                               </div>
-                              <div className="sidebar-checkbox__count">
-                                (
-                                {
-                                  courses.filter(
-                                    (itm) => itm.language === item.title
-                                  ).length
-                                }
-                                )
+                              <div className="text-15 lh-11 ml-10 text-light-1">
+                                ({item.count})
                               </div>
                             </div>
                           ))}
                         </div>
-                        </div>
-                      
                       </div>
                     </div>
 
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Courses Listing */}
-          <div className="row y-gap-30">
-            {sortedFilteredData
-              .slice((pageNumber - 1) * 12, pageNumber * 12)
-              .map((elm, i) => (
-                <div key={i} className="col-lg-4 col-md-6">
-                  <div className="coursesCard -type-1 rounded-8 bg-white shadow-3">
-                    <div className="relative">
-                      <div className="coursesCard__image overflow-hidden rounded-top-8">
-                        <Image
-                          width={510}
-                          height={360}
-                          className="w-1/1"
-                          src={elm.course_image}
-                          alt={elm.course_name}
-                        />
-                        <div className="coursesCard__image_overlay rounded-top-8"></div>
-                      </div>
-                      <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
-                        {elm.popular && (
-                          <>
-                            <div>
-                              <div className="px-15 rounded-200 bg-purple-1">
-                                <span className="text-11 lh-1 uppercase fw-500 text-white">
-                                  Popular
-                                </span>
+                    {/* Rating Filter */}
+                    <div className="col-xl-3 col-lg-4 col-sm-6">
+                      <div className="sidebar__item">
+                        <h5 className="sidebar__title">Ratings</h5>
+                        <div className="sidebar-checkbox">
+                          {rating.map((item, i) => (
+                            <div key={i} className="sidebar-checkbox__item">
+                              <div className="form-checkbox">
+                                <input type="checkbox" />
+                                <div className="form-checkbox__mark">
+                                  <div className="form-checkbox__icon icon-check"></div>
+                                </div>
+                              </div>
+                              <div className="text-15 lh-11 ml-10">
+                                {item.label}
+                              </div>
+                              <div className="text-15 lh-11 ml-10 text-light-1">
+                                ({item.count})
                               </div>
                             </div>
-
-                            <div>
-                              <div className="px-15 rounded-200 bg-green-1">
-                                <span className="text-11 lh-1 uppercase fw-500 text-dark-1">
-                                  Best sellers
-                                </span>
-                              </div>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="h-100 pt-20 pb-15 px-30">
-
-
-                      <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link className="linkCustom" href={`/courses/${elm.id}`}>
-                          {elm.course_name}
-                        </Link>
-                      </div>
-
-                      <div className="d-flex x-gap-10 items-center pt-10">
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/1.svg"
-                              alt="Lessons Icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">
-                            {elm.lessons} lesson
-                          </div>
-                        </div>
-
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/2.svg"
-                              alt="Duration Icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">
-
-                          {elm.duration}
-                          </div>
-                        </div>
-
-                        <div className="d-flex items-center">
-                          <div className="mr-8">
-                            <Image
-                              width={16}
-                              height={17}
-                              src="/assets/img/coursesCards/icons/3.svg"
-                              alt="Level Icon"
-                            />
-                          </div>
-                          <div className="text-14 lh-1">{elm.skill_level}</div>
-                        </div>
-                      </div>
-
-                      <div className="coursesCard-footer">
-                        <div className="coursesCard-footer__author">
-
-                        </div>
-
-                        <div className="coursesCard-footer__price">
-
-                          <div className="">{elm.orignal_price}</div>
-                          <div className="">{elm.price}</div>
-
+                          ))}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Course Listing */}
+          <div className="row y-gap-30 pt-20">
+            {sortedFilteredData.slice((pageNumber - 1) * 8, pageNumber * 8)
+              .map((course, index) => (
+                <div key={index} className="col-xl-3 col-lg-4 col-md-6">
+                  <div className="course-card">
+                    <Link href={`/courses/${course.id}`}>
+                      <a>
+                        <Image
+                          src={course.image}
+                          alt={course.name}
+                          width={400}
+                          height={200}
+                          className="course-card__image"
+                        />
+                      </a>
+                    </Link>
+                    <div className="course-card__content">
+                      <Link href={`/courses/${course.id}`}>
+                        <a className="course-card__title">{course.name}</a>
+                      </Link>
+                      <div className="course-card__details">
+                        <span className="course-card__price">
+                          {course.price === 0 ? "Free" : `$${course.price}`}
+                        </span>
+                        <span className="course-card__rating">
+                          <Star rating={course.rating} />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))}
+
+            {/* No courses found */}
+            {sortedFilteredData.length === 0 && (
+              <p>No courses found matching the selected filters.</p>
+            )}
           </div>
 
           {/* Pagination */}
-          <div className="row justify-center pt-90 lg:pt-50">
-            <div className="col-auto">
-              <PaginationTwo
-                pageNumber={pageNumber}
-                setPageNumber={setPageNumber}
-                data={sortedFilteredData}
-                pageCapacity={12}
-              />
-            </div>
-          </div>
+          <PaginationTwo
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+            totalCourses={sortedFilteredData.length}
+            coursesPerPage={8}
+          />
         </div>
       </section>
     </>
