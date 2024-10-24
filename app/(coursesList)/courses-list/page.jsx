@@ -28,7 +28,11 @@ export default function Page() {
         <PageLinks />
 
         {/* Ensure searchTerm is passed even if it's an empty string */}
+{/*         <CourseListFour/> */}
+
+      <Suspense fallback={<div>Loading courses...</div>}>
         <CourseListFour tags={searchTerm} />
+      </Suspense>
 
         <FooterFour />
       </div>
