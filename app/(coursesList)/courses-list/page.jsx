@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, Suspense } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useSearchParams } from 'next/navigation'; // Correct hook for extracting search params
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
@@ -9,16 +9,13 @@ import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page() {
-  const router = useRouter();
+  const searchParams = useSearchParams();  // Using useSearchParams to get the query parameter
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Ensure the router is ready before trying to access the query
   useEffect(() => {
-    if (router.isReady) {
-      const searchQuery = router.query.searchTerm || ''; // If searchTerm is undefined, set it to an empty string
-      setSearchTerm(searchQuery);
-    }
-  }, [router.isReady, router.query]);
+    const searchQuery = searchParams.get('search') || '';  // Get 'search' query parameter from URL
+    setSearchTerm(searchQuery);  // Update the state with the search query
+  }, [searchParams]);
 
   return (
     <div className="main-content">
@@ -27,12 +24,10 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Ensure searchTerm is passed even if it's an empty string */}
-{/*         <CourseListFour/> */}
-
-      <Suspense fallback={<div>Loading courses...</div>}>
-        <CourseListFour tags={searchTerm} />
-      </Suspense>
+        {/* Ensure searchTerm is passed to CourseListFour */}
+        <Suspense fallback={<div>Loading courses...</div>}>
+          <CourseListFour tags={searchTerm} />
+        </Suspense>
 
         <FooterFour />
       </div>
