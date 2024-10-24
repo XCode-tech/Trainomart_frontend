@@ -842,7 +842,7 @@ useEffect(() => {
                               <div>Free</div>
                             </>
                           )} */}
-                          <div className="">{elm.price}</div>
+                          <div className="">{elm.orignal_price}</div>
                           <div className="">{elm.price}</div>
 
                         </div>
