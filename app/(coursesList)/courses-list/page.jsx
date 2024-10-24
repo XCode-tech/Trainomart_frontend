@@ -6,8 +6,8 @@ import Preloader from '@/components/common/Preloader';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
-// Dynamically import the client-side search component
-const ClientCourseList = React.lazy(() => import('@/components/courseList/ClientCourseList'));
+// Dynamically import the client-only component
+const ClientOnlyCourseList = React.lazy(() => import('@/components/courseList/ClientOnlyCourseList'));
 
 export default function Page() {
   return (
@@ -17,9 +17,9 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Wrap client-only component inside Suspense */}
+        {/* Wrap the dynamically loaded component in a Suspense boundary */}
         <Suspense fallback={<div>Loading courses...</div>}>
-          <ClientCourseList />
+          <ClientOnlyCourseList />
         </Suspense>
 
         <FooterFour />
