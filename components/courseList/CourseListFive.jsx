@@ -816,7 +816,7 @@ useEffect(() => {
                             />
                           </div>
                           <div className="text-14 lh-1">
-                            {elm.lessonCount} lesson
+                            {elm.lesson} lesson
                           </div>
                         </div>
 
