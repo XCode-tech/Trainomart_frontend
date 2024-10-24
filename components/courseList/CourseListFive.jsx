@@ -6,7 +6,7 @@ import {
   languages,
   prices,
   rating,
-  sortingOptions,
+  ,
 } from "@/data/courses";
 import React, { useState, useEffect } from "react";
 import Star from "../common/Star";
