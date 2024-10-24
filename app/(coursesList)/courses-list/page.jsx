@@ -12,13 +12,13 @@ export default function Page() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Wait for the router to be ready before accessing the query params
+  // Ensure the router is ready before trying to access the query
   useEffect(() => {
-    if (router.isReady && router.query.searchTerm) {
-      // Set searchTerm from query if available
-      setSearchTerm(router.query.searchTerm);
+    if (router.isReady) {
+      const searchQuery = router.query.searchTerm || ''; // If searchTerm is undefined, set it to an empty string
+      setSearchTerm(searchQuery);
     }
-  }, [router.isReady, router.query.searchTerm]);
+  }, [router.isReady, router.query]);
 
   return (
     <div className="main-content">
@@ -27,8 +27,8 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Ensure searchTerm is passed even if empty */}
-        <CourseListFour tags={searchTerm || ''} />
+        {/* Ensure searchTerm is passed even if it's an empty string */}
+        <CourseListFour tags={searchTerm} />
 
         <FooterFour />
       </div>
