@@ -11,7 +11,7 @@ import HeaderFour from '@/components/layout/headers/HeaderFour';
 function ClientSideSearch() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const SearchComponent = React.lazy(() => import('@/components/SearchComponent')); // Lazy load the component
+  const SearchComponent = React.lazy(() => import('@/components/courseList/SearchComponent')); // Lazy load the component
 
   return (
     <Suspense fallback={<div>Loading search...</div>}>
