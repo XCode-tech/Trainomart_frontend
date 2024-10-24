@@ -95,10 +95,6 @@ useEffect(() => {
     setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(a.discountedPrice || 0) - parseFloat(b.discountedPrice || 0)));
   } else if (currentSortingOption === "Price (dsc)") {
     setSortedFilteredData([...filteredData].sort((a, b) => parseFloat(b.discountedPrice || 0) - parseFloat(a.discountedPrice || 0)));
-  } else if (currentSortingOption === "Duration (asc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (a.duration || 0) - (b.duration || 0)));
-  } else if (currentSortingOption === "Duration (dsc)") {
-    setSortedFilteredData([...filteredData].sort((a, b) => (b.duration || 0) - (a.duration || 0)));
   }
 }, [currentSortingOption, filteredData]);
 
