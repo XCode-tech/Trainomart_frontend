@@ -7,7 +7,7 @@ import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 // Dynamically import the client-side search component
-const ClientCourseList = React.lazy(() => import('./ClientCourseList'));
+const ClientCourseList = React.lazy(() => import('@/components/courseList/ClientCourseList'));
 
 export default function Page() {
   return (
