@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter } from 'next/navigation'; // Import useRouter
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
