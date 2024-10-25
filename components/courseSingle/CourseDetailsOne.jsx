@@ -59,10 +59,8 @@ export default function CourseDetailsOne({ id }) {
       <Head>
         <title>{pageItem.meta_title || "Default Course Title"}</title>
         <meta name="description" content={pageItem.meta_description || "Default Description"} />
-        <meta name="keywords" content={pageItem.meta_keywords || "default, keywords"} />
         <meta property="og:title" content={pageItem.meta_title || "Default OG Title"} />
         <meta property="og:description" content={pageItem.meta_description || "Default OG Description"} />
-        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
       </Head>
       <div>
         <h1>{pageItem.course_name || "Untitled Course"}</h1>
