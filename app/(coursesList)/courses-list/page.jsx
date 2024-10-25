@@ -22,6 +22,8 @@ export default function Page() {
     }
   }, [router.isReady, router.query]);
 
+
+  console.log("searchTerm", searchTerm)
   return (
     <div className="main-content">
       <Preloader />
