@@ -10,39 +10,40 @@ import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page({ params }) {
-  // Metadata state
-  const [metadata, setMetadata] = useState({
-    title: 'Loading...',
-    description: 'Loading course description...',
-  });
+  const [metadata, setMetadata] = useState({ title: 'Loading...', description: 'Loading course description...' });
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Fetch metadata from backend
   useEffect(() => {
     const fetchMetadata = async () => {
+      setIsLoading(true);
       try {
         const res = await fetch(`https://test.trainomart.com/api/courses/${params.id}/`);
-
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
-        }
-
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        
         const data = await res.json();
-
-        // Set the fetched metadata
-        const newMetadata = {
+        setMetadata({
           title: data.meta_title || 'Default Course Title',
           description: data.meta_description || 'Default Course Description',
-        };
-
-        console.log('Setting Metadata:', newMetadata);
-        setMetadata(newMetadata);
+        });
       } catch (error) {
         console.error('Error fetching metadata:', error);
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchMetadata();
   }, [params.id]);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p className="text-red-500">Error: {error}</p>;
+
+
+  // Log the meta title and description to the console
+  console.log("Meta Title From page.jsx:", pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`);
+  console.log("Meta Description From page.jsx:", pageItem.meta_description || pageItem.description);
 
   return (
     <>
@@ -66,4 +67,3 @@ export default function Page({ params }) {
     </>
   );
 }
-
