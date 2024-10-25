@@ -13,19 +13,24 @@ function CoursesContent() {
   const [searchTerm, setsearchTerm] = useState('');
 
   useEffect(() => {
-    const searchQuery = searchParams?.get('searchTerm'); 
+    // Log the entire searchParams object to inspect its contents
+    console.log("searchParams object:", searchParams?.toString());
+
+    const searchQuery = searchParams?.get('searchTerm');
 
     if (searchQuery) {
       setsearchTerm(searchQuery);
+    } else {
+      console.log("No search term found in query.");
     }
   }, [searchParams]);
 
-  console.log("Current searchTerm:", searchTerm); // Log after updating state if it exists
+  console.log("Current searchTerm:", searchTerm); // Log after setting searchTerm
 
   return (
     <div className="content-wrapper js-content-wrapper overflow-hidden">
       <PageLinks />
-      <CourseListFour tags={searchTerm} />
+      <CourseListFour tags={searchTerm || "default search"} />
       <FooterFour />
     </div>
   );
