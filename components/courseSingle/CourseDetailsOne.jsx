@@ -1,26 +1,116 @@
 "use client";
 
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
+import PageLinks from '@/components/common/PageLinks';
+import Preloader from '@/components/common/Preloader';
+import CourseDetailsOne from '@/components/courseSingle/CourseDetailsOne';
+import CourseSlider from '@/components/courseSingle/CourseSlider';
+import FooterFour from '@/components/layout/footers/FooterFour';
+import HeaderFour from '@/components/layout/headers/HeaderFour';
+
+export default function Page({ params }) {
+  // Metadata state
+  const [metadata, setMetadata] = useState({
+    title: 'Loading...',
+    description: 'Loading course description...',
+  });
+
+  // Fetch metadata from backend
+  useEffect(() => {
+    const fetchMetadata = async () => {
+      try {
+        const res = await fetch(https://test.trainomart.com/api/courses/${params.id}/);
+
+        if (!res.ok) {
+          throw new Error(HTTP error! status: ${res.status});
+        }
+
+        const data = await res.json();
+
+        // Set the fetched metadata
+        const newMetadata = {
+          title: data.meta_title || 'Default Course Title',
+          description: data.meta_description || 'Default Course Description',
+        };
+
+        console.log('Setting Metadata:', newMetadata);
+        setMetadata(newMetadata);
+      } catch (error) {
+        console.error('Error fetching metadata:', error);
+      }
+    };
+
+    fetchMetadata();
+  }, [params.id]);
+
+  return (
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Preloader />
+      <div className="main-content">
+        <HeaderFour />
+        <div className="content-wrapper js-content-wrapper">
+          <PageLinks />
+          <CourseDetailsOne id={params.id} />
+          <CourseSlider />
+          <FooterFour />
+        </div>
+      </div>
+    </>
+  );
+}
+
+AND this is my CourseDetailsOne code :
+Code :
+"use client";
+
+import Star from "../common/Star";
+import { coursesData } from "@/data/courses";
 import React, { useState, useEffect } from "react";
-import { format, addDays } from "date-fns";
+import PinContent from "./PinContent";
+import Overview from "./Overview";
+import CourseContent from "./CourseContent";
 import Head from "next/head";
 import API_URL from "@/data/config";
+import { format, addDays, startOfMonth } from "date-fns"; // Import date-fns for date manipulation
 
-export default function CourseDetailsOne({ id, pageItem }) {
+const menuItems = [
+  { id: 1, href: "#overview", text: "Overview", isActive: true },
+  { id: 2, href: "#course-content", text: "Course Content", isActive: false },
+];
+
+export default function CourseDetailsOne({ id }) {
+  const [pageItem, setPageItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Function to calculate the start date as the 5th of the next month
   const calculateStartDate = () => {
     const now = new Date();
-    const nextMonth = now.getMonth() + 1 === 12 ? 0 : now.getMonth() + 1;
+    const nextMonth = now.getMonth() + 1 === 12 ? 0 : now.getMonth() + 1; // Get next month
     const year = now.getMonth() + 1 === 12 ? now.getFullYear() + 1 : now.getFullYear();
-    return new Date(year, nextMonth, 5);
+    return new Date(year, nextMonth, 5); // 5th of the next month
   };
 
+  // Function to calculate the end date based on the duration
   const calculateEndDate = (startDate, duration) => {
-    if (!duration || !startDate) return null;
-    const durationDays = parseInt(duration, 10);
-    if (isNaN(durationDays)) return null;
-    return format(addDays(startDate, durationDays - 1), "do MMM yyyy");
+    if (!duration || !startDate) return null; // Handle missing values
+
+    const durationDays = parseInt(duration, 10); // Parse duration into an integer (assuming it's in days)
+
+    if (isNaN(durationDays)) {
+      return null; // If duration is invalid, return null
+    }
+
+    const endDate = addDays(startDate, durationDays - 1); // Subtract 1 to get the correct end date
+    return format(endDate, "do MMM yyyy"); // Format the end date
   };
 
   useEffect(() => {
@@ -28,13 +118,14 @@ export default function CourseDetailsOne({ id, pageItem }) {
       setLoading(true);
       setError(null);
       try {
-        // Use the passed pageItem directly if it exists
-        if (!pageItem) {
-          const response = await fetch(`${API_URL}/courses/${id}`);
-          if (!response.ok) throw new Error(`Error fetching course data: ${response.statusText}`);
-          const data = await response.json();
-          setPageItem(data);
+        const response = await fetch(${API_URL}/courses/${id});
+
+        if (!response.ok) {
+          throw new Error(Error fetching course data: ${response.statusText});
         }
+
+        const data = await response.json();
+        setPageItem(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -42,32 +133,127 @@ export default function CourseDetailsOne({ id, pageItem }) {
       }
     };
 
-    if (id) fetchCourseDetails();
-  }, [id, pageItem]);
+    if (id) {
+      fetchCourseDetails();
+    }
+  }, [id]);
 
-  // Handle loading, error, and null pageItem states
-  if (loading) return <div>Loading course details...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!pageItem) return <div>Course not found.</div>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl">Loading course details...</p>
+      </div>
+    );
+  }
 
-  // Calculate dynamic start and end dates
-  const courseStartDate = calculateStartDate();
-  const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration);
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl text-red-500">Error: {error}</p>
+      </div>
+    );
+  }
 
+  if (!pageItem) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl">Course not found.</p>
+      </div>
+    );
+  }
+
+  // Get the dynamically calculated start date
+  const courseStartDate = calculateStartDate(); // Start date is 5th of next month
+  const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration); // Calculate dynamic end date
+
+  // Log the meta title and description to the console
+  console.log("Meta Title:", pageItem.meta_title || ${pageItem.course_name} | Your Course Platform);
+  console.log("Meta Description:", pageItem.meta_description || pageItem.description);
+
+  
   return (
     <>
       <Head>
-        <title>{pageItem.meta_title || "Default Course Title"}</title>
-        <meta name="description" content={pageItem.meta_description || "Default Description"} />
-        <meta property="og:title" content={pageItem.meta_title || "Default OG Title"} />
-        <meta property="og:description" content={pageItem.meta_description || "Default OG Description"} />
+        <title>{pageItem.meta_title || ${pageItem.course_name} | Your Course Platform}</title>
+        <meta name="description" content={pageItem.meta_description || pageItem.description} />
+        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning"} />
+        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name} />
+        <meta property="og:description" content={pageItem.meta_description || pageItem.description} />
+        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
       </Head>
-      <div>
-        <h1>{pageItem.course_name || "Untitled Course"}</h1>
-        <p>Duration: {pageItem.duration || "N/A"}</p>
-        <p>Start Date: {format(courseStartDate, "do MMM")}</p>
-        <p>End Date: {courseEndDate || "N/A"}</p>
+
+      <div id="js-pin-container" className="js-pin-container relative">
+        <section className="page-header -type-5 bg-light-6">
+          <div className="container">
+            <div className="page-header__content pt-90 pb-90">
+              <div className="row y-gap-30">
+                <div className="col-xl-7 col-lg-8">
+                  <div>
+                    <h1 className="text-30 lh-14 pr-60 lg:pr-0">
+                      {pageItem.course_name || "Untitled Course"}
+                    </h1>
+                  </div>
+
+                  <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
+                    <div className="d-flex items-center text-light-1">
+                      <div className="icon icon-wall-clock text-13"></div>
+                      <div className="text-14 ml-8">
+                        <b>Duration: {pageItem.duration || "N/A"}</b> <br />
+                      </div>
+                    </div>
+
+                    <div className="d-flex items-center text-light-1">
+                      <div className="icon icon-wall-clock text-13"></div>
+                      <div className="text-14 ml-8">
+                        <b>
+                          New Batch: Starts From {format(courseStartDate, "do MMM")} to {courseEndDate || "N/A"} (9AM-5PM EST)
+                        </b>{" "}
+                        <br />
+                      </div>
+                    </div>
+
+                    <div className="d-flex items-center text-light-1">
+                      <div className="icon icon-person-3 text-13"></div>
+                      <div className="text-14 ml-8">
+                        <b>Mode Of Training: Virtual</b> <br />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <PinContent pageItem={pageItem} />
+
+        <section className="layout-pt-md layout-pb-md">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8">
+                <div className="page-nav-menu -line">
+                  <div className="d-flex x-gap-30">
+                    {menuItems.map((item) => (
+                      <div key={item.id}>
+                        <a
+                          href={item.href}
+                          className={pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}}
+                        >
+                          {item.text}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="pt-60">
+                  <Overview data={pageItem} />
+                  <CourseContent data={pageItem} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </>
   );
 }
+
