@@ -58,7 +58,7 @@ export default function SearchPage() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        <CourseListFour tags={search || ''} /> {/* Pass search term as tags */}
+        <CourseListFour tags={search || 'AI'} /> {/* Pass search term as tags */}
         <FooterFour />
       </div>
      </div>
