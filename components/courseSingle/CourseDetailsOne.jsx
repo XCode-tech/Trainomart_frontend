@@ -5,8 +5,7 @@ import { format, addDays } from "date-fns";
 import Head from "next/head";
 import API_URL from "@/data/config";
 
-export default function CourseDetailsOne({ id }) {
-  const [pageItem, setPageItem] = useState(null);
+export default function CourseDetailsOne({ id, pageItem }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -29,12 +28,13 @@ export default function CourseDetailsOne({ id }) {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`${API_URL}/courses/${id}`);
-        if (!response.ok) throw new Error(`Error fetching course data: ${response.statusText}`);
-        const data = await response.json();
-        
-        console.log("Fetched course data:", data); // Log the fetched data
-        setPageItem(data);
+        // Use the passed pageItem directly if it exists
+        if (!pageItem) {
+          const response = await fetch(`${API_URL}/courses/${id}`);
+          if (!response.ok) throw new Error(`Error fetching course data: ${response.statusText}`);
+          const data = await response.json();
+          setPageItem(data);
+        }
       } catch (err) {
         setError(err.message);
       } finally {
@@ -43,7 +43,7 @@ export default function CourseDetailsOne({ id }) {
     };
 
     if (id) fetchCourseDetails();
-  }, [id]);
+  }, [id, pageItem]);
 
   // Handle loading, error, and null pageItem states
   if (loading) return <div>Loading course details...</div>;
