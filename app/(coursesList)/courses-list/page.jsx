@@ -10,13 +10,14 @@ import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page() {
   const router = useRouter();
-  const [search, setsearch] = useState('');
+  const [searchTerm, setsearchTerm] = useState('');
+  console.log("Router is ready:", router.searchTerm); // Log the query to check its structure
 
   useEffect(() => {
     // Check if router is ready
     if (router.isReady) {
-      console.log("Router is ready:", router.query); // Log the query to check its structure
-      const searchQuery = router.query.search; // Access the search query parameter
+      console.log("Router is ready:", router.searchTerm); // Log the query to check its structure
+      const searchQuery = router.query.searchTerm; // Access the search query parameter
 
       // Check if searchQuery is defined and is a string
       if (typeof searchQuery === 'string' && searchQuery.length > 0) {
