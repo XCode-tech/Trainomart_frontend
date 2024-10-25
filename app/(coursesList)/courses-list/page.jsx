@@ -11,7 +11,6 @@ import HeaderFour from '@/components/layout/headers/HeaderFour';
 export default function Page() {
   const router = useRouter();
   const [searchTerm, setsearchTerm] = useState('');
-  console.log("Router is ready:", router.searchTerm); // Log the query to check its structure
 
   useEffect(() => {
     // Check if router is ready
@@ -27,6 +26,7 @@ export default function Page() {
       }
     }
   }, [router.isReady, router.query]);
+  console.log("Router is ready:", router.searchTerm); // Log the query to check its structure
 
   console.log("searchTerm on page.jsx:", searchTerm); // Log the search term
   
