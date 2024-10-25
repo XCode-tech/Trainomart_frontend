@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
@@ -9,27 +9,21 @@ import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page() {
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const [searchTerm, setsearchTerm] = useState('');
 
   useEffect(() => {
-    // Check if router is ready
-    if (router.isReady) {
-      console.log("Router is ready:", router.searchTerm); // Log the query to check its structure
-      const searchQuery = router.query.searchTerm; // Access the search query parameter
+    // Retrieve search term from URL query parameters
+    const searchQuery = searchParams.get('searchTerm'); 
 
-      // Check if searchQuery is defined and is a string
-      if (typeof searchQuery === 'string' && searchQuery.length > 0) {
-        setsearchTerm(searchQuery);
-      } else {
-        console.log("No search term found in query.");
-      }
+    if (searchQuery && searchQuery.length > 0) {
+      setsearchTerm(searchQuery);
+    } else {
+      console.log("No search term found in query.");
     }
-  }, [router.isReady, router.query]);
-  console.log("Router is ready:", router.searchTerm); // Log the query to check its structure
+  }, [searchParams]);
 
   console.log("searchTerm on page.jsx:", searchTerm); // Log the search term
-  
 
   return (
     <div className="main-content">
