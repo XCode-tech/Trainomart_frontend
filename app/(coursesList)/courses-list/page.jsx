@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Correctly import useRouter
+import { useRouter } from 'next/navigation'; // Import useRouter
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
@@ -10,17 +10,18 @@ import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page() {
   const router = useRouter();
-  const { searchTerm } = router.query; // Destructure searchTerm directly from router.query
-  const [searchValue, setSearchValue] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
+  // Ensure the router is ready before trying to access the query
   useEffect(() => {
-    // Ensure the router is ready before trying to access the query
-    if (searchTerm) {
-      setSearchValue(searchTerm); // Set the search value only if searchTerm exists
+    if (router.isReady) {
+      const searchQuery = router.query.searchTerm; // Accessing searchTerm
+      if (searchQuery) { // Check if searchQuery is defined
+        setSearchTerm(searchQuery);
+      }
     }
-  }, [searchTerm]);
+  }, [router.isReady, router.query]);
 
-  console.log("searchTerm", searchTerm )
   return (
     <div className="main-content">
       <Preloader />
@@ -28,8 +29,8 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Ensure searchValue is passed even if it's an empty string */}
-        <CourseListFour tags={searchValue} />
+        {/* Ensure searchTerm is passed even if it's an empty string */}
+        <CourseListFour tags={searchTerm} />
 
         <FooterFour />
       </div>
