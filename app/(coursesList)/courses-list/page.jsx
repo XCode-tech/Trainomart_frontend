@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
@@ -12,28 +12,31 @@ export default function Page() {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Ensure the router is ready before trying to access the query
   useEffect(() => {
+    // Check if router is ready
     if (router.isReady) {
-      const searchQuery = router.query.searchTerm; // Accessing searchTerm
-      if (searchQuery) { // Check if searchQuery is defined
+      console.log("Router is ready:", router.query); // Log the query to check its structure
+      const searchQuery = router.query.searchTerm; // Access the searchTerm query parameter
+
+      // Check if searchQuery is defined and is a string
+      if (typeof searchQuery === 'string' && searchQuery.length > 0) {
         setSearchTerm(searchQuery);
+      } else {
+        console.log("No search term found in query.");
       }
     }
   }, [router.isReady, router.query]);
 
+  console.log("searchTerm:", searchTerm); // Log the search term
 
-  console.log("searchTerm", searchTerm)
   return (
     <div className="main-content">
       <Preloader />
       <HeaderFour />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
-
         {/* Ensure searchTerm is passed even if it's an empty string */}
         <CourseListFour tags={searchTerm} />
-
         <FooterFour />
       </div>
     </div>
