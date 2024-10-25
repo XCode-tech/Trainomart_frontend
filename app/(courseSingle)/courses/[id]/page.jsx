@@ -27,6 +27,7 @@ export default function Page({ params }) {
           title: data.meta_title || 'Default Course Title',
           description: data.meta_description || 'Default Course Description',
         });
+        setPageItem(data); // Assuming the data includes course details
       } catch (error) {
         console.error('Error fetching metadata:', error);
         setError(error.message);
@@ -41,10 +42,12 @@ export default function Page({ params }) {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
-  console.log("metadata", metadata)
-  // Log the meta title and description to the console
-  console.log("Meta Title From page.jsx:", pageItem.title || `${pageItem.title} | Your Course Platform`);
-  console.log("Meta Description From page.jsx:", pageItem.description || pageItem.description);
+  console.log("metadata", metadata);
+  // Check if pageItem is not null before accessing its properties
+  if (pageItem) {
+    console.log("Meta Title From page.jsx:", pageItem.title || `${pageItem.title} | Your Course Platform`);
+    console.log("Meta Description From page.jsx:", pageItem.description || pageItem.description);
+  }
 
   return (
     <>
@@ -60,7 +63,8 @@ export default function Page({ params }) {
         <HeaderFour />
         <div className="content-wrapper js-content-wrapper">
           <PageLinks />
-          <CourseDetailsOne id={params.id} />
+          {/* Pass pageItem to CourseDetailsOne */}
+          <CourseDetailsOne id={params.id} pageItem={pageItem} />
           <CourseSlider />
           <FooterFour />
         </div>
