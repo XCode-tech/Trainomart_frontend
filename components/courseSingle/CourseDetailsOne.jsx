@@ -57,7 +57,7 @@ export default function CourseDetailsOne({ id }) {
   return (
     <>
       <Head>
-        <title>{pageItem.meta_title ? pageItem.meta_title : "Default Course Title"}</title>
+{/*         <title>{pageItem.meta_title ? pageItem.meta_title : "Default Course Title"}</title> */}
         <meta name="description" content={pageItem.meta_description || "Default Description"} />
         <meta name="keywords" content={pageItem.meta_keywords || "default, keywords"} />
         <meta property="og:title" content={pageItem.meta_title || "Default OG Title"} />
