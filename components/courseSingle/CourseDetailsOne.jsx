@@ -8,7 +8,7 @@ import Overview from "./Overview";
 import CourseContent from "./CourseContent";
 import Head from "next/head";
 import API_URL from "@/data/config";
-import { format, addDays } from "date-fns"; // Import date-fns for date manipulation
+import { format, addDays } from "date-fns";
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
@@ -20,7 +20,6 @@ export default function CourseDetailsOne({ id }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Function to calculate the start date as the 5th of the next month
   const calculateStartDate = () => {
     const now = new Date();
     const nextMonth = now.getMonth() + 1 === 12 ? 0 : now.getMonth() + 1;
@@ -28,13 +27,10 @@ export default function CourseDetailsOne({ id }) {
     return new Date(year, nextMonth, 5);
   };
 
-  // Function to calculate the end date based on the duration
   const calculateEndDate = (startDate, duration) => {
     if (!duration || !startDate) return null;
-
     const durationDays = parseInt(duration, 10);
     if (isNaN(durationDays)) return null;
-
     const endDate = addDays(startDate, durationDays - 1);
     return format(endDate, "do MMM yyyy");
   };
@@ -47,6 +43,8 @@ export default function CourseDetailsOne({ id }) {
         const response = await fetch(`${API_URL}/courses/${id}`);
         if (!response.ok) throw new Error(`Error fetching course data: ${response.statusText}`);
         const data = await response.json();
+        
+        console.log("Fetched course data:", data); // Log the fetched data
         setPageItem(data);
       } catch (err) {
         setError(err.message);
@@ -58,7 +56,7 @@ export default function CourseDetailsOne({ id }) {
     if (id) fetchCourseDetails();
   }, [id]);
 
-  // Display loading or error messages before the content
+  // Handle loading, error, and null pageItem states
   if (loading) return <div className="flex justify-center items-center h-screen"><p className="text-xl">Loading course details...</p></div>;
   if (error) return <div className="flex justify-center items-center h-screen"><p className="text-xl text-red-500">Error: {error}</p></div>;
   if (!pageItem) return <div className="flex justify-center items-center h-screen"><p className="text-xl">Course not found.</p></div>;
@@ -70,12 +68,12 @@ export default function CourseDetailsOne({ id }) {
   return (
     <>
       <Head>
-        <title>{pageItem?.meta_title || `${pageItem?.course_name || "Course"} | Your Course Platform`}</title>
-        <meta name="description" content={pageItem?.meta_description || pageItem?.description || "Course description"} />
-        <meta name="keywords" content={pageItem?.meta_keywords || "course, online learning"} />
-        <meta property="og:title" content={pageItem?.meta_title || pageItem?.course_name || "Course"} />
-        <meta property="og:description" content={pageItem?.meta_description || pageItem?.description || "Course description"} />
-        <meta property="og:image" content={pageItem?.course_image || "/default-course.jpg"} />
+        <title>{pageItem.meta_title ? pageItem.meta_title : `${pageItem.course_name || "Course"} | Your Course Platform`}</title>
+        <meta name="description" content={pageItem.meta_description || pageItem.description || "Course description"} />
+        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning"} />
+        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name || "Course"} />
+        <meta property="og:description" content={pageItem.meta_description || pageItem.description || "Course description"} />
+        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
       </Head>
 
       <div id="js-pin-container" className="js-pin-container relative">
@@ -84,11 +82,11 @@ export default function CourseDetailsOne({ id }) {
             <div className="page-header__content pt-90 pb-90">
               <div className="row y-gap-30">
                 <div className="col-xl-7 col-lg-8">
-                  <h1 className="text-30 lh-14 pr-60 lg:pr-0">{pageItem?.course_name || "Untitled Course"}</h1>
+                  <h1 className="text-30 lh-14 pr-60 lg:pr-0">{pageItem.course_name || "Untitled Course"}</h1>
                   <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
-                      <div className="text-14 ml-8"><b>Duration: {pageItem?.duration || "N/A"}</b></div>
+                      <div className="text-14 ml-8"><b>Duration: {pageItem.duration || "N/A"}</b></div>
                     </div>
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
