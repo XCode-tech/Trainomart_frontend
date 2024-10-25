@@ -43,14 +43,14 @@ export default function Page({ params }) {
 
 
   // Log the meta title and description to the console
-  console.log("Meta Title From page.jsx:", pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`);
-  console.log("Meta Description From page.jsx:", pageItem.meta_description || pageItem.description);
+  console.log("Meta Title From page.jsx:", pageItem.meta_title || `${pageItem.meta_title} | Your Course Platform`);
+  console.log("Meta Description From page.jsx:", pageItem.meta_description || pageItem.meta_description);
 
   return (
     <>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>{metadata.meta_title}</title>
+        <meta name="description" content={metadata.meta_description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
