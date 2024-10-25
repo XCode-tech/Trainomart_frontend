@@ -15,6 +15,7 @@ export default function CourseListFour({ tags = "" }) {
 
   useEffect(() => {
     const fetchCourses = async () => {
+      // If no tags are provided, clear coursesData and exit
       if (!tags) {
         setCoursesData([]);
         return;
@@ -25,6 +26,7 @@ export default function CourseListFour({ tags = "" }) {
 
       try {
         console.log("Searching for courses with tags:", tags);
+        // Fetch courses based on the search tags
         const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         
         if (!response.ok) {
@@ -32,26 +34,29 @@ export default function CourseListFour({ tags = "" }) {
         }
 
         const data = await response.json();
-        setCoursesData(data);
+        setCoursesData(data); // Store fetched courses in state
       } catch (error) {
         console.error("Error fetching course data:", error);
-        setError("Error fetching courses. Please try again later.");
+        setError("Error fetching courses. Please try again later."); // Set error message if fetching fails
       } finally {
         setLoading(false);
       }
     };
 
-    fetchCourses();
-  }, [tags]);
+    fetchCourses(); // Invoke the fetch function
+  }, [tags]); // Re-fetch when tags change
 
+  // Show a message if no tags are provided
   if (!tags) {
     return <div className="container pt-4">Please enter a search term to find courses.</div>;
   }
 
+  // Show a loading message while courses are being fetched
   if (loading) {
     return <div className="container pt-4">Loading courses...</div>;
   }
 
+  // Show an error message if fetching fails
   if (error) {
     return <div className="container pt-4 text-red-500">{error}</div>;
   }
