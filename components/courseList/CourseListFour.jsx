@@ -7,7 +7,7 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour({ search = "" }) {
+export default function CourseListFour({ tags = "" }) {
   const [coursesData, setCoursesData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -16,7 +16,7 @@ export default function CourseListFour({ search = "" }) {
   useEffect(() => {
     const fetchCourses = async () => {
       // If no search are provided, clear coursesData and exit
-      if (!search) {
+      if (!tags) {
         setCoursesData([]);
         return;
       }
@@ -25,9 +25,9 @@ export default function CourseListFour({ search = "" }) {
       setError('');
 
       try {
-        console.log("Searching for courses with search:", search);
+        console.log("Searching for courses with search tags:", tags);
         // Fetch courses based on the search search
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(search)}`);
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
@@ -44,11 +44,11 @@ export default function CourseListFour({ search = "" }) {
     };
 
     fetchCourses(); // Invoke the fetch function
-  }, [search]); // Re-fetch when search change
+  }, [tags]); // Re-fetch when search change
 
   // Show a message if no search are provided
-  if (!search) {
-    return <div className="container pt-4">Please enter a search term to find courses.</div>;
+  if (!tags) {
+    return <div className="container pt-4">Please enter a tags term to find courses.</div>;
   }
 
   // Show a loading message while courses are being fetched
