@@ -1,3 +1,4 @@
+// components/courseList/CourseListFour.jsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -8,15 +9,14 @@ import API_URL from "@/data/config";
 
 export default function CourseListFour({ tags = "" }) {
   const [coursesData, setCoursesData] = useState([]);
-  const [loading, setLoading] = useState(false); // Loading state
-  const [error, setError] = useState(''); // Error handling
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
-  // Fetch courses when the `tags` prop changes
   useEffect(() => {
     const fetchCourses = async () => {
       if (!tags) {
-        setCoursesData([]);  // Clear data when no tags are provided
+        setCoursesData([]);
         return;
       }
 
@@ -32,7 +32,7 @@ export default function CourseListFour({ tags = "" }) {
         }
 
         const data = await response.json();
-        setCoursesData(data);  // Save the fetched course data
+        setCoursesData(data);
       } catch (error) {
         console.error("Error fetching course data:", error);
         setError("Error fetching courses. Please try again later.");
@@ -44,17 +44,14 @@ export default function CourseListFour({ tags = "" }) {
     fetchCourses();
   }, [tags]);
 
-  // If no search term is provided
   if (!tags) {
     return <div className="container pt-4">Please enter a search term to find courses.</div>;
   }
 
-  // If loading courses
   if (loading) {
     return <div className="container pt-4">Loading courses...</div>;
   }
 
-  // If an error occurs
   if (error) {
     return <div className="container pt-4 text-red-500">{error}</div>;
   }
@@ -65,9 +62,7 @@ export default function CourseListFour({ tags = "" }) {
         <div className="container">
           <div className="page-header__content">
             <h1 className="page-header__title">Courses</h1>
-            <p className="page-header__text">
-              Browse through our latest offerings.
-            </p>
+            <p className="page-header__text">Browse through our latest offerings.</p>
           </div>
         </div>
       </section>
@@ -77,18 +72,14 @@ export default function CourseListFour({ tags = "" }) {
           <div className="row y-gap-20 items-center justify-between pb-30">
             <div className="col-12">
               <div className="text-14 lh-12">
-                Showing{" "}
-                <span className="text-dark-1 fw-500">
-                  {coursesData.length}
-                </span>{" "}
-                total results
+                Showing <span className="text-dark-1 fw-500">{coursesData.length}</span> total results
               </div>
             </div>
           </div>
 
           <div className="row y-gap-30">
             {coursesData
-              .slice((pageNumber - 1) * 12, pageNumber * 12) // Paginate the data (12 items per page)
+              .slice((pageNumber - 1) * 12, pageNumber * 12)
               .map((course, i) => (
                 <div key={i} className="col-xl-3 col-lg-4 col-md-6">
                   <div className="coursesCard -type-1">
@@ -112,9 +103,7 @@ export default function CourseListFour({ tags = "" }) {
                       </div>
 
                       <div className="d-flex x-gap-10 items-center pt-10">
-                        <div className="text-14 lh-1">
-                          {course.lessons} lessons
-                        </div>
+                        <div className="text-14 lh-1">{course.lessons} lessons</div>
                         <div className="text-14 lh-1">{course.duration}</div>
                         <div className="text-14 lh-1">{course.skill_level}</div>
                       </div>
