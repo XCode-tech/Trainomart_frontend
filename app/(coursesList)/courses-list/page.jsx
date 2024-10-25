@@ -13,16 +13,14 @@ function CoursesContent() {
   const [searchTerm, setsearchTerm] = useState('');
 
   useEffect(() => {
-    const searchQuery = searchParams.get('searchTerm'); 
+    const searchQuery = searchParams?.get('searchTerm'); 
 
-    if (searchQuery && searchQuery.length > 0) {
+    if (searchQuery) {
       setsearchTerm(searchQuery);
-    } else {
-      console.log("No search term found in query.");
     }
   }, [searchParams]);
 
-  console.log("searchTerm on page.jsx:", searchTerm); // Log the search term
+  console.log("Current searchTerm:", searchTerm); // Log after updating state if it exists
 
   return (
     <div className="content-wrapper js-content-wrapper overflow-hidden">
