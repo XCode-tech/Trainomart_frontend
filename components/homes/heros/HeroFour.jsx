@@ -11,17 +11,7 @@ export default function HeroFour() {
   const [loading, setLoading] = useState(false); // State to handle loading state
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Handle form submission
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const trimmedTags = tags.trim();
-  //   if (!trimmedTags) {
-  //     alert("Please enter valid tags");
-  //     return;
-  //   }
-  //   fetchCoursesByTags(trimmedTags); // Fetch courses based on tags
-  // };
-
+ 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,32 +21,7 @@ export default function HeroFour() {
     }
   };
 
-  // const fetchCoursesByTags = async (tags) => {
-  //   setLoading(true); // Set loading state to true
-  //   try {
-  //     const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to fetch courses by tags");
-  //     }
-
-  //     const data = await response.json();
-  //     if (Array.isArray(data) && data.length > 0) {
-  //       // Process or display the courses based on tags here
-  //       console.log("Courses found:", data);
-  //       // Redirect to the course list page and pass the courses as query params or use state
-  //       router.push(`/courses-list/?search=${encodeURIComponent(tags)}`);
-  //     } else {
-  //       alert("No courses found for the given tags");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching courses by tags:", error);
-  //     alert("An error occurred while searching for courses");
-  //   } finally {
-  //     setLoading(false); // Reset loading state
-  //   }
-  // };
-
+ 
   useEffect(() => {
     const handleMouseMove = (e) => {
       const containers = document.querySelectorAll(".js-mouse-move-container");
