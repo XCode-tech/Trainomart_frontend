@@ -1,7 +1,8 @@
+// pages/search/[searchTerm].jsx
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import useRouter
+import { useRouter } from 'next/navigation';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
@@ -15,8 +16,8 @@ export default function Page() {
   // Ensure the router is ready before trying to access the query
   useEffect(() => {
     if (router.isReady) {
-      const searchQuery = router.query.searchTerm || ''; // If searchTerm is undefined, set it to an empty string
-      setSearchTerm(searchQuery);
+      const { searchTerm } = router.query; // Get searchTerm from the router
+      setSearchTerm(searchTerm || ''); // Set the search term or empty string if undefined
     }
   }, [router.isReady, router.query]);
 
@@ -26,8 +27,8 @@ export default function Page() {
       <HeaderFour />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
-
-        {/* Ensure searchTerm is passed even if it's an empty string */}
+        
+        {/* Pass searchTerm as tags prop to CourseListFour */}
         <CourseListFour tags={searchTerm} />
 
         <FooterFour />
