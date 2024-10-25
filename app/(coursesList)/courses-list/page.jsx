@@ -10,25 +10,24 @@ import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page() {
   const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [search, setsearch] = useState('');
 
   useEffect(() => {
     // Check if router is ready
     if (router.isReady) {
       console.log("Router is ready:", router.query); // Log the query to check its structure
-      const searchQuery = router.query.searchTerm; // Access the searchTerm query parameter
+      const searchQuery = router.query.search; // Access the search query parameter
 
       // Check if searchQuery is defined and is a string
       if (typeof searchQuery === 'string' && searchQuery.length > 0) {
-        setSearchTerm(searchQuery);
+        setsearch(searchQuery);
       } else {
         console.log("No search term found in query.");
       }
     }
   }, [router.isReady, router.query]);
 
-  console.log("searchTerm:", searchTerm); // Log the search term
-  console.log("searchQuery:", searchQuery); // Log the search term
+  console.log("search:", search); // Log the search term
   
 
   return (
@@ -37,8 +36,8 @@ export default function Page() {
       <HeaderFour />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
-        {/* Ensure searchTerm is passed even if it's an empty string */}
-        <CourseListFour tags={searchTerm} />
+        {/* Ensure search is passed even if it's an empty string */}
+        <CourseListFour tags={search} />
         <FooterFour />
       </div>
     </div>
