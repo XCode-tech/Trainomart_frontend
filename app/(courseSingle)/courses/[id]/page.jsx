@@ -10,6 +10,7 @@ import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
 export default function Page({ params }) {
+  const [pageItem, setPageItem] = useState(null);
   const [metadata, setMetadata] = useState({ title: 'Loading...', description: 'Loading course description...' });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
