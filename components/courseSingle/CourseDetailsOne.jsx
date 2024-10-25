@@ -63,11 +63,6 @@ export default function CourseDetailsOne({ id }) {
   if (error) return <div className="flex justify-center items-center h-screen"><p className="text-xl text-red-500">Error: {error}</p></div>;
   if (!pageItem) return <div className="flex justify-center items-center h-screen"><p className="text-xl">Course not found.</p></div>;
 
-    // Log the meta title and description to the console
-  console.log("Meta Title From page.jsx:", pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`);
-  console.log("Meta Description From page.jsx:", pageItem.meta_description || pageItem.description);
-
-  
   // Calculate dynamic start and end dates
   const courseStartDate = calculateStartDate();
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration);
@@ -75,12 +70,12 @@ export default function CourseDetailsOne({ id }) {
   return (
     <>
       <Head>
-        <title>{pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`}</title>
-        <meta name="description" content={pageItem.meta_description || pageItem.description} />
-        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning"} />
-        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name} />
-        <meta property="og:description" content={pageItem.meta_description || pageItem.description} />
-        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <title>{pageItem?.meta_title || `${pageItem?.course_name || "Course"} | Your Course Platform`}</title>
+        <meta name="description" content={pageItem?.meta_description || pageItem?.description || "Course description"} />
+        <meta name="keywords" content={pageItem?.meta_keywords || "course, online learning"} />
+        <meta property="og:title" content={pageItem?.meta_title || pageItem?.course_name || "Course"} />
+        <meta property="og:description" content={pageItem?.meta_description || pageItem?.description || "Course description"} />
+        <meta property="og:image" content={pageItem?.course_image || "/default-course.jpg"} />
       </Head>
 
       <div id="js-pin-container" className="js-pin-container relative">
@@ -89,11 +84,11 @@ export default function CourseDetailsOne({ id }) {
             <div className="page-header__content pt-90 pb-90">
               <div className="row y-gap-30">
                 <div className="col-xl-7 col-lg-8">
-                  <h1 className="text-30 lh-14 pr-60 lg:pr-0">{pageItem.course_name || "Untitled Course"}</h1>
+                  <h1 className="text-30 lh-14 pr-60 lg:pr-0">{pageItem?.course_name || "Untitled Course"}</h1>
                   <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
-                      <div className="text-14 ml-8"><b>Duration: {pageItem.duration || "N/A"}</b></div>
+                      <div className="text-14 ml-8"><b>Duration: {pageItem?.duration || "N/A"}</b></div>
                     </div>
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
@@ -135,4 +130,3 @@ export default function CourseDetailsOne({ id }) {
     </>
   );
 }
-
