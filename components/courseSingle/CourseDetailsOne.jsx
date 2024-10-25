@@ -67,12 +67,6 @@ export default function CourseDetailsOne({ id }) {
   const courseStartDate = calculateStartDate();
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration);
 
-
-    // Log the meta title and description to the console
-  console.log("Meta Title From CourseDetailsOne.jsx:", pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`);
-  console.log("Meta Description From CourseDetailsOne.jsx:", pageItem.meta_description || pageItem.description);
-
-  
   return (
     <>
       <Head>
