@@ -21,14 +21,14 @@ export default function Page() {
 
       // Check if searchQuery is defined and is a string
       if (typeof searchQuery === 'string' && searchQuery.length > 0) {
-        setsearch(searchQuery);
+        setsearchTerm(searchQuery);
       } else {
         console.log("No search term found in query.");
       }
     }
   }, [router.isReady, router.query]);
 
-  console.log("search:", search); // Log the search term
+  console.log("searchTerm on page.jsx:", searchTerm); // Log the search term
   
 
   return (
@@ -38,7 +38,7 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
         {/* Ensure search is passed even if it's an empty string */}
-        <CourseListFour tags={search} />
+        <CourseListFour tags={searchTerm} />
         <FooterFour />
       </div>
     </div>
