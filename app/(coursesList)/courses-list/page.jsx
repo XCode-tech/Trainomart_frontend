@@ -13,10 +13,7 @@ function CoursesContent() {
   const [searchTerm, setsearchTerm] = useState('');
 
   useEffect(() => {
-    // Log the entire searchParams object to inspect its contents
-    console.log("searchParams object:", searchParams?.toString());
-
-    const searchQuery = searchParams?.get('searchTerm');
+    const searchQuery = searchParams?.get('search'); // Updated to match 'search' instead of 'searchTerm'
 
     if (searchQuery) {
       setsearchTerm(searchQuery);
