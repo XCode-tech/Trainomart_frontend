@@ -28,6 +28,8 @@ export default function Page() {
   }, [router.isReady, router.query]);
 
   console.log("searchTerm:", searchTerm); // Log the search term
+  console.log("searchQuery:", searchQuery); // Log the search term
+  
 
   return (
     <div className="main-content">
