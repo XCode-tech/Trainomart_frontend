@@ -1,4 +1,4 @@
-// components/courseList/CourseListFour.jsx
+
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
 
-export default function CourseListFour({ tags = "" }) {
+export default function CourseListFour({ search = "" }) {
   const [coursesData, setCoursesData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -15,8 +15,8 @@ export default function CourseListFour({ tags = "" }) {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      // If no tags are provided, clear coursesData and exit
-      if (!tags) {
+      // If no search are provided, clear coursesData and exit
+      if (!search) {
         setCoursesData([]);
         return;
       }
@@ -25,9 +25,9 @@ export default function CourseListFour({ tags = "" }) {
       setError('');
 
       try {
-        console.log("Searching for courses with tags:", tags);
-        // Fetch courses based on the search tags
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
+        console.log("Searching for courses with search:", search);
+        // Fetch courses based on the search search
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(search)}`);
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
@@ -44,10 +44,10 @@ export default function CourseListFour({ tags = "" }) {
     };
 
     fetchCourses(); // Invoke the fetch function
-  }, [tags]); // Re-fetch when tags change
+  }, [search]); // Re-fetch when search change
 
-  // Show a message if no tags are provided
-  if (!tags) {
+  // Show a message if no search are provided
+  if (!search) {
     return <div className="container pt-4">Please enter a search term to find courses.</div>;
   }
 
