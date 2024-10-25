@@ -159,12 +159,13 @@ export default function HeroFour() {
 
                   <form onSubmit={handleSubmit} className="flex items-center">
                     <input
-                      type="text"
-                      placeholder="Search courses by tags"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="border p-2 rounded"
-                    />
+                          type="text"
+                          placeholder="Search courses by tags"
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="border p-2 rounded pl-10" // Added padding-left for the icon
+                        />
+
 
                     <button
                       className="button -purple-1 text-white ml-4"
