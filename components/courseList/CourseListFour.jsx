@@ -4,22 +4,19 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
-import { useSearchParams } from "next/navigation"; // Import useSearchParams hook for accessing query parameters
 import API_URL from "@/data/config";
 
-export default function CourseListFour() {
-  const searchParams = useSearchParams(); // Initialize useSearchParams
-  const searchTerm = searchParams.get("search") || ""; // Get the 'search' parameter from the URL
+export default function CourseListFour({ tags = "" }) {
   const [coursesData, setCoursesData] = useState([]);
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(''); // Error handling
   const [pageNumber, setPageNumber] = useState(1);
 
-  // Fetch courses when the search term changes
+  // Fetch courses when the `tags` prop changes
   useEffect(() => {
     const fetchCourses = async () => {
-      if (!searchTerm) {
-        setCoursesData([]); // Clear data when no search term is provided
+      if (!tags) {
+        setCoursesData([]);  // Clear data when no tags are provided
         return;
       }
 
@@ -27,15 +24,15 @@ export default function CourseListFour() {
       setError('');
 
       try {
-        console.log("Searching for courses with searchTerm:", searchTerm);
-        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(searchTerm)}`);
+        console.log("Searching for courses with tags:", tags);
+        const response = await fetch(`${API_URL}/courses/?search=${encodeURIComponent(tags)}`);
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
         }
 
         const data = await response.json();
-        setCoursesData(data); // Save the fetched course data
+        setCoursesData(data);  // Save the fetched course data
       } catch (error) {
         console.error("Error fetching course data:", error);
         setError("Error fetching courses. Please try again later.");
@@ -45,10 +42,10 @@ export default function CourseListFour() {
     };
 
     fetchCourses();
-  }, [searchTerm]);
+  }, [tags]);
 
   // If no search term is provided
-  if (!searchTerm) {
+  if (!tags) {
     return <div className="container pt-4">Please enter a search term to find courses.</div>;
   }
 
