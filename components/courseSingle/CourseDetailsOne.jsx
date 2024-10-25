@@ -95,10 +95,15 @@ export default function CourseDetailsOne({ id }) {
   const courseStartDate = calculateStartDate(); // Start date is 5th of next month
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration); // Calculate dynamic end date
 
+  // Log the meta title and description to the console
+  console.log("Meta Title:", pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`);
+  console.log("Meta Description:", pageItem.meta_description || pageItem.description);
+
+  
   return (
     <>
       <Head>
-        <title>{pageItem.meta_title || pageItem.course_name} | Your Course Platform</title>
+        <title>{pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`}</title>
         <meta name="description" content={pageItem.meta_description || pageItem.description} />
         <meta name="keywords" content={pageItem.meta_keywords || "course, online learning"} />
         <meta property="og:title" content={pageItem.meta_title || pageItem.course_name} />
