@@ -1,15 +1,25 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation'; // Import useRouter
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
+import CourseListFour from '@/components/courseList/CourseListFour';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
 
-// Lazy load the client-side only component
-const ClientOnlyCourseList = React.lazy(() => import('@/components/courseList/ClientOnlyCourseList'));
-
 export default function Page() {
+  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Ensure the router is ready before trying to access the query
+  useEffect(() => {
+    if (router.isReady) {
+      const searchQuery = router.query.searchTerm || ''; // If searchTerm is undefined, set it to an empty string
+      setSearchTerm(searchQuery);
+    }
+  }, [router.isReady, router.query]);
+
   return (
     <div className="main-content">
       <Preloader />
@@ -17,10 +27,8 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        {/* Wrap the dynamically loaded component in Suspense */}
-        <Suspense fallback={<div>Loading courses...</div>}>
-          <ClientOnlyCourseList />
-        </Suspense>
+        {/* Ensure searchTerm is passed even if it's an empty string */}
+        <CourseListFour tags={searchTerm} />
 
         <FooterFour />
       </div>
