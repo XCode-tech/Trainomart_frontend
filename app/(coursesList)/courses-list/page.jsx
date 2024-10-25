@@ -38,7 +38,7 @@
 //   );
 // }
 
-
+"use client";
 
 import { useRouter } from 'next/navigation';
 import PageLinks from '@/components/common/PageLinks';
