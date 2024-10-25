@@ -41,7 +41,6 @@
 
 
 import { useRouter } from 'next/navigation';
-import CourseListFour from '@/components/courseList/CourseListFour';
 import PageLinks from '@/components/common/PageLinks';
 import Preloader from '@/components/common/Preloader';
 import CourseListFour from '@/components/courseList/CourseListFour';
