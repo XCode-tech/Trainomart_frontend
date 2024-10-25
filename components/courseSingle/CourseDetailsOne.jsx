@@ -63,6 +63,11 @@ export default function CourseDetailsOne({ id }) {
   if (error) return <div className="flex justify-center items-center h-screen"><p className="text-xl text-red-500">Error: {error}</p></div>;
   if (!pageItem) return <div className="flex justify-center items-center h-screen"><p className="text-xl">Course not found.</p></div>;
 
+    // Log the meta title and description to the console
+  console.log("Meta Title From page.jsx:", pageItem.meta_title || `${pageItem.course_name} | Your Course Platform`);
+  console.log("Meta Description From page.jsx:", pageItem.meta_description || pageItem.description);
+
+  
   // Calculate dynamic start and end dates
   const courseStartDate = calculateStartDate();
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration);
