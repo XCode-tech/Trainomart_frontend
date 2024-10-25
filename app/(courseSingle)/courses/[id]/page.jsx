@@ -41,7 +41,7 @@ export default function Page({ params }) {
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
-
+  console.log("metadata", metadata)
   // Log the meta title and description to the console
   console.log("Meta Title From page.jsx:", pageItem.meta_title || `${pageItem.meta_title} | Your Course Platform`);
   console.log("Meta Description From page.jsx:", pageItem.meta_description || pageItem.meta_description);
