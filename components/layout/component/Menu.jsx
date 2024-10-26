@@ -145,6 +145,19 @@ export default function Menu({ allClasses, headerPosition }) {
                 About Us
               </Link>
             </li>
+
+            {/* Blog Menu Item */}
+            <li className="menu-item-has-children">
+              <Link
+                href="/blogs-list"
+                className={
+                  submenu === "blog list" ? "activeMenu" : "inActiveMenu"
+                }
+              >
+                Blogs
+              </Link>
+            </li>
+
             
             {/* Contact Menu Item */}
             <li>
