@@ -104,15 +104,7 @@ export default function BlogsThree() {
             ))}
           </div>
 
-          <div className="row justify-center pt-60 lg:pt-40">
-            <div className="col-auto">
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-              />
-            </div>
-          </div>
+
         </div>
       </section>
     </>
