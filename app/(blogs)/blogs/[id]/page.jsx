@@ -23,7 +23,7 @@ import FooterFour from '@/components/layout/footers/FooterFour'
 export const metadata = {
   title: 'Blog-details',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    '',
   
 }
 
@@ -39,7 +39,7 @@ export default function page({ params }) {
 
             <BlogDetails id={params.id} />
 
-            <RelatedBlogs/>
+            {/* <RelatedBlogs/> */}
        
             <FooterFour/>
         </div>
