@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import API_URL from "@/data/config";
 
 export default function BlogDetails({ id }) {
   const [data, setData] = useState(null);
@@ -10,7 +11,7 @@ export default function BlogDetails({ id }) {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch(`https://test.trainomart.com/api/blogs/${id}`);
+        const response = await fetch(`${API_URL}/blogs/${id}`);
         const blogData = await response.json();
         setData(blogData);
       } catch (error) {
