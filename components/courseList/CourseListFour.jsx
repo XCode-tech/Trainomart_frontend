@@ -115,14 +115,16 @@ export default function CourseListFour({ tags = "" }) {
 
                       <div className="coursesCard-footer">
                         <div className="coursesCard-footer__price">
-                          {course.price ? (
+{/*                           {course.price ? (
                             <>
                               <div>${course.original_price}</div>
                               <div>${course.price}</div>
                             </>
                           ) : (
                             <div>Free</div>
-                          )}
+                          )} */}
+                          <div className="">{course.orignal_price}</div>
+                          <div className="">{course.price}</div>
                         </div>
                       </div>
                     </div>
