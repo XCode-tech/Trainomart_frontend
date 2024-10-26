@@ -5,6 +5,7 @@ import Image from "next/image";
 import Pagination from "../common/Pagination";
 import Link from "next/link";
 import axios from "axios";
+import API_URL from "@/data/config";
 
 export default function BlogsThree() {
   const [blogs, setBlogs] = useState([]);
@@ -16,7 +17,7 @@ export default function BlogsThree() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("https://test.trainomart.com/api/blogs/");
+        const response = await axios.get(`${API_URL}/blogs/`);
         setBlogs(response.data); // Assuming response.data is an array of blogs
         setTotalPages(Math.ceil(response.data.length / blogsPerPage));
       } catch (error) {
