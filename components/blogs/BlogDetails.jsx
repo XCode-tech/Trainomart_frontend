@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import API_URL from "@/data/config";
 
+        
 export default function BlogDetails({ id }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -41,10 +42,25 @@ export default function BlogDetails({ id }) {
         return <br key={index} />;
       }
 
+      // Check if line starts with a numeric value followed by space and has a colon
+      const numericStartPattern = /^\d+\s+(.+?):/;
+      const match = line.match(numericStartPattern);
+      if (match) {
+        const headerText = match[1]; // Text between numeric start and colon
+        const remainingText = line.slice(match[0].length); // Remaining text after colon
+
+        return (
+          <div key={index}>
+            <h3 className="mt-40 mb-10">{headerText}</h3>
+            <p>{remainingText}</p>
+          </div>
+        );
+      }
+
       // Check if the line contains 'Introduction' and wrap it in <h4>
       if (line.includes("Introduction")) {
         return (
-          <h4 key={index} className="fw-bold">{line}</h4>
+          <h3 key={index} className="fw-bold mt-20 mb-10">{line}</h3>
         );
       }
 
@@ -55,7 +71,7 @@ export default function BlogDetails({ id }) {
         const afterColon = line.slice(colonIndex + 1); // Text after ':'
 
         return (
-          <p key={index}>
+          <p className="mt-30 mb-10 text-18" key={index}>
             <strong>{beforeColon}</strong>{afterColon}
           </p>
         );
