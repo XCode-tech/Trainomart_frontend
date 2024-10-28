@@ -123,7 +123,7 @@ export default function BlogDetails({ id }) {
               <div className="row justify-center">
                 <div className="col-xl-8 col-lg-9 col-md-11">
                   <div className="blogCard__content">
-                    <h4 className="text-24 text-center fw-500">{data.blog_title}</h4>
+{/*                     <h4 className="text-24 text-center fw-500">{data.blog_title}</h4> */}
                     <div className="mt-30">{formatBlogContent(data.blog_data)}</div>
 
                     {/* Render additional sections like images, author info, etc., here */}
