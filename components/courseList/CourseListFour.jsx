@@ -116,8 +116,8 @@ export default function CourseListFour({ tags = "" }) {
                       <div className="coursesCard-footer">
                         <div className="coursesCard-footer__price">
                         <div className="coursesCard-footer__price">
-                          <div className="">${elm.orignal_price}</div>
-                          <div className="">${elm.price}</div>
+                          <div className="">${course.orignal_price}</div>
+                          <div className="">${course.price}</div>
                         </div>
 
                         </div>
