@@ -42,13 +42,13 @@ export default function HeaderFour() {
 
           <div className="col-auto">
             <div className="header-right d-flex items-center">
-              {/* <div className="header-right__icons text-white d-flex items-center">
-                <SearchToggle
+              <div className="header-right__icons text-white d-flex items-center">
+{/*                 <SearchToggle
                   color={"text-dark-1"}
                   allClasses={"pr-20 sm:pr-15"}
-                />
+                /> */}
 
-                <CartToggle allClasses="d-flex items-center text-dark-1" />
+{/*                 <CartToggle allClasses="d-flex items-center text-dark-1" /> */}
 
                 <div className="d-none xl:d-block -before-border pl-20 sm:pl-15">
                   <button
@@ -59,7 +59,7 @@ export default function HeaderFour() {
                     <i className="text-11 icon icon-mobile-menu"></i>
                   </button>
                 </div>
-              </div> */}
+              </div>
 
               <div className="header-right__buttons d-flex items-center lg:d-none">
                 {/* Business Menu Item */}
