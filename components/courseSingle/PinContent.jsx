@@ -92,7 +92,7 @@ export default function PinContent({ pageItem }) {
             <Image
               width={368}
               height={238}
-              className="w-full h-auto"
+              className="w-1/1 h-auto"
               src={pageItem.course_image || "/default-course.jpg"}
               alt="Course Image"
               priority
