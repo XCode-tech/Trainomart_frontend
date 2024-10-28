@@ -168,8 +168,8 @@ export default function CourseListFive() {
                       <div className="coursesCard-footer">
                         <div className="coursesCard-footer__author"></div>
                         <div className="coursesCard-footer__price">
-                          <div className="">{elm.orignal_price}</div>
-                          <div className="">{elm.price}</div>
+                          <div className="">${elm.orignal_price}</div>
+                          <div className="">${elm.price}</div>
                         </div>
                       </div>
                     </div>
