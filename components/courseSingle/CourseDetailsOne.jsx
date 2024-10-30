@@ -129,9 +129,16 @@ export default function CourseDetailsOne({ id }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
-                        <b>
+{/*                         <b>
                           New Batch: Starts From {format(courseStartDate, "do MMM")} to {courseEndDate || "N/A"} (9AM-5PM EST)
-                        </b>{" "}
+                        </b>{" "} */}
+
+                        <b>
+                          New Batch: Starts From{" "}
+                          <span className="blinkingText">
+                            {format(courseStartDate, "do MMM")} to {courseEndDate || "N/A"} (9AM-5PM EST)
+                          </span>
+                        </b>
                         <br />
                       </div>
                     </div>
