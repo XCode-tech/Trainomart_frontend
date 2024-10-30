@@ -87,7 +87,7 @@ export default function ContactOne() {
             </div>
 
             <div className="col-lg-7">
-              <h3 className="text-24 fw-500">Contact Form</h3>
+              <h3 className="text-24 fw-500">Contact Us</h3>
               <p className="mt-25">
                 Whether you're a business looking for expert technical trainers or an individual seeking top-notch technical courses to advance your career, we’re excited to connect with you.
                 Reach out to us through any of the methods below, and our team will assist you promptly.
