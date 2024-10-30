@@ -117,7 +117,7 @@ export default function PinContent({ pageItem }) {
                     onChange={handleChange}
                     required
                     style={{ outline: "groove 2px", width: "-webkit-fill-available" }}
-                    className="w-full p-3 border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0"
+                    className="w-full p-2 border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0"
                   />
                 </div>
 
@@ -133,7 +133,7 @@ export default function PinContent({ pageItem }) {
                     onChange={handleChange}
                     required
                     style={{ outline: "groove 2px", width: "-webkit-fill-available" }}
-                    className="w-full p-3 border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0"
+                    className="w-full p-2 border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0"
                   />
                 </div>
               </div>
@@ -151,13 +151,13 @@ export default function PinContent({ pageItem }) {
                     onChange={handleChange}
                     required
                     style={{ outline: "groove 2px", width: "-webkit-fill-available" }}
-                    className="w-full p-3 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
+                    className="w-full p-2 border-none border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0 focus:outline-none transition-colors duration-300"
                   />
                 </div>
 
                 <div className="flex-1">
                   <label htmlFor="time_to_call" className="block text-sm font-medium text-gray-700 mb-2">
-                    Good time to call you
+                    Good time to call you ( EST ) 
                   </label>
                   <input
                     id="time_to_call"
@@ -166,7 +166,7 @@ export default function PinContent({ pageItem }) {
                     value={formData.time_to_call}
                     onChange={handleChange}
                     style={{ outline: "groove 2px", width: "-webkit-fill-available" }}
-                    className="w-full p-3 border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0"
+                    className="w-full p-2 border-b-2 border-red-500 focus:border-indigo-500 focus:ring-0"
                   />
                 </div>
               </div>
