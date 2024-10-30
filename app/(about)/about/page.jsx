@@ -25,7 +25,7 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
 export const metadata = {
-  title: 'about',
+  title: 'About',
   description:
     '',
   
