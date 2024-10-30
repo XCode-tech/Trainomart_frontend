@@ -17,11 +17,11 @@ export default function BlogsThree() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(${API_URL}/blogs/);
-        setBlogs(response.data); // Assuming response.data is an array of blogs
+        const response = await axios.get(`${API_URL}/blogs/`);
+        setBlogs(response.data); 
         setTotalPages(Math.ceil(response.data.length / blogsPerPage));
       } catch (error) {
-        console.error("Error fetching blogs:", error);
+        console.error("Error in fetching blogs:", error);
       }
     };
     fetchBlogs();
@@ -83,14 +83,14 @@ export default function BlogsThree() {
                           {elm.category}
                         </div>
                         <h4 className="blogCard__title text-24 lh-15 text-dark-4 fw-500 mt-15">
-                          <Link className="linkCustom" href={/blogs/${elm.id}}>
+                          <Link className="linkCustom" href={`/blogs/${elm.id}`}>
                             {elm.blog_title}
                           </Link>
                         </h4>
                         <p className="blogCard__text mt-20">{elm.blog_data.split("\r\n")[0]}</p>
                         <div className="blogCard__button d-inline-block mt-20">
                           <Link
-                            href={/blogs/${elm.id}}
+                            href={`/blogs/${elm.id}`}
                             className="button -sm -purple-3 text-purple-1"
                           >
                             Read More
