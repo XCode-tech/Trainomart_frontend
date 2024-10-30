@@ -23,7 +23,7 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
 export const metadata = {
-  title: 'Business',
+  title: 'Instructor Augmentation Services',
   description:
     '',
   
