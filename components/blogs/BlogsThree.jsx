@@ -37,6 +37,16 @@ export default function BlogsThree() {
     setCurrentPage(page);
   };
 
+  // Format blog data content
+  const formatBlogData = (data) => {
+    return data.split("\r\n").map((line, index) => {
+      if (line.startsWith("=")) {
+        return <li key={index}>{line.slice(1).trim()}</li>;
+      }
+      return <p key={index}>{line}</p>;
+    });
+  };
+
   return (
     <>
       <section className="page-header -type-1">
@@ -87,7 +97,9 @@ export default function BlogsThree() {
                             {elm.blog_title}
                           </Link>
                         </h4>
-                        <p className="blogCard__text mt-20">{elm.blog_data.split("\r\n")[0]}</p>
+                        <div className="blogCard__text mt-20">
+                          {formatBlogData(elm.blog_data)}
+                        </div>
                         <div className="blogCard__button d-inline-block mt-20">
                           <Link
                             href={`/blogs/${elm.id}`}
@@ -103,8 +115,6 @@ export default function BlogsThree() {
               </div>
             ))}
           </div>
-
-
         </div>
       </section>
     </>
