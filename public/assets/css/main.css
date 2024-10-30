@@ -15725,3 +15725,12 @@ table.table td {
   background: white;
 }
 
+.blinkingText {
+  animation: blink 2s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
