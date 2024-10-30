@@ -73,7 +73,13 @@ export default function Overview({ data }) {
         <ul className="list-disc list-inside mt-5 space-y-3">
           {prerequisitesArray.length > 0 ? (
             prerequisitesArray.map((elm, i) => (
-              <li key={i}>{elm}</li>
+              <li key={i}>
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="text-purple-1 mr-2 flex-shrink-0 mr-10"
+                />  
+                {elm}
+              </li>
             ))
           ) : (
             <li>No prerequisites listed.</li>
