@@ -17,7 +17,7 @@ export default function BlogsThree() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${API_URL}/blogs/`);
+        const response = await axios.get(${API_URL}/blogs/);
         setBlogs(response.data); // Assuming response.data is an array of blogs
         setTotalPages(Math.ceil(response.data.length / blogsPerPage));
       } catch (error) {
@@ -35,16 +35,6 @@ export default function BlogsThree() {
   // Handle pagination
   const handlePageChange = (page) => {
     setCurrentPage(page);
-  };
-
-  // Format blog data content
-  const formatBlogData = (data) => {
-    return data.split("\r\n").map((line, index) => {
-      if (line.startsWith("=")) {
-        return <li key={index}>{line.slice(1).trim()}</li>;
-      }
-      return <p key={index}>{line}</p>;
-    });
   };
 
   return (
@@ -93,16 +83,14 @@ export default function BlogsThree() {
                           {elm.category}
                         </div>
                         <h4 className="blogCard__title text-24 lh-15 text-dark-4 fw-500 mt-15">
-                          <Link className="linkCustom" href={`/blogs/${elm.id}`}>
+                          <Link className="linkCustom" href={/blogs/${elm.id}}>
                             {elm.blog_title}
                           </Link>
                         </h4>
-                        <div className="blogCard__text mt-20">
-                          {formatBlogData(elm.blog_data)}
-                        </div>
+                        <p className="blogCard__text mt-20">{elm.blog_data.split("\r\n")[0]}</p>
                         <div className="blogCard__button d-inline-block mt-20">
                           <Link
-                            href={`/blogs/${elm.id}`}
+                            href={/blogs/${elm.id}}
                             className="button -sm -purple-3 text-purple-1"
                           >
                             Read More
@@ -115,6 +103,8 @@ export default function BlogsThree() {
               </div>
             ))}
           </div>
+
+
         </div>
       </section>
     </>
