@@ -21,7 +21,7 @@ import Preloader from '@/components/common/Preloader'
 import FooterFour from '@/components/layout/footers/FooterFour'
 
 export const metadata = {
-  title: 'Blog-details',
+  title: 'Blog Details',
   description:
     '',
   
