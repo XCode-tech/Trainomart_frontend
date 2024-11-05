@@ -84,7 +84,7 @@ export default function HeroFour() {
           >
             <div className="masthead__content pl-32 lg:pl-0">
               <h1 className="masthead__title">
-                Your Pursuit of <span className="text-purple-1">IT Excellence</span> starts here -
+                Become the <span className="text-purple-1">Innovator of Tomorrow </span>with Our Advanced Courses!
               </h1>
 
               <p className="masthead__text text-17 text-dark-1 mt-25">
