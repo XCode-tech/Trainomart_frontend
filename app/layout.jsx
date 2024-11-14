@@ -27,7 +27,22 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="google-site-verification" content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ" />
         
-        
+         {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-BZQ8GQNM2P"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-BZQ8GQNM2P');
+            `,
+          }}
+        />
+        {/* End Google Analytics */}
       
       </head>
       <body>
