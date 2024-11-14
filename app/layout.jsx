@@ -23,7 +23,9 @@ export default function RootLayout({ children }) {
   }, []);
   return (
     <html lang="en" className="">
-      <head></head>
+      <head>
+        <h1>Hello</h1>
+      </head>
       <body>
         <Context> {children}</Context>
       </body>
