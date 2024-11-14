@@ -28,12 +28,7 @@ export default function RootLayout({ children }) {
         <meta name="google-site-verification" content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ" />
         
         
-        
-
-        
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZQ8GQNM2P"></script>
-
-
+      
       </head>
       <body>
         
