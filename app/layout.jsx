@@ -31,10 +31,6 @@ export default function RootLayout({ children }) {
       
       </head>
       <body>
-        
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2QVLW2N"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-       
 
         <Context> {children}</Context>
       </body>
