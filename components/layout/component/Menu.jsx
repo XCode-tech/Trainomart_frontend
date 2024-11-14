@@ -22,7 +22,7 @@ export default function Menu({ allClasses, headerPosition }) {
     // Fetch the first five courses from the API
     const fetchCourses = async () => {
       try {
-        const response = await fetch(`${API_URL}/courses/limited/?limit=5`); // Corrected URL
+        const response = await fetch(`${API_URL}/courses/limited/?limit=8`); // Corrected URL
         if (!response.ok) {
           throw new Error("Failed to fetch courses.");
         }
