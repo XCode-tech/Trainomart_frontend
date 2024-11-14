@@ -1,6 +1,7 @@
 "use client";
 
 import "../public/assets/sass/styles.scss";
+
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-calendar/dist/Calendar.css";
@@ -21,37 +22,34 @@ export default function RootLayout({ children }) {
       once: true,
     });
   }, []);
-
   return (
     <html lang="en" className="">
       <head>
         <meta name="google-site-verification" content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ" />
+        
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-M2QVLW2N');</script>
+        
 
-        <Script id="gtm-script" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-M2QVLW2N');
-          `}
-        </Script>
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZQ8GQNM2P"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-BZQ8GQNM2P');
+        </script>
 
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-BZQ8GQNM2P"></Script>
-        <Script id="gtag-script" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-BZQ8GQNM2P');
-          `}
-        </Script>
       </head>
       <body>
-        <noscript>
-          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2QVLW2N"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe>
-        </noscript>
+        
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2QVLW2N"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+       
 
         <Context> {children}</Context>
       </body>
