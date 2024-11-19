@@ -37,7 +37,7 @@ export default function page({ params }) {
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
 
-            <BlogDetails id={params.slug} />
+            <BlogDetails slug={params.slug} />
 
             {/* <RelatedBlogs/> */}
        
