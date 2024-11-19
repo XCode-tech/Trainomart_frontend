@@ -12,7 +12,7 @@ export default function BlogDetails({ id }) {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch(`${API_URL}/blogs/${id}`);
+        const response = await fetch(`${API_URL}/blogs/${slug}`);
         const blogData = await response.json();
         setData(blogData);
       } catch (error) {
