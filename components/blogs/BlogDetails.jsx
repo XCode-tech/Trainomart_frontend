@@ -5,7 +5,7 @@ import Image from "next/image";
 import API_URL from "@/data/config";
 
         
-export default function BlogDetails({ id }) {
+export default function BlogDetails({ slug }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,7 +23,7 @@ export default function BlogDetails({ id }) {
     };
 
     fetchBlogData();
-  }, [id]);
+  }, [slug]);
 
   if (isLoading) {
     return <p>Loading...</p>;
