@@ -63,7 +63,7 @@ export default function BlogsThree() {
         <div className="container">
           <div className="row y-gap-30 justify-center">
             {currentBlogs.map((elm) => (
-              <div key={elm.id} className="col-lg-10 col-md-11">
+              <div key={elm.slug} className="col-lg-10 col-md-11">
                 <div className="blogCard -type-3">
                   <div className="row y-gap-30 items-center">
                     <div className="col-lg-6">
@@ -83,14 +83,14 @@ export default function BlogsThree() {
                           {elm.category}
                         </div>
                         <h4 className="blogCard__title text-24 lh-15 text-dark-4 fw-500 mt-15">
-                          <Link className="linkCustom" href={`/blogs/${elm.id}`}>
+                          <Link className="linkCustom" href={`/blogs/${elm.slug}`}>
                             {elm.blog_title}
                           </Link>
                         </h4>
                         <p className="blogCard__text mt-20">{elm.blog_data.split("\r\n")[0]}</p>
                         <div className="blogCard__button d-inline-block mt-20">
                           <Link
-                            href={`/blogs/${elm.id}`}
+                            href={`/blogs/${elm.slug}`}
                             className="button -sm -purple-3 text-purple-1"
                           >
                             Read More
