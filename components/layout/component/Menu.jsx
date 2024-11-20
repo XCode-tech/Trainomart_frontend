@@ -112,8 +112,8 @@ export default function Menu({ allClasses, headerPosition }) {
                     {!isLoading && !error && courses.length > 0 && (
                       <ul className="mega__list">
                         {courses.map((course) => (
-                          <li key={course.id} className="inActiveMegaMenu">
-                            <Link data-barba href={`/courses/${course.id}`}>
+                          <li key={course.slug} className="inActiveMegaMenu">
+                            <Link data-barba href={`/courses/${course.slug}`}>
                               {course.course_name}
                             </Link>
                           </li>
