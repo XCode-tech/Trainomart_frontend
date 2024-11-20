@@ -2,9 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import API_URL from "@/data/config";
 
-        
 export default function BlogDetails({ slug }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +10,7 @@ export default function BlogDetails({ slug }) {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch(`${API_URL}/blogs/${slug}`);
+        const response = await fetch(`https://test.trainomart.com/api/blogs/${slug}`);
         const blogData = await response.json();
         setData(blogData);
       } catch (error) {
@@ -123,7 +121,7 @@ export default function BlogDetails({ slug }) {
               <div className="row justify-center">
                 <div className="col-xl-8 col-lg-9 col-md-11">
                   <div className="blogCard__content">
-{/*                     <h4 className="text-24 text-center fw-500">{data.blog_title}</h4> */}
+                    <h4 className="text-24 text-center fw-500">{data.blog_title}</h4>
                     <div className="mt-30">{formatBlogContent(data.blog_data)}</div>
 
                     {/* Render additional sections like images, author info, etc., here */}
