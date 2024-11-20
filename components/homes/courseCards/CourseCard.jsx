@@ -94,7 +94,7 @@ export default function CourseCard({ data, index, ...props }) {
           {/* Course Title */}
           <h3 className="text-lg font-semibold text-gray-800 mt-3">
             <Link
-              href={`/courses/${data.id}`}
+              href={`/courses/${data.slug}`}
               className="hover:text-purple-600 transition-colors duration-200"
             >
               {data.course_name || "Untitled Course"}
