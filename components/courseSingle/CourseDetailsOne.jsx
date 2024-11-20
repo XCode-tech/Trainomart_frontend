@@ -47,7 +47,7 @@ export default function CourseDetailsOne({ slug }) {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`${API_URL}/courses/${slug}`);
+        const response = await fetch(`${API_URL}/courses/slug/${slug}`);
 
         if (!response.ok) {
           throw new Error(`Error fetching course data: ${response.statusText}`);
