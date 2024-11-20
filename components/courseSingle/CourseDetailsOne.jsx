@@ -15,7 +15,7 @@ const menuItems = [
   { id: 2, href: "#course-content", text: "Course Content", isActive: false },
 ];
 
-export default function CourseDetailsOne({ id }) {
+export default function CourseDetailsOne({ slug }) {
   const [pageItem, setPageItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -47,7 +47,7 @@ export default function CourseDetailsOne({ id }) {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`${API_URL}/courses/${id}`);
+        const response = await fetch(`${API_URL}/courses/${slug}`);
 
         if (!response.ok) {
           throw new Error(`Error fetching course data: ${response.statusText}`);
@@ -62,10 +62,10 @@ export default function CourseDetailsOne({ id }) {
       }
     };
 
-    if (id) {
+    if (slug) {
       fetchCourseDetails();
     }
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (
