@@ -102,7 +102,7 @@ export default function CourseListFour({ tags = "" }) {
 
                     <div className="h-100 pt-15">
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link href={`/courses/${course.id}`}>
+                        <Link href={`/courses/${course.slug}`}>
                           {course.course_name}
                         </Link>
                       </div>
