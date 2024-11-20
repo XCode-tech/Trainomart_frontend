@@ -118,7 +118,7 @@ export default function CourseListFive() {
 
                     <div className="h-100 pt-20 pb-15 px-30">
                       <div className="text-17 lh-15 fw-500 text-dark-1 mt-10">
-                        <Link className="linkCustom" href={`/courses/${elm.slug}`}>
+                        <Link className="linkCustom" href={`/courses/slug/${elm.slug}`}>
                           {elm.course_name}
                         </Link>
                       </div>
