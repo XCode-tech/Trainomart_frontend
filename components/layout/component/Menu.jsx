@@ -113,7 +113,7 @@ export default function Menu({ allClasses, headerPosition }) {
                       <ul className="mega__list">
                         {courses.map((course) => (
                           <li key={course.slug} className="inActiveMegaMenu">
-                            <Link data-barba href={`/courses/slug/${course.slug}`}>
+                            <Link data-barba href={`/courses/${course.slug}`}>
                               {course.course_name}
                             </Link>
                           </li>
