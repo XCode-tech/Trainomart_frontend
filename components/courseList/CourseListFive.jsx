@@ -21,7 +21,7 @@ export default function CourseListFive() {
         const data = await response.json();
         setCourses(data); // Store fetched courses in state
         setFilteredCourses(data); // Initially show all courses
-
+        console.log("data : ", data)
         // Assuming categories are part of the course data
         const courseCategories = ["All Categories", ...new Set(data.map((course) => course.category))];
         setCategories(courseCategories); // Set unique categories
