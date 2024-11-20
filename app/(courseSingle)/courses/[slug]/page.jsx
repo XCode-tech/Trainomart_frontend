@@ -19,7 +19,7 @@ export default function Page({ params }) {
     const fetchMetadata = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`https://test.trainomart.com/api/courses/slug/${params.slug}/`);
+        const res = await fetch(`https://test.trainomart.com/api/courses/${params.slug}/`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         
         const data = await res.json();
