@@ -10,7 +10,7 @@ export default function BlogDetails({ slug }) {
   useEffect(() => {
     const fetchBlogData = async () => {
       try {
-        const response = await fetch(`https://test.trainomart.com/api/blogs/${slug}`);
+        const response = await fetch(`https://test.trainomart.com/api/blogs/slug/${slug}`);
         const blogData = await response.json();
         setData(blogData);
       } catch (error) {
