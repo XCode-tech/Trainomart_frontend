@@ -106,11 +106,17 @@ export default function BlogDetails({ slug }) {
 
       <section className="layout-pt-md">
         <div className="container">
-          <div
+{/*           <div
             className="ratio ratio-16:9 rounded-8 bg-image js-lazy"
             style={{ backgroundImage: `url(${data.blog_image})` }}
             data-bg="img/blog/blog-single/images.png"
-          ></div>
+          ></div> */}
+          <img
+            src={data.blog_image || "img/blog/blog-single/images.png"}
+            alt="Blog Image"
+            className="ratio ratio-16:9 rounded-8 js-lazy"
+          />
+
         </div>
       </section>
 
