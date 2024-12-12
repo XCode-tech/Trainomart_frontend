@@ -67,7 +67,7 @@ export default function Page({ params }) {
           {/* Pass pageItem to CourseDetailsOne */}
           <CourseDetailsOne slug={params.slug} pageItem={pageItem} />
           <CourseSlider />
-          <Faq1 />
+          <Faq1 slug={params.slug} pageItem={pageItem} />
 
           <FooterFour />
         </div>
