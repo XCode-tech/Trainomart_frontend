@@ -51,10 +51,10 @@ export default function CourseDetailsOne({ slug }) {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(`${API_URL}/courses/slug/${slug}`);
+        const response = await fetch(${API_URL}/courses/slug/${slug});
 
         if (!response.ok) {
-          throw new Error(`Error fetching course data: ${response.statusText}`);
+          throw new Error(Error fetching course data: ${response.statusText});
         }
 
         const data = await response.json();
@@ -171,7 +171,7 @@ export default function CourseDetailsOne({ slug }) {
                       <div key={item.id}>
                         <a
                           href={item.href}
-                          className={`pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}`}
+                          className={pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}}
                         >
                           {item.text}
                         </a>
@@ -187,33 +187,69 @@ export default function CourseDetailsOne({ slug }) {
             </div>
           </div>
         </section>
-
-        
         <section className="layout-pt-lg layout-pb-lg bg-light-4">
           <div className="container">
             <div className="row justify-center text-center">
               <div className="col-xl-8 col-lg-9 col-md-11">
-                <h2>Frequently Asked Questions</h2>
+                <div className="sectionTitle ">
+                  <h2 className="sectionTitle__title ">
+                    Frequently Asked Questions.
+                  </h2>
+    
+                  {/* <p className="sectionTitle__text ">
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  </p> */}
+                </div>
+    
                 <div className="accordion -block text-left pt-60 lg:pt-40 js-accordion">
-                  {pageItem.faq?.map((elm, i) => (
+                  {faq.map((elm, i) => (
                     <div
                       onClick={() =>
-                        setActiveFaq((pre) => (pre == i ? 0 : i))
+                        setActiveFaq((pre) => (pre == elm.id ? 0 : elm.id))
                       }
                       key={i}
-                      className={`accordion__item ${
-                        activeFaq == i ? "is-active" : ""
-                      }`}
+                      className={accordion__item  ${
+                        activeFaq == elm.id ? "is-active" : ""
+                      }}
                     >
                       <div className="accordion__button">
-                        <FontAwesomeIcon icon={activeFaq == i ? faMinus : faPlus} />
-                        <span>{elm.question}</span>
+                        <div className="accordion__icon">
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                            className="icon"
+                            data-feather="plus"
+                          >
+                            <FontAwesomeIcon icon={faPlus} />
+                          </div>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                            className="icon"
+                            data-feather="minus"
+                          >
+                            <FontAwesomeIcon icon={faMinus} />
+                          </div>
+                        </div>
+                        <span className="text-17 fw-500 text-dark-1">
+                          {pageItem.faq}
+                        </span>
                       </div>
-                      {activeFaq == i && (
-                        <div className="accordion__content">
+    
+                      <div
+                        style={activeFaq == elm.id ? { maxHeight: "139px" } : {}}
+                        className="accordion__content"
+                      >
+                        <div className="accordion__content__inner">
                           <p>{elm.answer}</p>
                         </div>
-                      )}
+                      </div>
                     </div>
                   ))}
                 </div>
