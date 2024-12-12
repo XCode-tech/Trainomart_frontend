@@ -56,7 +56,7 @@ export default function Faq({ slug }) {
             <div className="accordion -block text-left pt-60 lg:pt-40 js-accordion">
               {faqs.map((elm, i) => (
                 <div
-                  onClick={() => setActiveFaq((pre) => (pre === i ? 0 : i))}
+                  onClick={() => setActiveFaq((prev) => (prev === i ? -1 : i))} // Toggle FAQ
                   key={i}
                   className={`accordion__item ${
                     activeFaq === i ? "is-active" : ""
