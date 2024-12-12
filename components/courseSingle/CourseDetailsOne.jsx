@@ -54,7 +54,7 @@ export default function CourseDetailsOne({ slug }) {
         const response = await fetch(`${API_URL}/courses/slug/${slug}`);
 
         if (!response.ok) {
-          throw new Error(Error fetching course data: ${response.statusText});
+          throw new Error(`Error fetching course data: ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -171,7 +171,7 @@ export default function CourseDetailsOne({ slug }) {
                       <div key={item.id}>
                         <a
                           href={item.href}
-                          className={pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}}
+                          className={`pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}`}
                         >
                           {item.text}
                         </a>
@@ -208,9 +208,9 @@ export default function CourseDetailsOne({ slug }) {
                         setActiveFaq((pre) => (pre == elm.id ? 0 : elm.id))
                       }
                       key={i}
-                      className={accordion__item  ${
+                      className={`accordion__item  ${
                         activeFaq == elm.id ? "is-active" : ""
-                      }}
+                      }`}
                     >
                       <div className="accordion__button">
                         <div className="accordion__icon">
