@@ -1,35 +1,65 @@
 "use client";
 
-import React, { useState } from "react";
-import { faq } from "@/data/faq";
+import React, { useState, useEffect } from "react";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-export default function Faq() {
+import API_URL from "@/data/config";
+
+export default function Faq({ slug }) {
+  const [faqs, setFaqs] = useState([]);
   const [activeFaq, setActiveFaq] = useState(0);
+
+  // Fetch the FAQ data
+  useEffect(() => {
+    async function fetchFaqs() {
+      try {
+        const response = await fetch(`${API_URL}/courses/slug/${slug}`);
+        const data = await response.json();
+        
+        if (data?.faq) {
+          const faqList = parseFaqString(data.faq);
+          setFaqs(faqList);
+        }
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      }
+    }
+
+    fetchFaqs();
+  }, [slug]);
+
+  // Parse the FAQ string into an array of question-answer objects
+  const parseFaqString = (faqString) => {
+    const faqArray = faqString.split("\r\n").reduce((acc, line) => {
+      const [key, value] = line.split(": ", 2);
+      if (key?.toLowerCase().startsWith("question")) {
+        acc.push({ question: value, answer: "" });
+      } else if (key?.toLowerCase().startsWith("answer")) {
+        acc[acc.length - 1].answer = value;
+      }
+      return acc;
+    }, []);
+    return faqArray;
+  };
+
   return (
     <section className="layout-pt-lg layout-pb-lg bg-light-4">
       <div className="container">
         <div className="row justify-center text-center">
           <div className="col-xl-8 col-lg-9 col-md-11">
-            <div className="sectionTitle ">
-              <h2 className="sectionTitle__title ">
-                Frequently Asked Questions.
+            <div className="sectionTitle">
+              <h2 className="sectionTitle__title">
+                Frequently Asked Questions
               </h2>
-
-              {/* <p className="sectionTitle__text ">
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              </p> */}
             </div>
 
             <div className="accordion -block text-left pt-60 lg:pt-40 js-accordion">
-              {faq.map((elm, i) => (
+              {faqs.map((elm, i) => (
                 <div
-                  onClick={() =>
-                    setActiveFaq((pre) => (pre == elm.id ? 0 : elm.id))
-                  }
+                  onClick={() => setActiveFaq((pre) => (pre === i ? 0 : i))}
                   key={i}
-                  className={`accordion__item  ${
-                    activeFaq == elm.id ? "is-active" : ""
+                  className={`accordion__item ${
+                    activeFaq === i ? "is-active" : ""
                   }`}
                 >
                   <div className="accordion__button">
@@ -41,20 +71,10 @@ export default function Faq() {
                           alignItems: "center",
                         }}
                         className="icon"
-                        data-feather="plus"
                       >
-                        <FontAwesomeIcon icon={faPlus} />
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                        className="icon"
-                        data-feather="minus"
-                      >
-                        <FontAwesomeIcon icon={faMinus} />
+                        <FontAwesomeIcon
+                          icon={activeFaq === i ? faMinus : faPlus}
+                        />
                       </div>
                     </div>
                     <span className="text-17 fw-500 text-dark-1">
@@ -63,7 +83,9 @@ export default function Faq() {
                   </div>
 
                   <div
-                    style={activeFaq == elm.id ? { maxHeight: "139px" } : {}}
+                    style={
+                      activeFaq === i ? { maxHeight: "139px" } : {}
+                    }
                     className="accordion__content"
                   >
                     <div className="accordion__content__inner">
