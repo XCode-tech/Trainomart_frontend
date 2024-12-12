@@ -8,7 +8,7 @@ import CourseDetailsOne from '@/components/courseSingle/CourseDetailsOne';
 import CourseSlider from '@/components/courseSingle/CourseSlider';
 import FooterFour from '@/components/layout/footers/FooterFour';
 import HeaderFour from '@/components/layout/headers/HeaderFour';
-import Faq1 from "@/components/common/Faq1";
+// import Faq1 from "@/components/common/Faq1";
 
 export default function Page({ params }) {
   const [pageItem, setPageItem] = useState(null);
@@ -67,7 +67,7 @@ export default function Page({ params }) {
           {/* Pass pageItem to CourseDetailsOne */}
           <CourseDetailsOne slug={params.slug} pageItem={pageItem} />
           <CourseSlider />
-          <Faq1 />
+{/*           <Faq1 /> */}
 
           <FooterFour />
         </div>
