@@ -238,7 +238,7 @@ export default function CourseDetailsOne({ slug }) {
                           </div>
                         </div>
                         <span className="text-17 fw-500 text-dark-1">
-                          {elm.question}
+                          {pageItem.faq}
                         </span>
                       </div>
     
