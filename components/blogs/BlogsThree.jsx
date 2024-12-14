@@ -2,38 +2,38 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Pagination from "../common/Pagination";
 import Link from "next/link";
 import axios from "axios";
-import API_URL from "@/data/config";
+import Pagination from "@mui/material/Pagination";
 
 export default function BlogsThree() {
-  const [blogs, setBlogs] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const blogsPerPage = 4;
+  const [blogs, setBlogs] = useState([]); // Store all blogs
+  const [currentPage, setCurrentPage] = useState(1); // Current active page
+  const blogsPerPage = 4; // Blogs to show per page
 
-  // Fetch blogs from the API on component mount
+  // Fetch blogs from the API
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${API_URL}/blogs/`);
-        setBlogs(response.data); 
-        setTotalPages(Math.ceil(response.data.length / blogsPerPage));
+        const response = await axios.get("https://test.trainomart.com/api/blogs/");
+        setBlogs(response.data); // Assuming response.data is an array of blogs
       } catch (error) {
-        console.error("Error in fetching blogs:", error);
+        console.error("Error fetching blogs:", error);
       }
     };
     fetchBlogs();
   }, []);
 
-  // Calculate the current page's blogs
+  // Calculate total pages based on blogs length
+  const totalPages = Math.ceil(blogs.length / blogsPerPage);
+
+  // Calculate blogs for the current page
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
-  // Handle pagination
-  const handlePageChange = (page) => {
+  // Handle page change
+  const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
 
@@ -45,7 +45,7 @@ export default function BlogsThree() {
             <div className="row justify-center text-center">
               <div className="col-auto">
                 <div>
-                  <h1 className="page-header__title">Our Blogs</h1>
+                  <h1 className="page-header__title">Latest News</h1>
                 </div>
                 <div>
                   <p className="page-header__text">
@@ -73,7 +73,7 @@ export default function BlogsThree() {
                           height={392}
                           className="rounded-8"
                           src={elm.blog_image}
-                          alt="image"
+                          alt={elm.blog_title || "image"}
                         />
                       </div>
                     </div>
@@ -87,7 +87,9 @@ export default function BlogsThree() {
                             {elm.blog_title}
                           </Link>
                         </h4>
-                        <p className="blogCard__text mt-20">{elm.blog_data.split("\r\n")[0]}</p>
+                        <p className="blogCard__text mt-20">
+                          {elm.blog_data.split("\r\n")[0]}
+                        </p>
                         <div className="blogCard__button d-inline-block mt-20">
                           <Link
                             href={`/blogs/${elm.slug}`}
@@ -104,7 +106,17 @@ export default function BlogsThree() {
             ))}
           </div>
 
-
+          {/* MUI Pagination */}
+          <div className="row justify-center pt-60 lg:pt-40">
+            <div className="col-auto">
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                onChange={handlePageChange}
+                color="primary"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </>
