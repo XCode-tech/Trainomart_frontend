@@ -88,8 +88,10 @@ export default function HeroFour() {
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
       {showPopup && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+//      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      //        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+          <div>
+          <div>
           <div className="flex">
             {/* Left Side: Image */}
             <div className="w-1/2">
