@@ -93,7 +93,7 @@ export default function HeroFour() {
             <div className="flex">
               <div className="w-1/2 relative">
                 <Image
-                  src="/assets/img/home-4/masthead/popup-image.jpg"
+                  src="/assets/img/home-4/masthead/1.jpg"
                   alt="Popup Image"
                   layout="fill"
                   objectFit="cover"
