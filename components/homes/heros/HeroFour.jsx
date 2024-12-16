@@ -6,8 +6,8 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; 
 import API_URL from "@/data/config";
 import { X } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+// import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
 
 export default function HeroFour() {
   const router = useRouter();
@@ -112,23 +112,31 @@ export default function HeroFour() {
                   Sign up now to get exclusive access to our latest courses and special offers.
                 </p>
                 <form onSubmit={handlePopupSubmit} className="space-y-4">
-                  <Input
+                  <input
                     type="text"
                     placeholder="Your Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                   />
-                  <Input
+                  <input
                     type="email"
                     placeholder="Your Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <Button type="submit" className="w-full">
+{/*                   <button type="submit" className="w-full">
                     Sign Up
-                  </Button>
+                  </button> */}
+                  <button
+                    type="submit"
+                    name="submit"
+                    id="submit"
+                    className="button -md -purple-1 text-white"
+                  >
+                  Sign Up
+                  </button>
                 </form>
               </div>
             </div>
