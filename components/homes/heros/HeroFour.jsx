@@ -42,59 +42,62 @@ export default function HeroWithPopup() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container relative">
-      {/* Popup Section */}
+      {/* Popup */}
       {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full mx-4 flex overflow-hidden relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden flex">
             {/* Left Side: Image */}
-            <div className="w-1/2 relative hidden md:block">
+            <div className="w-1/2 relative">
               <Image
-                src="/assets/img/team/4.png"
-                alt="Inspiring Learning"
+                src="/assets/img/home-4/masthead/popup-image.jpg"
+                alt="Popup Image"
                 layout="fill"
                 objectFit="cover"
-                className="rounded-l-lg"
               />
             </div>
 
             {/* Right Side: Text and Form */}
-            <div className="w-full md:w-1/2 p-8 flex flex-col justify-center relative">
+            <div className="w-1/2 p-8 flex flex-col justify-between">
+              {/* Close Button */}
               <button
                 onClick={() => setShowPopup(false)}
                 className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
                 aria-label="Close popup"
               >
-                ✕
+                <X size={24} />
               </button>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Unlock Your Potential
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Join our platform today and gain access to exclusive courses and
-                resources tailored for your growth.
-              </p>
+
+              {/* Text Section */}
+              <div>
+                <h2 className="text-2xl font-bold mb-4">Welcome to Our Course Platform!</h2>
+                <p className="text-gray-600 mb-6">
+                  Sign up now to get exclusive access to our latest courses and special offers.
+                </p>
+              </div>
+
+              {/* Form Section */}
               <form onSubmit={handlePopupSubmit} className="space-y-4">
                 <input
                   type="text"
                   placeholder="Your Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   required
+                  className="w-full border border-gray-300 rounded-lg p-3"
                 />
                 <input
                   type="email"
                   placeholder="Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                   required
+                  className="w-full border border-gray-300 rounded-lg p-3"
                 />
                 <button
                   type="submit"
-                  className="w-full bg-purple-500 text-black py-2 rounded hover:bg-purple-600 transition-all"
+                  className="w-full bg-purple-600 text-white font-bold py-3 rounded-lg hover:bg-purple-700 transition"
                 >
-                  Sign Up Now
+                  Sign Up
                 </button>
               </form>
             </div>
@@ -102,6 +105,8 @@ export default function HeroWithPopup() {
         </div>
       )}
 
+
+      
       {/* Main Section */}
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
