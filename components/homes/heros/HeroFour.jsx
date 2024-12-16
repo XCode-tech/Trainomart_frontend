@@ -96,9 +96,7 @@ export default function HeroFour() {
               <Image
                 src="/assets/img/home-4/masthead/1.jpg"
                 alt="Popup Image"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-l-lg"
+
               />
             </div>
             {/* Right Side: Text and Form */}
