@@ -50,7 +50,7 @@ export default function HeroWithPopup() {
             {/* Left Side: Image */}
             <div className="w-1/2 relative">
               <Image
-                src="/assets/img/home-4/masthead/popup-image.jpg"
+                src="/assets/img/home-4/masthead/1.png"
                 alt="Popup Image"
                 layout="fill"
                 objectFit="cover"
