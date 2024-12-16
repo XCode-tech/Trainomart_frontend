@@ -4,10 +4,9 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import API_URL from "@/data/config";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { X } from 'lucide-react';
-
-
-
 
 export default function HeroFour() {
   const router = useRouter();
@@ -17,7 +16,7 @@ export default function HeroFour() {
   const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
   const [name, setName] = useState(""); // State for name input
   const [email, setEmail] = useState(""); // State for email input
- 
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +33,7 @@ export default function HeroFour() {
     console.log("Popup form submitted", { name, email });
     setShowPopup(false); // Close the popup after submission
   };
-  
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       const containers = document.querySelectorAll(".js-mouse-move-container");
@@ -87,7 +86,7 @@ export default function HeroFour() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
-            {showPopup && (
+      {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
             <div className="flex">
@@ -135,6 +134,7 @@ export default function HeroFour() {
           </div>
         </div>
       )}
+
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
           {/* Left Column: Text and Search Form */}
@@ -150,57 +150,28 @@ export default function HeroFour() {
 
               <p className="masthead__text text-17 text-dark-1 mt-25">
                 A Technical Training Solutions Company providing Instructors and
-
                 <br className="lg:d-none" />
-
                 delivering Tech Courses at affordable prices.
               </p>
 
               <div className="masthead-search mt-30">
                 <div className="masthead-search__form">
-                  {/* <form onSubmit={handleSubmit} className="flex items-center">
-                    <input
-                      required
-                      type="text"
-                      placeholder="Search courses by tags"
-                      value={tags} // Bind the input value to state
-                      onChange={(e) => setTags(e.target.value)} // Update state on input change
-                      className="input-field"
-                      aria-label="Tags search input"
-                    />
-
-                    <button
-                      className="button -purple-1 text-white ml-4"
-                      type="submit" // Submit the form
-                      disabled={loading} // Disable the button if loading
-                      aria-label="Search for course"
-                    >
-                      {loading ? (
-                        <i className="icon icon-loading"></i> // Loading icon
-                      ) : (
-                        <i className="icon icon-search"></i>
-                      )}
-                    </button>
-                  </form> */}
-
                   <form onSubmit={handleSubmit} className="flex items-center">
                     <input
-                          type="text"
-                          placeholder="Search courses by tags"
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          className="border p-2 rounded pl-10" // Added padding-left for the icon
-                        />
-
-
+                      type="text"
+                      placeholder="Search courses by tags"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="border p-2 rounded pl-10"
+                    />
                     <button
                       className="button -purple-1 text-white ml-4"
-                      type="submit" // Submit the form
-                      disabled={loading} // Disable the button if loading
+                      type="submit"
+                      disabled={loading}
                       aria-label="Search for course"
                     >
                       {loading ? (
-                        <i className="icon icon-loading"></i> // Loading icon
+                        <i className="icon icon-loading"></i>
                       ) : (
                         <i className="icon icon-search"></i>
                       )}
@@ -236,7 +207,6 @@ export default function HeroFour() {
                   src="/assets/img/home-4/masthead/G-1.png"
                   alt="Hero Image"
                 />
-
               </div>
             </div>
           </div>
@@ -245,3 +215,4 @@ export default function HeroFour() {
     </section>
   );
 }
+
