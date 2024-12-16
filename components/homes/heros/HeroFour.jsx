@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 
