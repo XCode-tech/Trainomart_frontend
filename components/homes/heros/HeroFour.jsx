@@ -123,7 +123,7 @@ export default function HeroFour() {
                   required
                   className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
-                </br>
+                <br />
                 <button
                   type="submit"
                   name="submit"
