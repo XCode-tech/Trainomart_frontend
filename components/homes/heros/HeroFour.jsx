@@ -5,15 +5,16 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/navigation"; 
 import API_URL from "@/data/config";
+import { X } from 'lucide-react';
 
 export default function HeroFour() {
   const router = useRouter();
   const [tags, setTags] = useState(""); // State to store the tags input
   const [loading, setLoading] = useState(false); // State to handle loading state
   const [searchTerm, setSearchTerm] = useState("");
-  // const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
-  // const [name, setName] = useState(""); // State for name input
-  // const [email, setEmail] = useState(""); // State for email input
+  const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
+  const [name, setName] = useState(""); // State for name input
+  const [email, setEmail] = useState(""); // State for email input
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -25,12 +26,12 @@ export default function HeroFour() {
   };
 
   // Handle popup form submission
-  // const handlePopupSubmit = (e) => {
-  //   e.preventDefault();
+  const handlePopupSubmit = (e) => {
+    e.preventDefault();
 
-  //   console.log("Popup form submitted", { name, email });
-  //   setShowPopup(false); // Close the popup after submission
-  // };
+    console.log("Popup form submitted", { name, email });
+    setShowPopup(false); // Close the popup after submission
+  };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -84,7 +85,7 @@ export default function HeroFour() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
-{/*       {showPopup && (
+      {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
             <div className="flex">
@@ -132,7 +133,7 @@ export default function HeroFour() {
           </div>
         </div>
       )}
- */}
+
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
           {/* Left Column: Text and Search Form */}
