@@ -95,14 +95,7 @@ export default function HeroFour() {
       
             {/* Right Side - Text and Form */}
             <div className="w-full p-6 text-center justify-center">
-              {/* Close Button */}
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                aria-label="Close popup"
-              >
-                <X size={24} />
-              </button>
+
       
               {/* Text Section */}
               <div>
@@ -120,7 +113,7 @@ export default function HeroFour() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full border border-gray-300 rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <input
                   type="email"
@@ -128,17 +121,25 @@ export default function HeroFour() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full border border-gray-300 rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <button
                   type="submit"
                   name="submit"
                   id="submit"
-                  className="w-full py-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
+                  className="w-full py-3 rounded-lg bg-purple-600 text-black hover:bg-purple-700"
                 >
                   Sign Up
                 </button>
               </form>
+              {/* Close Button */}
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                aria-label="Close popup"
+              >
+                <X size={24} />
+              </button>
             </div>
           </div>
         </div>
