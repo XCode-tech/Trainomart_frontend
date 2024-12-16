@@ -48,12 +48,12 @@ export default function HeroWithPopup() {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden flex">
             {/* Left Side: Image */}
-            <div className="w-1/2 relative">
+            <div className="w-1/2">
               <Image
                 src="/assets/img/home-4/masthead/1.png"
                 alt="Popup Image"
-                layout="fill"
-                objectFit="cover"
+{/*                 layout="fill" */}
+{/*                 objectFit="cover" */}
               />
             </div>
 
