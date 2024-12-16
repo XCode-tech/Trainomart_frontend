@@ -141,6 +141,11 @@ export default function HeroFour() {
                 <X size={24} />
               </button>
             </div>
+            <Image
+              src="/assets/img/home-4/masthead/1.jpg"
+              alt="Popup Image"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
