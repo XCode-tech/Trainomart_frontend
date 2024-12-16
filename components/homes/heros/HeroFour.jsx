@@ -1,26 +1,15 @@
-"use client"; 
+"use client";
 
-import gsap from "gsap"; 
-import Image from "next/image"; 
-import React, { useEffect, useState } from "react"; 
-import { useRouter } from "next/navigation"; 
+import gsap from "gsap";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function HeroFour() {
+export default function HeroWithPopup() {
   const router = useRouter();
-  const [tags, setTags] = useState(""); // State to store the tags input
-  const [loading, setLoading] = useState(false); // State to handle loading state
-  const [searchTerm, setSearchTerm] = useState("");
   const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
   const [name, setName] = useState(""); // State for name input
   const [email, setEmail] = useState(""); // State for email input
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (searchTerm.trim()) {
-      router.push(`/courses-list/?search=${searchTerm}`);
-    }
-  };
 
   const handlePopupSubmit = (e) => {
     e.preventDefault();
@@ -52,60 +41,62 @@ export default function HeroFour() {
   }, []);
 
   return (
-    <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
+    <section className="masthead -type-3 bg-light-6 js-mouse-move-container relative">
       {/* Popup Section */}
       {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden relative">
+        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-2xl max-w-4xl w-full mx-4 flex overflow-hidden relative">
             {/* Left Side: Image */}
-            <div className="flex">
-              <div className="w-1/2 relative">
-                <Image
-                  src="/assets/img/home-4/masthead/popup-image.jpg"
-                  alt="Popup Image"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-l-lg"
+            <div className="w-1/2 relative hidden md:block">
+              <Image
+                src="/assets/img/popup/popup-image.jpg"
+                alt="Inspiring Learning"
+                layout="fill"
+                objectFit="cover"
+                className="rounded-l-lg"
+              />
+            </div>
+
+            {/* Right Side: Text and Form */}
+            <div className="w-full md:w-1/2 p-8 flex flex-col justify-center relative">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                aria-label="Close popup"
+              >
+                ✕
+              </button>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                Unlock Your Potential
+              </h2>
+              <p className="text-gray-600 mb-6">
+                Join our platform today and gain access to exclusive courses and
+                resources tailored for your growth.
+              </p>
+              <form onSubmit={handlePopupSubmit} className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  required
                 />
-              </div>
-              {/* Right Side: Text and Form */}
-              <div className="w-1/2 p-8">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  required
+                />
                 <button
-                  onClick={() => setShowPopup(false)}
-                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                  aria-label="Close popup"
+                  type="submit"
+                  className="w-full bg-purple-500 text-white py-2 rounded hover:bg-purple-600 transition-all"
                 >
-                  ✕
+                  Sign Up Now
                 </button>
-                <h2 className="text-2xl font-bold mb-4">Join Our Platform!</h2>
-                <p className="text-gray-600 mb-6">
-                  Sign up now to get exclusive updates on our latest courses and offers.
-                </p>
-                <form onSubmit={handlePopupSubmit} className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    className="w-full border p-2 rounded"
-                    required
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full border p-2 rounded"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="w-full bg-purple-500 text-white py-2 rounded hover:bg-purple-600"
-                  >
-                    Sign Up
-                  </button>
-                </form>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -122,37 +113,28 @@ export default function HeroFour() {
           >
             <div className="masthead__content pl-32 lg:pl-0">
               <h1 className="masthead__title">
-                Become the <span className="text-purple-1">Innovator of Tomorrow </span>with Our Advanced Courses!
+                Become the <span className="text-purple-500">Innovator of Tomorrow</span>
               </h1>
-              <p className="masthead__text text-17 text-dark-1 mt-25">
-                A Technical Training Solutions Company providing Instructors and
-                <br className="lg:d-none" />
-                delivering Tech Courses at affordable prices.
+              <p className="masthead__text text-17 text-gray-800 mt-6">
+                Join our mission to provide affordable, high-quality education for
+                everyone, anywhere.
               </p>
-              <div className="masthead-search mt-30">
-                <div className="masthead-search__form">
-                  <form onSubmit={handleSubmit} className="flex items-center">
-                    <input
-                      type="text"
-                      placeholder="Search courses by tags"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="border p-2 rounded pl-10"
-                    />
-                    <button
-                      className="button -purple-1 text-white ml-4"
-                      type="submit"
-                      disabled={loading}
-                      aria-label="Search for course"
-                    >
-                      {loading ? (
-                        <i className="icon icon-loading"></i>
-                      ) : (
-                        <i className="icon icon-search"></i>
-                      )}
-                    </button>
-                  </form>
-                </div>
+              <div className="masthead-search mt-8">
+                <form
+                  className="flex items-center border rounded-lg overflow-hidden shadow-sm"
+                >
+                  <input
+                    type="text"
+                    placeholder="Search courses"
+                    className="flex-grow px-4 py-2 focus:outline-none"
+                  />
+                  <button
+                    className="bg-purple-500 text-white px-6 py-2"
+                    type="submit"
+                  >
+                    Search
+                  </button>
+                </form>
               </div>
             </div>
           </div>
