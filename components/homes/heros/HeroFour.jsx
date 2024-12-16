@@ -90,19 +90,20 @@ export default function HeroFour() {
       {showPopup && (
 //      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
       //        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
-          <div>
-          <div>
-          <div className="flex">
-            {/* Left Side: Image */}
+      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+          <div className="flex flex-row">
+            {/* Left Side - Image */}
             <div className="w-1/2">
               <Image
                 src="/assets/img/home-4/masthead/1.jpg"
                 alt="Popup Image"
-
+                className="w-full h-full object-cover"
               />
             </div>
-            {/* Right Side: Text and Form */}
-            <div className="w-1/2">
+      
+            {/* Right Side - Text and Form */}
+            <div className="w-1/2 p-6 relative">
               {/* Close Button */}
               <button
                 onClick={() => setShowPopup(false)}
@@ -114,12 +115,9 @@ export default function HeroFour() {
       
               {/* Text Section */}
               <div>
-                <h2 className="text-2xl font-bold mb-4">
-                  Welcome to Our Course Platform!
-                </h2>
+                <h2 className="text-2xl font-bold mb-4">Welcome to Our Course Platform!</h2>
                 <p className="text-gray-600 mb-6">
-                  Sign up now to get exclusive access to our latest courses and
-                  special offers.
+                  Sign up now to get exclusive access to our latest courses and special offers.
                 </p>
               </div>
       
@@ -145,7 +143,7 @@ export default function HeroFour() {
                   type="submit"
                   name="submit"
                   id="submit"
-                  className="button -md -purple-1 text-white w-full py-3 rounded-lg bg-purple-600 hover:bg-purple-700"
+                  className="w-full py-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
                 >
                   Sign Up
                 </button>
@@ -154,7 +152,6 @@ export default function HeroFour() {
           </div>
         </div>
       </div>
-
       )}
 
       <div className="container">
