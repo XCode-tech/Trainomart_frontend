@@ -96,8 +96,6 @@ export default function HeroFour() {
                 <Image
                   src="/assets/img/home-4/masthead/1.jpg"
                   alt="Popup Image"
-                  layout="fill"
-                  objectFit="cover"
                 />
               </div>
               <div className="w-1/2 p-8">
