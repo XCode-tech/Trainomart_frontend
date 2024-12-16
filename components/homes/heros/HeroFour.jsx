@@ -13,11 +13,13 @@ export default function HeroWithPopup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const handlePopupSubmit = (e: React.FormEvent) => {
+  const handlePopupSubmit = (e) => {
     e.preventDefault();
     console.log("Popup form submitted", { name, email });
     setShowPopup(false);
   };
+
+
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
