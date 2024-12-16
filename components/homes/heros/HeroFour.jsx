@@ -91,14 +91,13 @@ export default function HeroFour() {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
             <div className="flex">
-              <div className="w-1/2 relative">
-                <h1>Heelo</h1>
+              <div className="w-1/2">
                 <Image
                   src="/assets/img/home-4/masthead/1.jpg"
                   alt="Popup Image"
                 />
               </div>
-              <div className="w-1/2 p-8">
+              <div className="w-1/2">
                 <button
                   onClick={() => setShowPopup(false)}
                   className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
