@@ -22,8 +22,11 @@ export default function HeroWithPopup() {
 
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const containers = document.querySelectorAll<HTMLElement>(".js-mouse-move-container");
+    const handleMouseMove = (e) => {
+      const containers = document.querySelectorAll(".js-mouse-move-container");
+      
+    // const handleMouseMove = (e: MouseEvent) => {
+    //   const containers = document.querySelectorAll<HTMLElement>(".js-mouse-move-container");
       containers.forEach((container) => {
         const rect = container.getBoundingClientRect();
         const relX = e.clientX - rect.left;
