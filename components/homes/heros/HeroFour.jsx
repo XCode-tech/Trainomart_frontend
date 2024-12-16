@@ -49,7 +49,7 @@ export default function HeroWithPopup() {
             {/* Left Side: Image */}
             <div className="w-1/2 relative hidden md:block">
               <Image
-                src="/assets/img/popup/popup-image.jpg"
+                src="/assets/img/team/4.png"
                 alt="Inspiring Learning"
                 layout="fill"
                 objectFit="cover"
