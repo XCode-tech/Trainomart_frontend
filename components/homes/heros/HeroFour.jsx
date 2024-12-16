@@ -128,7 +128,7 @@ export default function HeroFour() {
                   type="submit"
                   name="submit"
                   id="submit"
-                  className="w-full button -md -dark-1 text-white"
+                  className="w-full py-3 rounded-lg bg-purple-600 text-black hover:bg-purple-700"
 
                 >
                   Sign Up
