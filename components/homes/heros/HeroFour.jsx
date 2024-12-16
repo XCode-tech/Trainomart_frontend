@@ -99,7 +99,7 @@ export default function HeroFour() {
       
               {/* Text Section */}
               <div>
-                <h2 className="text-2xl font-bold mb-4">Welcome to Our Course Platform!</h2>
+                <h2 className="text-2xl font-bold mb-4">Welcome to Our Webinar!</h2>
                 <p className="text-gray-600 mb-6">
                   Sign up now to get exclusive access to our latest courses and special offers.
                 </p>
@@ -141,11 +141,6 @@ export default function HeroFour() {
                 <X size={24} />
               </button>
             </div>
-            <Image
-              src="/assets/img/home-4/masthead/1.jpg"
-              alt="Popup Image"
-              className="w-full h-full object-cover"
-            />
           </div>
         </div>
       </div>
