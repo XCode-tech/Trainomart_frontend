@@ -23,7 +23,7 @@ export default function HeroFour() {
     e.preventDefault();
     if (searchTerm.trim()) {
       // Redirect to search results page with the search query
-      router.push(/courses-list/?search=${searchTerm});
+      router.push(`/courses-list/?search=${searchTerm}`);
     }
   };
 
