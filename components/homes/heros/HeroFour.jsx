@@ -88,7 +88,7 @@ export default function HeroFour() {
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
       {showPopup && (
-      <div className="flex flex-row justify-between">
+      <div className="flex items-center justify-between w-full">
         <div className="w-1/2 bg-red-500 p-4">
           Left Side
         </div>
@@ -96,9 +96,6 @@ export default function HeroFour() {
           Right Side
         </div>
       </div>
-
-
-
 
       )}
 
