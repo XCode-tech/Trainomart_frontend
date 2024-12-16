@@ -151,10 +151,7 @@ export default function HeroFour() {
           </div>
         </div>
         </div>
-        <div className="flex flex-row">
-          <div className="w-1/2 bg-red-500">Left</div>
-          <div className="w-1/2 bg-blue-500">Right</div>
-        </div>
+
 
       )}
 
