@@ -90,8 +90,8 @@ export default function HeroFour() {
       {showPopup && (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
         <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
-          {/* Flex Container for Left and Right Alignment */}
-          <div className="flex flex-row">
+          {/* Flex Container */}
+          <div className="flex">
             {/* Left Side - Image */}
             <div className="w-1/2">
               <Image
@@ -102,7 +102,7 @@ export default function HeroFour() {
             </div>
       
             {/* Right Side - Text and Form */}
-            <div className="w-1/2 p-6 relative">
+            <div className="w-1/2 p-6 relative flex flex-col justify-center">
               {/* Close Button */}
               <button
                 onClick={() => setShowPopup(false)}
@@ -150,8 +150,7 @@ export default function HeroFour() {
             </div>
           </div>
         </div>
-        </div>
-
+      </div>
 
       )}
 
