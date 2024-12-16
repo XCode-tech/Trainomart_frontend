@@ -56,7 +56,8 @@ export default function HeroWithPopup() {
                 <span>Our platform</span> is designed to immerse you in a captivating learning experience:
               </h2>
               <div className="y-gap-20 pt-30">
-                {featureOne.map((elm, i) => (
+                <h1>Hello</h1>
+{/*                 {featureOne.map((elm, i) => (
                   <div
                     key={i}
                     className="d-flex items-center"
@@ -78,7 +79,7 @@ export default function HeroWithPopup() {
                     </div>
                     <div className="about-content-list__title">{elm.title}</div>
                   </div>
-                ))}
+                ))} */}
               </div>
 
               <div className="d-inline-block mt-30">
