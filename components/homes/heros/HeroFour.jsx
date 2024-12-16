@@ -92,7 +92,7 @@ export default function HeroWithPopup() {
                 />
                 <button
                   type="submit"
-                  className="w-full bg-purple-500 text-white py-2 rounded hover:bg-purple-600 transition-all"
+                  className="w-full bg-purple-500 text-black py-2 rounded hover:bg-purple-600 transition-all"
                 >
                   Sign Up Now
                 </button>
