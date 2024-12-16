@@ -100,7 +100,7 @@ export default function HeroFour() {
               />
             </div>
             {/* Right Side: Text and Form */}
-            <div className="w-1/2 flex justify-end">
+            <div className="w-1/2">
               {/* Close Button */}
               <button
                 onClick={() => setShowPopup(false)}
