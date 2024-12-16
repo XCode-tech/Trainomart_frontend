@@ -94,7 +94,7 @@ export default function HeroFour() {
           <div className="flex-row">
       
             {/* Right Side - Text and Form */}
-            <div className="w-1/2 p-6 relative flex justify-center">
+            <div className="w-full p-6 text-center justify-center">
               {/* Close Button */}
               <button
                 onClick={() => setShowPopup(false)}
