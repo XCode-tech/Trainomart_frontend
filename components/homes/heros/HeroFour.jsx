@@ -4,6 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { X } from "lucide-react";
 
 export default function HeroWithPopup() {
   const router = useRouter();
