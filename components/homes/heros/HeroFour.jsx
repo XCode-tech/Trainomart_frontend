@@ -92,7 +92,7 @@ export default function HeroFour() {
         <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
           <div className="flex">
             {/* Left Side: Image */}
-            <div className="w-1/2 relative">
+            <div className="w-1/2">
               <Image
                 src="/assets/img/home-4/masthead/1.jpg"
                 alt="Popup Image"
@@ -100,7 +100,7 @@ export default function HeroFour() {
               />
             </div>
             {/* Right Side: Text and Form */}
-            <div className="w-1/2 p-8 relative flex flex-col justify-between">
+            <div className="w-1/2 flex justify-end">
               {/* Close Button */}
               <button
                 onClick={() => setShowPopup(false)}
