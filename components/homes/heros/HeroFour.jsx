@@ -5,18 +5,18 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react"; 
 import { useRouter } from "next/navigation"; 
 import API_URL from "@/data/config";
-// import { X } from 'lucide-react';
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
+import { X } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function HeroFour() {
   const router = useRouter();
   const [tags, setTags] = useState(""); // State to store the tags input
   const [loading, setLoading] = useState(false); // State to handle loading state
   const [searchTerm, setSearchTerm] = useState("");
-  // const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
-  // const [name, setName] = useState(""); // State for name input
-  // const [email, setEmail] = useState(""); // State for email input
+  const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
+  const [name, setName] = useState(""); // State for name input
+  const [email, setEmail] = useState(""); // State for email input
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -87,7 +87,7 @@ export default function HeroFour() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
-{/*       {showPopup && (
+      {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
             <div className="flex">
@@ -134,7 +134,7 @@ export default function HeroFour() {
             </div>
           </div>
         </div>
-      )} */}
+      )}
 
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
@@ -216,3 +216,4 @@ export default function HeroFour() {
     </section>
   );
 }
+
