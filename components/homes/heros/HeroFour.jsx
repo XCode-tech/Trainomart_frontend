@@ -92,6 +92,7 @@ export default function HeroFour() {
           <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
             <div className="flex">
               <div className="w-1/2 relative">
+                <h1>Heelo</h1>
                 <Image
                   src="/assets/img/home-4/masthead/1.jpg"
                   alt="Popup Image"
