@@ -128,7 +128,7 @@ export default function HeroFour() {
                   type="submit"
                   name="submit"
                   id="submit"
-                  className="button -md -dark-1 text-white"
+                  className="w-full button -md -dark-1 text-white"
 
                 >
                   Sign Up
