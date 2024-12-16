@@ -88,10 +88,9 @@ export default function HeroFour() {
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
       {showPopup && (
-//      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-      //        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
         <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+          {/* Flex Container for Left and Right Alignment */}
           <div className="flex flex-row">
             {/* Left Side - Image */}
             <div className="w-1/2">
@@ -151,7 +150,12 @@ export default function HeroFour() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
+        <div className="flex flex-row">
+          <div className="w-1/2 bg-red-500">Left</div>
+          <div className="w-1/2 bg-blue-500">Right</div>
+        </div>
+
       )}
 
       <div className="container">
