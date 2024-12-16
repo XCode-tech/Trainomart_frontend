@@ -10,7 +10,9 @@ export default function HeroFour() {
   const [tags, setTags] = useState(""); // State to store the tags input
   const [loading, setLoading] = useState(false); // State to handle loading state
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [showPopup, setShowPopup] = useState(true); // State to control popup visibility
+  const [name, setName] = useState(""); // State for name input
+  const [email, setEmail] = useState(""); // State for email input
  
   // Handle form submission
   const handleSubmit = (e) => {
@@ -21,7 +23,14 @@ export default function HeroFour() {
     }
   };
 
- 
+  // Handle popup form submission
+  const handlePopupSubmit = (e) => {
+    e.preventDefault();
+    // Handle the popup form submission logic here
+    console.log("Popup form submitted", { name, email });
+    setShowPopup(false); // Close the popup after submission
+  };
+  
   useEffect(() => {
     const handleMouseMove = (e) => {
       const containers = document.querySelectorAll(".js-mouse-move-container");
@@ -74,6 +83,54 @@ export default function HeroFour() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
+            {showPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+            <div className="flex">
+              <div className="w-1/2 relative">
+                <Image
+                  src="/assets/img/home-4/masthead/popup-image.jpg"
+                  alt="Popup Image"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="w-1/2 p-8">
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                  aria-label="Close popup"
+                >
+                  <X size={24} />
+                </button>
+                <h2 className="text-2xl font-bold mb-4">Welcome to Our Course Platform!</h2>
+                <p className="text-gray-600 mb-6">
+                  Sign up now to get exclusive access to our latest courses and special offers.
+                </p>
+                <form onSubmit={handlePopupSubmit} className="space-y-4">
+                  <Input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <Button type="submit" className="w-full">
+                    Sign Up
+                  </Button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
           {/* Left Column: Text and Search Form */}
