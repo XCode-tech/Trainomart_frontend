@@ -89,8 +89,6 @@ export default function HeroFour() {
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
-            <div className="flex">
               <div className="w-1/2 relative">
                 <Image
                   src="/assets/img/home-4/masthead/popup-image.jpg"
@@ -99,7 +97,7 @@ export default function HeroFour() {
                   objectFit="cover"
                 />
               </div>
-              <div className="w-1/2 p-8">
+          <div className="w-1/2 p-8">
                 <button
                   onClick={() => setShowPopup(false)}
                   className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -131,8 +129,6 @@ export default function HeroFour() {
                   </button>
                 </form>
               </div>
-            </div>
-          </div>
         </div>
       )}
       
