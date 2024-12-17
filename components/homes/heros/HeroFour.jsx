@@ -88,64 +88,72 @@ export default function HeroFour() {
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
       {showPopup && (
-      <div className="fixed inset-0 bg-white bg-opacity-50 z-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
-          {/* Flex Container */}
-          <div className="flex-row">
-      
-            {/* Right Side - Text and Form */}
-            <div className="w-full p-6 text-center justify-center">
+        <div style={{ position: 'fixed', inset: '0', backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          {/* Popup Container */}
+          <div style={{ backgroundColor: 'white', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', maxWidth: '900px', width: '100%', margin: '20px', overflow: 'hidden', position: 'relative' }}>
+            {/* Close Button */}
+            <button
+              onClick={() => setShowPopup(false)}
+              style={{ position: 'absolute', top: '16px', right: '16px', color: 'gray', background: 'none', border: 'none', cursor: 'pointer', fontSize: '24px' }}
+              aria-label="Close popup"
+            >
+              <X size={24} />
+            </button>
 
-      
-              {/* Text Section */}
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Welcome to Our Webinar!</h2>
-                <p className="text-gray-600 mb-6">
-                  Sign up now to get exclusive access to our latest courses and special offers.
-                </p>
+            {/* Content Container */}
+            <div style={{ display: 'flex' }}>
+              {/* Left Side - Image */}
+              <div style={{ flex: 1 }}>
+                <Image
+                  src="/assets/img/home-4/masthead/1.jpg"
+                  alt="Popup Image"
+                  width={500} // Adjust as needed
+                  height={500} // Adjust as needed
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
               </div>
-      
-              {/* Form Section */}
-              <form onSubmit={handlePopupSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-                <br />
-                <button
-                  type="submit"
-                  name="submit"
-                  id="submit"
-                  className="w-full py-3 rounded-lg bg-purple-600 text-black hover:bg-purple-700"
 
-                >
-                  Sign Up
-                </button>
-              </form>
-              {/* Close Button */}
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                aria-label="Close popup"
-              >
-                <X size={24} />
-              </button>
+              {/* Right Side - Text and Form */}
+              <div style={{ flex: 1, padding: '20px' }}>
+                {/* Text Section */}
+                <div>
+                  <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Welcome to Our Course Platform!</h2>
+                  <p style={{ color: 'gray', marginBottom: '24px' }}>
+                    Sign up now to get exclusive access to our latest courses and special offers.
+                  </p>
+                </div>
+
+                {/* Form Section */}
+                <form onSubmit={handlePopupSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    style={{ width: '100%', padding: '12px', border: '1px solid #ccc', borderRadius: '8px' }}
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    style={{ width: '100%', padding: '12px', border: '1px solid #ccc', borderRadius: '8px' }}
+                  />
+                  <button
+                    type="submit"
+                    name="submit"
+                    id="submit"
+                    style={{ width: '100%', padding: '12px', borderRadius: '8px', backgroundColor: '#6d28d9', color: 'white', fontSize: '16px', cursor: 'pointer', border: 'none', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}
+                  >
+                    Sign Up
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
       )}
 
