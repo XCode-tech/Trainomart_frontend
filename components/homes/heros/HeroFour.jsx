@@ -112,23 +112,23 @@ export default function HeroFour() {
                   Sign up now to get exclusive access to our latest courses and special offers.
                 </p>
                 <form onSubmit={handlePopupSubmit} className="space-y-4">
-                  <Input
+                  <input
                     type="text"
                     placeholder="Your Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                   />
-                  <Input
+                  <input
                     type="email"
                     placeholder="Your Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <Button type="submit" className="w-full">
+                  <button type="submit" className="w-full">
                     Sign Up
-                  </Button>
+                  </button>
                 </form>
               </div>
             </div>
