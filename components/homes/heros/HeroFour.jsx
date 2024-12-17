@@ -87,35 +87,19 @@ export default function HeroFour() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
-    {/* Popup Section */}
       {showPopup && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+      <div className="fixed inset-0 bg-white bg-opacity-50 z-50 flex items-center justify-center">
         <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
           {/* Flex Container */}
-          <div className="flex justify-center items-center">
-            {/* Left Side - Image */}
-            <div className="w-1/2">
-              <Image
-                src="/assets/img/home-4/masthead/1.jpg"
-                alt="Popup Image"
-                className="w-full h-full object-cover"
-              />
-            </div>
+          <div className="flex-row">
       
             {/* Right Side - Text and Form */}
-            <div className="w-1/2 p-6 relative flex flex-col justify-center">
-              {/* Close Button */}
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                aria-label="Close popup"
-              >
-                <X size={24} />
-              </button>
+            <div className="w-full p-6 text-center justify-center">
+
       
               {/* Text Section */}
               <div>
-                <h2 className="text-2xl font-bold mb-4">Welcome to Our Course Platform!</h2>
+                <h2 className="text-2xl font-bold mb-4">Welcome to Our Webinar!</h2>
                 <p className="text-gray-600 mb-6">
                   Sign up now to get exclusive access to our latest courses and special offers.
                 </p>
@@ -129,7 +113,7 @@ export default function HeroFour() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full border border-gray-300 rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
                 <input
                   type="email"
@@ -137,24 +121,34 @@ export default function HeroFour() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full border border-gray-300 rounded-lg p-3"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
+                <br />
                 <button
                   type="submit"
                   name="submit"
                   id="submit"
-                  className="w-full py-3 rounded-lg bg-purple-600 text-white hover:bg-purple-700"
+                  className="w-full py-3 rounded-lg bg-purple-600 text-black hover:bg-purple-700"
+
                 >
                   Sign Up
                 </button>
               </form>
+              {/* Close Button */}
+              <button
+                onClick={() => setShowPopup(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                aria-label="Close popup"
+              >
+                <X size={24} />
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       )}
-      
+
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
           {/* Left Column: Text and Search Form */}
@@ -235,4 +229,3 @@ export default function HeroFour() {
     </section>
   );
 }
-
