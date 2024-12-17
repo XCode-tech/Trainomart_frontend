@@ -128,19 +128,11 @@ export default function HeroFour() {
                   type="submit"
                   name="submit"
                   id="submit"
-                  className="w-full py-3 rounded-lg bg-purple-600 text-black hover:bg-purple-700"
-                  style={{ backgroundColor: "blue", fontWeight: "bold" }}
+                  className="w-full py-3 rounded-2Xl bg-purple-600 text-black hover:bg-purple-700"
                 >
                   Sign Up
                 </button>
-                <button
-                  type="submit"
-                  id="submit"
-                  name="submit"
-                  className="w-full py-3 px-4 rounded-2xl bg-[#140342] text-white font-bold hover:bg-purple-700"
-                >
-                  Sign Up
-                </button>
+               
 
 
               </form>
