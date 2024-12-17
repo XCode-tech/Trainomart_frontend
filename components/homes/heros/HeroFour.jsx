@@ -91,7 +91,7 @@ export default function HeroFour() {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
               <div className="w-1/2 relative">
                 <Image
-                  src="/assets/img/home-4/masthead/popup-image.jpg"
+                  src="/assets/img/home-4/masthead/1.jpg"
                   alt="Popup Image"
                   layout="fill"
                   objectFit="cover"
