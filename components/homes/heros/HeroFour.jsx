@@ -88,70 +88,54 @@ export default function HeroFour() {
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
       {showPopup && (
-      <div className="fixed inset-0 bg-white bg-opacity-50 z-50 flex items-center justify-center">
-        <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
-          {/* Flex Container */}
-          <div className="flex-row">
-      
-            {/* Right Side - Text and Form */}
-            <div className="w-full p-6 text-center justify-center">
-
-      
-              {/* Text Section */}
-              <div>
-                <h2 className="text-2xl font-bold mb-4">Welcome to Our Webinar!</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
+            <div className="flex">
+              <div className="w-1/2 relative">
+                <Image
+                  src="/assets/img/home-4/masthead/popup-image.jpg"
+                  alt="Popup Image"
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+              <div className="w-1/2 p-8">
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                  aria-label="Close popup"
+                >
+                  <X size={24} />
+                </button>
+                <h2 className="text-2xl font-bold mb-4">Welcome to Our Course Platform!</h2>
                 <p className="text-gray-600 mb-6">
                   Sign up now to get exclusive access to our latest courses and special offers.
                 </p>
+                <form onSubmit={handlePopupSubmit} className="space-y-4">
+                  <Input
+                    type="text"
+                    placeholder="Your Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Your Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <Button type="submit" className="w-full">
+                    Sign Up
+                  </Button>
+                </form>
               </div>
-      
-              {/* Form Section */}
-              <form onSubmit={handlePopupSubmit} className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                />
-                <br />
-                <button
-                  type="submit"
-                  name="submit"
-                  id="submit"
-                  className="w-full py-3 button -md -purple-1 text-white mt-30"
-
-                >
-                  Sign Up
-                </button>
-               
-
-
-              </form>
-              {/* Close Button */}
-              <button
-                onClick={() => setShowPopup(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                aria-label="Close popup"
-              >
-                <X size={24} />
-              </button>
             </div>
           </div>
         </div>
-      </div>
-
       )}
-
+      
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
           {/* Left Column: Text and Search Form */}
