@@ -133,6 +133,15 @@ export default function HeroFour() {
                 >
                   Sign Up
                 </button>
+                <button
+                  type="submit"
+                  id="submit"
+                  name="submit"
+                  className="w-full py-3 px-4 rounded-2xl bg-[#140342] text-white font-bold hover:bg-purple-700"
+                >
+                  Sign Up
+                </button>
+
 
               </form>
               {/* Close Button */}
