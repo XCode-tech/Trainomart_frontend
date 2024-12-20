@@ -112,11 +112,11 @@ export default function BlogDetails({ slug }) {
 
       <section className="layout-pt-md">
         <div className="container">
-          <div className="ratio ratio-16:9 rounded-8 bg-image js-lazy">
+          <div>
             <Image
               width={510}
               height={392}
-              className="rounded-8"
+              className="ratio ratio-16:9 rounded-8 bg-image js-lazy"
               src={blogImageUrl}
               alt="Blog image"
             />
