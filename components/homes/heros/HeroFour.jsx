@@ -87,11 +87,9 @@ export default function HeroFour() {
 
   return (
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
-      {showPopup && (
+{/*       {showPopup && (
         <div style={{ position: 'fixed', inset: '0', backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {/* Popup Container */}
           <div style={{ backgroundColor: 'white', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', maxWidth: '900px', width: '100%', margin: '20px', overflow: 'hidden', position: 'relative' }}>
-            {/* Close Button */}
             <button
               onClick={() => setShowPopup(false)}
               style={{ position: 'absolute', top: '16px', right: '16px', color: 'gray', background: 'none', border: 'none', cursor: 'pointer', fontSize: '24px' }}
@@ -100,22 +98,18 @@ export default function HeroFour() {
               <X size={24} />
             </button>
 
-            {/* Content Container */}
             <div style={{ display: 'flex' }}>
-              {/* Left Side - Image */}
               <div style={{ flex: 1 }}>
                 <Image
                   src="/assets/img/home-4/masthead/1.jpg"
                   alt="Popup Image"
-                  width={500} // Adjust as needed
-                  height={500} // Adjust as needed
+                  width={500} 
+                  height={500} 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               </div>
 
-              {/* Right Side - Text and Form */}
               <div style={{ flex: 1, padding: '20px' }}>
-                {/* Text Section */}
                 <div>
                   <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}>Welcome to Our Course Platform!</h2>
                   <p style={{ color: 'gray', marginBottom: '24px' }}>
@@ -123,7 +117,7 @@ export default function HeroFour() {
                   </p>
                 </div>
 
-                {/* Form Section */}
+
                 <form onSubmit={handlePopupSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   <input
                     type="text"
@@ -156,7 +150,7 @@ export default function HeroFour() {
         </div>
 
       )}
-
+ */}
       <div className="container">
         <div className="row y-gap-30 items-center justify-center">
           {/* Left Column: Text and Search Form */}
