@@ -80,6 +80,12 @@ export default function BlogDetails({ slug }) {
     });
   };
 
+    // Ensure the image URL is absolute
+  const blogImageUrl = data.blog_image.startsWith("http")
+    ? data.blog_image
+    : `https://test.trainomart.com/${data.blog_image}`;
+
+
   return (
     <>
       <section className="page-header -type-1">
@@ -106,33 +112,15 @@ export default function BlogDetails({ slug }) {
 
       <section className="layout-pt-md">
         <div className="container">
-{/*           <div
-            className="ratio ratio-16:9 rounded-8 bg-image js-lazy"
-            style={{ backgroundImage: `url(${data.blog_image})` }}
-            data-bg="img/blog/blog-single/images.png"
-          ></div> */}
           <div className="ratio ratio-16:9 rounded-8 bg-image js-lazy">
-          <Image
-            width={510}
-            height={392}
-            className="rounded-8"
-            src={data.blog_image}
-            alt="image"
-          /> 
+            <Image
+              width={510}
+              height={392}
+              className="rounded-8"
+              src={blogImageUrl}
+              alt="Blog image"
+            />
           </div>
-{/*           <img
-            src={data.blog_image || "img/blog/blog-single/images.png"}
-            alt="Blog Image"
-            className="ratio ratio-16:9 rounded-8 js-lazy"
-          />
-          <Image
-            width={510}
-            height={392}
-            className="rounded-8"
-            src={data.blog_image}
-            alt="image"
-          /> */}
-
         </div>
       </section>
 
