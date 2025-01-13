@@ -7,7 +7,7 @@ export const contactData = [
   {
     id: 2,
     icon: "/assets/img/contact-1/2.svg",
-    phoneNumber: "(+1) 862 251 6598",
+    phoneNumber: "(+1) 415 907 7649",
   },
   {
     id: 3,
