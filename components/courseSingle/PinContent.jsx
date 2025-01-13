@@ -184,6 +184,13 @@ export default function PinContent({ pageItem }) {
               >
                 <b>{isLoading ? "Submitting..." : "Show Interest"}</b>
               </button>
+              <div className="button -md text-dark-1 w-1/1 mt-10 flex justify-center items-center">
+                <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+                <stripe-buy-button
+                  buy-button-id={pageItem.buy_button_id}
+                  publishable-key="pk_live_51QWbEUDkYfwa9TF50ccbq66xSuA74soKD0y9bGWfOHVhZrQidBpR07qLPfy423YzfFduLG6acPXt65gCTRZxajqt00LKqmLx92"
+                ></stripe-buy-button>
+              </div>
             </form>
 
             {/* <div className="mt-5">
