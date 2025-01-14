@@ -369,7 +369,7 @@ export default function PinContent({ pageItem }) {
       const data = await response.json();
       console.log("Form submitted successfully:", data);
       setIsLoading(false); // Set loading to false after submission
-      alert("Form submitted successfully!");
+      // alert("Form submitted successfully!");
 
 
       // Set the state to display the Stripe button
