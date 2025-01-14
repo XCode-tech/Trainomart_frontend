@@ -516,6 +516,7 @@ export default function PinContent({ pageItem }) {
                 onClick={() => handleBuyNow(pageItem.slug)}
               >
                 <b>Buy Now</b>
+              </button>
             </form>
 
            
