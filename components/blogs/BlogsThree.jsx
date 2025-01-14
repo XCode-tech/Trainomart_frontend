@@ -16,7 +16,10 @@ export default function BlogsThree() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get("https://test.trainomart.com/api/blogs/");
-        setBlogs(response.data); // Assuming response.data is an array of blogs
+        // setBlogs(response.data);
+        const fetchedBlogs = response.data;
+        // Reverse the blogs to show the latest one first
+        setBlogs(fetchedBlogs.reverse()); 
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
