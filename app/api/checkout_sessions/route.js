@@ -59,8 +59,8 @@ export async function POST(req) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.get('origin')}/?success=true`,
-      cancel_url: `${req.headers.get('origin')}/?canceled=true`,
+      success_url: `${req.headers.get('origin')}/success`,
+      cancel_url: `${req.headers.get('origin')}/cancel`,
     });
 
     console.log('Stripe Session URL:', session.url);
