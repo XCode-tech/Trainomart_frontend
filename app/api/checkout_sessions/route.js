@@ -23,8 +23,9 @@ export async function POST(req) {
 
     console.log('Request Body:', body);
 
-    // Extract the slug string
+    // Extract the slug and leadId from the request body
     const slug = typeof body.slug === 'string' ? body.slug : body.slug.slug;
+    const leadId = body.leadId; // Get the leadId from the request body
 
     if (!slug) {
       return new Response(JSON.stringify({ error: 'Slug is required.' }), {
@@ -33,12 +34,16 @@ export async function POST(req) {
       });
     }
 
+    if (!leadId) {
+      return new Response(JSON.stringify({ error: 'Lead ID is required.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     // Fetch PRICE_ID from your API
     const response = await fetch(`${API_URL}/courses/slug/${slug}`);
     const courseData = await response.json();
-
-    console.log('response:', response);
-    console.log('Course Data:', courseData);
 
     // Extract PRICE_ID (buy_button_id) from API response
     const priceId = courseData?.buy_button_id;
@@ -59,8 +64,8 @@ export async function POST(req) {
         },
       ],
       mode: 'payment',
-      success_url: `${req.headers.get('origin')}/success`,
-      cancel_url: `${req.headers.get('origin')}/cancel`,
+      success_url: `${req.headers.get('origin')}/success?leadId=${leadId}`, 
+      cancel_url: `${req.headers.get('origin')}/cancel?leadId=${leadId}`,  
     });
 
     console.log('Stripe Session URL:', session.url);
