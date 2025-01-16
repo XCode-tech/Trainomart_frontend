@@ -64,6 +64,8 @@ export default function Success() {
     return (
         <div className="main-content">
             <HeaderFour />
+            <br />
+            <br />
             <div className="content-wrapper js-content-wrapper overflow-hidden">
                 <div className="flex mt-90 flex-col items-center justify-center min-h-screen bg-gradient-to-b from-green-50 to-green-100">
                     <div className="bg-white mt-90 shadow-lg rounded-lg p-8 text-center max-w-lg">
@@ -88,6 +90,11 @@ export default function Success() {
                         </a>
                     </div>
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <FooterFour />
             </div>
         </div>
