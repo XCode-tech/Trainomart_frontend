@@ -22,8 +22,7 @@ export default function ContactOne() {
     // Load reCAPTCHA script dynamically
     const loadRecaptchaScript = () => {
       const script = document.createElement("script");
-      script.src =
-        "https://www.google.com/recaptcha/api.js?render=6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y";
+      script.src = "https://www.google.com/recaptcha/api.js";
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
@@ -32,13 +31,14 @@ export default function ContactOne() {
     loadRecaptchaScript();
   }, []);
 
-  const handleCaptcha = async () => {
+  const handleCaptcha = () => {
     if (window.grecaptcha) {
-      const token = await window.grecaptcha.execute(
-        "6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y",
-        { action: "submit" }
-      );
-      setCaptchaToken(token);
+      window.grecaptcha.ready(() => {
+        window.grecaptcha.execute("6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu", { action: "submit" })
+          .then((token) => {
+            setCaptchaToken(token);
+          });
+      });
     }
   };
 
@@ -83,7 +83,7 @@ export default function ContactOne() {
     <>
       <section>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.16761128338!2d-106.95747832427843!3d44.79777267765725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5335fabc2a6d206b%3A0x1887ab0668b2495c!2s30%20N%20Gould%20St%20Suite%20R%2C%20Sheridan%2C%20WY%2082801%2C%20USA!5e0!3m2!1sen!2sin!4v1729157976009!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=..."
           width="100%"
           height="600"
           allowFullScreen
@@ -96,24 +96,14 @@ export default function ContactOne() {
           <div className="row y-gap-50 justify-between">
             <div className="col-lg-4">
               <h3 className="text-24 fw-500">Keep In Touch With Us.</h3>
-              <p className="mt-25">
-                Meaningful connections commence with <br /> a simple 'Hey'
-              </p>
-
+              <p className="mt-25">Meaningful connections commence with a simple 'Hey'</p>
               <div className="y-gap-30 pt-60 lg:pt-40">
                 {contactData.map((elm, i) => (
                   <div key={i} className="d-flex items-center">
                     <div className="d-flex justify-center items-center size-60 rounded-full bg-light-7">
-                      <Image
-                        width={30}
-                        height={30}
-                        src={elm.icon}
-                        alt="icon"
-                      />
+                      <Image width={30} height={30} src={elm.icon} alt="icon" />
                     </div>
-                    <div className="ml-20">
-                      {elm.address || elm.email || elm.phoneNumber}
-                    </div>
+                    <div className="ml-20">{elm.address || elm.email || elm.phoneNumber}</div>
                   </div>
                 ))}
               </div>
@@ -129,9 +119,7 @@ export default function ContactOne() {
                 }}
               >
                 <div className="col-md-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                    Name
-                  </label>
+                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">Name</label>
                   <input
                     required
                     type="text"
@@ -142,9 +130,7 @@ export default function ContactOne() {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                    Email Address
-                  </label>
+                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">Email Address</label>
                   <input
                     required
                     type="email"
@@ -155,9 +141,7 @@ export default function ContactOne() {
                   />
                 </div>
                 <div className="col-12">
-                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
-                    Message...
-                  </label>
+                  <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">Message...</label>
                   <textarea
                     required
                     name="message"
@@ -168,12 +152,10 @@ export default function ContactOne() {
                   ></textarea>
                 </div>
                 <div className="col-12">
-                  <button
-                    type="submit"
-                    name="submit"
-                    id="submit"
-                    className="button -md -purple-1 text-white"
-                  >
+                  <div className="g-recaptcha" data-sitekey="6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y"></div>
+                </div>
+                <div className="col-12">
+                  <button type="submit" className="button -md -purple-1 text-white">
                     Send Message
                   </button>
                 </div>
