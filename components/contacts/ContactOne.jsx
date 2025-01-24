@@ -23,7 +23,7 @@ export default function ContactOne() {
     const loadRecaptchaScript = () => {
       const script = document.createElement("script");
       script.src =
-        "https://www.google.com/recaptcha/api.js?render=6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu";
+        "https://www.google.com/recaptcha/api.js?render=6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y";
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
@@ -35,7 +35,7 @@ export default function ContactOne() {
   const handleCaptcha = async () => {
     if (window.grecaptcha) {
       const token = await window.grecaptcha.execute(
-        "6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu",
+        "6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y",
         { action: "submit" }
       );
       setCaptchaToken(token);
