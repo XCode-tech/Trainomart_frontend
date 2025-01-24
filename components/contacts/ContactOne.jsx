@@ -11,38 +11,63 @@ const MapComponent = dynamic(() => import("./Map"), {
 });
 
 export default function ContactOne() {
-  const [showMap, setShowMap] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [captchaToken, setCaptchaToken] = useState(null);
 
   useEffect(() => {
-    setShowMap(true);
+    // Load reCAPTCHA script dynamically
+    const loadRecaptchaScript = () => {
+      const script = document.createElement("script");
+      script.src =
+        "https://www.google.com/recaptcha/api.js?render=6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu";
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+    };
+
+    loadRecaptchaScript();
   }, []);
+
+  const handleCaptcha = async () => {
+    if (window.grecaptcha) {
+      const token = await window.grecaptcha.execute(
+        "6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu",
+        { action: "submit" }
+      );
+      setCaptchaToken(token);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Perform validation if needed
+    if (!captchaToken) {
+      alert("Please verify the reCAPTCHA.");
+      return;
+    }
 
-    // Send data to the backend
-    const response = await fetch(`${API_URL}/contact/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(`${API_URL}/contact/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...formData, captchaToken }),
+      });
 
-    if (response.ok) {
-      // Handle success (e.g., show a success message)
-      console.log("Message sent successfully");
-      setFormData({ name: "", email: "", message: "" }); // Reset form
-    } else {
-      // Handle error (e.g., show an error message)
-      console.error("Failed to send message");
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+        setCaptchaToken(null);
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
     }
   };
 
@@ -57,9 +82,14 @@ export default function ContactOne() {
   return (
     <>
       <section>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.16761128338!2d-106.95747832427843!3d44.79777267765725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5335fabc2a6d206b%3A0x1887ab0668b2495c!2s30%20N%20Gould%20St%20Suite%20R%2C%20Sheridan%2C%20WY%2082801%2C%20USA!5e0!3m2!1sen!2sin!4v1729157976009!5m2!1sen!2sin" width="1520" height="600" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-{/*         {showMap && <MapComponent />} */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2831.16761128338!2d-106.95747832427843!3d44.79777267765725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5335fabc2a6d206b%3A0x1887ab0668b2495c!2s30%20N%20Gould%20St%20Suite%20R%2C%20Sheridan%2C%20WY%2082801%2C%20USA!5e0!3m2!1sen!2sin!4v1729157976009!5m2!1sen!2sin"
+          width="100%"
+          height="600"
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        ></iframe>
       </section>
       <section className="layout-pt-md layout-pb-lg">
         <div className="container">
@@ -67,19 +97,22 @@ export default function ContactOne() {
             <div className="col-lg-4">
               <h3 className="text-24 fw-500">Keep In Touch With Us.</h3>
               <p className="mt-25">
-                Meaningful connections commence with <br />a simple 'Hey'
+                Meaningful connections commence with <br /> a simple 'Hey'
               </p>
 
               <div className="y-gap-30 pt-60 lg:pt-40">
                 {contactData.map((elm, i) => (
                   <div key={i} className="d-flex items-center">
                     <div className="d-flex justify-center items-center size-60 rounded-full bg-light-7">
-                      <Image width={30} height={30} src={elm.icon} alt="icon" />
+                      <Image
+                        width={30}
+                        height={30}
+                        src={elm.icon}
+                        alt="icon"
+                      />
                     </div>
                     <div className="ml-20">
-                      {elm.address
-                        ? `${elm.address.split(" ").slice(0, 4).join(" ")} \n ${elm.address.split(" ").slice(4).join(" ")}`
-                        : elm.email || elm.phoneNumber}
+                      {elm.address || elm.email || elm.phoneNumber}
                     </div>
                   </div>
                 ))}
@@ -88,15 +121,12 @@ export default function ContactOne() {
 
             <div className="col-lg-7">
               <h3 className="text-24 fw-500">Contact Us</h3>
-              <p className="mt-25">
-                Whether you're a business looking for expert technical trainers or an individual seeking top-notch technical courses to advance your career, we’re excited to connect with you.
-                Reach out to us through any of the methods below, and our team will assist you promptly.
-                Please provide the following details in the inquiry form given below:
-              </p>
-
               <form
                 className="contact-form row y-gap-30 pt-60 lg:pt-40"
-                onSubmit={handleSubmit}
+                onSubmit={(e) => {
+                  handleCaptcha();
+                  handleSubmit(e);
+                }}
               >
                 <div className="col-md-6">
                   <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
