@@ -23,7 +23,7 @@ export default function ContactOne() {
     const loadRecaptchaScript = () => {
       const script = document.createElement("script");
       script.src =
-        "https://www.google.com/recaptcha/api.js?render=6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu";
+        "https://www.google.com/recaptcha/api.js";
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
@@ -32,12 +32,9 @@ export default function ContactOne() {
     loadRecaptchaScript();
   }, []);
 
-  const handleCaptcha = async () => {
+  const handleCaptcha = () => {
     if (window.grecaptcha) {
-      const token = await window.grecaptcha.execute(
-        "6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu",
-        { action: "submit" }
-      );
+      const token = window.grecaptcha.getResponse();
       setCaptchaToken(token);
     }
   };
@@ -167,6 +164,12 @@ export default function ContactOne() {
                     onChange={handleChange}
                   ></textarea>
                 </div>
+
+                {/* Google reCAPTCHA V2 Checkbox */}
+                <div className="col-12">
+                  <div className="g-recaptcha" data-sitekey="6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu"></div>
+                </div>
+
                 <div className="col-12">
                   <button
                     type="submit"
