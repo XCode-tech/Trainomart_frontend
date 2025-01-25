@@ -167,7 +167,7 @@ export default function ContactOne() {
 
                 {/* Google reCAPTCHA V2 Checkbox */}
                 <div className="col-12">
-                  <div className="g-recaptcha" data-sitekey="6LfZ-8EqAAAAALbrURCkpDIrhVA7Hk4e3mFSefJu"></div>
+                  <div className="g-recaptcha" data-sitekey="6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y"></div>
                 </div>
 
                 <div className="col-12">
