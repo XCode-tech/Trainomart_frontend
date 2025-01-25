@@ -17,13 +17,13 @@ export default function ContactOne() {
     message: "",
   });
   const [captchaToken, setCaptchaToken] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     // Load reCAPTCHA script dynamically
     const loadRecaptchaScript = () => {
       const script = document.createElement("script");
-      script.src =
-        "https://www.google.com/recaptcha/api.js";
+      script.src = "https://www.google.com/recaptcha/api.js";
       script.async = true;
       script.defer = true;
       document.body.appendChild(script);
@@ -36,16 +36,24 @@ export default function ContactOne() {
     if (window.grecaptcha) {
       const token = window.grecaptcha.getResponse();
       setCaptchaToken(token);
+      return token; // Return the token for immediate use
     }
+    return null;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!captchaToken) {
+    // Prevent duplicate submissions
+    if (isSubmitting) return;
+
+    const token = handleCaptcha();
+    if (!token) {
       alert("Please verify the reCAPTCHA.");
       return;
     }
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(`${API_URL}/contact/`, {
@@ -53,18 +61,21 @@ export default function ContactOne() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, captchaToken }),
+        body: JSON.stringify({ ...formData, captchaToken: token }),
       });
 
       if (response.ok) {
         alert("Message sent successfully!");
         setFormData({ name: "", email: "", message: "" });
         setCaptchaToken(null);
+        window.grecaptcha.reset(); // Reset the reCAPTCHA widget
       } else {
         alert("Failed to send message. Please try again.");
       }
     } catch (error) {
       console.error("Error sending message:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -120,10 +131,7 @@ export default function ContactOne() {
               <h3 className="text-24 fw-500">Contact Us</h3>
               <form
                 className="contact-form row y-gap-30 pt-60 lg:pt-40"
-                onSubmit={(e) => {
-                  handleCaptcha();
-                  handleSubmit(e);
-                }}
+                onSubmit={handleSubmit}
               >
                 <div className="col-md-6">
                   <label className="text-16 lh-1 fw-500 text-dark-1 mb-10">
@@ -167,7 +175,10 @@ export default function ContactOne() {
 
                 {/* Google reCAPTCHA V2 Checkbox */}
                 <div className="col-12">
-                  <div className="g-recaptcha" data-sitekey="6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y"></div>
+                  <div
+                    className="g-recaptcha"
+                    data-sitekey="6LfSCsIqAAAAAJ2XQfrnSP7zLpAU3TVOUr6COP4Y"
+                  ></div>
                 </div>
 
                 <div className="col-12">
@@ -176,8 +187,9 @@ export default function ContactOne() {
                     name="submit"
                     id="submit"
                     className="button -md -purple-1 text-white"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                 </div>
               </form>
