@@ -1,82 +1,128 @@
-"use client";
+"use client"
 
-import Star from "../common/Star";
-import { coursesData } from "@/data/courses";
-import React, { useState, useEffect } from "react";
-import PinContent from "./PinContent";
-import Overview from "./Overview";
-import CourseContent from "./CourseContent";
-import Head from "next/head";
-import API_URL from "@/data/config";
-import { format, addDays, startOfMonth } from "date-fns"; // Import date-fns for date manipulation
-import { faq } from "@/data/faq";
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Star from "../common/Star"
+import { coursesData } from "@/data/courses"
+import React, { useState, useEffect } from "react"
+import PinContent from "./PinContent"
+import Overview from "./Overview"
+import CourseContent from "./CourseContent"
+import Head from "next/head"
+import API_URL from "@/data/config"
+import { format, addDays, startOfMonth } from "date-fns"
+import { faq } from "@/data/faq"
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Modal from "./Modal"
 
 const menuItems = [
   { id: 1, href: "#overview", text: "Overview", isActive: true },
   { id: 2, href: "#course-content", text: "Course Content", isActive: false },
-];
+]
 
 export default function CourseDetailsOne({ slug }) {
-  const [pageItem, setPageItem] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [activeFaq, setActiveFaq] = useState(0);
+  const [pageItem, setPageItem] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [activeFaq, setActiveFaq] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  // Function to calculate the start date as the 5th of the next month
+  const handleOpenModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
+  const handleInquireNow = () => {
+    console.log("Button clicked!")
+    setIsModalOpen(true)
+  }
+
+
+  const handleSubmit = (email) => {
+    console.log("Submitted email:", email)
+    alert(`Thank you! We will contact you at ${email}`)
+    setIsModalOpen(false)
+  }
+
+  const handleFormSubmit = (email) => {
+    console.log("Submitted email:", email)
+    alert(`Thank you! We will contact you at ${email}`)
+    setIsModalOpen(false)
+  }
+
   const calculateStartDate = () => {
-    const now = new Date();
-    const nextMonth = now.getMonth() + 1 === 12 ? 0 : now.getMonth() + 1; // Get next month
-    const year = now.getMonth() + 1 === 12 ? now.getFullYear() + 1 : now.getFullYear();
-    return new Date(year, nextMonth, 5); // 5th of the next month
-  };
+    const now = new Date()
+    const nextMonth = now.getMonth() + 1 === 12 ? 0 : now.getMonth() + 1
+    const year = now.getMonth() + 1 === 12 ? now.getFullYear() + 1 : now.getFullYear()
+    return new Date(year, nextMonth, 5)
+  }
 
-  // Function to calculate the end date based on the duration
   const calculateEndDate = (startDate, duration) => {
-    if (!duration || !startDate) return null; // Handle missing values
+    if (!duration || !startDate) return null
 
-    const durationDays = parseInt(duration, 10); // Parse duration into an integer (assuming it's in days)
+    const durationDays = Number.parseInt(duration, 10)
 
     if (isNaN(durationDays)) {
-      return null; // If duration is invalid, return null
+      return null
     }
 
-    const endDate = addDays(startDate, durationDays - 1); // Subtract 1 to get the correct end date
-    return format(endDate, "do MMM yyyy"); // Format the end date
-  };
+    const endDate = addDays(startDate, durationDays - 1)
+    return format(endDate, "do MMM yyyy")
+  }
+
+  const handleBuyNow = async (slug) => {
+    try {
+      const response = await fetch("/api/checkout_sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: slug }),
+      })
+
+      const data = await response.json()
+
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        alert(data.error || "Something went wrong.")
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      alert("Failed to initiate checkout.")
+    }
+  }
 
   useEffect(() => {
     const fetchCourseDetails = async () => {
-      setLoading(true);
-      setError(null);
+      setLoading(true)
+      setError(null)
       try {
-        const response = await fetch(`${API_URL}/courses/slug/${slug}`);
+        const response = await fetch(`${API_URL}/courses/slug/${slug}`)
 
         if (!response.ok) {
-          throw new Error(`Error fetching course data: ${response.statusText}`);
+          throw new Error(`Error fetching course data: ${response.statusText}`)
         }
 
-        const data = await response.json();
-        setPageItem(data);
+        const data = await response.json()
+        setPageItem(data)
       } catch (err) {
-        setError(err.message);
+        setError(err.message)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
     if (slug) {
-      fetchCourseDetails();
+      fetchCourseDetails()
     }
-  }, [slug]);
+  }, [slug])
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-xl">Loading course details...</p>
       </div>
-    );
+    )
   }
 
   if (error) {
@@ -84,7 +130,7 @@ export default function CourseDetailsOne({ slug }) {
       <div className="flex justify-center items-center h-screen">
         <p className="text-xl text-red-500">Error: {error}</p>
       </div>
-    );
+    )
   }
 
   if (!pageItem) {
@@ -92,12 +138,11 @@ export default function CourseDetailsOne({ slug }) {
       <div className="flex justify-center items-center h-screen">
         <p className="text-xl">Course not found.</p>
       </div>
-    );
+    )
   }
 
-  // Get the dynamically calculated start date
-  const courseStartDate = calculateStartDate(); // Start date is 5th of next month
-  const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration); // Calculate dynamic end date
+  const courseStartDate = calculateStartDate()
+  const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration)
 
   return (
     <>
@@ -117,9 +162,7 @@ export default function CourseDetailsOne({ slug }) {
               <div className="row y-gap-30">
                 <div className="col-xl-7 col-lg-8">
                   <div>
-                    <h1 className="text-30 lh-14 pr-60 lg:pr-0">
-                      {pageItem.course_name || "Untitled Course"}
-                    </h1>
+                    <h1 className="text-30 lh-14 pr-60 lg:pr-0">{pageItem.course_name || "Untitled Course"}</h1>
                   </div>
 
                   <div className="d-flex x-gap-30 y-gap-10 items-center flex-wrap pt-20">
@@ -133,10 +176,6 @@ export default function CourseDetailsOne({ slug }) {
                     <div className="d-flex items-center text-light-1">
                       <div className="icon icon-wall-clock text-13"></div>
                       <div className="text-14 ml-8">
-{/*                         <b>
-                          New Batch: Starts From {format(courseStartDate, "do MMM")} to {courseEndDate || "N/A"} (9AM-5PM EST)
-                        </b>{" "} */}
-
                         <b>
                           New Batch: Starts From{" "}
                           <span className="blinkingText">
@@ -154,11 +193,35 @@ export default function CourseDetailsOne({ slug }) {
                       </div>
                     </div>
                   </div>
+                  <div className="w-1/2">
+                    <div className="">
+                      <button type="button"
+                        onClick={handleOpenModal}
+                        className="button -md -outline-dark-1 text-dark-1 w-1/1 mt-10"
+
+                      >
+                        <b>Inquire Now</b>
+                      </button>
+                    </div>
+
+
+                  </div>
+
                 </div>
+                {/* Modal Component */}
+                <Modal
+                  isOpen={isModalOpen}
+                  onClose={handleCloseModal}
+                  onSubmit={handleSubmit}
+                  pageItem={pageItem}
+                  className="w-1/1 mt-10"
+                />
               </div>
+
             </div>
           </div>
         </section>
+
         <PinContent pageItem={pageItem} />
 
         <section className="layout-pt-md layout-pb-md">
@@ -169,10 +232,7 @@ export default function CourseDetailsOne({ slug }) {
                   <div className="d-flex x-gap-30">
                     {menuItems.map((item) => (
                       <div key={item.id}>
-                        <a
-                          href={item.href}
-                          className={`pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}`}
-                        >
+                        <a href={item.href} className={`pb-12 page-nav-menu__link ${item.isActive ? "is-active" : ""}`}>
                           {item.text}
                         </a>
                       </div>
@@ -190,5 +250,6 @@ export default function CourseDetailsOne({ slug }) {
 
       </div>
     </>
-  );
+  )
 }
+
