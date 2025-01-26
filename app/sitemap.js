@@ -1,3 +1,5 @@
+import { parseStringPromise } from 'xml2js';
+
 export default async function sitemap() {
   const baseUrl = 'https://www.trainomart.com';
 
@@ -80,16 +82,15 @@ export default async function sitemap() {
   const res = await fetch(backendUrl);
   const backendData = await res.text();
 
-  // Parse the backend XML data
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(backendData, 'application/xml');
-  const urls = xmlDoc.getElementsByTagName('url');
+  // Parse the XML data using xml2js
+  const parsedData = await parseStringPromise(backendData);
+  const urls = parsedData.urlset.url;
 
-  // Convert XML to a JavaScript array
-  const dynamicData = Array.from(urls).map(url => ({
-    url: url.getElementsByTagName('loc')[0].textContent,
-    lastModified: new Date(url.getElementsByTagName('lastmod')[0].textContent),
-    priority: parseFloat(url.getElementsByTagName('priority')[0].textContent),
+  // Convert parsed XML to JavaScript array
+  const dynamicData = urls.map(url => ({
+    url: url.loc[0],
+    lastModified: new Date(url.lastmod[0]),
+    priority: parseFloat(url.priority[0]),
   }));
 
   // Merge static data and dynamic data
