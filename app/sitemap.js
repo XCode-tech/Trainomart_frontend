@@ -11,11 +11,6 @@ export default async function sitemap() {
       priority: 1.00,
     },
     {
-      url: `${baseUrl}/login`,
-      lastModified: new Date('2024-11-28T02:21:16+00:00'),
-      priority: 0.80,
-    },
-    {
       url: `${baseUrl}/signup`,
       lastModified: new Date('2024-11-28T02:21:16+00:00'),
       priority: 0.80,
