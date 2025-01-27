@@ -21,31 +21,6 @@ export default async function sitemap() {
       priority: 0.80,
     },
     {
-      url: `${baseUrl}/courses/machine-learning-with-python`,
-      lastModified: new Date('2024-11-28T02:21:16+00:00'),
-      priority: 0.80,
-    },
-    {
-      url: `${baseUrl}/courses/deep-learning-architectures-anns-to-transformers`,
-      lastModified: new Date('2024-11-28T02:21:16+00:00'),
-      priority: 0.80,
-    },
-    {
-      url: `${baseUrl}/courses/generative-ai-microsoft-azure-openai`,
-      lastModified: new Date('2024-11-28T02:21:16+00:00'),
-      priority: 0.80,
-    },
-    {
-      url: `${baseUrl}/courses/customizing-generative-ai-aws-bedrock`,
-      lastModified: new Date('2024-11-28T02:21:16+00:00'),
-      priority: 0.80,
-    },
-    {
-      url: `${baseUrl}/courses/ai-action-generative-models-langchain`,
-      lastModified: new Date('2024-11-28T02:21:16+00:00'),
-      priority: 0.80,
-    },
-    {
       url: `${baseUrl}/about`,
       lastModified: new Date('2024-11-28T02:21:16+00:00'),
       priority: 0.80,
