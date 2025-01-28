@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { parseStringPromise } from "xml2js";
 
 export async function GET() {
   const baseUrl = "https://www.trainomart.com";
@@ -18,10 +19,14 @@ export async function GET() {
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
-    const data = await response.json();
-    dynamicUrls = data.map((item) => ({
-      loc: item.url,
-      priority: item.priority || 0.8,
+
+    const xmlData = await response.text(); // Read XML response
+    const parsedData = await parseStringPromise(xmlData); // Parse XML to JS object
+
+    const urls = parsedData.urlset.url; // Access URLs in parsed data
+    dynamicUrls = urls.map((url) => ({
+      loc: url.loc[0],
+      priority: parseFloat(url.priority[0]) || 0.8,
     }));
   } catch (error) {
     console.error("Error fetching dynamic URLs:", error);
