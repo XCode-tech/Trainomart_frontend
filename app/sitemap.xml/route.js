@@ -11,6 +11,9 @@ export async function GET() {
     { loc: `${baseUrl}/about`, priority: 0.8 },
     { loc: `${baseUrl}/blogs-list`, priority: 0.8 },
     { loc: `${baseUrl}/contact`, priority: 0.8 },
+    { loc: `${baseUrl}/business`, priority: 0.8 },
+    { loc: `${baseUrl}/help-center`, priority: 0.8 },
+
   ];
 
   let dynamicUrls = [];
