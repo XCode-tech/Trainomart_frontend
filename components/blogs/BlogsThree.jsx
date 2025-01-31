@@ -16,10 +16,14 @@ export default function BlogsThree() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get("https://test.trainomart.com/api/blogs/");
-        // setBlogs(response.data);
         const fetchedBlogs = response.data;
-        // Reverse the blogs to show the latest one first
-        setBlogs(fetchedBlogs.reverse()); 
+
+        // Sort blogs based on the 'created_at' field (assuming it exists)
+        const sortedBlogs = fetchedBlogs.sort((a, b) => 
+          new Date(b.created_at) - new Date(a.created_at)
+        );
+
+        setBlogs(sortedBlogs);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
