@@ -25,11 +25,11 @@ const nextConfig = {
                 destination: '/courses/generative-ai-with-google-gemini',
                 permanent: true,
             },
-            {
-                source: '/courses/Self-Supervised-Learning-Unlocking-the-Power-of-Unlabeled-Data',
-                destination: '/courses/self-supervised-learning-unlocking-the-power-of-unlabeled-data',
-                permanent: true,
-            },
+            // {
+            //     source: '/courses/Self-Supervised-Learning-Unlocking-the-Power-of-Unlabeled-Data',
+            //     destination: '/courses/self-supervised-learning-unlocking-the-power-of-unlabeled-data',
+            //     permanent: true,
+            // },
             {
                 source: '/courses/7',
                 destination: '/courses/generative-ai-microsoft-azure-openai',
