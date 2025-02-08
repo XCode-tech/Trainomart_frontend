@@ -6,14 +6,12 @@ export async function GET() {
 
   const staticUrls = [
     { loc: `${baseUrl}/`, priority: 1.0 },
-//    { loc: `${baseUrl}/signup`, priority: 0.8 },
     { loc: `${baseUrl}/courses`, priority: 0.8 },
     { loc: `${baseUrl}/about`, priority: 0.8 },
     { loc: `${baseUrl}/blogs-list`, priority: 0.8 },
     { loc: `${baseUrl}/contact`, priority: 0.8 },
     { loc: `${baseUrl}/business`, priority: 0.8 },
     { loc: `${baseUrl}/help-center`, priority: 0.8 },
-
   ];
 
   let dynamicUrls = [];
@@ -27,10 +25,12 @@ export async function GET() {
     const parsedData = await parseStringPromise(xmlData); // Parse XML to JS object
 
     const urls = parsedData.urlset.url; // Access URLs in parsed data
-    dynamicUrls = urls.map((url) => ({
-      loc: url.loc[0],
-      priority: parseFloat(url.priority[0]) || 0.8,
-    }));
+    dynamicUrls = urls
+      .map((url) => ({
+        loc: url.loc[0],
+        priority: parseFloat(url.priority[0]) || 0.8,
+      }))
+      .filter((url) => !url.loc.includes("/login")); // Filter out '/login'
   } catch (error) {
     console.error("Error fetching dynamic URLs:", error);
   }
