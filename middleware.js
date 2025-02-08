@@ -3,7 +3,15 @@ import { NextResponse } from 'next/server';
 export function middleware(request) {
   const url = request.nextUrl.clone();
 
-  // Define a mapping for case-insensitive routes
+  // Check if the URL matches "/courses/[anything]" pattern
+  const regex = /^\/courses\/[^/]+$/;  // Matches "/courses/anything"
+  if (regex.test(url.pathname)) {
+    // Redirect to the homepage
+    url.pathname = '/';  // Set the pathname to the homepage
+    return NextResponse.redirect(url); // Perform the redirect
+  }
+
+  // Define a mapping for specific routes
   const routeMappings = {
     '/courses/9': '/courses/machine-learning-with-python',
     '/courses/8': '/courses/deep-learning-architectures-anns-to-transformers',
