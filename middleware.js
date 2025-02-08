@@ -3,6 +3,13 @@ import { NextResponse } from 'next/server';
 export function middleware(request) {
   const url = request.nextUrl.clone();
 
+  // Redirect non-www requests to www
+  if (!url.hostname.startsWith('www.')) {
+    // Update the hostname to include 'www.'
+    url.hostname = `www.${url.hostname}`;
+    return NextResponse.redirect(url); // Perform the redirect to the 'www' version
+  }
+
   // Check if the URL matches "/courses/[anything]" pattern
   const regex = /^\/courses\/[^/]+$/;  // Matches "/courses/anything"
   if (regex.test(url.pathname)) {
