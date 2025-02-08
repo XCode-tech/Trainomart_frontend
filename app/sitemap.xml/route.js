@@ -6,7 +6,7 @@ export async function GET() {
 
   const staticUrls = [
     { loc: `${baseUrl}/`, priority: 1.0 },
-    { loc: `${baseUrl}/signup`, priority: 0.8 },
+//    { loc: `${baseUrl}/signup`, priority: 0.8 },
     { loc: `${baseUrl}/courses`, priority: 0.8 },
     { loc: `${baseUrl}/about`, priority: 0.8 },
     { loc: `${baseUrl}/blogs-list`, priority: 0.8 },
