@@ -20,12 +20,12 @@ import BlogDetails from '@/components/blogs/BlogDetails'
 import Preloader from '@/components/common/Preloader'
 import FooterFour from '@/components/layout/footers/FooterFour'
 
-export const metadata = {
-  title: 'Blog-details',
-  description:
-    '',
+// export const metadata = {
+//   title: 'Blog-details',
+//   description:
+//     '',
   
-}
+// }
 
 
 export default function page({ params }) {
