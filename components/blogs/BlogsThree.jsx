@@ -87,7 +87,7 @@ export default function BlogsThree() {
                     <div className="col-lg-6">
                       <div className="blogCard__content pl-60 lg:pl-40 md:pl-0">
                         <div className="blogCard__category text-14 lh-1 text-purple-1 fw-500">
-                          {elm.category}
+{/*                           {elm.category} */}
                         </div>
                         <h4 className="blogCard__title text-24 lh-15 text-dark-4 fw-500 mt-15">
                           <Link className="linkCustom" href={`/blogs/${elm.slug}`}>
