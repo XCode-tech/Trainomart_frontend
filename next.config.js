@@ -15,11 +15,11 @@ const nextConfig = {
                 destination: '/courses/deep-learning-architectures-anns-to-transformers',
                 permanent: true,
             },
-            {
-                source: '/courses/Deep-Reinforcement-Learning-Combining-Neural-Networks-and-Decision-Making',
-                destination: '/courses/deep-reinforcement-learning-combining-neural-networks-and-decision-making',
-                permanent: true,
-            },
+            // {
+            //     source: '/courses/Deep-Reinforcement-Learning-Combining-Neural-Networks-and-Decision-Making',
+            //     destination: '/courses/deep-reinforcement-learning-combining-neural-networks-and-decision-making',
+            //     permanent: true,
+            // },
             {
                 source: '/courses/Generative-AI-with-Google-Gemini',
                 destination: '/courses/generative-ai-with-google-gemini',
@@ -45,11 +45,11 @@ const nextConfig = {
                 destination: '/courses/ai-action-generative-models-langchain',
                 permanent: true,
             },
-            {
-                source: '/blogs/Mastering-LangChain-Your-Guide-to-LLM-Application',
-                destination: '/blogs/mastering-langchain-your-guide-to-llm-application',
-                permanent: true,
-            },
+            // {
+            //     source: '/blogs/Mastering-LangChain-Your-Guide-to-LLM-Application',
+            //     destination: '/blogs/mastering-langchain-your-guide-to-llm-application',
+            //     permanent: true,
+            // },
         ];
     },
 };
