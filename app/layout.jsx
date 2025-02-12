@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import Context from "@/context/Context";
 import Script from "next/script";
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, metadata }) {
   useEffect(() => {
     AOS.init({
       duration: 700,
@@ -23,6 +23,10 @@ export default function RootLayout({ children }) {
     });
   }, []);
 
+  
+  console.log("use client : ", metadata);
+  
+
   return (
     <html lang="en" className="">
       <head>
@@ -31,6 +35,12 @@ export default function RootLayout({ children }) {
           content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ"
         />
 
+        {/* Dynamic Meta Tags */}
+        <title>{metadata?.title || 'Default Title'}</title>
+        <meta name="description" content={metadata?.description || 'Default description for your page'} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        
         {/* Google Analytics */}
         <script
           async
@@ -88,6 +98,7 @@ export default function RootLayout({ children }) {
           />
         </noscript>
         {/* End Meta Pixel Code */}
+
       </head>
       <body>
         {/* Google Tag Manager (noscript) */}
