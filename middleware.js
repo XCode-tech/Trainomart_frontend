@@ -22,13 +22,13 @@ export function middleware(request) {
   const routeMappings = {
     '/courses/9': '/courses/machine-learning-with-python',
     '/courses/8': '/courses/deep-learning-architectures-anns-to-transformers',
-    '/courses/Deep-Reinforcement-Learning-Combining-Neural-Networks-and-Decision-Making': '/courses/deep-reinforcement-learning-combining-neural-networks-and-decision-making',
+    // '/courses/Deep-Reinforcement-Learning-Combining-Neural-Networks-and-Decision-Making': '/courses/deep-reinforcement-learning-combining-neural-networks-and-decision-making',
     '/courses/Generative-AI-with-Google-Gemini': '/courses/generative-ai-with-google-gemini',
-    '/courses/Self-Supervised-Learning-Unlocking-the-Power-of-Unlabeled-Data': '/courses/self-supervised-learning-unlocking-the-power-of-unlabeled-data',
+    // '/courses/Self-Supervised-Learning-Unlocking-the-Power-of-Unlabeled-Data': '/courses/self-supervised-learning-unlocking-the-power-of-unlabeled-data',
     '/courses/7': '/courses/generative-ai-microsoft-azure-openai',
     '/courses/6': '/courses/customizing-generative-ai-aws-bedrock',
     '/courses/5': '/courses/ai-action-generative-models-langchain',
-    '/blogs/Mastering-LangChain-Your-Guide-to-LLM-Application': '/blogs/mastering-langchain-your-guide-to-llm-application',
+    // '/blogs/Mastering-LangChain-Your-Guide-to-LLM-Application': '/blogs/mastering-langchain-your-guide-to-llm-application',
   };
 
   // Convert the pathname to lowercase to handle case insensitivity
