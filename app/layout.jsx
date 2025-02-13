@@ -36,7 +36,7 @@ export default function RootLayout({ children, metadata }) {
         />
 
         {/* Dynamic Meta Tags */}
-        <title>{metadata?.title || 'Default Title'}</title>
+        <title>{metadata?.title || 'Trainomart'}</title>
         <meta name="description" content={metadata?.description || 'Default description for your page'} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
