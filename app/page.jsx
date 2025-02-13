@@ -1,7 +1,6 @@
 // import HomeOne from "@/components/homes/home";
 import  Header  from "../components/layout/headers/Header";
 // import MobileMenu from "@/components/layout/component/MobileMenu";
-
 import HomeHero from "../components/homes/heros/HomeHero";
 import HeroFour from "@/components/homes/heros/HeroFour";
 import HeaderFour from "@/components/layout/headers/HeaderFour";
