@@ -165,9 +165,9 @@ export default function HeroFour() {
               </h1>
 
               <p className="masthead__text text-17 text-dark-1 mt-25">
-                A Technical Training Solutions Company providing Instructors and
+                A technical training solutions company providing instructors and 
                 <br className="lg:d-none" />
-                delivering Tech Courses at affordable prices.
+                delivering tech courses at affordable prices.
               </p>
 
               <div className="masthead-search mt-30">
