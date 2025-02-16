@@ -21,7 +21,7 @@ import React from 'react'
 export const metadata = {
   title: 'Page not found',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    '',
   
 }
 export default function page() {
@@ -34,7 +34,7 @@ export default function page() {
         <div className="content-wrapper js-content-wrapper overflow-hidden">
             <PageLinks/>
             <NotFound/>
-            <FooterOne/>
+            <FooterFour/>
         </div>
 
     </div>
