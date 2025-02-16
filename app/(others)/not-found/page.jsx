@@ -15,6 +15,8 @@ import Preloader from '@/components/common/Preloader'
 import EventsOne from '@/components/events/EventsOne'
 import FooterOne from '@/components/layout/footers/FooterOne'
 import Header from '@/components/layout/headers/Header'
+import FooterFour from '@/components/layout/footers/FooterFour'
+
 import HeaderFour from '@/components/layout/headers/HeaderFour'
 
 import React from 'react'
