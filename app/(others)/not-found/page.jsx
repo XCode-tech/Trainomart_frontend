@@ -14,12 +14,10 @@ import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import EventsOne from '@/components/events/EventsOne'
 import FooterOne from '@/components/layout/footers/FooterOne'
-import Header from '@/components/layout/headers/Header'
 import FooterFour from '@/components/layout/footers/FooterFour'
-
-import HeaderFour from '@/components/layout/headers/HeaderFour'
-
+import Header from '@/components/layout/headers/Header'
 import React from 'react'
+import HeaderFour from '@/components/layout/headers/HeaderFour'
 export const metadata = {
   title: 'Page not found',
   description:
