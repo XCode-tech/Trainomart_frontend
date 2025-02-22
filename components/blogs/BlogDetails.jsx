@@ -2,10 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function BlogDetails({ slug }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [pageItem, setPageItem] = useState(null)
+
 
   useEffect(() => {
     const fetchBlogData = async () => {
@@ -13,6 +16,7 @@ export default function BlogDetails({ slug }) {
         const response = await fetch(`https://test.trainomart.com/api/blogs/slug/${slug}`);
         const blogData = await response.json();
         setData(blogData);
+        setPageItem(blogData)
       } catch (error) {
         console.error("Error fetching blog data:", error);
       } finally {
@@ -88,6 +92,22 @@ export default function BlogDetails({ slug }) {
 
   return (
     <>
+      <Head>
+        <title>{pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"}</title>
+        <meta name="description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning, education, training"} />
+        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
+        <meta property="og:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
+        <meta name="twitter:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta name="twitter:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <section className="page-header -type-1">
         <div className="container">
           <div className="page-header__content">
