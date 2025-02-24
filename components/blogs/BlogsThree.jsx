@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 import Pagination from "@mui/material/Pagination";
+import Head from "next/head";
 
 export default function BlogsThree() {
   const [blogs, setBlogs] = useState([]); // Store all blogs
