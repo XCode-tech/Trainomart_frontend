@@ -90,8 +90,8 @@ export default function HeroFour() {
     <>
       <Head>
         <title>Course Platform | Learn and Grow</title>
-{/*         <meta name="description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
-        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning, education, training"} />
+        <meta name="description" content={"Enhance your skills with TrainoMart’s top-rated online training and certification courses. Learn from industry experts and boost your career today! Enroll Now."} />
+{/*         <meta name="keywords" content={pageItem.meta_keywords || "course, online learning, education, training"} />
         <meta property="og:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
         <meta property="og:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
         <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
