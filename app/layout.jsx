@@ -36,8 +36,8 @@ export default function RootLayout({ children, metadata }) {
         />
 
         {/* Dynamic Meta Tags */}
-        <title>{metadata?.title || 'Trainomart'}</title>
-        <meta name="description" content={metadata?.description || 'Default description for your page'} />
+        <title>{metadata?.title || 'Trainomart - Best Online Training & Certification Courses'}</title>
+        <meta name="description" content={metadata?.description || 'Enhance your skills with TrainoMart’s top-rated online training and certification courses. Learn from industry experts and boost your career today! Enroll Now.'} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         
