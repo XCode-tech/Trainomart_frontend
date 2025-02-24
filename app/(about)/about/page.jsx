@@ -25,9 +25,9 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
 export const metadata = {
-  title: 'About',
+  title: 'About Trainomart - Empowering Careers with Expert Training',
   description:
-    '',
+    'Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!',
   
 }
 
