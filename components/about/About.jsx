@@ -8,7 +8,7 @@ export default function About() {
     <>
       <Head>
         <title>Course Platform | Learn and Grow</title>
-        <meta name="description" content={pageItem.meta_description || pageItem.description || "Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!"} />
+        <meta name="description" content={"Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!"} />
       </Head>
 
               
