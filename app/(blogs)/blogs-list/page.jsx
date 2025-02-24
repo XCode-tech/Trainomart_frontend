@@ -16,12 +16,12 @@ import Header from '@/components/layout/headers/Header'
 import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
-export const metadata = {
-  title: 'All Blogs',
-  description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+// export const metadata = {
+//   title: 'All Blogs',
+//   description:
+//     'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
   
-}
+// }
 
 export default function page() {
   return (
