@@ -86,6 +86,22 @@ export default function HeroFour() {
   }, []);
 
   return (
+    <>
+      <Head>
+        <title>Course Platform | Learn and Grow</title>
+{/*         <meta name="description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning, education, training"} />
+        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
+        <meta property="og:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
+        <meta name="twitter:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta name="twitter:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
     <section className="masthead -type-3 bg-light-6 js-mouse-move-container">
 {/*       {showPopup && (
         <div style={{ position: 'fixed', inset: '0', backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -229,5 +245,6 @@ export default function HeroFour() {
         </div>
       </div>
     </section>
-  );
+  </>
+      );
 }
