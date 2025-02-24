@@ -1,9 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
+
 export default function About() {
   return (
     <>
+      <Head>
+        <title>Course Platform | Learn and Grow</title>
+        <meta name="description" content={pageItem.meta_description || pageItem.description || "Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!"} />
+      </Head>
+
+              
       <section className="page-header -type-1">
         <div className="container">
           <div className="page-header__content">
