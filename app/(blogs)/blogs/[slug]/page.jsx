@@ -33,7 +33,7 @@ export default function page({ params }) {
         const data = await res.json();
         setMetadata({
           title: data.meta_title || "Default Course Title",
-          description: data.meta_description || "Default Course Description",
+          description: data.meta_description || "About",
         });
         setPageItem(data);
       } catch (error) {
