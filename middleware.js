@@ -20,6 +20,7 @@ export function middleware(request) {
 
   // Define a mapping for specific routes
   const routeMappings = {
+    'https://www.trainomart.com/login': 'https://www.trainomart.com',
     '/courses/9': '/courses/machine-learning-with-python',
     '/courses/8': '/courses/deep-learning-architectures-anns-to-transformers',
     // '/courses/Deep-Reinforcement-Learning-Combining-Neural-Networks-and-Decision-Making': '/courses/deep-reinforcement-learning-combining-neural-networks-and-decision-making',
