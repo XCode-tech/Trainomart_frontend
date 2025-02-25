@@ -17,9 +17,8 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
 export const metadata = {
-  title: 'All Blogs',
-  description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+  title: 'Trainomart Blogs - Latest Insights on Training & Certification',
+  description: 'Stay updated with Trainomart’s latest blogs on career growth, online training, certification courses, and industry trends. Explore expert insights now!',
   
 }
 
