@@ -10,9 +10,9 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Contact",
+    "Contact Trainomart - Get in Touch for Training & Support",
   description:
-    "",
+    "Have questions? Contact Trainomart for expert guidance on training courses, certifications, and career growth. Reach out today!",
 };
 
 export default function page() {
