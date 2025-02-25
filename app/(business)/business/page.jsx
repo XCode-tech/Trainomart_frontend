@@ -23,9 +23,9 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
 export const metadata = {
-  title: 'Instructor Augmentation Services',
+  title: 'Trainomart for Business - Corporate Training & Skill Development',
   description:
-    '',
+    'Empower your workforce with Trainomart’s corporate training solutions! Upskill teams with expert-led courses in AI, cloud, IT, and more. Get started today!',
   
 }
 
