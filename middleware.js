@@ -39,7 +39,7 @@ export function middleware(request) {
   for (const [original, redirect] of Object.entries(routeMappings)) {
     if (pathnameLower === original.toLowerCase()) {
       url.pathname = redirect; // Update the pathname to the mapped one
-      return NextResponse.rewrite(url); // Rewrite the request to the new URL
+      return NextResponse.redirect(url); // Rewrite the request to the new URL
     }
   }
 
