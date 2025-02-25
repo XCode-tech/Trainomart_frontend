@@ -19,9 +19,9 @@ import HelpCenter from '@/components/others/HelpCenter'
 import Terms from '@/components/terms/Terms'
 import React from 'react'
 export const metadata = {
-  title: 'Help Center',
+  title: 'Help Center - Trainomart Support & FAQs',
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
+    'Need assistance? Visit Trainomart’s Help Center for FAQs, course support, and technical guidance. Get quick solutions to all your queries!',
   
 }
 
