@@ -33,7 +33,8 @@ export default function page({ params }) {
         const data = await res.json();
         setMetadata({
           title: data.meta_title || "Default Course Title",
-          description: data.meta_description || "About",
+          description: data.meta_description || "Default Course Description",
+          canonical: data.Canonical_tag || "Default Course Title",
         });
         setPageItem(data);
       } catch (error) {
@@ -51,10 +52,22 @@ export default function page({ params }) {
   useEffect(() => {
     if (!isLoading && !error) {
       document.title = metadata.title;
+      
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.setAttribute('content', metadata.description);
       }
+
+      const canonicalTag = document.querySelector('link[rel="canonical"]');
+      if (canonicalTag) {
+        canonicalTag.setAttribute('href', metadata.canonical);
+      } else {
+        const newCanonical = document.createElement('link');
+        newCanonical.rel = "canonical";
+        newCanonical.href = metadata.canonical;
+        document.head.appendChild(newCanonical);
+      }
+      
     }
   }, [metadata, isLoading, error]);
 
