@@ -43,12 +43,12 @@ export default function GetApp() {
               <br />
               <div className="col-auto">
                 <div className="footer-header-socials">
-                  <div className="footer-header-socials__title text-dark-1">
+{/*                   <div className="footer-header-socials__title text-dark-1">
                     <b>Follow us on social media</b>
                   </div>
                   <div className="footer-header-socials__list">
                     <Socials />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               {/* <div className="app-content__buttons">
