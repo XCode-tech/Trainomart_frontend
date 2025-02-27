@@ -95,6 +95,7 @@ export default function BlogDetails({ slug }) {
       <Head>
         <title>{pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"}</title>
         <meta name="description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <link rel="canonical" href={pageItem.Canonical_tag || 'https://www.trainomart.com'} key="canonical" />
         <meta name="keywords" content={pageItem.meta_keywords || "course, online learning, education, training"} />
         <meta property="og:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
         <meta property="og:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
