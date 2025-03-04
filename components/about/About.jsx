@@ -3,6 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
+export const metadata = {
+  title: "About Trainomart - Empowering Careers with Expert Training",
+  description:
+    "Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!",
+  alternates: {
+    canonical: "https://www.trainomart.com/about",
+  },
+};
+
 export default function About() {
   return (
     <>
