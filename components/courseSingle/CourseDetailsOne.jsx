@@ -147,12 +147,9 @@ export default function CourseDetailsOne({ slug }) {
   return (
     <>
       <Head>
-        <title>{pageItem.meta_title || pageItem.course_name} | Your Course Platform</title>
+        <title>{pageItem.meta_title || pageItem.course_name} | Trainomart</title>
         <meta name="description" content={pageItem.meta_description || pageItem.description} />
-        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning"} />
-        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name} />
-        <meta property="og:description" content={pageItem.meta_description || pageItem.description} />
-        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <link rel="canonical" href={`https://test.trainomart.com/courses/${slug}`} />
       </Head>
 
       <div id="js-pin-container" className="js-pin-container relative">
