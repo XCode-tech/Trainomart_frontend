@@ -18,9 +18,9 @@ export default function BlogsThree() {
         const response = await axios.get("https://test.trainomart.com/api/blogs/");
         const fetchedBlogs = response.data;
 
-        // Sort blogs based on 'updated_at' (newest first)
+        // Sort blogs based on 'created_at' (newest first)
         const sortedBlogs = fetchedBlogs.sort((a, b) =>
-          new Date(b.updated_at) - new Date(a.updated_at)
+          new Date(b.created_at) - new Date(a.created_at)
         );
 
         setBlogs(sortedBlogs);
