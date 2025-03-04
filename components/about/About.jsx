@@ -7,8 +7,14 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>Course Platform | Learn and Grow</title>
-        <meta name="description" content={"Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!"} />
+        <title>About Trainomart - Empowering Careers with Expert Training</title>
+        <meta
+          name="description"
+          content="Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!"
+        />
+        <link rel="canonical" href="https://www.trainomart.com/about" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
               
