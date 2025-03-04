@@ -26,6 +26,7 @@ export function middleware(request) {
     // '/courses/Deep-Reinforcement-Learning-Combining-Neural-Networks-and-Decision-Making': '/courses/deep-reinforcement-learning-combining-neural-networks-and-decision-making',
     '/courses/Generative-AI-with-Google-Gemini': '/courses/generative-ai-with-google-gemini',
     '/blogs/The-Importance-of-AWS-and-Microsoft-in-Shaping-the-Future-of-Cloud-Computing-AI': '/blogs/the-importance-and-future-insights-for-aws-microsoft',
+    '/blogs/Webinar-on-AWS-Microsoft-Generative-AI-Learning': '/blogs/the-importance-and-future-insights-for-aws-microsoft',
     // '/courses/Self-Supervised-Learning-Unlocking-the-Power-of-Unlabeled-Data': '/courses/self-supervised-learning-unlocking-the-power-of-unlabeled-data',
     '/courses/7': '/courses/generative-ai-microsoft-azure-openai',
     '/courses/6': '/courses/customizing-generative-ai-aws-bedrock',
