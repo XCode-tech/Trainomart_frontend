@@ -1,61 +1,49 @@
+import About from '@/components/about/About';
 
-
-
-
-
-import About from '@/components/about/About'
-
-
-import Brands from '@/components/common/Brands'
-import Instructors from '@/components/common/Instructors'
-import ManagingDirector from '@/components/common/ManagingDirector'
-import PageLinks from '@/components/common/PageLinks'
-import Preloader from '@/components/common/Preloader'
-import TestimonialsOne from '@/components/common/TestimonialsOne'
-import TestimonialsThree from '@/components/common/TestimonialsThree'
-import WeOffer from '@/components/homes/WeOffer'
-import WhyCourse from '@/components/homes/WhyCourse'
-import WhyCourse2 from '@/components/homes/WhyCourse2'
-import FooterFour from '@/components/layout/footers/FooterFour'
-
-
-import FooterOne from '@/components/layout/footers/FooterOne'
-import Header from '@/components/layout/headers/Header'
-import HeaderFour from '@/components/layout/headers/HeaderFour'
-import React from 'react'
+import Brands from '@/components/common/Brands';
+import Instructors from '@/components/common/Instructors';
+import ManagingDirector from '@/components/common/ManagingDirector';
+import PageLinks from '@/components/common/PageLinks';
+import Preloader from '@/components/common/Preloader';
+import TestimonialsThree from '@/components/common/TestimonialsThree';
+import WeOffer from '@/components/homes/WeOffer';
+import FooterFour from '@/components/layout/footers/FooterFour';
+import HeaderFour from '@/components/layout/headers/HeaderFour';
+import React from 'react';
+import Head from 'next/head';
 
 export const metadata = {
   title: 'About Trainomart - Empowering Careers with Expert Training',
   description:
     'Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!',
-  
-}
+  canonical: 'https://www.trainomart.com/about'
+};
 
-export default function page() {
+export default function Page() {
   return (
-    <div className="main-content  ">
-      <Preloader/>
-
-        <HeaderFour/>
+    <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="canonical" href={metadata.canonical} />
+      </Head>
+      
+      <div className="main-content">
+        <Preloader />
+        <HeaderFour />
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
-            <About/>
-            <div id="we-offer-section">
-              <WeOffer />
-            </div>
-
-            <TestimonialsThree/>
-            <ManagingDirector />
-            {/* <Instructors/> */}
-            <Brands/>
-           
-
-            
-            
-            <FooterFour/>
+          <PageLinks />
+          <About />
+          <div id="we-offer-section">
+            <WeOffer />
+          </div>
+          <TestimonialsThree />
+          <ManagingDirector />
+          <Brands />
+          <FooterFour />
         </div>
-
-    </div>
-  )
+      </div>
+    </>
+  );
 }
 
