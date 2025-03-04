@@ -30,7 +30,9 @@ export default function page({ params }) {
         const res = await fetch(`https://test.trainomart.com/api/blogs/slug/${params.slug}/`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
+
         const data = await res.json();
+        console.log("Default Course Title", data)
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
