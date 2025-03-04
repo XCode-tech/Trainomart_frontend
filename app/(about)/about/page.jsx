@@ -27,11 +27,6 @@ import Head from 'next/head';
 export default function Page() {
   return (
     <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link rel="canonical" href={metadata.canonical} />
-      </Head>
       
       <div className="main-content">
         <Preloader />
