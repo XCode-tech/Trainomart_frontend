@@ -29,7 +29,12 @@ export default function RootLayout({ children, metadata }) {
 
   return (
     <html lang="en" className="">
+      
       <head>
+        <meta name="description" content="Trainomart - The best online courses platform." />
+        <link rel="canonical" href="https://test.trainomart.com/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
         <meta
           name="google-site-verification"
           content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ"
