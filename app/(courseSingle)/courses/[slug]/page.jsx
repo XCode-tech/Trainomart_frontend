@@ -13,8 +13,8 @@ import Faq1 from "@/components/common/Faq1";
 export default function Page({ params }) {
   const [pageItem, setPageItem] = useState(null);
   const [metadata, setMetadata] = useState({
-    title: 'Loading...',
-    description: 'Loading course description...',
+    title: "Loading...",
+    description: "Loading course description...",
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -27,6 +27,8 @@ export default function Page({ params }) {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         const data = await res.json();
+        console.log("Fetched metadata:", data); // Debugging
+
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
@@ -43,22 +45,17 @@ export default function Page({ params }) {
     fetchMetadata();
   }, [params.slug]);
 
-  // Update the document head after the metadata is fetched
-  useEffect(() => {
-    if (!isLoading && !error) {
-      document.title = metadata.title;
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', metadata.description);
-      }
-    }
-  }, [metadata, isLoading, error]);
-
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
     <>
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="canonical" href={`https://test.trainomart.com/courses/${params.slug}`} />
+      </Head>
+
       <Preloader />
       <div className="main-content">
         <HeaderFour />
