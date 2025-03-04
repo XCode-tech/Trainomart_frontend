@@ -31,21 +31,18 @@ export default function RootLayout({ children, metadata }) {
     <html lang="en" className="">
       
       <head>
-        <meta name="description" content="Trainomart - The best online courses platform." />
-        <link rel="canonical" href="https://test.trainomart.com/" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+
         <meta
           name="google-site-verification"
           content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ"
         />
 
         {/* Dynamic Meta Tags */}
-{/*         <title>{metadata?.title || 'Trainomart - Best Online Training & Certification Courses'}</title>
+        <title>{metadata?.title || 'Trainomart - Best Online Training & Certification Courses'}</title>
         <meta name="description" content={metadata?.description || 'Enhance your skills with TrainoMart’s top-rated online training and certification courses. Learn from industry experts and boost your career today! Enroll Now.'} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={metadata?.Canonical_tag || 'https://www.trainomart.com/'} key="canonical" />
-        <link rel="icon" href="/favicon.ico" /> */}
+        <link rel="icon" href="/favicon.ico" />
         
         {/* Google Analytics */}
         <script
