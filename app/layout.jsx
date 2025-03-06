@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import Context from "@/context/Context";
 import Script from "next/script";
 
-export default function RootLayout({ children, metadata }) {
+export default function RootLayout({ children }) {
   useEffect(() => {
     AOS.init({
       duration: 700,
