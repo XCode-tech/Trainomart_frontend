@@ -24,7 +24,6 @@ export default function page({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  console.log("metadata", metadata);
 
   useEffect(() => {
     const fetchMetadata = async () => {
@@ -34,11 +33,22 @@ export default function page({ params }) {
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         const data = await res.json();
+        console.log("data", data);
+        console.log("metadata data", metadata);
+
+
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
           canonical: data.Canonical_tag || "Default Course Title",
         });
+        
+        console.log("Updated Metadata:", {
+          title: data.meta_title,
+          description: data.meta_description,
+          canonical: data.Canonical_tag,
+        });
+        
         setPageItem(data);
       } catch (error) {
         console.error("Error fetching metadata:", error);
@@ -53,12 +63,14 @@ export default function page({ params }) {
 
   // Update the document head after the metadata is fetched
   useEffect(() => {
+    console.log("Metadata changed:", metadata); 
     if (!isLoading && !error) {
       document.title = metadata.title;
 
       const metaDescription = document.querySelector('meta[name="description"]');
+
       if (metaDescription) {
-        metaDescription.setAttribute('content', metadata.description);
+        metaDescription.setAttribute('content', metadata.description); // ✅ FIXED
       }
 
       const canonicalTag = document.querySelector('link[rel="canonical"]');
@@ -70,7 +82,6 @@ export default function page({ params }) {
         newCanonical.href = metadata.canonical;
         document.head.appendChild(newCanonical);
       }
-
     }
   }, [metadata, isLoading, error]);
 
