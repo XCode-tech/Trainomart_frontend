@@ -25,6 +25,7 @@ export default function RootLayout({ children, metadata }) {
 
   
   
+  console.log("use client : ", metadata);
 
   return (
     <html lang="en" className="">
