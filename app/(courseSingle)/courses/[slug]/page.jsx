@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Head from "next/head"; // Import for SEO
+import Head from "next/head"; // ✅ Import for SEO
 import PageLinks from "@/components/common/PageLinks";
 import Preloader from "@/components/common/Preloader";
 import CourseDetailsOne from "@/components/courseSingle/CourseDetailsOne";
@@ -15,6 +15,7 @@ export default function Page({ params }) {
   const [metadata, setMetadata] = useState({
     title: "Loading...",
     description: "Loading course description...",
+    canonical: "",
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -23,15 +24,16 @@ export default function Page({ params }) {
     const fetchMetadata = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`https://test.trainomart.com/api/courses/slug/${params.slug}/`);
+        const res = await fetch(
+          `https://test.trainomart.com/api/courses/slug/${params.slug}/`
+        );
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         const data = await res.json();
-        console.log("Fetched metadata:", data); // Debugging
-
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
+          canonical: data.Canonical_tag || "",
         });
         setPageItem(data);
       } catch (error) {
@@ -50,10 +52,13 @@ export default function Page({ params }) {
 
   return (
     <>
+      {/* ✅ Next.js Head component for SEO */}
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        <link rel="canonical" href={`https://test.trainomart.com/courses/${params.slug}`} />
+        {metadata.canonical && (
+          <link rel="canonical" href={metadata.canonical} />
+        )}
       </Head>
 
       <Preloader />
