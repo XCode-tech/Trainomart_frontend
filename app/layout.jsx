@@ -24,14 +24,12 @@ export default function RootLayout({ children, metadata }) {
   }, []);
 
   
-  console.log("use client : ", metadata);
   
 
   return (
     <html lang="en" className="">
       
       <head>
-        <meta name="description" content="Default description">
 
         {metadata?.canonical && (
           <link rel="canonical" href={metadata.canonical} />
