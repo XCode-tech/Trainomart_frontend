@@ -18,8 +18,9 @@ import React from 'react'
 
 export const metadata = {
   title: 'Trainomart Blogs - Latest Insights on Training & Certification',
-  description: 'Stay updated with Trainomart’s latest blogs on career growth, online training, certification courses, and industry trends. Explore expert insights now!',
-  
+  description:
+    'Stay updated with Trainomart’s latest blogs on career growth, online training, certification courses, and industry trends. Explore expert insights now!',
+  Canonical_tag: 'https://www.trainomart.com/blogs-list/',
 }
 
 export default function page() {
