@@ -1,3 +1,4 @@
+import RootLayout from '@/app/layout'
 import Faq from "@/components/common/Faq";
 import PageLinks from "@/components/common/PageLinks";
 import Preloader from "@/components/common/Preloader";
@@ -19,16 +20,20 @@ export const metadata = {
 
 export default function page() {
   return (
-    <div className="main-content  ">
-      <Preloader />
+    <RootLayout metadata={metadata}>
 
-      <HeaderFour />
-      <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <ContactOne />
-        <Faq />
-
-        <FooterFour />
+      <div className="main-content  ">
+        <Preloader />
+  
+        <HeaderFour />
+        <div className="content-wrapper js-content-wrapper overflow-hidden">
+          <ContactOne />
+          <Faq />
+  
+          <FooterFour />
+        </div>
       </div>
-    </div>
+    </RootLayout>
+
   );
 }
