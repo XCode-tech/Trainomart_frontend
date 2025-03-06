@@ -1,6 +1,7 @@
 // import HomeOne from "@/components/homes/home";
 import  Header  from "../components/layout/headers/Header";
 // import MobileMenu from "@/components/layout/component/MobileMenu";
+import RootLayout from '@/app/layout'
 import HomeHero from "../components/homes/heros/HomeHero";
 import HeroFour from "@/components/homes/heros/HeroFour";
 import HeaderFour from "@/components/layout/headers/HeaderFour";
@@ -20,57 +21,61 @@ import FooterFour from "@/components/layout/footers/FooterFour";
 import CategoriesFour from "@/components/homes/categories/CategoriesFour";
 
 export const metadata = {
-  title: 'Home',
+  title: 'Trainomart - Best Online Training & Certification Courses',
   description:
-    '',
-  
+    'Enhance your skills with TrainoMart’s top-rated online training and certification courses. Learn from industry experts and boost your career today! Enroll Now.',
+  canonical: 'https://www.trainomart.com/',
 }
 
 export default function HomePage() {
   return (
     
     <>
-    <Preloader/>
-    <HeaderFour />
-    <div dangerouslySetInnerHTML={{
-      __html: `
-      <!-- Meta Pixel Code -->
-      <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '845551474356300');
-        fbq('track', 'PageView');
-      </script>
-      <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=845551474356300&ev=PageView&noscript=1" />
-      </noscript>
-      <!-- End Meta Pixel Code -->
-    ` }} />
-
-    <div className="content-wrapper  js-content-wrapper overflow-hidden">
-    
-      <HeroFour />
-      <Courses/>
-      {/* <CategoriesFour /> */}
-      <TestimonialsOne/>
-      <FeaturesOne/>
-      <WhyCourse/>
-      <Brands/>
-
-      {/* <Instructors/> */}
-      <GetApp/>
-      {/* <Blog/> */}
-      {/* <Join/> */}
-      <FooterFour/>
+    <RootLayout metadata={metadata}>
+  
+      <Preloader/>
+      <HeaderFour />
+      <div dangerouslySetInnerHTML={{
+        __html: `
+        <!-- Meta Pixel Code -->
+        <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '845551474356300');
+          fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=845551474356300&ev=PageView&noscript=1" />
+        </noscript>
+        <!-- End Meta Pixel Code -->
+      ` }} />
+  
+      <div className="content-wrapper  js-content-wrapper overflow-hidden">
       
-      
-    </div>
+        <HeroFour />
+        <Courses/>
+        {/* <CategoriesFour /> */}
+        <TestimonialsOne/>
+        <FeaturesOne/>
+        <WhyCourse/>
+        <Brands/>
+  
+        {/* <Instructors/> */}
+        <GetApp/>
+        {/* <Blog/> */}
+        {/* <Join/> */}
+        <FooterFour/>
+        
+        
+      </div>
+    </RootLayout>
+
   </>
   );
 }
