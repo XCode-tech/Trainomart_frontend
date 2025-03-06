@@ -144,12 +144,25 @@ export default function CourseDetailsOne({ slug }) {
   const courseStartDate = calculateStartDate()
   const courseEndDate = calculateEndDate(courseStartDate, pageItem.duration)
 
+  console.log("pageItem_meta_title", pageItem.meta_title);
+  console.log("pageItem_meta_Diss", pageItem.meta_description);
+
   return (
     <>
       <Head>
-        <title>{pageItem.meta_title || pageItem.course_name} | Trainomart</title>
-        <meta name="description" content={pageItem.meta_description || pageItem.description} />
-        <link rel="canonical" href={`https://test.trainomart.com/courses/${slug}`} />
+        <title>{pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"}</title>
+        <meta name="description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta name="keywords" content={pageItem.meta_keywords || "course, online learning, education, training"} />
+        <meta property="og:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
+        <meta property="og:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta property="og:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageItem.meta_title || pageItem.course_name || "Course Platform | Learn and Grow"} />
+        <meta name="twitter:description" content={pageItem.meta_description || pageItem.description || "Learn the best courses to advance your career."} />
+        <meta name="twitter:image" content={pageItem.course_image || "/default-course.jpg"} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div id="js-pin-container" className="js-pin-container relative">
