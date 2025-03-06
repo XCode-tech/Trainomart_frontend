@@ -33,7 +33,7 @@ export default function CoursePageClient({ slug }) {
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
-          canonical: data.canonical_tag || "", // ✅ Check if this field exists
+          canonical: data.canonical_tag || "Course", // ✅ Check if this field exists
         });
   
         setPageItem(data);
