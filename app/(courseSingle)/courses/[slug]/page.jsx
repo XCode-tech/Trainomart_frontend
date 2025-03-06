@@ -9,6 +9,8 @@ import CourseSlider from "@/components/courseSingle/CourseSlider";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import HeaderFour from "@/components/layout/headers/HeaderFour";
 import Faq1 from "@/components/common/Faq1";
+import RootLayout from '@/app/layout'
+
 
 export default function Page({ params }) {
   const [pageItem, setPageItem] = useState(null);
@@ -52,26 +54,30 @@ export default function Page({ params }) {
 
   return (
     <>
-      {/* ✅ Next.js Head component for SEO */}
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        {metadata.canonical && (
-          <link rel="canonical" href={metadata.canonical} />
-        )}
-      </Head>
+      <RootLayout metadata={metadata}>
 
-      <Preloader />
-      <div className="main-content">
-        <HeaderFour />
-        <div className="content-wrapper js-content-wrapper">
-          <PageLinks />
-          <CourseDetailsOne slug={params.slug} pageItem={pageItem} />
-          <CourseSlider />
-          <Faq1 slug={params.slug} pageItem={pageItem} />
-          <FooterFour />
+        {/* ✅ Next.js Head component for SEO */}
+        <Head>
+          <title>{metadata.title}</title>
+          <meta name="description" content={metadata.description} />
+          {metadata.canonical && (
+            <link rel="canonical" href={metadata.canonical} />
+          )}
+        </Head>
+  
+        <Preloader />
+        <div className="main-content">
+          <HeaderFour />
+          <div className="content-wrapper js-content-wrapper">
+            <PageLinks />
+            <CourseDetailsOne slug={params.slug} pageItem={pageItem} />
+            <CourseSlider />
+            <Faq1 slug={params.slug} pageItem={pageItem} />
+            <FooterFour />
+          </div>
         </div>
-      </div>
+      </RootLayout>
+
     </>
   );
 }
