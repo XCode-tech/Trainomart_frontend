@@ -31,7 +31,9 @@ export default function RootLayout({ children, metadata }) {
     <html lang="en" className="">
       
       <head>
-
+        {metadata?.canonical && (
+          <link rel="canonical" href={metadata.canonical} />
+        )}
         <meta
           name="google-site-verification"
           content="9RQxVTNRbHczszboYPDw4kQFTBBFHCrgPp5yOl3TSYQ"
