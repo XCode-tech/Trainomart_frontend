@@ -26,13 +26,16 @@ export default function CoursePageClient({ slug }) {
       try {
         const res = await fetch(`https://test.trainomart.com/api/courses/slug/${slug}/`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-
+  
         const data = await res.json();
+        console.log("Fetched Metadata:", data); // ✅ Debug API Response
+  
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
-          canonical: data.canonical_tag || "", // ✅ Ensure correct field
+          canonical: data.canonical_tag || "", // ✅ Check if this field exists
         });
+  
         setPageItem(data);
       } catch (error) {
         console.error("Error fetching metadata:", error);
@@ -41,9 +44,10 @@ export default function CoursePageClient({ slug }) {
         setIsLoading(false);
       }
     };
-
+  
     fetchMetadata();
   }, [slug]);
+
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error}</p>;
