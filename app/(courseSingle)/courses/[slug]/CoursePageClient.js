@@ -58,7 +58,9 @@ export default function CoursePageClient({ slug }) {
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-        {metadata.canonical && <link rel="canonical" href={metadata.canonical} />}
+        <link rel="canonical" href={metadata.canonical || "https://www.trainomart.com/"} />
+
+          // {metadata.canonical && <link rel="canonical" href={metadata.canonical} />}
       </Head>
 
       <Preloader />
