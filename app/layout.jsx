@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   }, []);
 
   
-  console.log("use client : ", metadata);
+  // console.log("use client : ", metadata);
   
 
   return (
