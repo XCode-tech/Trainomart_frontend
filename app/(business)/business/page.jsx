@@ -5,6 +5,7 @@
 
 import About from '@/components/about/About'
 import Business from '@/components/business/business'
+import RootLayout from '@/app/layout'
 
 
 import Brands from '@/components/common/Brands'
@@ -32,26 +33,30 @@ export const metadata = {
 
 export default function page() {
   return (
-    <div className="main-content  ">
-      <Preloader/>
+    <RootLayout metadata={metadata}>
 
-        <HeaderFour/>
-        <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
-            <Business/>
-            <TestimonialsTwo/>
-            <WhyCourse2/>
+      <div className="main-content  ">
+        <Preloader/>
+  
+          <HeaderFour/>
+          <div className="content-wrapper js-content-wrapper overflow-hidden">
+              <PageLinks/>
+              <Business/>
+              <TestimonialsTwo/>
+              <WhyCourse2/>
+  
+              {/* <Instructors/> */}
+              <Brands/>
+             
+  
+              
+              
+              <FooterFour/>
+          </div>
+  
+      </div>
+    </RootLayout>
 
-            {/* <Instructors/> */}
-            <Brands/>
-           
-
-            
-            
-            <FooterFour/>
-        </div>
-
-    </div>
   )
 }
 
