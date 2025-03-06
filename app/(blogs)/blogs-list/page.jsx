@@ -10,7 +10,7 @@ import BlogsThree from '@/components/blogs/BlogsThree'
 import PageLinks from '@/components/common/PageLinks'
 import Preloader from '@/components/common/Preloader'
 import FooterFour from '@/components/layout/footers/FooterFour'
-
+import RootLayout from '@/app/layout'
 import FooterOne from '@/components/layout/footers/FooterOne'
 import Header from '@/components/layout/headers/Header'
 import HeaderFour from '@/components/layout/headers/HeaderFour'
@@ -25,20 +25,22 @@ export const metadata = {
 
 export default function page() {
   return (
-    <div className="main-content  ">
-      <Preloader/>
+    <RootLayout metadata={metadata}>
+      <div className="main-content  ">
+        <Preloader />
 
-        <HeaderFour/>
+        <HeaderFour />
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
+          <PageLinks />
 
-            <BlogsThree/>
-           
-            
-            <FooterFour/>
+          <BlogsThree />
+
+
+          <FooterFour />
         </div>
 
-    </div>
+      </div>
+    </RootLayout>
   )
 }
 
