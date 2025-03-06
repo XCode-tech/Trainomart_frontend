@@ -38,9 +38,6 @@ export default function RootLayout({ children, metadata }) {
         />
 
         {/* Dynamic Meta Tags */}
-        <title></title> {/* Forces clearing of duplicate titles */}
-        <meta name="description" content="" /> {/* Clears unwanted description */}
-        <link rel="canonical" href="" /> {/* Clears unwanted canonical tag */}
 
         
         {/* Google Analytics */}
