@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
       title: data.meta_title || "Default Course Title",
       description: data.meta_description || "Default Course Description",
       alternates: {
-        canonical: data.Canonical_tag || "",
+        canonical: data.canonical_tag || "",
       },
     };
   } catch (error) {
