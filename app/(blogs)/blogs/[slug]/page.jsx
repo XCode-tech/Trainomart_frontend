@@ -12,6 +12,7 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import BlogDetails from '@/components/blogs/BlogDetails'
 import Preloader from '@/components/common/Preloader'
 import FooterFour from '@/components/layout/footers/FooterFour'
+import RootLayout from '@/app/layout'
 
 
 export default function page({ params }) {
@@ -23,6 +24,8 @@ export default function page({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log("metadata", metadata);
+
   useEffect(() => {
     const fetchMetadata = async () => {
       setIsLoading(true);
@@ -30,9 +33,7 @@ export default function page({ params }) {
         const res = await fetch(`https://test.trainomart.com/api/blogs/slug/${params.slug}/`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
-
         const data = await res.json();
-        console.log("Default Course Title", data)
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
@@ -54,7 +55,7 @@ export default function page({ params }) {
   useEffect(() => {
     if (!isLoading && !error) {
       document.title = metadata.title;
-      
+
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.setAttribute('content', metadata.description);
@@ -69,7 +70,7 @@ export default function page({ params }) {
         newCanonical.href = metadata.canonical;
         document.head.appendChild(newCanonical);
       }
-      
+
     }
   }, [metadata, isLoading, error]);
 
@@ -77,20 +78,24 @@ export default function page({ params }) {
   if (error) return <p className="text-red-500">Error: {error}</p>;
 
   return (
-    <div className="main-content  ">
-      <Preloader />
+    <RootLayout metadata={metadata}>
 
-      <HeaderFour />
-      <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
+      <div className="main-content  ">
+        <Preloader />
 
-        <BlogDetails slug={params.slug} pageItem={pageItem} />
+        <HeaderFour />
+        <div className="content-wrapper js-content-wrapper overflow-hidden">
+          <PageLinks />
 
-        {/* <RelatedBlogs/> */}
+          <BlogDetails slug={params.slug} pageItem={pageItem} />
 
-        <FooterFour />
+          {/* <RelatedBlogs/> */}
+
+          <FooterFour />
+        </div>
+
       </div>
+    </RootLayout>
 
-    </div>
   )
 }
