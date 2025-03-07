@@ -9,7 +9,7 @@ export const metadata = {
   title: 'Trainomart Blogs - Latest Insights on Training & Certification',
   description:
     'Stay updated with Trainomart’s latest blogs on career growth, online training, certification courses, and industry trends. Explore expert insights now!',
-  canonical: 'https://www.trainomart.com/blogs-list/',
+  canonical: 'https://www.trainomart.com/blogs-list',
 }
 
 export default function Page() {
