@@ -13,7 +13,9 @@ export async function generateMetadata({ params }) {
     return {
       title: data.meta_title || "Default Course Title",
       description: data.meta_description || "Default Course Description",
-      canonical: data.canonical_tag || "", // ✅ Use direct canonical key
+      alternates: {
+        canonical: data.canonical_tag || "",
+      },
     };
   } catch (error) {
     console.error("Error fetching metadata:", error);
