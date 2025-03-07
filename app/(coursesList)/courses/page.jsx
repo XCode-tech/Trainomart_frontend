@@ -15,7 +15,7 @@ export const metadata = {
   description:
     "Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!",
   alternates: {
-    canonical: "https://www.trainomart.com/courses/",
+    canonical: "https://www.trainomart.com/courses",
   },
 };
 
