@@ -11,11 +11,14 @@ import HeaderFour from '@/components/layout/headers/HeaderFour'
 import React from 'react'
 
 export const metadata = {
-  title: 'All Courses',
+  title: "Courses Trainomart - Empowering Careers with Expert Training",
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
-  
-}
+    "Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!",
+  alternates: {
+    canonical: "https://www.trainomart.com/courses/",
+  },
+};
+
 
 export default function page() {
   return (
