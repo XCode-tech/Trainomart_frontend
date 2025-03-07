@@ -14,7 +14,7 @@ export const metadata = {
     "Contact Trainomart - Get in Touch for Training & Support",
   description:
     "Have questions? Contact Trainomart for expert guidance on training courses, certifications, and career growth. Reach out today!",
-  canonical: 'https://www.trainomart.com/contact/',
+  canonical: 'https://www.trainomart.com/contact',
 
 };
 
