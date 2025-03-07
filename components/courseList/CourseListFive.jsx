@@ -5,6 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import PaginationTwo from "../common/PaginationTwo";
 import API_URL from "@/data/config";
+import Head from "next/head";
+
+
+export const metadata = {
+  title: "Courses Trainomart - Empowering Careers with Expert Training",
+  description:
+    "Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!",
+  alternates: {
+    canonical: "https://www.trainomart.com/courses/",
+  },
+};
 
 export default function CourseListFive() {
   const [courses, setCourses] = useState([]); // State to store fetched courses
@@ -12,6 +23,7 @@ export default function CourseListFive() {
   const [categories, setCategories] = useState([]); // State to store categories
   const [selectedCategory, setSelectedCategory] = useState("All Categories"); // State to manage the selected category
   const [pageNumber, setPageNumber] = useState(1);
+
 
   // Fetch courses and categories from the API when the component mounts
   useEffect(() => {
@@ -44,6 +56,16 @@ export default function CourseListFive() {
 
   return (
     <>
+      <Head>
+        <title>Courses Trainomart - Empowering Careers with Expert Training</title>
+        <meta
+          name="description"
+          content="Discover Trainomart’s mission to provide top-tier online training & certification courses. Learn from industry experts & boost your career with us!"
+        />
+        <link rel="canonical" href="https://www.trainomart.com/courses" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <section className="page-header -type-1">
         <div className="container">
           <div className="page-header__content">
@@ -67,9 +89,8 @@ export default function CourseListFive() {
           {categories.map((category, index) => (
             <button
               key={index}
-              className={`tabs__button px-15 py-8 rounded-8 ${
-                selectedCategory === category ? "tabActive" : ""
-              }`}
+              className={`tabs__button px-15 py-8 rounded-8 ${selectedCategory === category ? "tabActive" : ""
+                }`}
               onClick={() => setSelectedCategory(category)}
             >
               <b>{category}</b>
