@@ -9,6 +9,8 @@ import CourseSlider from "@/components/courseSingle/CourseSlider";
 import FooterFour from "@/components/layout/footers/FooterFour";
 import HeaderFour from "@/components/layout/headers/HeaderFour";
 import Faq1 from "@/components/common/Faq1";
+import { useRouter } from "next/navigation";
+
 
 export default function CoursePageClient({ slug }) {
   const [pageItem, setPageItem] = useState(null);
@@ -19,23 +21,31 @@ export default function CoursePageClient({ slug }) {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchMetadata = async () => {
       setIsLoading(true);
       try {
         const res = await fetch(`https://test.trainomart.com/api/courses/slug/${slug}/`);
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-  
+
+        if (!res.ok) {
+          if (res.status === 404) {
+            router.push("/"); // 🚀 Redirect to homepage if course is not found
+            return;
+          }
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
         const data = await res.json();
         console.log("Fetched Metadata:", data); // ✅ Debug API Response
-  
+
         setMetadata({
           title: data.meta_title || "Default Course Title",
           description: data.meta_description || "Default Course Description",
           canonical: data.canonical_tag || "Course", // ✅ Check if this field exists
         });
-  
+
         setPageItem(data);
       } catch (error) {
         console.error("Error fetching metadata:", error);
@@ -44,9 +54,37 @@ export default function CoursePageClient({ slug }) {
         setIsLoading(false);
       }
     };
-  
+
     fetchMetadata();
-  }, [slug]);
+  }, [slug, router]);
+  
+  // useEffect(() => {
+  //   const fetchMetadata = async () => {
+  //     setIsLoading(true);
+  //     try {
+  //       const res = await fetch(`https://test.trainomart.com/api/courses/slug/${slug}/`);
+  //       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+  
+  //       const data = await res.json();
+  //       console.log("Fetched Metadata:", data); // ✅ Debug API Response
+  
+  //       setMetadata({
+  //         title: data.meta_title || "Default Course Title",
+  //         description: data.meta_description || "Default Course Description",
+  //         canonical: data.canonical_tag || "Course", // ✅ Check if this field exists
+  //       });
+  
+  //       setPageItem(data);
+  //     } catch (error) {
+  //       console.error("Error fetching metadata:", error);
+  //       setError(error.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+  
+  //   fetchMetadata();
+  // }, [slug]);
 
 
   if (isLoading) return <p>Loading...</p>;
