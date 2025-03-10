@@ -27,7 +27,7 @@ export const metadata = {
   title: 'Trainomart for Business - Corporate Training & Skill Development',
   description:
     'Empower your workforce with Trainomart’s corporate training solutions! Upskill teams with expert-led courses in AI, cloud, IT, and more. Get started today!',
-  canonical: 'https://www.trainomart.com/business/',
+  canonical: 'https://www.trainomart.com/business',
 
 }
 
