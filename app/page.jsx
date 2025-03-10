@@ -23,7 +23,7 @@ import CategoriesFour from "@/components/homes/categories/CategoriesFour";
 export const metadata = {
   title: 'Trainomart - Best Online Training & Certification Courses',
   description:
-    'Enhance your skills with TrainoMart’s top-rated online training and certification courses. Learn from industry experts and boost your career today! Enroll Now.',
+    'Enhance your skills with Trainomart’s top-rated online training and certification courses. Learn from industry experts and boost your career today! Enroll Now.',
   canonical: 'https://www.trainomart.com/',
 }
 
